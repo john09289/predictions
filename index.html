@@ -99,29 +99,34 @@
         <!-- Verification -->
         <section id="verify" class="view-section">
             <h2 class="section-title">🔐 CRYPTOGRAPHIC PROOF OF PREDICTION PRIORITY</h2>
-            <div class="text-block">
-                <h3>METHOD 1: Bitcoin-Anchored Timestamps</h3>
-                <p>All predictions were bundled into a master manifest and anchored to Bitcoin on March 6, 2026.</p>
-                <p><strong>Master V49.1 Tree Hash:</strong> <br><code>fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</code></p>
-                <p><a href="proofs/predictions_manifest.json.ots" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[DOWNLOAD OPENTIMESTAMPS PROOF FILE]</a></p>
-                
-                <h3>METHOD 2: Internet Archive</h3>
-                <p>Snapshot saved at archive.org on March 6, 2026:</p>
-                <p><a href="https://web.archive.org/" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[View Snapshot (Pending Index)]</a></p>
-
-                <h3>METHOD 3: GitHub Commit History</h3>
-                <p>Repository: github.com/Nhughes09/predictions</p>
-                <p>Commit: 123a365 (March 6, 2026)</p>
-                <p><a href="https://github.com/Nhughes09/predictions/commit/123a365" target="_blank" style="color:var(--acc-gold); text-decoration: underline;">[View Commit]</a></p>
-
-                <h3>How to Verify Bitcoin Anchors</h3>
+            
+            <div class="proof-box" style="margin-bottom:2rem;">
+                <h3>Master Manifest (March 6, 2026)</h3>
+                <p><strong>SHA-256:</strong> fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</p>
+                <p><strong>Bitcoin Block:</strong> Pending Confirmation</p>
+                <p><strong>Block Timestamp:</strong> 2026-03-06 UTC</p>
+                <p><strong>Transaction ID:</strong> <a style="color:var(--acc-gold);" href="#">View on Blockchain</a></p>
+                <p><a href="proofs/predictions_manifest.json.ots" style="color:var(--acc-gold); font-weight:bold; text-decoration: underline;" download>📥 Download OpenTimestamps Proof File</a></p>
+            </div>
+            
+            <div class="verification-steps" style="margin-bottom:2rem; padding:1rem; border:1px dashed var(--border-color);">
+                <h3 style="color:#fff;">How to Verify Independently</h3>
                 <ol style="margin-top:0.5rem; margin-left:1.5rem; color:var(--text-muted); font-size: 0.9rem;">
-                    <li>Download the .ots proof file</li>
-                    <li>Install OpenTimestamps client: <code>pip install opentimestamps-client</code></li>
-                    <li>Run: <code>ots verify predictions_manifest.json.ots</code></li>
-                    <li>The output will show the exact Bitcoin block and timestamp</li>
+                    <li>Install OpenTimestamps: <code>pip install opentimestamps-client</code></li>
+                    <li>Download the proof file: <code>wget https://predictions.nlhughes08.workers.dev/proofs/predictions_manifest.json.ots</code></li>
+                    <li>Verify: <code>ots verify predictions_manifest.json.ots</code></li>
+                    <li>Output will show the exact Bitcoin block and timestamp</li>
                 </ol>
-                <p style="margin-top:1rem; color:#fff;"><strong>Anyone can verify this independently, without trusting this website.</strong></p>
+                <p class="note" style="margin-top:1rem; color:var(--acc-gold);"><em>This verification does NOT trust this website – it trusts the Bitcoin blockchain.</em></p>
+            </div>
+            
+            <div class="proof-box">
+                <h3>Weekly Prediction Manifests</h3>
+                <p style="margin-bottom:1rem;">Each week's new predictions are individually timestamped:</p>
+                <ul style="margin-left: 1.5rem;">
+                    <li><a href="proofs/weekly_predictions_2026-03-06.json.ots" style="color:var(--status-pending); text-decoration:underline;">Week of March 6, 2026</a></li>
+                    <li><em>Updated every Monday</em></li>
+                </ul>
             </div>
         </section>
 
