@@ -1,0 +1,135 @@
+const WEEKLY_DATA = {
+  "week_start": "2026-03-06",
+  "week_end": "2026-03-13",
+  "generated": "2026-03-06T18:41:34.083452",
+  "predictions": [
+    {
+      "id": "W001",
+      "title": "Huancayo (HUA) Lunar Transit Magnetic Anomaly",
+      "description": "Z-component drop during Moon zenith passage",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083181",
+      "prediction": {
+        "value": -2.1,
+        "unit": "nT",
+        "uncertainty": 0.8
+      },
+      "mechanism": "Aetheric pressure trough from lunar mass",
+      "data_source": "INTERMAGNET HUA + Skyfield ephemeris",
+      "status": "pending",
+      "sha256": "c930f08006b18d20553735630fd2d1a8f91339966951747ae8d94d9675c882b7"
+    },
+    {
+      "id": "W002",
+      "title": "SAA Node Separation vs CHAOS-7",
+      "description": "Current great-circle distance between African and South American cells",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083213",
+      "prediction": {
+        "value": 51.2,
+        "unit": "degrees",
+        "uncertainty": 0.3
+      },
+      "mechanism": "Vortex repulsion tracking PRED-009",
+      "data_source": "CHAOS-7.18",
+      "status": "pending",
+      "sha256": "5b71d05e55f5100fa639dd4b328bfb7f664c6dac8853f3b72fc3c046fb59ab2e"
+    },
+    {
+      "id": "W003",
+      "title": "Telluric 11.78 Hz Peak Confirmation",
+      "description": "Dominant ground current resonance frequency",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083228",
+      "prediction": {
+        "value": 11.78,
+        "unit": "Hz",
+        "uncertainty": 0.05
+      },
+      "mechanism": "Disc thickness resonance T = c/(2f) = 12,717 km",
+      "data_source": "USGS SPECTRAL MT database",
+      "status": "pending",
+      "sha256": "b40a9c67248d0b39792c1d6e6cc3a098426e6f7216d030d12aa8b8e40dc7935a"
+    },
+    {
+      "id": "W004",
+      "title": "2024 Eclipse 9-Station Replication",
+      "description": "Reproducing Nov 2024 paper results with our method",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083241",
+      "prediction": {
+        "value": -9.8,
+        "unit": "nT",
+        "uncertainty": 1.2
+      },
+      "mechanism": "Aetheric pressure trough confirmation",
+      "data_source": "INTERMAGNET 2024-04-08 data",
+      "status": "pending",
+      "sha256": "b84ec57a09ef03325b5876d3e112c349ce9487eaa741517f8060961b280812a7"
+    },
+    {
+      "id": "W005",
+      "title": "North Pole Deviation from 120\u00b0E",
+      "description": "Current offset from asymptotic meridian",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083249",
+      "prediction": {
+        "value": -18.3,
+        "unit": "degrees",
+        "uncertainty": 0.2
+      },
+      "mechanism": "Exponential approach to firmament boundary",
+      "data_source": "NOAA latest pole position",
+      "status": "pending",
+      "sha256": "5cf4264966daf14acf2921c72fa9cded621a265f3ed995a658ecd80e0789054c"
+    },
+    {
+      "id": "W006",
+      "title": "SAA Minimum Intensity",
+      "description": "Current field strength at South American node",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083256",
+      "prediction": {
+        "value": 22180,
+        "unit": "nT",
+        "uncertainty": 20
+      },
+      "mechanism": "Field decay at \u226528 nT/year",
+      "data_source": "CHAOS-7 latest",
+      "status": "pending",
+      "sha256": "d78fa82ab91bb9cf168de22ba808040525564a3ca2c28fc3f68c5a54b5f79f7f"
+    },
+    {
+      "id": "W007",
+      "title": "Geomagnetic Jerk Precursor Monitor",
+      "description": "Second derivative changes indicating jerk onset",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083264",
+      "prediction": {
+        "value": 0.5,
+        "unit": "nT/year\u00b2",
+        "uncertainty": 0.2
+      },
+      "mechanism": "Aetheric boundary reflection precursor",
+      "data_source": "INTERMAGNET 10-station network",
+      "status": "pending",
+      "sha256": "e08c5e26256559f95f3f017e55468fb0d57c7e5801170c4f679970054709ee40"
+    },
+    {
+      "id": "W008",
+      "title": "Solar Wind / Pole Drift Correlation",
+      "description": "Cross-correlation coefficient for last 30 days",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-06T18:41:34.083272",
+      "prediction": {
+        "value": 0.65,
+        "unit": "r",
+        "uncertainty": 0.1
+      },
+      "mechanism": "Aether flow modulation by solar wind",
+      "data_source": "NOAA OMNIWeb + pole acceleration",
+      "status": "pending",
+      "sha256": "cdcdad8ee8e4bd3f0e2dc001964db4f7191379440cda52ea2cf37ff65b9e4c79"
+    }
+  ]
+};
