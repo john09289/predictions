@@ -8,94 +8,110 @@
 </head>
 <body>
 
-    <header class="master-header">
-        <h1>DOME COSMOLOGY REGISTRY</h1>
-        <p class="subtitle">Validating the Aetheric Framework via Cryptographic Timestamped Mathematics</p>
+    <header class="hero-header">
+        <h1 class="site-title">DOME COSMOLOGY REGISTRY</h1>
+        <p class="site-subtitle">Validating the Aetheric Framework via Cryptographic Timestamped Mathematics</p>
         
-        <div id="scorecard" class="scorecard-container">
+        <div id="scorecard" class="scorecard-hud">
             <!-- Dynamically populated via app.js -->
         </div>
 
-        <nav class="primary-nav">
-            <button class="nav-btn active" data-target="weekly">THIS WEEK'S TESTS</button>
-            <button class="nav-btn" data-target="advance">LONG-TERM OUTLOOK</button>
-            <button class="nav-btn" data-target="retrospective">RETROSPECTIVE WINS</button>
-            <button class="nav-btn" data-target="verify">VERIFICATION</button>
+        <nav class="nav-pills">
+            <button class="nav-pill active" data-target="weekly">THIS WEEK'S TESTS</button>
+            <button class="nav-pill" data-target="advance">LONG-TERM OUTLOOK</button>
+            <button class="nav-pill" data-target="retrospective">RETROSPECTIVE WINS</button>
+            <button class="nav-pill" data-target="verify">VERIFICATION</button>
         </nav>
     </header>
 
-    <main id="main-content">
+    <main class="main-stage">
         <!-- Dashboard View (Weekly) -->
         <section id="weekly" class="view-section active">
-            <h2 class="section-title">ACTIVE TESTS: <span id="week-label" style="color:var(--accent-blue)"></span></h2>
-            <div class="text-block" style="margin-bottom: 2rem; color: var(--text-secondary); max-width: 800px;">
-                <p>These 8 mathematical predictions are being tested right now. You do not need to wait months to verify this cosmology model. Click <strong>Verify Live Data</strong> on any card to confirm the real-time physics against the declared timestamped values.</p>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">ACTIVE TESTS: <span id="week-label" style="color:var(--accent-teal)"></span></h2>
+                    <p class="section-description">These 8 core mathematical predictions are being tested right now. You do not need to wait months to verify this cosmology model. Every data point below is cryptographically anchored to the Bitcoin blockchain prior to observation.</p>
+                </div>
             </div>
-            <div id="weekly-grid" class="predictions-grid">
-                <!-- Dynamically populated -->
+            <div id="weekly-grid" class="card-grid">
+                <!-- Dynamically populated via app.js -->
             </div>
         </section>
 
         <!-- Section 2: Advance Predictions -->
         <section id="advance" class="view-section">
-            <h2 class="section-title">LONG-TERM ADVANCE PREDICTIONS</h2>
-            <div class="text-block" style="margin-bottom: 2rem; color: var(--text-secondary); max-width: 800px;">
-                <p>These are the macro-scale mathematical predictions awaiting major observation windows (like the 2026 Solar Eclipse). Each hypothesis is entirely falsifiable and cryptographically hashed before the observation window opens.</p>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">LONG-TERM ADVANCE PREDICTIONS</h2>
+                    <p class="section-description">Macro-scale mathematical predictions awaiting major observation windows (e.g. the 2026 Solar Eclipse). Each hypothesis is entirely falsifiable and cryptographically hashed before the observation window opens.</p>
+                </div>
             </div>
-            <div id="pending-grid" class="predictions-grid"></div>
+            <div id="pending-grid" class="card-grid"></div>
         </section>
 
         <!-- Section 1: Retrospective Confirmations -->
         <section id="retrospective" class="view-section">
-            <h2 class="section-title">RETROSPECTIVE CONFIRMATIONS</h2>
-            <div class="text-block" style="margin-bottom: 2rem; color: var(--text-secondary); max-width: 800px;">
-                <p>Data the Dome Cosmology model explains that the globe cannot causally explain.</p>
-                <p>These are historical anomalies with rigorous empirical data. While they were not registered on this platform prior to their measurement, the V48 mathematical framework explains them natively without ad-hoc insertions (e.g. Dark Matter, core dynamos). These represent the 26 structural pillars of the framework.</p>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">RETROSPECTIVE CONFIRMATIONS</h2>
+                    <p class="section-description">Data the Dome Cosmology model explains natively that the globe cannot causally explain. These represent the 26 structural pillars of the framework, requiring no ad-hoc insertions like Dark Matter or anomalous dynamos.</p>
+                </div>
             </div>
-            <div id="confirmed-grid" class="predictions-grid"></div>
+            <div id="confirmed-grid" class="card-grid"></div>
         </section>
 
         <!-- Verification -->
         <section id="verify" class="view-section">
-            <h2 class="section-title">🔐 CRYPTOGRAPHIC PROOF OF PRIORITY</h2>
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">🔐 CRYPTOGRAPHIC PROOF OF PRIORITY</h2>
+                    <p class="section-description">Cryptographic timestamping is the ultimate, undeniable proof of advance prediction. Every hypothesis on this platform physically existed prior to its measurement.</p>
+                </div>
+            </div>
             
-            <div style="background:var(--bg-card); padding:2rem; border-radius:12px; border:1px solid var(--border); margin-bottom: 2rem;">
-                <h3 style="color:var(--text-primary); margin-bottom:1rem;">Master Manifest (March 6, 2026)</h3>
-                <p style="color:var(--text-secondary); font-size:0.95rem; margin-bottom:0.5rem;">All predictions are bundled into a SHA-256 manifest and mathematically etched onto the Bitcoin blockchain via OpenTimestamps.</p>
+            <div class="card-grid" style="grid-template-columns: 1fr;">
+                <div class="glass-card">
+                    <h3 style="color:var(--text-heading); margin-bottom:1rem; font-size:1.5rem;">Master Manifest (March 6, 2026)</h3>
+                    <p style="color:var(--text-secondary); font-size:1rem; margin-bottom:1.5rem;">All core predictions are bundled into a SHA-256 manifest and mathematically etched onto the Bitcoin blockchain via OpenTimestamps.</p>
+                    
+                    <div class="data-matrix" style="grid-template-columns: 2fr 1fr;">
+                        <div class="data-node">
+                            <span class="data-node-label">SHA-256 Fingerprint</span>
+                            <span class="data-node-value highlight" style="font-size: 1rem; color:var(--text-secondary)">fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</span>
+                        </div>
+                        <div class="data-node">
+                            <span class="data-node-label">Blockchain Anchor</span>
+                            <span class="data-node-value">2026-03-06 UTC</span>
+                        </div>
+                    </div>
+
+                    <a href="proofs/predictions_manifest.json.ots" class="btn-verify" download>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        DOWNLOAD MASTER .OTS PROOF
+                    </a>
+                </div>
                 
-                <div class="data-grid" style="margin-top:1.5rem;">
-                    <div class="data-col">
-                        <span class="data-label">SHA-256</span>
-                        <span class="data-val" style="font-size:0.9rem; word-break:break-all;">fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</span>
+                <div class="glass-card" style="background:var(--bg-card-hover); border-color:var(--accent-primary-glow);">
+                    <h3 style="color:var(--text-heading); margin-bottom:1.5rem; font-size:1.25rem;">How to Verify Independently</h3>
+                    <div class="code-block">
+                        pip install opentimestamps-client<br><br>
+                        wget https://predictions.nlhughes08.workers.dev/proofs/predictions_manifest.json.ots<br><br>
+                        ots verify predictions_manifest.json.ots
                     </div>
-                    <div class="data-col">
-                        <span class="data-label">Timestamp</span>
-                        <span class="data-val">2026-03-06 UTC</span>
-                    </div>
+                    <p style="margin-top:1.5rem; color:var(--accent-teal); font-size:0.95rem; font-weight:500;"><em>This verification does NOT trust this website – it inherently trusts the decentralized Bitcoin blockchain.</em></p>
                 </div>
 
-                <a href="proofs/predictions_manifest.json.ots" class="verify-btn" style="display:inline-block; width:auto; padding:0.5rem 1.5rem; margin-top:1rem;" download>📥 Download Master .ots Proof</a>
-            </div>
-            
-            <div style="background:var(--bg-main); padding:2rem; border-radius:12px; border:1px dashed var(--border); margin-bottom: 2rem;">
-                <h3 style="color:#fff;">How to Verify Independently</h3>
-                <ol style="margin-top:1rem; margin-left:1.5rem; color:var(--text-secondary); font-family:'JetBrains Mono', monospace; font-size: 0.9rem; line-height: 2;">
-                    <li>pip install opentimestamps-client</li>
-                    <li>wget https://predictions.nlhughes08.workers.dev/proofs/predictions_manifest.json.ots</li>
-                    <li>ots verify predictions_manifest.json.ots</li>
-                </ol>
-                <p style="margin-top:1.5rem; color:var(--accent-gold); font-size:0.9rem;"><em>This verification does NOT trust this website – it trusts the Bitcoin blockchain.</em></p>
-            </div>
-
-            <div style="background:var(--bg-card); padding:2rem; border-radius:12px; border:1px solid var(--border);">
-                <h3 style="color:var(--text-primary); margin-bottom:1rem;">Weekly Prediction Manifests</h3>
-                <ul style="margin-left: 1.5rem; color:var(--text-secondary); font-size: 0.95rem;">
-                    <li style="margin-bottom:0.5rem;"><a href="proofs/weekly_predictions_2026-03-06.json.ots" style="color:var(--accent-blue); text-decoration:none;">Week of March 6, 2026</a> (Active Blockchain Receipt)</li>
-                    <li><em>Automatically updated every Monday</em></li>
-                </ul>
+                <div class="glass-card">
+                    <h3 style="color:var(--text-heading); margin-bottom:1rem; font-size:1.25rem;">Weekly Prediction Manifests</h3>
+                    <p style="margin-bottom:1.5rem; color:var(--text-secondary);">Each week's new short-term predictions are individually compiled and timestamped:</p>
+                    
+                    <a href="proofs/weekly_predictions_2026-03-06.json.ots" class="btn-verify secondary" style="justify-content: flex-start;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent-teal)" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                        Week of March 6, 2026 (Active Blockchain Receipt)
+                    </a>
+                </div>
             </div>
         </section>
-
     </main>
 
     <!-- Data Injection -->
