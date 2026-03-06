@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dome Cosmology Live Predictions Registry</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body class="terminal-theme">
+
+    <div class="scanlines"></div>
+
+    <header class="master-header">
+        <h1>DOME COSMOLOGY PREDICTIONS REGISTRY</h1>
+        <p class="subtitle">Validating the Aetheric Framework via Cryptographic Timestamped Mathematics</p>
+        
+        <div id="scorecard" class="scorecard-container">
+            <!-- Dynamically populated via app.js -->
+        </div>
+
+        <nav class="primary-nav">
+            <button class="nav-btn active" data-target="home">HOME (ACTIVE)</button>
+            <button class="nav-btn" data-target="all-predictions">ALL PREDICTIONS (20)</button>
+            <button class="nav-btn" data-target="retrospective">1. RETROSPECTIVE CONFIRMATIONS</button>
+            <button class="nav-btn" data-target="advance">2. ADVANCE PREDICTIONS</button>
+            <button class="nav-btn" data-target="falsified">FALSIFIED (0)</button>
+            <button class="nav-btn" data-target="framework">FRAMEWORK</button>
+            <button class="nav-btn" data-target="verify">VERIFY HASH</button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <!-- Dashboard View (Home) -->
+        <section id="home" class="view-section active">
+            <div class="countdown-bunker">
+                <h2>NEXT SMOKING GUN OBSERVATION WINDOW:</h2>
+                <h3>TOTAL SOLAR ECLIPSE (EUROPEAN PATH)</h3>
+                <div id="master-countdown" class="timer-display">
+                    --:--:--:--
+                </div>
+                <p>Target Date: August 12, 2026 18:00 UTC</p>
+            </div>
+
+            <h2 class="section-title">FEATURED ADVANCE PREDICTIONS (2026 ECLIPSE)</h2>
+            <div id="dashboard-grid" class="predictions-grid">
+                <!-- Dynamically populated -->
+            </div>
+        </section>
+
+        <!-- All Predictions -->
+        <section id="all-predictions" class="view-section">
+            <h2 class="section-title">FULL REGISTRY (ALL CATEGORIES)</h2>
+            <div class="filters">
+                <input type="text" id="search-bar" placeholder="SEARCH REGISTRY BY KEYWORD...">
+            </div>
+            <div id="all-grid" class="predictions-grid"></div>
+        </section>
+
+        <!-- Section 1: Retrospective Confirmations -->
+        <section id="retrospective" class="view-section">
+            <h2 class="section-title">SECTION 1: RETROSPECTIVE CONFIRMATIONS</h2>
+            <div class="text-block" style="margin-bottom: 2rem;">
+                <p><strong>Data the Dome model explains that the globe cannot causally explain.</strong></p>
+                <p>These are historical phenomena with rigorous empirical data. While they were not registered on this platform prior to their measurement, the Dome Cosmology V48 mathematical framework explains them natively without ad-hoc insertions. These represent real architectural wins for the model.</p>
+            </div>
+            <div id="confirmed-grid" class="predictions-grid"></div>
+        </section>
+
+        <!-- Section 2: Advance Predictions -->
+        <section id="advance" class="view-section">
+            <h2 class="section-title">SECTION 2: ADVANCE PREDICTIONS</h2>
+            <div class="text-block" style="margin-bottom: 2rem;">
+                <p><strong>Registered March 6, 2026. Cryptographically timestamped.</strong></p>
+                <p>These are the mathematical predictions that prove the model is genuinely predictive. Each active hypothesis has been generated in advance, assigned a falsifiable criteria, and cryptographically hashed before the observation window opens. The truth is not afraid of a test.</p>
+            </div>
+            <div id="pending-grid" class="predictions-grid"></div>
+        </section>
+
+        <!-- Falsified -->
+        <section id="falsified" class="view-section">
+            <h2 class="section-title">FALSIFIED (INTELLECTUAL HONESTY LOG)</h2>
+            <div class="text-block" style="margin-bottom: 2rem;">
+                <p>Predictions whose mathematical constraints were strictly violated by empirical observation. A robust framework does not hide its failures.</p>
+            </div>
+            <div id="falsified-grid" class="predictions-grid"></div>
+        </section>
+
+        <!-- Framework -->
+        <section id="framework" class="view-section">
+            <h2 class="section-title">DOME COSMOLOGY V48</h2>
+            <div class="text-block">
+                <p>This registry logs timestamped, falsifiable predictions derived from the Dome Cosmology framework (V48). The models depend strictly on electromagnetic wave propagation, second harmonic acoustic fluid dynamics, and aetheric pressure displacement constraints without relying on absolute Newtonian gravity mass assumptions.</p>
+                <p>Predictions are evaluated through raw INTERMAGNET sensor pulls, CHAOS-7 drift anomalies, Schumann resonance telluric baselines, and unshielded spring gravimeter differentials.</p>
+                <!-- Images can be placed here in the future: <img src="assets/images/placeholder.png" alt="Dome Concept"> -->
+            </div>
+        </section>
+
+        <!-- Verification -->
+        <section id="verify" class="view-section">
+            <h2 class="section-title">CRYPTOGRAPHIC VERIFICATION</h2>
+            <div class="text-block">
+                <p>Every prediction card carries a SHA-256 string representing an exact static snapshot of its numerical parameters at the moment of registration. When the test window clears, the result is appended via a separate node string. The original hash cannot be altered without failing the signature check.</p>
+                <p><strong>Master V49.1 Tree Hash:</strong> <br><code>fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</code></p>
+                
+                <h3>METHOD 1: GIT COMMIT HISTORY</h3>
+                <p>Check the repository log for `predictions.js`. GitHub timestamps serve as third-party evidence of registration.</p>
+                
+                <h3>METHOD 2: SHA-256 HASHES</h3>
+                <p>Copy any JSON object out of `predictions.js` and run it through a standard SHA-256 protocol. It will match the footnote badge.</p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Data Injection -->
+    <script src="predictions.js"></script>
+    <script src="app.js"></script>
+
+    <!-- Hidden AI-Scraper Block -->
+    <script type="application/ld+json" id="dome-predictions-data"></script>
+</body>
+</html>
