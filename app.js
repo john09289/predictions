@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     try {
-        const resArgs = await fetch('api/current/results.json');
+        const resArgs = await fetch('api/current/results.json?v=' + Date.now());
         if (resArgs.ok) {
             window.RAW_RESULTS = await resArgs.json();
         } else {
