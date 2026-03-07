@@ -1,0 +1,78 @@
+[
+  {
+    "id": "DATA-001",
+    "name": "BOU 2017 Eclipse Z Anomaly",
+    "value": -10.9,
+    "unit": "nT",
+    "timestamp": "2017-08-21T17:20:00Z",
+    "source": "INTERMAGNET BOU Observatory",
+    "source_url": "https://intermagnet.org",
+    "raw_file": "bou_magnetic_2017 row in DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
+    "caveats": "Geomagnetically disturbed day - Kp elevated to 4-5. Signal may include storm-time variation. Claude flagged this on 2026-03-06. Needs quiet-day baseline comparison recalculation.",
+    "used_in_predictions": [
+      "WIN-010",
+      "PRED-001 through 008"
+    ],
+    "used_in_formulas": [
+      "FORM-003"
+    ],
+    "status": "current",
+    "quality_flag": "CAVEAT - see notes"
+  },
+  {
+    "id": "DATA-002",
+    "name": "Mohe 1997 Eclipse Gravity Anomaly",
+    "value": -6.5,
+    "unit": "uGal",
+    "timestamp": "1997-03-09T00:00:00Z",
+    "source": "Chinese Academy of Sciences (Wang et al. 2000)",
+    "source_url": "Published literature",
+    "raw_file": "eclipse_gravity Mohe 1997 row in DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
+    "caveats": "Recorded on unshielded LaCoste-Romberg spring gravimeters. Must be compared against Superconducting Gravimeters (SG) which show null results (Membach 1999) due to aetheric shielding differences.",
+    "used_in_predictions": [
+      "WIN-011",
+      "PRED-006"
+    ],
+    "used_in_formulas": [
+      "FORM-003"
+    ],
+    "status": "current",
+    "quality_flag": "HIGH"
+  },
+  {
+    "id": "DATA-003",
+    "name": "Tesla Patent Telluric Return Delay",
+    "value": 0.08484,
+    "unit": "s",
+    "timestamp": "1905-04-18T00:00:00Z",
+    "source": "US Patent 787412",
+    "source_url": "https://patents.google.com/patent/US787412A/en",
+    "raw_file": "tesla_patent 1905 row in DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
+    "caveats": "Claude flagged exact circular derivation (f to T and back to f). Reassigned as frequency-first confirmation rather than independent velocity derivation.",
+    "used_in_predictions": [
+      "WIN-001"
+    ],
+    "used_in_formulas": [
+      "FORM-001"
+    ],
+    "status": "current",
+    "quality_flag": "CAVEAT - Circularity noted"
+  },
+  {
+    "id": "DATA-004",
+    "name": "Lunar Transit HUA Test Peak",
+    "value": 3.73,
+    "unit": "nT",
+    "timestamp": "2026-03-06T00:00:00Z",
+    "source": "INTERMAGNET HUA (Python Local Fetch)",
+    "source_url": "https://intermagnet.org",
+    "raw_file": "W001 Lunar Transit Test Execution",
+    "caveats": "Expected signal was -2.1 nT, but ambient noise floor of HUA was +/- 10.95 nT. The predicted signal is fundamentally undetectable at a single station with this methodology.",
+    "used_in_predictions": [
+      "W001"
+    ],
+    "used_in_formulas": [],
+    "status": "current",
+    "quality_flag": "CAVEAT - Noise limited"
+  }
+]

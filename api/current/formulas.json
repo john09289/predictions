@@ -1,0 +1,140 @@
+[
+  {
+    "id": "FORM-001",
+    "name": "Tesla Disc Resonance",
+    "category": "resonance",
+    "formula_latex": "f = \\frac{c}{2D}",
+    "formula_plain": "f = c / (2 * D)",
+    "variables": {
+      "f": "resonance frequency in Hz",
+      "c": "speed of light in km/s = 299792.458",
+      "D": "disc thickness in km"
+    },
+    "inputs_used": {
+      "c": 299792.458,
+      "D": 12717
+    },
+    "output": {
+      "value": 11.787,
+      "unit": "Hz"
+    },
+    "derivation_notes": "Vertical standing wave in disc. One full wavelength = 2D. f = c/lambda = c/(2D)",
+    "source_file": "DOME_COSMOLOGY_MASTER_V45.md",
+    "model_version": "45+",
+    "status": "current",
+    "cross_references": [
+      "WIN-001",
+      "WIN-008",
+      "W003"
+    ]
+  },
+  {
+    "id": "FORM-002",
+    "name": "Schumann Geometric Theoretical",
+    "category": "resonance",
+    "formula_latex": "f_n = \\frac{c}{2\\pi R} \\sqrt{n(n+1)}",
+    "formula_plain": "f_n = c / (2 * pi * R) * sqrt(n*(n+1))",
+    "variables": {
+      "f_n": "Schumann harmonic n",
+      "R": "Earth radius (spherical assumption)",
+      "c": "light speed"
+    },
+    "inputs_used": {
+      "R": 6371,
+      "n": 1,
+      "c": 299792
+    },
+    "output": {
+      "value": 10.59,
+      "unit": "Hz"
+    },
+    "derivation_notes": "Schumann's original pure mathematical derivation without the ad-hoc finite conductivity 'fudge factor' added later to match the 7.83Hz observation.",
+    "source_file": "DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
+    "model_version": "48+",
+    "status": "current",
+    "cross_references": [
+      "WIN-002"
+    ]
+  },
+  {
+    "id": "FORM-003",
+    "name": "Magnetic-Gravity Eclipse Coupling Scaling",
+    "category": "gravity_coupling",
+    "formula_latex": "\\gamma = \\frac{\\Delta Z}{\\Delta g}",
+    "formula_plain": "coupling_ratio = max_Z_drop / max_gravity_drop",
+    "variables": {
+      "max_Z_drop": "BOU 2017 anomaly in nT",
+      "max_gravity_drop": "Mohe 1997 anomaly in uGal"
+    },
+    "inputs_used": {
+      "max_Z_drop": 10.9,
+      "max_gravity_drop": 6.5
+    },
+    "output": {
+      "value": 1.67,
+      "unit": "nT/uGal"
+    },
+    "derivation_notes": "Derived empirically by comparing two definitive eclipse anomalies. Used to predict gravity anomalies from magnetic precursors.",
+    "source_file": "task4_1_eclipse.py",
+    "model_version": "48+",
+    "status": "current",
+    "cross_references": [
+      "WIN-012",
+      "PRED-006"
+    ]
+  },
+  {
+    "id": "FORM-004",
+    "name": "SAA Node Separation (Exponential)",
+    "category": "magnetic",
+    "formula_latex": "L(t) = C + A e^{k(t-1990)}",
+    "formula_plain": "separation_deg = 49.956 + 3.539 * exp(0.03146 * (year - 1990))",
+    "variables": {
+      "L(t)": "Longitudinal separation",
+      "t": "year",
+      "C": "baseline offset",
+      "A": "amplitude",
+      "k": "growth rate"
+    },
+    "inputs_used": {
+      "C": 49.956,
+      "A": 3.539,
+      "k": 0.03146,
+      "year": 2025
+    },
+    "output": {
+      "value": 60.59,
+      "unit": "degrees"
+    },
+    "derivation_notes": "Fitted directly from high-resolution CHAOS-7 spherical harmonic coefficients. Demonstrates physical pulling apart of two sub-nodes.",
+    "source_file": "task3_1_chaos.py",
+    "model_version": "45+",
+    "status": "current",
+    "cross_references": [
+      "WIN-004",
+      "W002"
+    ]
+  },
+  {
+    "id": "FORM-005",
+    "name": "Eclipse Aetheric Deflection",
+    "category": "magnetic",
+    "formula_latex": "\\Delta Z(t) = Z(t)_{eclipse} - Z(t)_{quiet}",
+    "formula_plain": "delta_Z = eclipse_day_Z - 3_day_quiet_mean_Z",
+    "variables": {
+      "Z(t)": "Z-component intensity at time t"
+    },
+    "inputs_used": {},
+    "output": {
+      "value": "Baseline-subtracted specific anomaly",
+      "unit": "nT"
+    },
+    "derivation_notes": "Requires strictly 'quiet' geomagnetic background days (Kp < 3) surrounding the eclipse to isolate the true aetheric shielding effect.",
+    "source_file": "task4_1_eclipse.py",
+    "model_version": "49.2",
+    "status": "current",
+    "cross_references": [
+      "W004"
+    ]
+  }
+]

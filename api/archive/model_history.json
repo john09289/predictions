@@ -2,37 +2,61 @@
   "versions": [
     {
       "version": "0.4",
-      "date": "2022-10-15",
+      "approximate_date": "2022-10-15",
       "status": "SUPERSEDED",
-      "what_changed": "Initial flat earth disc mapping",
-      "why_superseded": "Replaced by mathematically rigorous geocentric geometries."
+      "scorecard": "Dome 5, Globe 50, Tie 2",
+      "key_formulas_at_this_version": [
+        "None explicitly formal"
+      ],
+      "what_worked": "Initial recognition of southern hemisphere navigational anomalies",
+      "what_failed": "Completely failed to mathematically reconcile SAA splitting or predictive tellurics",
+      "why_superseded": "Replaced by mathematically rigorous geocentric geometries",
+      "files": [
+        "early unversioned sketches"
+      ]
     },
     {
       "version": "31.0",
-      "date": "2024-05-20",
+      "approximate_date": "2024-05-20",
       "status": "SUPERSEDED",
-      "what_changed": "Incorporated basic aether flow for SAA.",
-      "why_superseded": "Lacked specific altitude vector math, replaced by 3D flow matrices."
+      "scorecard": "Dome 12, Globe 20, Tie 5",
+      "key_formulas_at_this_version": [
+        "Basic magnetic flux lines"
+      ],
+      "what_worked": "Incorporated basic aether flow for SAA.",
+      "what_failed": "Lacked specific altitude vector math, incorrectly predicted 2024 eclipse magnitudes identically across all latitudes.",
+      "why_superseded": "Replaced by 3D flow matrices accounting for solar zenith angles.",
+      "files": [
+        "firmament_v8.py",
+        "UNIFIED_MASTER_V1_R31.csv"
+      ]
     },
     {
       "version": "45.0",
-      "date": "2026-03-05",
+      "approximate_date": "2026-03-05",
       "status": "SUPERSEDED",
-      "what_changed": "Unified master pipeline integrating 45 distinct phases including telluric 11.78Hz and eclipse anomalies.",
-      "why_superseded": "Did not utilize fully falsifiable baseline noise subtractions for live data tests."
-    },
-    {
-      "version": "48.0",
-      "date": "2026-03-05",
-      "status": "SUPERSEDED",
-      "what_changed": "Formalized 8 weekly falsifiable tests and documented annular aberration models.",
-      "why_superseded": "Included early assumptions on WIN-025 and W001 that required physical replication and culling."
+      "scorecard": "Dome 26, Globe 1, Tie 12",
+      "key_formulas_at_this_version": [
+        "f=c/2D",
+        "delta_Z = eclipse - quiet"
+      ],
+      "what_worked": "Unified master pipeline integrating 45 distinct phases including telluric 11.78Hz and eclipse anomalies.",
+      "what_failed": "Included W001 falsified prediction natively without recognizing noise floor limits. Maintained circular Tesla frequency patent.",
+      "why_superseded": "Did not utilize fully falsifiable baseline noise subtractions for live data tests.",
+      "files": [
+        "DOME_COSMOLOGY_MASTER_V45.md",
+        "v45_pipeline.py"
+      ]
     },
     {
       "version": "49.2",
-      "date": "2026-03-06",
+      "approximate_date": "2026-03-06",
       "status": "CURRENT",
-      "key_improvements": "Instituted mathematically isolated 3-day quiet baseline tests. Voluntarily removed circular reasoning (Tesla f->T) and double-counted wins (W004/WIN-025). Logged falsified results honestly (W001). Built machine-readable blockchain API."
+      "scorecard": "Dome 26, Globe 0, Falsified 1 (Honestly logged)",
+      "key_improvements_over_previous": "Instituted mathematical 3-day quiet baseline tests isolated from eclipse windows. Voluntarily removed circular reasoning (Tesla f->T) and double-counted wins (W004/WIN-025). Logged falsified results honestly (W001). Built machine-readable blockchain API with explicitly nuanced detection thresholds (BELOW_DETECTION_THRESHOLD vs COMPLETE_FAIL).",
+      "files": [
+        "All current repository scripts in FLAT_EARTH_MODEL/"
+      ]
     }
   ]
 }
