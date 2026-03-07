@@ -288,14 +288,40 @@ function renderGrids(results) {
     if (pendingGrid) pendingGrid.innerHTML = pendingHTML;
 
     // 2. Render the new Weekly active tests
-    let weekHTML = '';
+    let weekActiveHTML = '';
+    let weekPastHTML = '';
+    
     if (typeof WEEKLY_DATA !== 'undefined' && WEEKLY_DATA.predictions) {
+        let now = Date.now();
         WEEKLY_DATA.predictions.forEach(p => {
-            weekHTML += createCardHTML(p, resultMap, true);
+            const resNode = resultMap[p.id];
+            
+            // Check if it has a confirmed verdit or if the test_date string is in the past
+            let isPast = false;
+            if (resNode && resNode.auto_verdict && resNode.auto_verdict !== 'pending') {
+                isPast = true;
+            } else if (p.test_date) {
+                let pTime = new Date(p.test_date).getTime();
+                if (pTime < now) isPast = true;
+            } else if (p.target_date) {
+                let pTime = new Date(p.target_date).getTime();
+                if (pTime < now) isPast = true;
+            }
+            
+            const card = createCardHTML(p, resultMap, true);
+            if (isPast) {
+                weekPastHTML += card;
+            } else {
+                weekActiveHTML += card;
+            }
         });
     }
     
-    if (weeklyGrid) weeklyGrid.innerHTML = weekHTML || '<p>No weekly data loaded.</p>';
+    const wActiveGrid = document.getElementById('weekly-active-grid');
+    const wPastGrid = document.getElementById('weekly-past-grid');
+    
+    if (wActiveGrid) wActiveGrid.innerHTML = weekActiveHTML || '<p style="color:var(--text-muted); grid-column:1/-1;">No pending test runs this week.</p>';
+    if (wPastGrid) wPastGrid.innerHTML = weekPastHTML || '<p style="color:var(--text-muted); grid-column:1/-1;">No evaluated runs this week yet.</p>';
 }
 
 function initNav() {
