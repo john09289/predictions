@@ -1,0 +1,75 @@
+{
+  "active_tests": [
+    {
+      "id": "W001",
+      "title": "Lunar Transit Magnetic Anomaly - HUA",
+      "formula": "delta_Z = baseline_deviation",
+      "inputs": {
+        "baseline_Z": "Quiet 3-day median"
+      },
+      "status": "falsified"
+    },
+    {
+      "id": "W002",
+      "title": "SAA Node Check vs CHAOS-7",
+      "formula": "separation = C + A * exp(k * (year - 1990))",
+      "inputs": {
+        "C": 49.95,
+        "A": 3.539,
+        "k": 0.0314,
+        "year": 2026
+      },
+      "status": "pending"
+    },
+    {
+      "id": "W003",
+      "title": "Telluric 11.78 Hz Peak",
+      "formula": "f = c / (2 * thickness)",
+      "inputs": {
+        "thickness_km": 12717,
+        "c_km_s": 299792
+      },
+      "status": "pending"
+    },
+    {
+      "id": "W004",
+      "title": "2024 Eclipse 9-Station Replication",
+      "formula": "delta_Z = eclipse_data - quiet_3day_baseline",
+      "inputs": {
+        "station_data": "INTERMAGNET 1-min definitive"
+      },
+      "status": "mixed/falsified"
+    },
+    {
+      "id": "W005",
+      "title": "North Pole Acceleration Update",
+      "formula": "lon = 120 + C*exp(k*(t-1990))",
+      "inputs": {
+        "t": 2026
+      },
+      "status": "pending"
+    },
+    {
+      "id": "W006",
+      "title": "SAA Intensity Update",
+      "formula": "B_min < 21,800 nT",
+      "inputs": {},
+      "status": "pending"
+    },
+    {
+      "id": "W007",
+      "title": "Geomagnetic Jerk Detector",
+      "formula": "d3B/dt3 > threshold",
+      "inputs": {},
+      "status": "pending"
+    },
+    {
+      "id": "W008",
+      "title": "Coronal Hole Correlation",
+      "formula": "corr(pole_v, SW_speed)",
+      "inputs": {},
+      "status": "pending"
+    }
+  ],
+  "deprecated": "All predictions from versions < V48 are superseded. Only V49.2 active hypotheses are evaluated entirely."
+}

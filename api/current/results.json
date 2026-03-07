@@ -1,0 +1,70 @@
+[
+  {
+    "id": "W001",
+    "title": "Lunar Transit Magnetic Anomaly",
+    "model_version_when_run": "49.2",
+    "prediction": {
+      "value": -2.1,
+      "unit": "nT"
+    },
+    "observed": {
+      "value": 3.73,
+      "unit": "nT"
+    },
+    "verdict": "falsified",
+    "verdict_notes": "Signal completely buried in +/- 10.95 nT noise floor. Null result accepted honestly.",
+    "data_source": "INTERMAGNET HUA (Live Python fetch)",
+    "is_current": true
+  },
+  {
+    "id": "W004",
+    "title": "2024 Eclipse 9-Station Data Replication",
+    "model_version_when_run": "49.2",
+    "prediction": {
+      "value": -10.0,
+      "unit": "nT"
+    },
+    "observed": {
+      "CMO": -17.6,
+      "NEW": -17.1,
+      "FRD": 1.4,
+      "OTT": -8.1,
+      "STJ": 3.4
+    },
+    "verdict": "falsified",
+    "verdict_notes": "Mixed result: Massively confirmed at CMO and NEW (~17nT with SNR>4). However, other stations failed the noise floor test (SNR<2) or lacked data. User honestly logged as falsified due to lack of global coherence.",
+    "data_source": "INTERMAGNET (BGS GIN API)",
+    "is_current": true
+  },
+  {
+    "id": "TASK-3-1",
+    "title": "CHAOS-7 SAA Exponential Separation",
+    "model_version_when_run": "48.0",
+    "prediction": {
+      "value": "Exponential growth"
+    },
+    "observed": {
+      "value": "Confirmed exponential growth separating 60 degrees by 2025"
+    },
+    "verdict": "confirmed",
+    "verdict_notes": "Raw outputs from CHAOS-7 confirmed South Atlantic Anomaly is two independent nodes pulling apart, breaking dipole model.",
+    "data_source": "CHAOS-7 Python script run",
+    "is_current": true
+  },
+  {
+    "id": "BOU-2017",
+    "title": "BOU 2017 Eclipse Baseline Re-evaluation",
+    "model_version_when_run": "49.2",
+    "prediction": {
+      "value": -10.9,
+      "unit": "nT"
+    },
+    "observed": {
+      "value": "Disturbed Kp=4/5"
+    },
+    "verdict": "inconclusive",
+    "verdict_notes": "Claude flagged that Aug 21, 2017 was geomagnetically disturbed. Original baseline uses Aug 14-15 (also slightly disturbed). Must recalibrate using true quiet days.",
+    "data_source": "INTERMAGNET BOU",
+    "is_current": true
+  }
+]

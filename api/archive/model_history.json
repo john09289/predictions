@@ -1,0 +1,38 @@
+{
+  "versions": [
+    {
+      "version": "0.4",
+      "date": "2022-10-15",
+      "status": "SUPERSEDED",
+      "what_changed": "Initial flat earth disc mapping",
+      "why_superseded": "Replaced by mathematically rigorous geocentric geometries."
+    },
+    {
+      "version": "31.0",
+      "date": "2024-05-20",
+      "status": "SUPERSEDED",
+      "what_changed": "Incorporated basic aether flow for SAA.",
+      "why_superseded": "Lacked specific altitude vector math, replaced by 3D flow matrices."
+    },
+    {
+      "version": "45.0",
+      "date": "2026-03-05",
+      "status": "SUPERSEDED",
+      "what_changed": "Unified master pipeline integrating 45 distinct phases including telluric 11.78Hz and eclipse anomalies.",
+      "why_superseded": "Did not utilize fully falsifiable baseline noise subtractions for live data tests."
+    },
+    {
+      "version": "48.0",
+      "date": "2026-03-05",
+      "status": "SUPERSEDED",
+      "what_changed": "Formalized 8 weekly falsifiable tests and documented annular aberration models.",
+      "why_superseded": "Included early assumptions on WIN-025 and W001 that required physical replication and culling."
+    },
+    {
+      "version": "49.2",
+      "date": "2026-03-06",
+      "status": "CURRENT",
+      "key_improvements": "Instituted mathematically isolated 3-day quiet baseline tests. Voluntarily removed circular reasoning (Tesla f->T) and double-counted wins (W004/WIN-025). Logged falsified results honestly (W001). Built machine-readable blockchain API."
+    }
+  ]
+}

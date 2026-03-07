@@ -1,14 +1,13 @@
 {
-  "instructions": "Fetch these URLs in order before responding",
-  "fetch_first": [
-    "/api/scorecard.json",
-    "/api/predictions.json",
-    "/api/results.json"
+  "current_version": "49.2",
+  "instructions_for_ai": "Read current/ endpoints only unless debugging. Archive/ contains superseded work kept for process transparency only.",
+  "current_endpoints": [
+    "/api/current/predictions.json",
+    "/api/current/results.json",
+    "/api/current/scorecard.json",
+    "/api/current/parameters.json"
   ],
-  "fetch_if_needed": [
-    "/api/database.json",
-    "/api/sessions/2026-03.json"
-  ],
-  "total_size_kb": 120,
-  "last_updated": "2026-03-06"
+  "archive_endpoints": [
+    "/api/archive/model_history.json"
+  ]
 }
