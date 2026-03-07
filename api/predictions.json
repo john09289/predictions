@@ -30,7 +30,7 @@
       },
       "status": "pending",
       "timestamp_sha256": "pending",
-      "sha256": "9490b4d272a3f90b958710df29557d83f54b9481b1b2a9bb1eaa69527a1a0467",
+      "sha256": "f33d0250e0e2279086923037622990b70f21837f26f226770bc6289915cb7f38",
       "point_prediction": {
         "value": -8.4,
         "uncertainty": 1.7,
@@ -170,7 +170,7 @@
         "coverage_fraction": 0.94,
         "latitude_factor": 0.8
       },
-      "sha256": "8e6884ad83a37ba3294e086694ab708a6bf4b96a181e30eb203dd8076aba2540",
+      "sha256": "6c7b694a0ae7fc9ef417835ebb94fc92bc77aa5054ee28a79baf968e459bab13",
       "point_prediction": {
         "value": -8.3,
         "uncertainty": 1.7,
@@ -321,7 +321,7 @@
         "coverage_fraction": 0.98,
         "latitude_factor": 0.89
       },
-      "sha256": "837524b9604e8fedd72d8f46d6eb126c626f412fafab4fe6203d573fa7785cf5",
+      "sha256": "97cb8968281176e7ececc9953afb4a464fefc26bb3a40bc033668cd093555a65",
       "point_prediction": {
         "value": -9.5,
         "uncertainty": 1.9,
@@ -472,7 +472,7 @@
         "coverage_fraction": 0.92,
         "latitude_factor": 0.86
       },
-      "sha256": "79ea241439ed2a54478b17134b36ab33f073451ffae2ca72daa19fc4af08f5dd",
+      "sha256": "9f683c47e020b891eb2144c98b8ec35d926e16beb8674b44c2ab72192d384147",
       "point_prediction": {
         "value": -8.6,
         "uncertainty": 1.7,
@@ -623,7 +623,7 @@
         "coverage_fraction": 0.7,
         "latitude_factor": 0.75
       },
-      "sha256": "1555bf1825c145bcdcdacc585f8d1a66167f374401e76d236c4f26219df43998",
+      "sha256": "14cace604f136fe5e17e850bbcb099246d18d8d4f387deaffbc775b620253f24",
       "point_prediction": {
         "value": -5.8,
         "uncertainty": 1.2,
@@ -783,7 +783,7 @@
       "inputs": {
         "shielding": "Superconducting Gravimeter"
       },
-      "sha256": "bd4db63ad515180b1042080e8625ae2c9c27a03b14dee4155f57a0173b7f1859",
+      "sha256": "43c82ce4b77c1a4a384fbd621fadd56e2a54d229393960744358622765302b15",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -906,7 +906,7 @@
       "status": "pending",
       "formula": "correlation(anomaly, geometry) = 1.0",
       "inputs": {},
-      "sha256": "f0dc6691c67c1e8009e1a8898180ba684a41900c7203834337de44a83e543066",
+      "sha256": "8a8c0ceb9e972b5fb17f0df069885a6dfa7bedece54f0a56ab55d4a2fcf8a586",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -1042,7 +1042,7 @@
       "inputs": {
         "coverage_fraction": "< 0.4"
       },
-      "sha256": "c7e8762c8fe3d9a674eb8634298c9b6b0488724bfac0b1558c7c93fcc31691b8",
+      "sha256": "18314fdf23626c60f8e719a23a191d5d454483648a3bfb82f04a8d6182512341",
       "point_prediction": {
         "value": "<2",
         "uncertainty": null,
@@ -2208,6 +2208,232 @@
       "max_possible_score": 10,
       "win_threshold": 5,
       "strong_win_threshold": 8
+    },
+    {
+      "id": "W009",
+      "title": "SAA African Cell Intensity Check",
+      "description": "African cell minimum < 21,795 nT by 2026-03-13",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": 21795,
+        "unit": "nT",
+        "uncertainty": 30
+      },
+      "mechanism": "Aetheric rim degradation accelerating African lobe",
+      "data_source": "CHAOS-7",
+      "status": "pending",
+      "sha256": "48ebb89f8ed7a1deb4d36c86fdd7fe2b157c341817c8835c542bc6d23333e8c4",
+      "point_prediction": {
+        "value": 21795,
+        "uncertainty": 30,
+        "range": [
+          21765,
+          21825
+        ],
+        "confidence": "1-sigma"
+      },
+      "scoring_matrix": [
+        {
+          "claim": "Signal is correct polarity",
+          "weight": "HIGH",
+          "auto_check": "direction_correct",
+          "points_if_correct": 5,
+          "points_if_wrong": -5
+        },
+        {
+          "claim": "Signal exceeds noise floor",
+          "weight": "HIGH",
+          "auto_check": "observed.snr >= 2.0",
+          "points_if_correct": 3,
+          "points_if_wrong": 0
+        },
+        {
+          "claim": "Magnitude within 1-sigma",
+          "weight": "MEDIUM",
+          "auto_check": "sigma_distance <= 1.0",
+          "points_if_correct": 2,
+          "points_if_wrong": -1
+        }
+      ],
+      "max_possible_score": 10,
+      "win_threshold": 5,
+      "strong_win_threshold": 8
+    },
+    {
+      "id": "W010",
+      "title": "North Pole Position Check",
+      "description": "Current deviation from 120 E longitude > -18 (i.e. still accelerating)",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": -18.0,
+        "unit": "degrees",
+        "uncertainty": 0.5
+      },
+      "mechanism": "Precession vortex convergence",
+      "data_source": "NOAA NP.xy",
+      "status": "pending",
+      "sha256": "efd5a9eb4fffdb96507c5dddbf87d0d60e3460db7b2b1509368efd9d9c4dd68f",
+      "point_prediction": {
+        "value": -18.0,
+        "uncertainty": 0.5,
+        "range": [
+          -18.5,
+          -17.5
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W011",
+      "title": "Field Decay Rate Confirmation",
+      "description": "IGRF/CHAOS-7 global dipole moment decreased >=28 nT since March 2025",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": -28.0,
+        "unit": "nT/year",
+        "uncertainty": 3.0
+      },
+      "mechanism": "Aetheric medium degradation",
+      "data_source": "INTERMAGNET annual",
+      "status": "pending",
+      "sha256": "299cd65ec436a027997cdb4a6e761a51a3b5bf9479bf88ec4fc792b8cbc26b3b",
+      "point_prediction": {
+        "value": -28.0,
+        "uncertainty": 3.0,
+        "range": [
+          -31.0,
+          -25.0
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W012",
+      "title": "SAA Separation 2026 Check",
+      "description": "SAA cell longitude separation = 51.5 degrees as of March 2026",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": 51.5,
+        "unit": "degrees",
+        "uncertainty": 1.5
+      },
+      "mechanism": "Exponential aetheric field separation",
+      "data_source": "CHAOS-7",
+      "status": "pending",
+      "sha256": "b50343fe0c88ce600926e9694bcae155a95e6e5815af6da6325bc3c590bfc511",
+      "point_prediction": {
+        "value": 51.5,
+        "uncertainty": 1.5,
+        "range": [
+          50.0,
+          53.0
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W013",
+      "title": "Schumann 7.83 Hz Anomaly Persistence",
+      "description": "Measured Schumann fundamental remains 7.83 Hz this week",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": 7.83,
+        "unit": "Hz",
+        "uncertainty": 0.3
+      },
+      "mechanism": "Aetheric damping of resonant cavity",
+      "data_source": "Tomsk/HeartMath Schumann monitors",
+      "status": "pending",
+      "sha256": "ae70df0babca8289657768af9274cf4f455851e0efad7997f7f15d71ccc8a1fc",
+      "point_prediction": {
+        "value": 7.83,
+        "uncertainty": 0.3,
+        "range": [
+          7.53,
+          8.13
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W014",
+      "title": "Crepuscular Ray Divergence Angle",
+      "description": "Crepuscular rays photographed this week show divergence angles >0.5 degrees",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": 0.5,
+        "unit": "degrees",
+        "uncertainty": 0.1
+      },
+      "mechanism": "Local compact sun geometry",
+      "data_source": "Any clear sky photography",
+      "status": "pending",
+      "sha256": "f0688bb58008728cdf4d253c228ea60fa832c005d6c120086353f9ac9ac810c1",
+      "point_prediction": {
+        "value": 0.5,
+        "uncertainty": 0.1,
+        "range": [
+          0.4,
+          0.6
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W015",
+      "title": "Lunar Phase Magnetic Correlation",
+      "description": "INTERMAGNET stations show Z component 0.5-2.0 nT shift correlated with full moon March 11 2026",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": 1.25,
+        "unit": "nT",
+        "uncertainty": 0.75
+      },
+      "mechanism": "Lunar aetheric pressure modulation",
+      "data_source": "INTERMAGNET",
+      "status": "pending",
+      "sha256": "5ae53feed6017c4f4c3316052970eec4ef7973cabbd72417a919d7218acc4363",
+      "point_prediction": {
+        "value": 1.25,
+        "uncertainty": 0.75,
+        "range": [
+          0.5,
+          2.0
+        ],
+        "confidence": "1-sigma"
+      }
+    },
+    {
+      "id": "W016",
+      "title": "W004 Baseline Recalibration",
+      "description": "Recalibrated quiet-day baseline = -6.5 to -7.5 nT",
+      "week": "2026-03-06 to 2026-03-13",
+      "registered": "2026-03-07T11:35:00.000000",
+      "prediction": {
+        "value": -7.0,
+        "unit": "nT",
+        "uncertainty": 0.5
+      },
+      "mechanism": "Formula self-correction from empirical overshoot",
+      "data_source": "W004 observed data",
+      "status": "pending",
+      "sha256": "fe44b89e6310d8d827ca68d48a4bf9d49a2b90a7d4c532657c53b84986e648d2",
+      "point_prediction": {
+        "value": -7.0,
+        "uncertainty": 0.5,
+        "range": [
+          -7.5,
+          -6.5
+        ],
+        "confidence": "1-sigma"
+      }
     }
   ]
 }
