@@ -310,7 +310,12 @@ h1, h2, h3, h4, .font-display {
 }
 .status-pending .status-dot { background: var(--accent-gold); box-shadow: 0 0 8px var(--accent-gold); animation: pulse 2s infinite; }
 .status-confirmed .status-dot { background: #34d399; box-shadow: 0 0 8px #34d399; }
+.status-confirmed_marginal .status-dot { background: #86efac; box-shadow: 0 0 8px #86efac; }
+.status-below_detection_threshold .status-dot { background: #eab308; box-shadow: 0 0 8px #eab308; }
+.status-missed_close .status-dot { background: #f97316; box-shadow: 0 0 8px #f97316; }
+.status-missed_far .status-dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
 .status-falsified .status-dot { background: #ef4444; box-shadow: 0 0 8px #ef4444; }
+.status-inconclusive .status-dot { background: #9ca3af; box-shadow: 0 0 8px #9ca3af; }
 
 .card-title {
     font-size: 1.25rem;

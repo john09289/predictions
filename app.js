@@ -41,9 +41,9 @@ function initScorecard() {
 
 function createCardHTML(p, isWeekly = false) {
     let resultLine = '';
-    if (p.status !== 'pending') {
-        const isConfirmed = p.status === 'confirmed';
-        const colorClass = isConfirmed ? 'color:#34d399;' : 'color:#ef4444;';
+    if (p.status !== 'pending' && p.verdict !== 'pending') {
+        const isSuccessful = p.status === 'confirmed' || p.verdict === 'CONFIRMED' || p.verdict === 'CONFIRMED_MARGINAL';
+        const colorClass = isSuccessful ? 'color:#34d399;' : (p.verdict === 'BELOW_DETECTION_THRESHOLD' ? 'color:#eab308;' : 'color:#ef4444;');
         resultLine = `
         <div class="data-matrix" style="border-top:none; padding-top:0; margin-top:-0.5rem;">
             <div class="data-row">
@@ -55,13 +55,17 @@ function createCardHTML(p, isWeekly = false) {
 
     const testDateDisplay = isWeekly ? 'Live This Week' : (p.test_date ? p.test_date.split('T')[0] : 'Ongoing');
 
+    const verdictVal = p.verdict || p.status || 'pending';
+    const statusClass = verdictVal.toLowerCase().replace(/ /g, '_');
+    const displayLabel = p.display_label || verdictVal.replace(/_/g, ' ');
+
     return `
     <div class="glass-card">
         <div class="card-topbar">
             <span class="id-tag">${p.id}</span>
-            <div class="status-indicator status-${p.status}">
+            <div class="status-indicator status-${statusClass}">
                 <div class="status-dot"></div>
-                ${p.status}
+                ${displayLabel}
             </div>
         </div>
         <h3 class="card-title">${p.title}</h3>
