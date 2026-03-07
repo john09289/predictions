@@ -3,28 +3,23 @@
     "id": "FORM-001",
     "name": "Tesla Disc Resonance",
     "category": "resonance",
-    "formula_latex": "f = \\frac{c}{2D}",
-    "formula_plain": "f = c / (2 * D)",
+    "formula": "f = c / (2 * D)",
     "variables": {
-      "f": "resonance frequency in Hz",
-      "c": "speed of light in km/s = 299792.458",
-      "D": "disc thickness in km"
+      "f": "frequency Hz",
+      "c": "speed of light 299792 km/s",
+      "D": "disc thickness km"
     },
-    "inputs_used": {
-      "c": 299792.458,
-      "D": 12717
+    "solved_values": {
+      "input_c": 299792,
+      "input_D": 12717,
+      "output_f": 11.787,
+      "output_unit": "Hz"
     },
-    "output": {
-      "value": 11.787,
-      "unit": "Hz"
-    },
-    "derivation_notes": "Vertical standing wave in disc. One full wavelength = 2D. f = c/lambda = c/(2D)",
+    "derivation": "Vertical standing wave, wavelength = 2D, f = c/lambda",
     "source_file": "DOME_COSMOLOGY_MASTER_V45.md",
-    "model_version": "45+",
     "status": "current",
-    "cross_references": [
+    "cross_refs": [
       "WIN-001",
-      "WIN-008",
       "W003"
     ]
   },
@@ -32,27 +27,23 @@
     "id": "FORM-002",
     "name": "Schumann Geometric Theoretical",
     "category": "resonance",
-    "formula_latex": "f_n = \\frac{c}{2\\pi R} \\sqrt{n(n+1)}",
-    "formula_plain": "f_n = c / (2 * pi * R) * sqrt(n*(n+1))",
+    "formula": "f_n = c / (2 * pi * R) * sqrt(n*(n+1))",
     "variables": {
       "f_n": "Schumann harmonic n",
-      "R": "Earth radius (spherical assumption)",
+      "R": "Earth radius",
       "c": "light speed"
     },
-    "inputs_used": {
-      "R": 6371,
-      "n": 1,
-      "c": 299792
+    "solved_values": {
+      "input_R": 6371,
+      "input_n": 1,
+      "input_c": 299792,
+      "output_f": 10.59,
+      "output_unit": "Hz"
     },
-    "output": {
-      "value": 10.59,
-      "unit": "Hz"
-    },
-    "derivation_notes": "Schumann's original pure mathematical derivation without the ad-hoc finite conductivity 'fudge factor' added later to match the 7.83Hz observation.",
-    "source_file": "DOME_COSMOLOGY_V48_MASTER_DATABASE.csv",
-    "model_version": "48+",
+    "derivation": "Schumann's original pure mathematical derivation without the ad-hoc finite conductivity 'fudge factor'.",
+    "source_file": "DOME_COSMOLOGY_MASTER_V48.csv",
     "status": "current",
-    "cross_references": [
+    "cross_refs": [
       "WIN-002"
     ]
   },
@@ -60,25 +51,21 @@
     "id": "FORM-003",
     "name": "Magnetic-Gravity Eclipse Coupling Scaling",
     "category": "gravity_coupling",
-    "formula_latex": "\\gamma = \\frac{\\Delta Z}{\\Delta g}",
-    "formula_plain": "coupling_ratio = max_Z_drop / max_gravity_drop",
+    "formula": "coupling_ratio = max_Z_drop / max_gravity_drop",
     "variables": {
       "max_Z_drop": "BOU 2017 anomaly in nT",
       "max_gravity_drop": "Mohe 1997 anomaly in uGal"
     },
-    "inputs_used": {
-      "max_Z_drop": 10.9,
-      "max_gravity_drop": 6.5
+    "solved_values": {
+      "input_max_Z_drop": -10.9,
+      "input_max_gravity_drop": -6.5,
+      "output_ratio": 1.67,
+      "output_unit": "nT/uGal"
     },
-    "output": {
-      "value": 1.67,
-      "unit": "nT/uGal"
-    },
-    "derivation_notes": "Derived empirically by comparing two definitive eclipse anomalies. Used to predict gravity anomalies from magnetic precursors.",
+    "derivation": "Derived empirically by comparing two definitive eclipse anomalies. Used to predict gravity anomalies from magnetic precursors.",
     "source_file": "task4_1_eclipse.py",
-    "model_version": "48+",
     "status": "current",
-    "cross_references": [
+    "cross_refs": [
       "WIN-012",
       "PRED-006"
     ]
@@ -87,30 +74,25 @@
     "id": "FORM-004",
     "name": "SAA Node Separation (Exponential)",
     "category": "magnetic",
-    "formula_latex": "L(t) = C + A e^{k(t-1990)}",
-    "formula_plain": "separation_deg = 49.956 + 3.539 * exp(0.03146 * (year - 1990))",
+    "formula": "separation_deg = C + A * exp(k * (year - 1990))",
     "variables": {
-      "L(t)": "Longitudinal separation",
-      "t": "year",
       "C": "baseline offset",
       "A": "amplitude",
-      "k": "growth rate"
+      "k": "growth rate",
+      "year": "Current year"
     },
-    "inputs_used": {
-      "C": 49.956,
-      "A": 3.539,
-      "k": 0.03146,
-      "year": 2025
+    "solved_values": {
+      "input_C": 49.956,
+      "input_A": 3.539,
+      "input_k": 0.03146,
+      "input_year": 2025,
+      "output_separation": 60.59,
+      "output_unit": "degrees"
     },
-    "output": {
-      "value": 60.59,
-      "unit": "degrees"
-    },
-    "derivation_notes": "Fitted directly from high-resolution CHAOS-7 spherical harmonic coefficients. Demonstrates physical pulling apart of two sub-nodes.",
+    "derivation": "Fitted directly from high-resolution CHAOS-7 spherical harmonic coefficients. Demonstrates physical pulling apart of two sub-nodes.",
     "source_file": "task3_1_chaos.py",
-    "model_version": "45+",
     "status": "current",
-    "cross_references": [
+    "cross_refs": [
       "WIN-004",
       "W002"
     ]
@@ -118,22 +100,17 @@
   {
     "id": "FORM-005",
     "name": "Eclipse Aetheric Deflection",
-    "category": "magnetic",
-    "formula_latex": "\\Delta Z(t) = Z(t)_{eclipse} - Z(t)_{quiet}",
-    "formula_plain": "delta_Z = eclipse_day_Z - 3_day_quiet_mean_Z",
+    "category": "aetheric",
+    "formula": "delta_Z = eclipse_day_Z - 3_day_quiet_mean_Z",
     "variables": {
-      "Z(t)": "Z-component intensity at time t"
+      "eclipse_day_Z": "Z-component intensity during eclipse window",
+      "3_day_quiet_mean_Z": "Z-component baseline derived from non-disturbed days"
     },
-    "inputs_used": {},
-    "output": {
-      "value": "Baseline-subtracted specific anomaly",
-      "unit": "nT"
-    },
-    "derivation_notes": "Requires strictly 'quiet' geomagnetic background days (Kp < 3) surrounding the eclipse to isolate the true aetheric shielding effect.",
+    "solved_values": {},
+    "derivation": "Requires strictly 'quiet' geomagnetic background days (Kp < 3) surrounding the eclipse to isolate the true aetheric shielding effect.",
     "source_file": "task4_1_eclipse.py",
-    "model_version": "49.2",
     "status": "current",
-    "cross_references": [
+    "cross_refs": [
       "W004"
     ]
   }

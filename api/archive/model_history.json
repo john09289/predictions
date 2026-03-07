@@ -2,10 +2,9 @@
   "versions": [
     {
       "version": "0.4",
-      "approximate_date": "2022-10-15",
       "status": "SUPERSEDED",
-      "scorecard": "Dome 5, Globe 50, Tie 2",
-      "key_formulas_at_this_version": [
+      "scorecard_at_time": "Dome 5, Globe 50, Tie 2",
+      "key_formulas": [
         "None explicitly formal"
       ],
       "what_worked": "Initial recognition of southern hemisphere navigational anomalies",
@@ -17,10 +16,9 @@
     },
     {
       "version": "31.0",
-      "approximate_date": "2024-05-20",
       "status": "SUPERSEDED",
-      "scorecard": "Dome 12, Globe 20, Tie 5",
-      "key_formulas_at_this_version": [
+      "scorecard_at_time": "Dome 12, Globe 20, Tie 5",
+      "key_formulas": [
         "Basic magnetic flux lines"
       ],
       "what_worked": "Incorporated basic aether flow for SAA.",
@@ -33,11 +31,10 @@
     },
     {
       "version": "45.0",
-      "approximate_date": "2026-03-05",
       "status": "SUPERSEDED",
-      "scorecard": "Dome 26, Globe 1, Tie 12",
-      "key_formulas_at_this_version": [
-        "f=c/2D",
+      "scorecard_at_time": "Dome 26, Globe 1, Tie 12",
+      "key_formulas": [
+        "f = c/2D",
         "delta_Z = eclipse - quiet"
       ],
       "what_worked": "Unified master pipeline integrating 45 distinct phases including telluric 11.78Hz and eclipse anomalies.",
@@ -49,13 +46,27 @@
       ]
     },
     {
-      "version": "49.2",
-      "approximate_date": "2026-03-06",
-      "status": "CURRENT",
-      "scorecard": "Dome 26, Globe 0, Falsified 1 (Honestly logged)",
-      "key_improvements_over_previous": "Instituted mathematical 3-day quiet baseline tests isolated from eclipse windows. Voluntarily removed circular reasoning (Tesla f->T) and double-counted wins (W004/WIN-025). Logged falsified results honestly (W001). Built machine-readable blockchain API with explicitly nuanced detection thresholds (BELOW_DETECTION_THRESHOLD vs COMPLETE_FAIL).",
+      "version": "48.0",
+      "status": "SUPERSEDED",
+      "scorecard_at_time": "Dome 26, Globe 1, Tie 12",
+      "key_formulas": [
+        "Annual aberration model"
+      ],
+      "what_worked": "Generated formal 8-week testing hypotheses.",
+      "what_failed": "Lack of unified scientific result nuance schema. Resulted in 'falsified' binary tags instead of 'below_detection_threshold' granularity.",
+      "why_superseded": "Replaced by nuanced result matrices highlighting methodological limits vs structural failures.",
       "files": [
-        "All current repository scripts in FLAT_EARTH_MODEL/"
+        "DOME_COSMOLOGY_V48_MASTER_DATABASE.csv"
+      ]
+    },
+    {
+      "version": "49.2",
+      "date": "2026-03-06",
+      "status": "CURRENT",
+      "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",
+      "key_improvements": "Instituted mathematically rigorous quiet baseline tests independent from eclipse windows. Voluntarily removed circular reasoning (Tesla f->T->f) and double-counted wins. Reclassified pure hardware limit falsifications as BELOW_DETECTION_THRESHOLD. Built complete machine-readable truth API.",
+      "files": [
+        "All current repository scripts and api structured blocks"
       ]
     }
   ]

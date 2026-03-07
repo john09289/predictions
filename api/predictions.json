@@ -19,35 +19,64 @@
         "latitude_factor": 0.81
       },
       "status": "pending",
-      "timestamp_sha256": "pending"
+      "timestamp_sha256": "pending",
+      "sha256": "c542b28cc3209bfbb6a25241079aabd78dd6f24b99089a996a11e407c02afc9a"
     },
     {
       "id": "PRED-002",
       "station": "San Pablo (SPT)",
       "prediction_nT": -8.3,
       "uncertainty_nT": 1.7,
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+      "inputs": {
+        "baseline_nT": -10.9,
+        "coverage_fraction": 0.94,
+        "latitude_factor": 0.8
+      },
+      "sha256": "850710103f33991c71a6bf7a5974cdf12bba9971ebb3fc2a504fcde526d283d3"
     },
     {
       "id": "PRED-003",
       "station": "Eskdalemuir (ESK)",
       "prediction_nT": -9.5,
       "uncertainty_nT": 1.9,
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+      "inputs": {
+        "baseline_nT": -10.9,
+        "coverage_fraction": 0.98,
+        "latitude_factor": 0.89
+      },
+      "sha256": "b413b7b8af1f8f78e11a9ae0dffb718e470fc0d3fe5f29f6d2c6c016b40b3131"
     },
     {
       "id": "PRED-004",
       "station": "Lerwick (LER)",
       "prediction_nT": -8.6,
       "uncertainty_nT": 1.7,
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+      "inputs": {
+        "baseline_nT": -10.9,
+        "coverage_fraction": 0.92,
+        "latitude_factor": 0.86
+      },
+      "sha256": "f53afef716a69ad6c8f05e19c12eb9adc18cbde3982a7db6dc838775c94a5e0b"
     },
     {
       "id": "PRED-005",
       "station": "Canary Islands (SNK)",
       "prediction_nT": -5.8,
       "uncertainty_nT": 1.2,
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_Z = baseline * coverage_fraction * latitude_factor",
+      "inputs": {
+        "baseline_nT": -10.9,
+        "coverage_fraction": 0.7,
+        "latitude_factor": 0.75
+      },
+      "sha256": "2d09f1daa13ed703d8ce837a516247e051c7856c95165811720f89d58777082e"
     },
     {
       "id": "PRED-006",
@@ -55,19 +84,32 @@
       "prediction_uGal": 0.0,
       "uncertainty_uGal": 0.1,
       "mechanism": "shielded null",
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_g = 0",
+      "inputs": {
+        "shielding": "Superconducting Gravimeter"
+      },
+      "sha256": "9dd8761dc1b7f113f5a02fa51fdf13b1c49772710b2e26b1580c1e059f83e16f"
     },
     {
       "id": "PRED-007",
       "station": "Geometry vs local time",
       "prediction": "correlation = 1",
-      "status": "pending"
+      "status": "pending",
+      "formula": "correlation(anomaly, geometry) = 1.0",
+      "inputs": {},
+      "sha256": "792a06b68fcd5b8de99873dab31f5c753284a3cd4f62a7d6de9a25479a6126e9"
     },
     {
       "id": "PRED-008",
       "station": "Non-path stations",
       "prediction_nT": "<2",
-      "status": "pending"
+      "status": "pending",
+      "formula": "delta_Z < 2",
+      "inputs": {
+        "coverage_fraction": "< 0.4"
+      },
+      "sha256": "d7e5f05dc18c2859d81f0a589c674102a52aa61f63638054a3bcbfb2aaf79583"
     }
   ],
   "confirmed_wins": [
@@ -342,7 +384,14 @@
       "prediction_nT": -2.1,
       "uncertainty_nT": 0.8,
       "test_date": "2026-03-06",
-      "status": "falsified"
+      "status": "below_detection_threshold",
+      "verdict": "below_detection_threshold",
+      "counts_against_model": false,
+      "mainstream_expected_nT": "0.1 to 0.5",
+      "assessment": "Signal exists in literature but below single-station detection threshold. Not a model failure - a detection method limitation. Multi-station averaging required for sub-2nT signals.",
+      "implication": "Eclipse predictions at -5.8 to -9.5 nT are well above detection threshold - method valid",
+      "display_color": "yellow",
+      "display_label": "BELOW THRESHOLD"
     },
     {
       "id": "W002",

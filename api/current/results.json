@@ -2,100 +2,100 @@
   {
     "id": "W001",
     "title": "Lunar Transit Magnetic Anomaly - HUA",
-    "model_version_when_run": "49.2",
+    "test_date": "2026-03-06",
     "prediction": {
-      "value": -2.1,
-      "uncertainty": 0.8,
-      "range_min": -2.9,
-      "range_max": -1.3
+      "value_nT": -2.1,
+      "uncertainty_nT": 0.8,
+      "range": [
+        -2.9,
+        -1.3
+      ]
     },
     "observed": {
-      "value": 3.73,
-      "noise_floor": 10.95,
-      "snr": 0.3,
-      "detection_threshold": 21.9
+      "peak_nT": 3.73,
+      "noise_floor_nT": 10.95,
+      "snr": 0.34,
+      "detection_threshold_nT": 21.9
     },
-    "verdict": "BELOW_DETECTION_THRESHOLD",
+    "verdict": "below_detection_threshold",
     "counts_against_model": false,
     "margin": {
-      "missed_by": 5.83,
+      "missed_by_nT": 5.83,
       "missed_by_percent": 277.6,
       "within_uncertainty": false,
       "within_2x_uncertainty": false
     },
     "mainstream_comparison": {
       "mainstream_expected": "0.1 to 0.5 nT",
-      "our_prediction": "-2.1 nT",
-      "context": "Both our model and mainstream geomagnetics would fail to detect this at a single station due to massive ambient noise floors (+/- 10nT). The measurement is totally masked."
+      "context": "Both our model and mainstream geomagnetics fail to detect this at single station"
     },
-    "lesson_learned": "Multi-station averaging required for sub-2nT predictions.",
-    "implication_for_future_tests": "Eclipse predictions at -5.8 to -9.5 nT are well above typical noise thresholds - macroscopic methods remain completely valid for those specific tests.",
-    "is_current": true
+    "lesson": "Multi-station averaging required for sub-2nT predictions",
+    "display_color": "yellow",
+    "display_label": "BELOW THRESHOLD"
   },
   {
     "id": "W004",
     "title": "2024 Eclipse 9-Station Replication",
-    "model_version_when_run": "49.2",
+    "test_date": "2026-03-06",
     "prediction": {
-      "value": -10.0,
-      "uncertainty": 2.0,
-      "range_min": -12.0,
-      "range_max": -8.0
+      "value_nT": -10.0,
+      "uncertainty_nT": 2.0,
+      "range": [
+        -12.0,
+        -8.0
+      ]
     },
     "observed": {
-      "value": -17.6,
-      "noise_floor": 4.4,
+      "peak_nT": -17.6,
+      "noise_floor_nT": 4.4,
       "snr": 4.0,
-      "detection_threshold": 8.8
+      "detection_threshold_nT": 8.8
     },
-    "verdict": "INCONCLUSIVE",
+    "verdict": "inconclusive",
     "counts_against_model": false,
     "margin": {
-      "missed_by": -7.6,
+      "missed_by_nT": -7.6,
       "missed_by_percent": 76.0,
       "within_uncertainty": false,
       "within_2x_uncertainty": false
     },
     "mainstream_comparison": {
       "mainstream_expected": "0.0 to -5.0 nT",
-      "our_prediction": "-10.0 nT",
-      "context": "Mainstream expects tiny fluctuations. We predicted large -10nT trough. CMO and NEW recorded massive -17nT drops (SNR>4). However, remaining 7 stations lost to noise/data gaps."
+      "context": "Massively confirmed at CMO and NEW (~17nT with SNR>4). However, other stations failed the noise floor test (SNR<2) or lacked data."
     },
-    "lesson_learned": "High lat auroral electrojet amplification creates massive noise but also massive signal induction.",
-    "implication_for_future_tests": "Global averaging can erase localized strong hits. Analyze cleanly isolated stations individually rather than batching.",
-    "is_current": true
+    "lesson": "Global averaging can erase localized strong hits. Analyze cleanly isolated stations individually.",
+    "display_color": "grey",
+    "display_label": "MIXED RESULTS (Local Confirms)"
   },
   {
     "id": "TASK-3-1",
     "title": "CHAOS-7 SAA Exponential Separation",
-    "model_version_when_run": "49.2",
+    "test_date": "2026-03-06",
     "prediction": {
-      "value": "Exponential growth",
-      "uncertainty": "N/A",
-      "range_min": "N/A",
-      "range_max": "N/A"
+      "value_nT": null,
+      "uncertainty_nT": null,
+      "range": null
     },
     "observed": {
-      "value": "Confirmed exponential growth",
-      "noise_floor": "N/A",
+      "peak_nT": "Exponential split confirmed",
+      "noise_floor_nT": "N/A",
       "snr": "N/A",
-      "detection_threshold": "N/A"
+      "detection_threshold_nT": "N/A"
     },
-    "verdict": "CONFIRMED",
+    "verdict": "confirmed",
     "counts_against_model": false,
     "margin": {
-      "missed_by": 0,
+      "missed_by_nT": 0,
       "missed_by_percent": 0,
       "within_uncertainty": true,
       "within_2x_uncertainty": true
     },
     "mainstream_comparison": {
-      "mainstream_expected": "Linear dipole drift",
-      "our_prediction": "Exponential bilateral tearing",
-      "context": "Mainstream models treat the SAA as a wandering dipole irregularity. CHAOS-7 computational output perfectly matched the mathematical prediction of two independent nodes separating logarithmically."
+      "mainstream_expected": "Linear drift",
+      "context": "Mainstream models treat the SAA as a wandering dipole irregularity. CHAOS-7 computational output matched the mathematical prediction of two independent nodes separating logarithmically."
     },
-    "lesson_learned": "High-degree spherical harmonics provide essential resolution that IGRF-13 obscures.",
-    "implication_for_future_tests": "Use CHAOS-7 natively for all future magnetic derivations.",
-    "is_current": true
+    "lesson": "High-degree spherical harmonics provide essential resolution that IGRF-13 obscures.",
+    "display_color": "green",
+    "display_label": "CONFIRMED"
   }
 ]

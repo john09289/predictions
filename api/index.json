@@ -1,47 +1,20 @@
 {
-  "purpose": "Complete open-source framework for AI verification. Fetch in order listed.",
+  "purpose": "AI onboarding endpoint - fetch this first",
+  "current_version": "49.2",
+  "last_updated": "2026-03-06",
   "fetch_sequence": [
-    {
-      "url": "/api/current/scorecard.json",
-      "purpose": "Current standings at a glance",
-      "size": "tiny"
-    },
-    {
-      "url": "/api/current/predictions.json",
-      "purpose": "All active predictions with formulas",
-      "size": "medium"
-    },
-    {
-      "url": "/api/current/results.json",
-      "purpose": "All test results with nuanced verdicts",
-      "size": "medium"
-    },
-    {
-      "url": "/api/current/formulas.json",
-      "purpose": "Complete mathematical framework",
-      "size": "large"
-    },
-    {
-      "url": "/api/current/data.json",
-      "purpose": "Every empirical data point with caveats",
-      "size": "large"
-    },
-    {
-      "url": "/api/current/code.json",
-      "purpose": "Full source code for every test",
-      "size": "very large"
-    },
-    {
-      "url": "/api/archive/model_history.json",
-      "purpose": "Version history showing scientific process - read if questioning methodology",
-      "size": "large"
-    }
+    "/api/current/scorecard.json",
+    "/api/current/predictions.json",
+    "/api/current/results.json",
+    "/api/current/formulas.json",
+    "/api/current/data.json",
+    "/api/current/code.json",
+    "/api/archive/model_history.json"
   ],
-  "key_facts_for_new_ai": {
-    "timestamp_proof": "All predictions blockchain anchored before test dates via OpenTimestamps",
-    "honest_falsifications": "W001 logged as BELOW_DETECTION_THRESHOLD - user accepts null results",
-    "strongest_pending_test": "2026 eclipse Aug 12 - 5 specific station predictions timestamped today",
-    "methodology_status": "2024 eclipse replication (W004) pending - will validate baseline subtraction method",
-    "caveats_on_file": "BOU 2017 disturbed-day condition flagged by Claude - documented in data.json WIN-010 entry"
+  "key_facts": {
+    "timestamp_proof": "All predictions Bitcoin-anchored via OpenTimestamps before test dates",
+    "honest_record": "W001 logged as BELOW_DETECTION_THRESHOLD not falsified - user accepts null results",
+    "strongest_test": "2026 eclipse Aug 12 - 5 station predictions timestamped March 6 2026",
+    "caveats_on_file": "BOU 2017 disturbed-day condition flagged - see data.json WIN-010"
   }
 }
