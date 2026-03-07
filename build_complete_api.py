@@ -41,10 +41,32 @@ with open(f"{API_DIR}/index.json", "w") as f:
 scorecard = {
   "version": "49.2",
   "as_of": "2026-03-06",
-  "confirmed": 26,
-  "below_detection_threshold": 2,
-  "pending": 20,
-  "falsified": 0,
+  "categories": {
+    "geomagnetic": {
+      "confirmed": 14,
+      "below_detection_threshold": 2,
+      "pending": 10,
+      "falsified": 0
+    },
+    "positional": {
+      "confirmed": 6,
+      "below_detection_threshold": 0,
+      "pending": 5,
+      "falsified": 0
+    },
+    "physical_geometry": {
+      "confirmed": 6,
+      "below_detection_threshold": 0,
+      "pending": 5,
+      "falsified": 0
+    }
+  },
+  "overall": {
+    "confirmed": 26,
+    "below_detection_threshold": 2,
+    "pending": 20,
+    "falsified": 0
+  },
   "note": "W001 and W004 are noise-limited null results, not model failures. counts_against_model: false"
 }
 with open(f"{CURRENT_DIR}/scorecard.json", "w") as f:

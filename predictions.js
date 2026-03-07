@@ -26,7 +26,7 @@ const PREDICTIONS = [
     },
     "status": "pending",
     "timestamp_sha256": "pending",
-    "sha256": "9fc7c5ba6704975ff3e13b17b9da84c3fb998b5cf37410bfadb93d6c719f68d1",
+    "sha256": "42aa83f63f648a64c0637d42cd8969b70a5e170f1388215f92131af3cb81d524",
     "point_prediction": {
       "value": -8.4,
       "uncertainty": 1.7,
@@ -154,7 +154,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.94,
       "latitude_factor": 0.8
     },
-    "sha256": "bf5e58b034f02e9166411f78cb6b6d95850e39bd217e2d62972f8dabda7879af",
+    "sha256": "0c209c5297e5460bc155c7f877934c54f24fe96f865c752401a79709d9c3b3d4",
     "point_prediction": {
       "value": -8.3,
       "uncertainty": 1.7,
@@ -293,7 +293,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.98,
       "latitude_factor": 0.89
     },
-    "sha256": "303ef8fedf35777968c887c5abb28ea2b6202f7f58587bdc15baa2908d2e602c",
+    "sha256": "448ee42b8235f669a247388d68bb47ab2272f6310dda448d7fdf07c371376071",
     "point_prediction": {
       "value": -9.5,
       "uncertainty": 1.9,
@@ -432,7 +432,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.92,
       "latitude_factor": 0.86
     },
-    "sha256": "e7ffe6fc1a0ca462c79fbf558157f6da5fbd141f9e545aae5385c33cb235f152",
+    "sha256": "89476d7de42050c8db2bf106d09e66a34618bfcc89628ec78e23f4343e72ecf8",
     "point_prediction": {
       "value": -8.6,
       "uncertainty": 1.7,
@@ -571,7 +571,7 @@ const PREDICTIONS = [
       "coverage_fraction": 0.7,
       "latitude_factor": 0.75
     },
-    "sha256": "fd37416217d920b15386f4f7ac60d32c3b66aff34a0229ce01858e9734fb8d8f",
+    "sha256": "5105985149753d8b4bb23087e97d89c9e60bdc7ba05153f3296fc9fd433d88ba",
     "point_prediction": {
       "value": -5.8,
       "uncertainty": 1.2,
@@ -719,7 +719,7 @@ const PREDICTIONS = [
     "inputs": {
       "shielding": "Superconducting Gravimeter"
     },
-    "sha256": "6f8462daed2e755a20f57deac47bf6ff90e2ea071c618e3d6ac3a2d02d6fda78",
+    "sha256": "ce876a9ea6642eff2f07b8ba28ef1ee73fb19fb2289f774a39033d051f9ed7b2",
     "point_prediction": {
       "value": null,
       "uncertainty": null,
@@ -842,7 +842,7 @@ const PREDICTIONS = [
     "status": "pending",
     "formula": "correlation(anomaly, geometry) = 1.0",
     "inputs": {},
-    "sha256": "a79bc3556b6eed0bf4700fa32376fd53f9fd3b63f1084be13e3bde4811de8bc4",
+    "sha256": "50886946fee13ebfa365573490d880e0b8eca44df2a353b39959fefbd2c51230",
     "point_prediction": {
       "value": null,
       "uncertainty": null,
@@ -978,7 +978,7 @@ const PREDICTIONS = [
     "inputs": {
       "coverage_fraction": "< 0.4"
     },
-    "sha256": "36047fa99a32c0206cc16a0d6a52fcd08b1be7225901d0a3ef5d44b493469004",
+    "sha256": "1521e725a643b93e6dac8deac1111dcd41393741663f6086073c90b89afe71a1",
     "point_prediction": {
       "value": "<2",
       "uncertainty": null,
@@ -1104,6 +1104,223 @@ const PREDICTIONS = [
       },
       "model_breaks_if": "Signal is positive OR signal shows no geometry correlation"
     }
+  },
+  {
+    "id": "PRED-009",
+    "title": "SAA Separation 55-60 degrees",
+    "target_date": "2030-01-01",
+    "predicted_value": 57.5,
+    "unit": "degrees",
+    "current_value": 50.57,
+    "rate": "1.0 degrees/year",
+    "status": "pending",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal tracks defined vector",
+        "weight": "HIGH",
+        "auto_check": "direction_correct",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 3,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Mathematical mechanism convergence",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_mechanism_convergence()",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      }
+    ],
+    "max_possible_score": 13,
+    "win_threshold": 7,
+    "strong_win_threshold": 11
+  },
+  {
+    "id": "PRED-010",
+    "title": "SAA minimum < 21,500 nT",
+    "target_date": "2027-12-31",
+    "predicted_value": 21450,
+    "unit": "nT",
+    "status": "pending",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal tracks defined vector",
+        "weight": "HIGH",
+        "auto_check": "direction_correct",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 3,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Mathematical mechanism convergence",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_mechanism_convergence()",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      }
+    ],
+    "max_possible_score": 13,
+    "win_threshold": 7,
+    "strong_win_threshold": 11
+  },
+  {
+    "id": "PRED-011",
+    "title": "North Pole deviation = -12 deg from 120E",
+    "target_date": "2030-01-01",
+    "predicted_value": -12,
+    "unit": "degrees",
+    "status": "pending",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal tracks defined vector",
+        "weight": "HIGH",
+        "auto_check": "direction_correct",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 3,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Mathematical mechanism convergence",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_mechanism_convergence()",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      }
+    ],
+    "max_possible_score": 13,
+    "win_threshold": 7,
+    "strong_win_threshold": 11
+  },
+  {
+    "id": "PRED-012",
+    "title": "Field decay rate >=28 nT/year",
+    "target_date": "2030-01-01",
+    "predicted_value": -32,
+    "unit": "nT/year",
+    "status": "pending",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal tracks defined vector",
+        "weight": "HIGH",
+        "auto_check": "direction_correct",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 3,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Mathematical mechanism convergence",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_mechanism_convergence()",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      }
+    ],
+    "max_possible_score": 13,
+    "win_threshold": 7,
+    "strong_win_threshold": 11
+  },
+  {
+    "id": "PRED-013",
+    "title": "SAA cells separate to 120-180 deg",
+    "target_date": "2055-01-01",
+    "predicted_value": 150,
+    "unit": "degrees",
+    "status": "pending",
+    "point_prediction": {
+      "value": null,
+      "uncertainty": null,
+      "range": [
+        0,
+        0
+      ],
+      "confidence": "1-sigma"
+    },
+    "scoring_matrix": [
+      {
+        "claim": "Signal tracks defined vector",
+        "weight": "HIGH",
+        "auto_check": "direction_correct",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      },
+      {
+        "claim": "Magnitude within 1-sigma",
+        "weight": "MEDIUM",
+        "auto_check": "sigma_distance <= 1.0",
+        "points_if_correct": 3,
+        "points_if_wrong": -1
+      },
+      {
+        "claim": "Mathematical mechanism convergence",
+        "weight": "VERY HIGH",
+        "auto_check": "evaluate_mechanism_convergence()",
+        "points_if_correct": 5,
+        "points_if_wrong": -5
+      }
+    ],
+    "max_possible_score": 13,
+    "win_threshold": 7,
+    "strong_win_threshold": 11
   },
   {
     "id": "WIN-001",
