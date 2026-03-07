@@ -1,11 +1,13 @@
 FROM python:3.9
+
 RUN useradd -m -u 1000 user
 USER user
-ENV HOME="/home/user"
-ENV PATH="/home/user/.local/bin:${PATH}"
-ENV PYTHONUNBUFFERED=1
-WORKDIR $HOME/app
-COPY --chown=user ./requirements.txt requirements.txt
+ENV PATH="/home/user/.local/bin:$PATH"
+WORKDIR /app
+
+COPY --chown=user:user ./requirements.txt requirements.txt
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
-COPY --chown=user . $HOME/app
-CMD ["python", "-u", "app.py"]
+
+COPY --chown=user:user . .
+
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "7860"]
