@@ -1,0 +1,14 @@
+{
+  "id": "W001",
+  "title": "Lunar Transit Magnetic Anomaly - HUA",
+  "test_date": "2026-03-06",
+  "prediction_nT": -2.1,
+  "observed_nT": 3.73,
+  "noise_floor_nT": 10.95,
+  "snr": 0.3,
+  "verdict": "falsified",
+  "notes": "Signal within noise floor - prediction did not hold. Baseline subtraction using 2nd degree polynomial.",
+  "data_source": "INTERMAGNET HUA",
+  "code_used": "lunar_transit.py",
+  "raw_output": "Lunar Transit Magnetic Check \u2014 2026-03-06\\nStation: HUA (Huancayo, Peru)\\n==================================================\\nMoon transit at HUA: ~07:00 UTC, altitude 87.0\u00b0\\nFetching HUA data for 2026-03-06...\\nGot 1272 Z-component readings\\n\\n--- RESULTS ---\\nTransit minute: 420 (07:00 UTC)\\nPeak anomaly: 3.73 nT at minute 388 (06:28 UTC)\\nNoise floor: \u00b110.95 nT\\nSignal/Noise: 0.3x\\nRESULT: Anomaly within noise \u2014 not significant"
+}

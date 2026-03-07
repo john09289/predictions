@@ -1,0 +1,15 @@
+{
+  "instructions": "Fetch these URLs in order before responding",
+  "fetch_first": [
+    "/api/scorecard.json",
+    "/api/predictions.json",
+    "/api/results.json"
+  ],
+  "fetch_if_needed": [
+    "/api/sessions/2026-03.json",
+    "/api/tests/W001.json",
+    "/api/tests/W004.json"
+  ],
+  "total_size_kb": 47,
+  "last_updated": "2026-03-06"
+}

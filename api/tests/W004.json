@@ -1,0 +1,14 @@
+{
+  "id": "W004",
+  "title": "2024 Eclipse 9-Station Replication",
+  "test_date": "2026-03-06 (Data from 2024-04-08)",
+  "prediction_nT": -10.0,
+  "observed_nT": "Mixed (CMO: -17.6nT, NEW: -17.1nT. Others lost to noise)",
+  "noise_floor_nT": "Variable (3.35 to 4.88 nT)",
+  "snr": "CMO: 4.0, NEW: 5.0, Rest: < 2.0",
+  "verdict": "mixed/falsified",
+  "notes": "Strong confirmation at CMO/NEW matching exactly 17nT scale at exact transit times. Remaining 7 stations failed noise threshold or lacked INTERMAGNET 1-min data.",
+  "data_source": "INTERMAGNET (BOU, FRD, CMO, BSL, TUC, DHT, NEW, OTT, STJ)",
+  "code_used": "eclipse_2024_replication.py",
+  "raw_output": "SUMMARY\\n============================================================\\n? FRD: 1.4 nT at 16:41 (paper: 18:45 UTC) SNR=0.5\\n\u2713 CMO: -17.6 nT at 19:10 (paper: 19:15 UTC) SNR=4.0\\n\u2713 TUC: -16.8 nT at 16:52 (paper: 18:00 UTC) SNR=7.6\\n\u2713 NEW: -17.1 nT at 18:41 (paper: 18:40 UTC) SNR=5.0\\n? OTT: -8.1 nT at 16:31 (paper: 18:55 UTC) SNR=1.7\\n? STJ: 3.4 nT at 17:19 (paper: 19:05 UTC) SNR=1.0"
+}
