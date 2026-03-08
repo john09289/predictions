@@ -3,40 +3,50 @@ import os
 import sys
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
+from fastapi.middleware.cors import CORSMiddleware
 
 print("=== IMPORT OK ===", flush=True)
 
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 print("=== APP CREATED ===", flush=True)
 
-# Test all files exist at startup
-for f in ["api/master.json", "index.html", "style.css", "app.js", 
-          "predictions.js", "scoring.js", "weekly.js"]:
-    exists = os.path.exists(f)
-    print(f"FILE CHECK: {f} = {exists}", flush=True)
-    if not exists:
-        print(f"MISSING FILE: {f}", flush=True)
+for f in ["api/master.json","index.html","style.css","app.js",
+          "predictions.js","scoring.js","weekly.js"]:
+    print(f"FILE CHECK: {f} = {os.path.exists(f)}", flush=True)
 
 print("=== FILE CHECKS DONE ===", flush=True)
+
+NOCACHE = {
+    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
+    "Pragma": "no-cache",
+    "Expires": "0"
+}
 
 @app.get("/api/master.json")
 def master():
     with open("api/master.json") as f:
-        return JSONResponse(json.load(f), headers={"Cache-Control": "no-store"})
+        return JSONResponse(json.load(f), headers=NOCACHE)
 
 @app.get("/api/current/{filename}")
 def current(filename: str):
     path = f"api/current/{filename}"
     if os.path.exists(path):
         with open(path) as f:
-            return JSONResponse(json.load(f), headers={"Cache-Control": "no-store"})
+            return JSONResponse(json.load(f), headers=NOCACHE)
     return JSONResponse({"error": "not found"}, status_code=404)
 
 @app.get("/api/predictions.json")
 def predictions():
     with open("api/predictions.json") as f:
-        return JSONResponse(json.load(f), headers={"Cache-Control": "no-store"})
+        return JSONResponse(json.load(f), headers=NOCACHE)
 
 @app.get("/style.css")
 def css():
