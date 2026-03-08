@@ -1,7 +1,7 @@
 {
   "index": {
     "purpose": "AI onboarding endpoint - fetch this first",
-    "current_version": "50.2",
+    "current_version": "50.3",
     "last_updated": "2026-03-08",
     "fetch_sequence": [
       "/api/current/scorecard.json",
@@ -20,7 +20,7 @@
     }
   },
   "scorecard": {
-    "version": "50.2",
+    "version": "50.3",
     "as_of": "2026-03-07",
     "categories": {
       "geomagnetic": {
