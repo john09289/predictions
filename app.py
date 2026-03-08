@@ -1,81 +1,109 @@
 import json
 import os
+import logging
 import sys
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse, HTMLResponse, PlainTextResponse
-from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import HTTPException
+import traceback
 
-print("=== IMPORT OK ===", flush=True)
-
-app = FastAPI()
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+# Configure logging to stdout so it appears in HF logs
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    handlers=[logging.StreamHandler(sys.stdout)]
 )
+logger = logging.getLogger("dome_registry")
 
-print("=== APP CREATED ===", flush=True)
+app = FastAPI(title="Dome Cosmology Registry API")
 
-for f in ["api/master.json","index.html","style.css","app.js",
-          "predictions.js","scoring.js","weekly.js"]:
-    print(f"FILE CHECK: {f} = {os.path.exists(f)}", flush=True)
+# Helper to safely read JSON files
+def safe_json_response(filepath: str):
+    try:
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+        return JSONResponse(content=data, headers={"Cache-Control": "no-store"})
+    except FileNotFoundError:
+        logger.error(f"File not found: {filepath}")
+        return JSONResponse(status_code=404, content={"error": "Not found"})
+    except json.JSONDecodeError as e:
+        logger.error(f"JSON decode error in {filepath}: {e}")
+        return JSONResponse(status_code=500, content={"error": "Internal server error"})
+    except Exception as e:
+        logger.error(f"Unexpected error reading {filepath}: {traceback.format_exc()}")
+        return JSONResponse(status_code=500, content={"error": "Internal server error"})
 
-print("=== FILE CHECKS DONE ===", flush=True)
+# Helper to safely read static files (CSS, JS)
+def safe_text_response(filepath: str, media_type: str):
+    try:
+        with open(filepath, 'r') as f:
+            content = f.read()
+        return PlainTextResponse(content, media_type=media_type)
+    except FileNotFoundError:
+        logger.error(f"Static file not found: {filepath}")
+        return PlainTextResponse("/* not found */", status_code=404, media_type=media_type)
+    except Exception as e:
+        logger.error(f"Error reading static file {filepath}: {traceback.format_exc()}")
+        return PlainTextResponse("/* error */", status_code=500, media_type=media_type)
 
-NOCACHE = {
-    "Cache-Control": "no-store, no-cache, must-revalidate, max-age=0",
-    "Pragma": "no-cache",
-    "Expires": "0"
-}
+# Health check endpoint
+@app.get("/health")
+async def health():
+    return {"status": "ok", "version": "50.2"}
 
+# API endpoints
 @app.get("/api/master.json")
-def master():
-    with open("api/master.json") as f:
-        return JSONResponse(json.load(f), headers=NOCACHE)
+async def master():
+    return safe_json_response("api/master.json")
 
 @app.get("/api/current/{filename}")
-def current(filename: str):
+async def current(filename: str):
+    # Prevent path traversal
+    if ".." in filename or "/" in filename:
+        return JSONResponse(status_code=400, content={"error": "Invalid filename"})
     path = f"api/current/{filename}"
-    if os.path.exists(path):
-        with open(path) as f:
-            return JSONResponse(json.load(f), headers=NOCACHE)
-    return JSONResponse({"error": "not found"}, status_code=404)
+    return safe_json_response(path)
 
 @app.get("/api/predictions.json")
-def predictions():
-    with open("api/predictions.json") as f:
-        return JSONResponse(json.load(f), headers=NOCACHE)
+async def predictions():
+    return safe_json_response("api/predictions.json")
 
+# Static files
 @app.get("/style.css")
-def css():
-    with open("style.css") as f:
-        return PlainTextResponse(f.read(), media_type="text/css")
+async def style_css():
+    return safe_text_response("style.css", "text/css")
 
 @app.get("/app.js")
-def appjs():
-    with open("app.js") as f:
-        return PlainTextResponse(f.read(), media_type="application/javascript")
+async def app_js():
+    return safe_text_response("app.js", "application/javascript")
 
 @app.get("/predictions.js")
-def predictionsjs():
-    with open("predictions.js") as f:
-        return PlainTextResponse(f.read(), media_type="application/javascript")
+async def predictions_js():
+    return safe_text_response("predictions.js", "application/javascript")
 
 @app.get("/scoring.js")
-def scoringjs():
-    with open("scoring.js") as f:
-        return PlainTextResponse(f.read(), media_type="application/javascript")
+async def scoring_js():
+    return safe_text_response("scoring.js", "application/javascript")
 
 @app.get("/weekly.js")
-def weeklyjs():
-    with open("weekly.js") as f:
-        return PlainTextResponse(f.read(), media_type="application/javascript")
+async def weekly_js():
+    return safe_text_response("weekly.js", "application/javascript")
 
 @app.get("/")
-def root():
-    with open("index.html") as f:
-        return HTMLResponse(f.read())
+async def root():
+    try:
+        with open("index.html", "r") as f:
+            content = f.read()
+        return HTMLResponse(content)
+    except FileNotFoundError:
+        logger.error("index.html not found")
+        return HTMLResponse("<h1>Error: index.html missing</h1>", status_code=500)
+    except Exception as e:
+        logger.error(f"Error serving index.html: {traceback.format_exc()}")
+        return HTMLResponse("<h1>Internal Server Error</h1>", status_code=500)
 
-print("=== ROUTES REGISTERED ===", flush=True)
+# Catch-all for 404
+@app.exception_handler(404)
+async def custom_404_handler(request: Request, exc):
+    logger.warning(f"404 for path: {request.url.path}")
+    return PlainTextResponse("Not found", status_code=404)
