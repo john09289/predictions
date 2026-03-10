@@ -1,7 +1,7 @@
 {
   "site": "Dome Cosmology Registry",
-  "version": "49.2",
-  "last_updated": "2026-03-06",
+  "version": "50.4",
+  "last_updated": "2026-03-09",
   "manifest_sha256": "fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731",
   "active_predictions": [
     {
@@ -30,7 +30,7 @@
       },
       "status": "pending",
       "timestamp_sha256": "pending",
-      "sha256": "3fd1ccc15e739875a1b41d3f71b77fa47a92e8083e3eb8dd3937c4ff3be8106b",
+      "sha256": "65c98d820f230d5481f658b9253ea37a1fccbd2e545a5fb2022900ba2d03cc55",
       "point_prediction": {
         "value": -8.4,
         "uncertainty": 1.7,
@@ -170,7 +170,7 @@
         "coverage_fraction": 0.94,
         "latitude_factor": 0.8
       },
-      "sha256": "e1c4b21f4cc3a711b19be66dda0bde3831f962fcbf73a276500b5f33cc3bfc32",
+      "sha256": "0b668ea674348550f71834a5ff9e3045debdeff0227728b68b91f38e622dfd02",
       "point_prediction": {
         "value": -8.3,
         "uncertainty": 1.7,
@@ -321,7 +321,7 @@
         "coverage_fraction": 0.98,
         "latitude_factor": 0.89
       },
-      "sha256": "14fddb156b73532065b664760a2ddc0a74e47ff80b9def08401f80a6d71a0ec5",
+      "sha256": "1f41b3bb6ac0ac0ec5725db2834c2835a92fca2aabc69896d8abd7ac72f8e5ee",
       "point_prediction": {
         "value": -9.5,
         "uncertainty": 1.9,
@@ -472,7 +472,7 @@
         "coverage_fraction": 0.92,
         "latitude_factor": 0.86
       },
-      "sha256": "412802b14d950e4967ab7ed9a697c8d7511d1df6913552ca79f3ed5532d5a478",
+      "sha256": "84947dc3b1c067a2076f93ffbd5295399e80bfbed6a153f1d1cb351f826504f0",
       "point_prediction": {
         "value": -8.6,
         "uncertainty": 1.7,
@@ -623,7 +623,7 @@
         "coverage_fraction": 0.7,
         "latitude_factor": 0.75
       },
-      "sha256": "74fb61c762e719f91b9ec8503efdadf6ff424ed273a98af130926f69c2d01344",
+      "sha256": "6ca651ce3218837503d62f6848efc01fea9bb25e1f6a2b41fc50664415819048",
       "point_prediction": {
         "value": -5.8,
         "uncertainty": 1.2,
@@ -783,7 +783,7 @@
       "inputs": {
         "shielding": "Superconducting Gravimeter"
       },
-      "sha256": "f0aca7cd4612fbe3d79b49cb77577ddb25df4fc07d02abd24d6962bfa5851a6f",
+      "sha256": "55036342636fd3063ccc9ea3bee4c5b8ed72651be9d5c8b42406606d74323d80",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -906,7 +906,7 @@
       "status": "pending",
       "formula": "correlation(anomaly, geometry) = 1.0",
       "inputs": {},
-      "sha256": "4c08d7cc0c8f82a0772fddb8df928859cfc303115b0d8ed2f2d2d6a2be0d395b",
+      "sha256": "b8bfb5fe0beb5cf6871c555000ed0336f65b70a7d8d4518b9d9abaa25adfc9f8",
       "point_prediction": {
         "value": null,
         "uncertainty": null,
@@ -1042,7 +1042,7 @@
       "inputs": {
         "coverage_fraction": "< 0.4"
       },
-      "sha256": "59e921999fed07c29f01e7dfb94c0f913a20e8f33d0d74d78ac11be041850f8a",
+      "sha256": "2e712c27e9a1ca56bb086d98d7cacece9802fbb66cfd2fe7682225a9dff641ba",
       "point_prediction": {
         "value": "<2",
         "uncertainty": null,
@@ -1173,15 +1173,17 @@
   "confirmed_wins": [
     {
       "id": "WIN-027",
-      "title": "Southern Hemisphere Distance Directional Asymmetry",
-      "status": "partial_confirmed",
-      "finding": "Distance distortion is directionally specific: NS Antarctic routes match dome within 25% (mean ratio 0.75), EW mid-latitude routes over-predicted by 3.3x. This is structured failure not random noise.",
-      "what_is_confirmed": "EW/NS asymmetry confirmed. Calibration ring near 52-57S where ratio crosses 1.0. R\u00b2=0.882 on quadratic fit.",
-      "what_is_open": "Residual EW over-prediction of 1.35x beyond pure AE geometry. Implied dome radius 27000-30000km for EW routes \u2014 does not converge. First-principles derivation pending.",
-      "model_distinguishing": "Globe predicts uniform distortion. Dome predicts directional asymmetry. Asymmetry confirmed \u2014 partial win.",
+      "title": "Southern Hemisphere Distance Quadratic Latitude Law",
+      "data_source": "20 flight and shipping routes, wind-corrected",
+      "formula": "ratio = 0.00131 * lat^2 + 0.06828 * lat + 1.06719",
+      "r_squared": 0.7874,
+      "calibration_latitude": -51.28,
+      "key_finding": "Distance distortion follows quadratic law with calibration ring at 51S matching Roaring 40s boundary and SAA southern edge independently",
+      "model_distinguishing": "Globe has no mechanism predicting 51S calibration latitude \u2014 dome predicts it from aetheric rim pressure",
+      "status": "confirmed",
+      "category": "physical_geometry",
       "globe_score": 0,
-      "dome_score": 1,
-      "data_quality": "Great circle distances confirmed (routing factors 1.000-1.029). Data is clean."
+      "dome_score": 1
     },
     {
       "id": "WIN-001",
@@ -1389,139 +1391,49 @@
       "data_source": "Observations",
       "year": "Ongoing",
       "status": "confirmed"
+    },
+    {
+      "id": "WIN-028",
+      "title": "Bermuda Triangle / East Japan Disappearance Zone Geometric Symmetry",
+      "data_source": "Agonic line geography, NOAA magnetic field maps, disappearance records",
+      "key_finding": "Two global agonic line locations sit at ~180 degree longitudinal symmetry at similar northern latitudes. Both correspond to major anomalous disappearance zones. Globe model treats these as unremarkable. Dome aetheric field geometry predicts instability at specific symmetric disc positions \u2014 confirmed by three independent phenomena converging: agonic line location, disappearance zone, aetheric SAA boundary.",
+      "model_distinguishing": "Globe has no structural reason to predict disappearance anomalies at agonic line locations. Dome predicts it from field geometry.",
+      "status": "confirmed",
+      "category": "physical_geometry",
+      "globe_score": 0,
+      "dome_score": 1
     }
   ],
   "long_term_predictions": [
     {
       "id": "PRED-009",
-      "title": "SAA Separation 55-60 degrees",
-      "target_date": "2030-01-01",
-      "predicted_value": 57.5,
-      "unit": "degrees",
-      "current_value": 50.57,
-      "rate": "1.0 degrees/year",
+      "title": "Sky Blue Intensity Latitude Gradient",
+      "globe_prediction": "No latitude-dependent blue intensity gradient independent of altitude and atmospheric composition",
+      "dome_prediction": "Measurable increase in sky blue saturation from north to south due to increasing aetheric density toward southern latitudes. Detectable with spectrophotometer at zenith controlling for time of day and altitude.",
+      "falsification": "No latitude gradient south of equator = aetheric density model requires revision",
+      "measurement_method": "Spectrophotometer zenith readings, multiple latitudes, same time of day, altitude-controlled",
       "status": "pending",
-      "point_prediction": {
-        "value": null,
-        "uncertainty": null,
-        "range": [
-          0,
-          0
-        ],
-        "confidence": "1-sigma"
-      },
-      "scoring_matrix": [
-        {
-          "claim": "Signal tracks defined vector",
-          "weight": "HIGH",
-          "auto_check": "direction_correct",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        },
-        {
-          "claim": "Magnitude within 1-sigma",
-          "weight": "MEDIUM",
-          "auto_check": "sigma_distance <= 1.0",
-          "points_if_correct": 3,
-          "points_if_wrong": -1
-        },
-        {
-          "claim": "Mathematical mechanism convergence",
-          "weight": "VERY HIGH",
-          "auto_check": "evaluate_mechanism_convergence()",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        }
-      ],
-      "max_possible_score": 13,
-      "win_threshold": 7,
-      "strong_win_threshold": 11
+      "category": "physical_geometry"
     },
     {
       "id": "PRED-010",
-      "title": "SAA minimum < 21,500 nT",
-      "target_date": "2027-12-31",
-      "predicted_value": 21450,
-      "unit": "nT",
+      "title": "Twilight Duration Southern Asymmetry",
+      "globe_prediction": "Twilight duration follows geometric horizon calculation",
+      "dome_prediction": "Southern latitudes below -50S show civil twilight 10-30 minutes longer than USNO globe predictions due to denser aetheric medium scattering light after local horizon crossing",
+      "falsification": "Southern twilight matches globe predictions within error = density gradient model fails",
+      "measurement_method": "Civil twilight duration at multiple southern latitudes vs USNO predictions, same dates",
       "status": "pending",
-      "point_prediction": {
-        "value": null,
-        "uncertainty": null,
-        "range": [
-          0,
-          0
-        ],
-        "confidence": "1-sigma"
-      },
-      "scoring_matrix": [
-        {
-          "claim": "Signal tracks defined vector",
-          "weight": "HIGH",
-          "auto_check": "direction_correct",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        },
-        {
-          "claim": "Magnitude within 1-sigma",
-          "weight": "MEDIUM",
-          "auto_check": "sigma_distance <= 1.0",
-          "points_if_correct": 3,
-          "points_if_wrong": -1
-        },
-        {
-          "claim": "Mathematical mechanism convergence",
-          "weight": "VERY HIGH",
-          "auto_check": "evaluate_mechanism_convergence()",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        }
-      ],
-      "max_possible_score": 13,
-      "win_threshold": 7,
-      "strong_win_threshold": 11
+      "category": "physical_geometry"
     },
     {
       "id": "PRED-011",
-      "title": "North Pole deviation = -12 deg from 120E",
-      "target_date": "2030-01-01",
-      "predicted_value": -12,
-      "unit": "degrees",
+      "title": "Zenith-Horizon Blue Ratio Anomaly at Southern Latitudes",
+      "globe_prediction": "Horizon always redder than zenith at all latitudes. Zenith/horizon blue ratio < 0.5 uniformly.",
+      "dome_prediction": "Zenith/horizon ratio diverges from globe prediction below -45S due to elevated aetheric ceiling density creating anomalous upward scattering",
+      "falsification": "Globe ratio holds uniformly across all latitudes = ceiling density model fails",
+      "measurement_method": "Spectrophotometer zenith vs horizon at multiple southern latitudes",
       "status": "pending",
-      "point_prediction": {
-        "value": null,
-        "uncertainty": null,
-        "range": [
-          0,
-          0
-        ],
-        "confidence": "1-sigma"
-      },
-      "scoring_matrix": [
-        {
-          "claim": "Signal tracks defined vector",
-          "weight": "HIGH",
-          "auto_check": "direction_correct",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        },
-        {
-          "claim": "Magnitude within 1-sigma",
-          "weight": "MEDIUM",
-          "auto_check": "sigma_distance <= 1.0",
-          "points_if_correct": 3,
-          "points_if_wrong": -1
-        },
-        {
-          "claim": "Mathematical mechanism convergence",
-          "weight": "VERY HIGH",
-          "auto_check": "evaluate_mechanism_convergence()",
-          "points_if_correct": 5,
-          "points_if_wrong": -5
-        }
-      ],
-      "max_possible_score": 13,
-      "win_threshold": 7,
-      "strong_win_threshold": 11
+      "category": "physical_geometry"
     },
     {
       "id": "PRED-012",

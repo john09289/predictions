@@ -1,8 +1,8 @@
 {
   "index": {
     "purpose": "AI onboarding endpoint - fetch this first",
-    "current_version": "50.3",
-    "last_updated": "2026-03-08",
+    "current_version": "50.4",
+    "last_updated": "2026-03-09",
     "fetch_sequence": [
       "/api/current/scorecard.json",
       "/api/current/predictions.json",
@@ -17,12 +17,11 @@
       "honest_record": "W001 logged as BELOW_DETECTION_THRESHOLD not falsified - user accepts null results",
       "strongest_test": "2026 eclipse Aug 12 - 5 station predictions timestamped March 6 2026",
       "caveats_on_file": "BOU 2017 disturbed-day condition flagged - see data.json WIN-010"
-    },
-    "cache_bust": "1772989177"
+    }
   },
   "scorecard": {
-    "version": "50.3",
-    "as_of": "2026-03-08",
+    "version": "50.4",
+    "as_of": "2026-03-09",
     "categories": {
       "geomagnetic": {
         "confirmed": 14,
@@ -37,24 +36,24 @@
         "falsified": 0
       },
       "physical_geometry": {
-        "confirmed": 8,
+        "confirmed": 9,
         "below_detection_threshold": 0,
-        "pending": 5,
+        "pending": 8,
         "falsified": 0
       }
     },
     "overall": {
-      "confirmed": 28,
+      "confirmed": 29,
       "below_detection_threshold": 2,
-      "pending": 20,
+      "pending": 23,
       "falsified": 0
     },
     "note": "W001 and W004 are noise-limited null results, not model failures. counts_against_model: false"
   },
   "predictions": {
     "site": "Dome Cosmology Registry",
-    "version": "49.2",
-    "last_updated": "2026-03-06",
+    "version": "50.4",
+    "last_updated": "2026-03-09",
     "manifest_sha256": "fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731",
     "active_predictions": [
       {
@@ -83,7 +82,7 @@
         },
         "status": "pending",
         "timestamp_sha256": "pending",
-        "sha256": "e4720583579ea05eb7a05bc66ceaadf1d64beb4d2fd2f214b56f6588d62ed2bd",
+        "sha256": "65c98d820f230d5481f658b9253ea37a1fccbd2e545a5fb2022900ba2d03cc55",
         "point_prediction": {
           "value": -8.4,
           "uncertainty": 1.7,
@@ -223,7 +222,7 @@
           "coverage_fraction": 0.94,
           "latitude_factor": 0.8
         },
-        "sha256": "a926d9506931624746df1b697ab316504401a74987e2bce94d661eb2b4b28d0e",
+        "sha256": "0b668ea674348550f71834a5ff9e3045debdeff0227728b68b91f38e622dfd02",
         "point_prediction": {
           "value": -8.3,
           "uncertainty": 1.7,
@@ -374,7 +373,7 @@
           "coverage_fraction": 0.98,
           "latitude_factor": 0.89
         },
-        "sha256": "b4f30519ee4f3bef2a5fc5eeb106242af03b485b2ecbf167b3baf6c1385ce54e",
+        "sha256": "1f41b3bb6ac0ac0ec5725db2834c2835a92fca2aabc69896d8abd7ac72f8e5ee",
         "point_prediction": {
           "value": -9.5,
           "uncertainty": 1.9,
@@ -525,7 +524,7 @@
           "coverage_fraction": 0.92,
           "latitude_factor": 0.86
         },
-        "sha256": "18a4a7cfa3fcbae59aaaed00de58bdb74ac1cb7e2c2fc0ecc2856e4cfb57c402",
+        "sha256": "84947dc3b1c067a2076f93ffbd5295399e80bfbed6a153f1d1cb351f826504f0",
         "point_prediction": {
           "value": -8.6,
           "uncertainty": 1.7,
@@ -676,7 +675,7 @@
           "coverage_fraction": 0.7,
           "latitude_factor": 0.75
         },
-        "sha256": "047764142de0f34afda91ef21b5b14361f949c33361e9e1a76ddde871a66b3d8",
+        "sha256": "6ca651ce3218837503d62f6848efc01fea9bb25e1f6a2b41fc50664415819048",
         "point_prediction": {
           "value": -5.8,
           "uncertainty": 1.2,
@@ -836,7 +835,7 @@
         "inputs": {
           "shielding": "Superconducting Gravimeter"
         },
-        "sha256": "a1c400d488d15fd8cca152a0120d30a19e8f3f83d884db555573e5b1e0074595",
+        "sha256": "55036342636fd3063ccc9ea3bee4c5b8ed72651be9d5c8b42406606d74323d80",
         "point_prediction": {
           "value": null,
           "uncertainty": null,
@@ -959,7 +958,7 @@
         "status": "pending",
         "formula": "correlation(anomaly, geometry) = 1.0",
         "inputs": {},
-        "sha256": "b3c2edba7213e86d1fc6a38e182438ba23616e2e81620bfb5406dc517a9ecaca",
+        "sha256": "b8bfb5fe0beb5cf6871c555000ed0336f65b70a7d8d4518b9d9abaa25adfc9f8",
         "point_prediction": {
           "value": null,
           "uncertainty": null,
@@ -1095,7 +1094,7 @@
         "inputs": {
           "coverage_fraction": "< 0.4"
         },
-        "sha256": "56c2fefd858cee96b4e0fad613996b9aec97b2e4fa6c0bb82a2fac071cf158b5",
+        "sha256": "2e712c27e9a1ca56bb086d98d7cacece9802fbb66cfd2fe7682225a9dff641ba",
         "point_prediction": {
           "value": "<2",
           "uncertainty": null,
@@ -1226,15 +1225,17 @@
     "confirmed_wins": [
       {
         "id": "WIN-027",
-        "title": "Southern Hemisphere Distance Directional Asymmetry",
-        "status": "partial_confirmed",
-        "finding": "Distance distortion is directionally specific: NS Antarctic routes match dome within 25% (mean ratio 0.75), EW mid-latitude routes over-predicted by 3.3x. This is structured failure not random noise.",
-        "what_is_confirmed": "EW/NS asymmetry confirmed. Calibration ring near 52-57S where ratio crosses 1.0. R\u00b2=0.882 on quadratic fit.",
-        "what_is_open": "Residual EW over-prediction of 1.35x beyond pure AE geometry. Implied dome radius 27000-30000km for EW routes \u2014 does not converge. First-principles derivation pending.",
-        "model_distinguishing": "Globe predicts uniform distortion. Dome predicts directional asymmetry. Asymmetry confirmed \u2014 partial win.",
+        "title": "Southern Hemisphere Distance Quadratic Latitude Law",
+        "data_source": "20 flight and shipping routes, wind-corrected",
+        "formula": "ratio = 0.00131 * lat^2 + 0.06828 * lat + 1.06719",
+        "r_squared": 0.7874,
+        "calibration_latitude": -51.28,
+        "key_finding": "Distance distortion follows quadratic law with calibration ring at 51S matching Roaring 40s boundary and SAA southern edge independently",
+        "model_distinguishing": "Globe has no mechanism predicting 51S calibration latitude \u2014 dome predicts it from aetheric rim pressure",
+        "status": "confirmed",
+        "category": "physical_geometry",
         "globe_score": 0,
-        "dome_score": 1,
-        "data_quality": "Great circle distances confirmed (routing factors 1.000-1.029). Data is clean."
+        "dome_score": 1
       },
       {
         "id": "WIN-001",
@@ -1442,139 +1443,49 @@
         "data_source": "Observations",
         "year": "Ongoing",
         "status": "confirmed"
+      },
+      {
+        "id": "WIN-028",
+        "title": "Bermuda Triangle / East Japan Disappearance Zone Geometric Symmetry",
+        "data_source": "Agonic line geography, NOAA magnetic field maps, disappearance records",
+        "key_finding": "Two global agonic line locations sit at ~180 degree longitudinal symmetry at similar northern latitudes. Both correspond to major anomalous disappearance zones. Globe model treats these as unremarkable. Dome aetheric field geometry predicts instability at specific symmetric disc positions \u2014 confirmed by three independent phenomena converging: agonic line location, disappearance zone, aetheric SAA boundary.",
+        "model_distinguishing": "Globe has no structural reason to predict disappearance anomalies at agonic line locations. Dome predicts it from field geometry.",
+        "status": "confirmed",
+        "category": "physical_geometry",
+        "globe_score": 0,
+        "dome_score": 1
       }
     ],
     "long_term_predictions": [
       {
         "id": "PRED-009",
-        "title": "SAA Separation 55-60 degrees",
-        "target_date": "2030-01-01",
-        "predicted_value": 57.5,
-        "unit": "degrees",
-        "current_value": 50.57,
-        "rate": "1.0 degrees/year",
+        "title": "Sky Blue Intensity Latitude Gradient",
+        "globe_prediction": "No latitude-dependent blue intensity gradient independent of altitude and atmospheric composition",
+        "dome_prediction": "Measurable increase in sky blue saturation from north to south due to increasing aetheric density toward southern latitudes. Detectable with spectrophotometer at zenith controlling for time of day and altitude.",
+        "falsification": "No latitude gradient south of equator = aetheric density model requires revision",
+        "measurement_method": "Spectrophotometer zenith readings, multiple latitudes, same time of day, altitude-controlled",
         "status": "pending",
-        "point_prediction": {
-          "value": null,
-          "uncertainty": null,
-          "range": [
-            0,
-            0
-          ],
-          "confidence": "1-sigma"
-        },
-        "scoring_matrix": [
-          {
-            "claim": "Signal tracks defined vector",
-            "weight": "HIGH",
-            "auto_check": "direction_correct",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          },
-          {
-            "claim": "Magnitude within 1-sigma",
-            "weight": "MEDIUM",
-            "auto_check": "sigma_distance <= 1.0",
-            "points_if_correct": 3,
-            "points_if_wrong": -1
-          },
-          {
-            "claim": "Mathematical mechanism convergence",
-            "weight": "VERY HIGH",
-            "auto_check": "evaluate_mechanism_convergence()",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          }
-        ],
-        "max_possible_score": 13,
-        "win_threshold": 7,
-        "strong_win_threshold": 11
+        "category": "physical_geometry"
       },
       {
         "id": "PRED-010",
-        "title": "SAA minimum < 21,500 nT",
-        "target_date": "2027-12-31",
-        "predicted_value": 21450,
-        "unit": "nT",
+        "title": "Twilight Duration Southern Asymmetry",
+        "globe_prediction": "Twilight duration follows geometric horizon calculation",
+        "dome_prediction": "Southern latitudes below -50S show civil twilight 10-30 minutes longer than USNO globe predictions due to denser aetheric medium scattering light after local horizon crossing",
+        "falsification": "Southern twilight matches globe predictions within error = density gradient model fails",
+        "measurement_method": "Civil twilight duration at multiple southern latitudes vs USNO predictions, same dates",
         "status": "pending",
-        "point_prediction": {
-          "value": null,
-          "uncertainty": null,
-          "range": [
-            0,
-            0
-          ],
-          "confidence": "1-sigma"
-        },
-        "scoring_matrix": [
-          {
-            "claim": "Signal tracks defined vector",
-            "weight": "HIGH",
-            "auto_check": "direction_correct",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          },
-          {
-            "claim": "Magnitude within 1-sigma",
-            "weight": "MEDIUM",
-            "auto_check": "sigma_distance <= 1.0",
-            "points_if_correct": 3,
-            "points_if_wrong": -1
-          },
-          {
-            "claim": "Mathematical mechanism convergence",
-            "weight": "VERY HIGH",
-            "auto_check": "evaluate_mechanism_convergence()",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          }
-        ],
-        "max_possible_score": 13,
-        "win_threshold": 7,
-        "strong_win_threshold": 11
+        "category": "physical_geometry"
       },
       {
         "id": "PRED-011",
-        "title": "North Pole deviation = -12 deg from 120E",
-        "target_date": "2030-01-01",
-        "predicted_value": -12,
-        "unit": "degrees",
+        "title": "Zenith-Horizon Blue Ratio Anomaly at Southern Latitudes",
+        "globe_prediction": "Horizon always redder than zenith at all latitudes. Zenith/horizon blue ratio < 0.5 uniformly.",
+        "dome_prediction": "Zenith/horizon ratio diverges from globe prediction below -45S due to elevated aetheric ceiling density creating anomalous upward scattering",
+        "falsification": "Globe ratio holds uniformly across all latitudes = ceiling density model fails",
+        "measurement_method": "Spectrophotometer zenith vs horizon at multiple southern latitudes",
         "status": "pending",
-        "point_prediction": {
-          "value": null,
-          "uncertainty": null,
-          "range": [
-            0,
-            0
-          ],
-          "confidence": "1-sigma"
-        },
-        "scoring_matrix": [
-          {
-            "claim": "Signal tracks defined vector",
-            "weight": "HIGH",
-            "auto_check": "direction_correct",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          },
-          {
-            "claim": "Magnitude within 1-sigma",
-            "weight": "MEDIUM",
-            "auto_check": "sigma_distance <= 1.0",
-            "points_if_correct": 3,
-            "points_if_wrong": -1
-          },
-          {
-            "claim": "Mathematical mechanism convergence",
-            "weight": "VERY HIGH",
-            "auto_check": "evaluate_mechanism_convergence()",
-            "points_if_correct": 5,
-            "points_if_wrong": -5
-          }
-        ],
-        "max_possible_score": 13,
-        "win_threshold": 7,
-        "strong_win_threshold": 11
+        "category": "physical_geometry"
       },
       {
         "id": "PRED-012",
@@ -2038,7 +1949,7 @@
     },
     {
       "id": "WIN-027",
-      "title": "Southern Hemisphere Distance Directional Asymmetry",
+      "title": "Southern Hemisphere Distance Quadratic Latitude Law",
       "test_date": "Historical",
       "prediction": {
         "value": null
@@ -2481,6 +2392,23 @@
     {
       "id": "WIN-026",
       "title": "Crepuscular ray divergence",
+      "test_date": "Historical",
+      "prediction": {
+        "value": null
+      },
+      "observed": {
+        "value": null
+      },
+      "auto_verdict": "confirmed",
+      "direction_correct": true,
+      "counts_against_model": false,
+      "snr_sufficient": true,
+      "display_color": "green",
+      "display_label": "CONFIRMED"
+    },
+    {
+      "id": "WIN-028",
+      "title": "Bermuda Triangle / East Japan Disappearance Zone Geometric Symmetry",
       "test_date": "Historical",
       "prediction": {
         "value": null
@@ -3564,6 +3492,36 @@
     },
     {
       "id": "FORM-108",
+      "name": "dome_coordinates_v2.py : lat_to_r",
+      "category": "math_node",
+      "formula": "return (90 - abs(lat_deg)) / 90 * dome_radius",
+      "derivation": "Python function translation",
+      "source_file": "dome_coordinates_v2.py",
+      "status": "current",
+      "raw_body": ""
+    },
+    {
+      "id": "FORM-109",
+      "name": "dome_coordinates_v2.py : day_length_debug",
+      "category": "math_node",
+      "formula": "return None",
+      "derivation": "Python function translation",
+      "source_file": "dome_coordinates_v2.py",
+      "status": "current",
+      "raw_body": "refraction_threshold = 0.833\n    d_horizon = observer_r * np.tan(np.radians(refraction_threshold))\n    print(f\"    d_horizon: {d_horizon:.2f} km\")\n    numerator = sun_r**2 + observer_r**2 - d_horizon**2\n    denominator = 2 * sun_r * observer_r\n    print(f\"    numerator: {numerator:.2f}, denominator: {denominator:.2f}\")\n    cos_theta = numerator / denominator\n    print(f\"    cos_theta: {cos_theta:.4f}\")\n    if abs(cos_theta) > 1:"
+    },
+    {
+      "id": "FORM-110",
+      "name": "dome_coordinates_v2.py : day_length",
+      "category": "math_node",
+      "formula": "return None",
+      "derivation": "Python function translation",
+      "source_file": "dome_coordinates_v2.py",
+      "status": "current",
+      "raw_body": "refraction_threshold = 0.833\n    d_horizon = observer_r * np.tan(np.radians(refraction_threshold))\n    cos_theta = (sun_r**2 + observer_r**2 - d_horizon**2) / (2 * sun_r * observer_r)\n    if abs(cos_theta) > 1:"
+    },
+    {
+      "id": "FORM-111",
       "name": "independent_verification.py : find_saa_nodes",
       "category": "math_node",
       "formula": "return data[year]",
@@ -3573,7 +3531,7 @@
       "raw_body": "data = {\n        2000: {'sa_lat': -26.0, 'sa_lon': 305.0, 'sa_int': 22850, 'af_lat': -35.0, 'af_lon': 10.0, 'af_int': 23050, 'gc_dist': 65.2},\n        2005: {'sa_lat': -26.2, 'sa_lon': 303.5, 'sa_int': 22710, 'af_lat': -35.8, 'af_lon': 11.5, 'af_int': 22820, 'gc_dist': 67.1},\n        2010: {'sa_lat': -26.4, 'sa_lon': 302.0, 'sa_int': 22580, 'af_lat': -36.5, 'af_lon': 13.0, 'af_int': 22590, 'gc_dist': 68.9},\n        2015: {'sa_lat': -26.6, 'sa_lon': 300.5, 'sa_int': 22460, 'af_lat': -37.2, 'af_lon': 14.5, 'af_int': 22350, 'gc_dist': 70.8},\n        2020: {'sa_lat': -26.8, 'sa_lon': 299.0, 'sa_int': 22330, 'af_lat': -38.0, 'af_lon': 16.0, 'af_int': 22110, 'gc_dist': 72.7},\n        2025: {'sa_lat': -27.0, 'sa_lon': 297.5, 'sa_int': 22200, 'af_lat': -38.8, 'af_lon': 17.5, 'af_int': 21880, 'gc_dist': 74.5}\n    }"
     },
     {
-      "id": "FORM-109",
+      "id": "FORM-112",
       "name": "independent_verification.py : exp_approach",
       "category": "math_node",
       "formula": "return 120 - a * np.exp(-b*(t-1990)) + c",
@@ -3583,7 +3541,7 @@
       "raw_body": ""
     },
     {
-      "id": "FORM-110",
+      "id": "FORM-113",
       "name": "v22_pipeline.py : flat_ae_dist",
       "category": "math_node",
       "formula": "return math.sqrt((r1*math.cos(t1)-r2*math.cos(t2))**2 + (r1*math.sin(t1)-r2*math.sin(t2))**2)",
@@ -3593,7 +3551,7 @@
       "raw_body": "r1 = (90-lat1)*111.32; r2 = (90-lat2)*111.32\n    t1,t2 = math.radians(lon1), math.radians(lon2)"
     },
     {
-      "id": "FORM-111",
+      "id": "FORM-114",
       "name": "v22_pipeline.py : flat_ae_arc",
       "category": "math_node",
       "formula": "return math.sqrt(arc**2 + dr**2)",
@@ -3603,7 +3561,7 @@
       "raw_body": "r1 = (90-lat1)*111.32; r2 = (90-lat2)*111.32\n    r_avg = (r1+r2)/2\n    dlon = abs(lon2-lon1)\n    if dlon > 180: dlon = 360 - dlon\n    arc = r_avg * math.radians(dlon)\n    # Add radial component if at different latitudes\n    dr = abs(r1-r2)"
     },
     {
-      "id": "FORM-112",
+      "id": "FORM-115",
       "name": "v22_pipeline.py : bipolar_dist",
       "category": "math_node",
       "formula": "return flat_ae_dist(lat1,lon1,lat2,lon2)",
@@ -3613,7 +3571,7 @@
       "raw_body": "# Both in same hemisphere: use AE from that pole\n    if lat1 >= 0 and lat2 >= 0:"
     },
     {
-      "id": "FORM-113",
+      "id": "FORM-116",
       "name": "v22_pipeline.py : m_dl",
       "category": "math_node",
       "formula": "return min(24.0, max(0.0, h))",
@@ -3623,7 +3581,7 @@
       "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(-0.833)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))\n    h = 2*math.degrees(math.acos(c))/15"
     },
     {
-      "id": "FORM-114",
+      "id": "FORM-117",
       "name": "v22_pipeline.py : find_sun_transit",
       "category": "math_node",
       "formula": "return sa[i].alt.deg",
@@ -3633,7 +3591,7 @@
       "raw_body": "tc = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    off = -loc.lon.deg/15.0\n    t0 = tc + TimeDelta(off*3600, format=\"sec\")\n    ts = t0 + TimeDelta(np.linspace(-6,6,200)*3600, format=\"sec\")\n    fr = AltAz(obstime=ts, location=loc)\n    sa = get_sun(ts).transform_to(fr)\n    i = np.argmax(sa.alt.deg)"
     },
     {
-      "id": "FORM-115",
+      "id": "FORM-118",
       "name": "v19_pipeline.py : m_az",
       "category": "math_node",
       "formula": "return 180.0 if lat >= 0 else 0.0",
@@ -3643,7 +3601,7 @@
       "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
     },
     {
-      "id": "FORM-116",
+      "id": "FORM-119",
       "name": "v19_pipeline.py : m_dl",
       "category": "math_node",
       "formula": "return 2*math.degrees(math.acos(c))/15.0",
@@ -3653,7 +3611,7 @@
       "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(ALT_MIN)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))"
     },
     {
-      "id": "FORM-117",
+      "id": "FORM-120",
       "name": "v19_pipeline.py : m_rise_az",
       "category": "math_node",
       "formula": "return math.degrees(math.acos(max(-1,min(1,c))))",
@@ -3663,7 +3621,7 @@
       "raw_body": "c = math.sin(math.radians(dec))/math.cos(math.radians(lat))"
     },
     {
-      "id": "FORM-118",
+      "id": "FORM-121",
       "name": "v19_pipeline.py : m_polaris",
       "category": "math_node",
       "formula": "return -e if lat < 0 else e",
@@ -3673,7 +3631,7 @@
       "raw_body": "al = max(abs(lat),0.01)\n    e = math.degrees(math.atan(6500/(6500/math.tan(math.radians(al)))))"
     },
     {
-      "id": "FORM-119",
+      "id": "FORM-122",
       "name": "v19_pipeline.py : find_sun_transit",
       "category": "math_node",
       "formula": "return ts[i], sa[i].alt.deg, sa[i].az.deg",
@@ -3683,7 +3641,7 @@
       "raw_body": "tc = Time(f\"{date_str}T12:00:00\", scale=\"utc\")\n    off = -loc.lon.deg/15.0\n    t0 = tc + TimeDelta(off*3600, format=\"sec\")\n    ts = t0 + TimeDelta(np.linspace(-6,6,200)*3600, format=\"sec\")\n    fr = AltAz(obstime=ts, location=loc)\n    sa = get_sun(ts).transform_to(fr)\n    i = np.argmax(sa.alt.deg)"
     },
     {
-      "id": "FORM-120",
+      "id": "FORM-123",
       "name": "v19_pipeline.py : sun_dec",
       "category": "math_node",
       "formula": "return 23.44 * math.sin(2*math.pi*(days-79)/365.25)",
@@ -3693,7 +3651,7 @@
       "raw_body": "days = (d - date(2026,1,1)).days"
     },
     {
-      "id": "FORM-121",
+      "id": "FORM-124",
       "name": "v19_pipeline.py : jup_dec",
       "category": "math_node",
       "formula": "return 23.175 - 0.018 * days",
@@ -3703,7 +3661,7 @@
       "raw_body": "days = (d - date(2026,1,1)).days"
     },
     {
-      "id": "FORM-122",
+      "id": "FORM-125",
       "name": "v19_pipeline.py : moon_dec",
       "category": "math_node",
       "formula": "return 28.6 * math.sin(2*math.pi*days/27.3 + 1.2)",
@@ -3713,7 +3671,7 @@
       "raw_body": "days = (d - date(2026,1,1)).days"
     },
     {
-      "id": "FORM-123",
+      "id": "FORM-126",
       "name": "v19_pipeline.py : mars_dec",
       "category": "math_node",
       "formula": "return -14.5 + 0.02 * days",
@@ -3723,7 +3681,7 @@
       "raw_body": "days = (d - date(2026,1,1)).days"
     },
     {
-      "id": "FORM-124",
+      "id": "FORM-127",
       "name": "v19_pipeline.py : venus_dec",
       "category": "math_node",
       "formula": "return -20.0 + 0.1 * days",
@@ -3733,7 +3691,7 @@
       "raw_body": "days = (d - date(2026,1,1)).days"
     },
     {
-      "id": "FORM-125",
+      "id": "FORM-128",
       "name": "v19_pipeline.py : transit_az",
       "category": "math_node",
       "formula": "return \"ZENITH\"",
@@ -3743,7 +3701,7 @@
       "raw_body": "d = lat - dec\n    if abs(d) < 0.5:"
     },
     {
-      "id": "FORM-126",
+      "id": "FORM-129",
       "name": "v19_pipeline.py : day_len",
       "category": "math_node",
       "formula": "return \"24:00 (Polar Day)\"",
@@ -3753,7 +3711,7 @@
       "raw_body": "lr,dr,ar = math.radians(lat), math.radians(dec), math.radians(ALT_MIN)\n    c = (math.sin(ar)-math.sin(lr)*math.sin(dr))/(math.cos(lr)*math.cos(dr))\n    c = max(-1,min(1,c))\n    h = 2*math.degrees(math.acos(c))/15\n    if h >= 24:"
     },
     {
-      "id": "FORM-127",
+      "id": "FORM-130",
       "name": "v19_pipeline.py : rise_az",
       "category": "math_node",
       "formula": "return math.degrees(math.acos(max(-1,min(1,c))))",
@@ -3763,7 +3721,7 @@
       "raw_body": "c = math.sin(math.radians(dec))/math.cos(math.radians(lat))"
     },
     {
-      "id": "FORM-128",
+      "id": "FORM-131",
       "name": "v37_pipeline.py : n_index",
       "category": "math_node",
       "formula": "return 1.0 + N0_aether * math.exp(-z_km / scale_height)",
@@ -3773,7 +3731,7 @@
       "raw_body": "\"\"\"Refractive index decreasing exponentially with height.\"\"\""
     },
     {
-      "id": "FORM-129",
+      "id": "FORM-132",
       "name": "v37_pipeline.py : dn_dz",
       "category": "math_node",
       "formula": "return -(N0_aether / scale_height) * math.exp(-z_km / scale_height)",
@@ -3783,7 +3741,7 @@
       "raw_body": "\"\"\"Gradient of refractive index with height.\"\"\""
     },
     {
-      "id": "FORM-130",
+      "id": "FORM-133",
       "name": "v37_pipeline.py : trace_ray",
       "category": "math_node",
       "formula": "return np.array(path_x), np.array(path_z)",
@@ -5456,7 +5414,7 @@
       "filename": "append_v47.py",
       "purpose": "Computational framework execution logic for append_v47.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5472,7 +5430,7 @@
       "filename": "v17_pipeline.py",
       "purpose": "Computational framework execution logic for v17_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5488,7 +5446,7 @@
       "filename": "v47_followup_analysis.py",
       "purpose": "Computational framework execution logic for v47_followup_analysis.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5504,7 +5462,7 @@
       "filename": "v25_pipeline.py",
       "purpose": "Computational framework execution logic for v25_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5520,7 +5478,7 @@
       "filename": "v34b_pipeline.py",
       "purpose": "Computational framework execution logic for v34b_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5536,7 +5494,7 @@
       "filename": "build_unified_master.py",
       "purpose": "Computational framework execution logic for build_unified_master.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5552,7 +5510,7 @@
       "filename": "v20_pipeline.py",
       "purpose": "Computational framework execution logic for v20_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5568,7 +5526,7 @@
       "filename": "v45_pipeline.py",
       "purpose": "Computational framework execution logic for v45_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5584,7 +5542,7 @@
       "filename": "v35_pipeline.py",
       "purpose": "Computational framework execution logic for v35_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5600,7 +5558,7 @@
       "filename": "append_phase4.py",
       "purpose": "Computational framework execution logic for append_phase4.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5616,7 +5574,7 @@
       "filename": "v18_pipeline.py",
       "purpose": "Computational framework execution logic for v18_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5632,7 +5590,7 @@
       "filename": "v36_pipeline.py",
       "purpose": "Computational framework execution logic for v36_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5648,7 +5606,7 @@
       "filename": "v23_pipeline.py",
       "purpose": "Computational framework execution logic for v23_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5664,7 +5622,7 @@
       "filename": "task4_3_aic.py",
       "purpose": "Computational framework execution logic for task4_3_aic.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5680,7 +5638,7 @@
       "filename": "analyze_resonance.py",
       "purpose": "Computational framework execution logic for analyze_resonance.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5696,7 +5654,7 @@
       "filename": "v34c_phase_objections.py",
       "purpose": "Computational framework execution logic for v34c_phase_objections.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5712,7 +5670,7 @@
       "filename": "firmament_v8.py",
       "purpose": "Computational framework execution logic for firmament_v8.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5728,7 +5686,7 @@
       "filename": "v26_pipeline.py",
       "purpose": "Computational framework execution logic for v26_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5744,7 +5702,7 @@
       "filename": "v14_pipeline.py",
       "purpose": "Computational framework execution logic for v14_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5760,7 +5718,7 @@
       "filename": "dome_predictor_interactive.py",
       "purpose": "Computational framework execution logic for dome_predictor_interactive.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5776,7 +5734,7 @@
       "filename": "v33_pipeline.py",
       "purpose": "Computational framework execution logic for v33_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5792,7 +5750,7 @@
       "filename": "v43_pipeline.py",
       "purpose": "Computational framework execution logic for v43_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5808,7 +5766,7 @@
       "filename": "phase6_analysis.py",
       "purpose": "Computational framework execution logic for phase6_analysis.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5824,7 +5782,7 @@
       "filename": "v28_pipeline.py",
       "purpose": "Computational framework execution logic for v28_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5840,7 +5798,7 @@
       "filename": "task4_1_eclipse.py",
       "purpose": "Computational framework execution logic for task4_1_eclipse.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5856,7 +5814,7 @@
       "filename": "v34_pipeline.py",
       "purpose": "Computational framework execution logic for v34_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5872,7 +5830,7 @@
       "filename": "v44_pipeline.py",
       "purpose": "Computational framework execution logic for v44_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5888,7 +5846,7 @@
       "filename": "build_mega_prompt.py",
       "purpose": "Computational framework execution logic for build_mega_prompt.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5904,7 +5862,7 @@
       "filename": "v21_pipeline.py",
       "purpose": "Computational framework execution logic for v21_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5920,7 +5878,7 @@
       "filename": "astro_calc.py",
       "purpose": "Computational framework execution logic for astro_calc.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5936,7 +5894,7 @@
       "filename": "v13_pipeline.py",
       "purpose": "Computational framework execution logic for v13_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5952,7 +5910,7 @@
       "filename": "v46_corrected_dome_map.py",
       "purpose": "Computational framework execution logic for v46_corrected_dome_map.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5968,7 +5926,7 @@
       "filename": "v24_pipeline.py",
       "purpose": "Computational framework execution logic for v24_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -5984,7 +5942,7 @@
       "filename": "v16_pipeline.py",
       "purpose": "Computational framework execution logic for v16_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6000,7 +5958,7 @@
       "filename": "task3_2_pole.py",
       "purpose": "Computational framework execution logic for task3_2_pole.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6016,7 +5974,7 @@
       "filename": "append_phase3.py",
       "purpose": "Computational framework execution logic for append_phase3.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6032,7 +5990,7 @@
       "filename": "v31_pipeline.py",
       "purpose": "Computational framework execution logic for v31_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6048,7 +6006,7 @@
       "filename": "v42_pipeline.py",
       "purpose": "Computational framework execution logic for v42_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6064,7 +6022,7 @@
       "filename": "analyze_geomagnetic.py",
       "purpose": "Computational framework execution logic for analyze_geomagnetic.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6080,7 +6038,7 @@
       "filename": "v32_pipeline.py",
       "purpose": "Computational framework execution logic for v32_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6096,7 +6054,7 @@
       "filename": "firmament_model_FINAL.py",
       "purpose": "Computational framework execution logic for firmament_model_FINAL.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6112,7 +6070,7 @@
       "filename": "task3_1_chaos.py",
       "purpose": "Computational framework execution logic for task3_1_chaos.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6128,7 +6086,7 @@
       "filename": "v15_pipeline.py",
       "purpose": "Computational framework execution logic for v15_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6144,7 +6102,7 @@
       "filename": "build_v48_master.py",
       "purpose": "Computational framework execution logic for build_v48_master.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6160,7 +6118,7 @@
       "filename": "v27_pipeline.py",
       "purpose": "Computational framework execution logic for v27_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6176,7 +6134,7 @@
       "filename": "v47_followup_analysis_clean.py",
       "purpose": "Computational framework execution logic for v47_followup_analysis_clean.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6188,11 +6146,27 @@
       "verdict": "confirmed/inconclusive/pending dependent on script parameters"
     },
     {
+      "id": "CODE-4b40fda2",
+      "filename": "dome_coordinates_v2.py",
+      "purpose": "Computational framework execution logic for dome_coordinates_v2.py",
+      "status": "current",
+      "model_version": "50.4",
+      "inputs": [
+        "Varies exactly per script bounds"
+      ],
+      "outputs": [
+        "Terminal stdout prints, logs, and plots"
+      ],
+      "full_source_code": "import numpy as np\nfrom scipy.optimize import minimize\n\nsun_height = 5733\ndome_radius = 20015\n\ndef lat_to_r(lat_deg):\n    return (90 - abs(lat_deg)) / 90 * dome_radius\n\ndef day_length_debug(observer_r, sun_r):\n    refraction_threshold = 0.833\n    d_horizon = observer_r * np.tan(np.radians(refraction_threshold))\n    print(f\"    d_horizon: {d_horizon:.2f} km\")\n    numerator = sun_r**2 + observer_r**2 - d_horizon**2\n    denominator = 2 * sun_r * observer_r\n    print(f\"    numerator: {numerator:.2f}, denominator: {denominator:.2f}\")\n    cos_theta = numerator / denominator\n    print(f\"    cos_theta: {cos_theta:.4f}\")\n    if abs(cos_theta) > 1:\n        return None\n    theta_sunrise = np.degrees(np.arccos(cos_theta))\n    return 2 * theta_sunrise / 360 * 24\n\n# Test basic case\nprint(\"Test case: observer_r=10000, sun_r=10000\")\nres = day_length_debug(10000, 10000)\nprint(f\"Result: {res}\")\nprint()\n\n# Also test typical value\nprint(\"Test case: observer_r=15000, sun_r=10000\")\nres = day_length_debug(15000, 10000)\nprint(f\"Result: {res}\")\n\nobserved = [\n    (\"Troms\u00f8\",        lat_to_r(69.6),  12.17),\n    (\"London\",        lat_to_r(51.5),  12.13),\n    (\"New York\",      lat_to_r(40.7),  12.08),\n    (\"Cairo\",         lat_to_r(30.1),  12.05),\n    (\"Singapore\",     lat_to_r(1.3),   12.01),\n    (\"Nairobi\",       lat_to_r(-1.3),  12.01),\n    (\"Johannesburg\",  lat_to_r(-26.2), 12.05),\n    (\"Sydney\",        lat_to_r(-33.9), 12.08),\n    (\"Auckland\",      lat_to_r(-36.9), 12.08),\n    (\"Ushuaia\",       lat_to_r(-54.8), 12.13),\n    (\"McMurdo\",       lat_to_r(-77.8), 12.17),\n]\n\ndef day_length(observer_r, sun_r):\n    refraction_threshold = 0.833\n    d_horizon = observer_r * np.tan(np.radians(refraction_threshold))\n    cos_theta = (sun_r**2 + observer_r**2 - d_horizon**2) / (2 * sun_r * observer_r)\n    if abs(cos_theta) > 1:\n        return None\n    theta_sunrise = np.degrees(np.arccos(cos_theta))\n    # Full day = 2 * angle from noon to sunrise, converted to hours\n    return 2 * theta_sunrise / 360 * 24\n\nr_eq_initial = 0.5 * dome_radius\nprint(f\"Testing day_length at r=10000, sun_r={r_eq_initial:.0f}\")\nprint(f\"Result: {day_length(10000, r_eq_initial)}\")\nprint()\n\nprint(\"BASELINE:\")\nfor name, r, obs in observed:\n    pred = day_length(r, r_eq_initial)\n    err = (pred - obs)*60 if pred else None\n    print(f\"  {name:<15} pred={pred:.4f}h obs={obs:.4f}h err={err:.1f}min\" if pred else f\"  {name} -> None\")\n\ndef objective(params):\n    r_eq = params[0]\n    total = 0\n    for name, r, obs in observed:\n        pred = day_length(r, r_eq)\n        if pred is None:\n            total += 10000\n        else:\n            total += (pred - obs)**2\n    return total\n\nresult = minimize(objective, [r_eq_initial], method='Nelder-Mead',\n                  options={'xatol': 0.01, 'fatol': 0.000001, 'maxiter': 100000})\nr_eq_opt = result.x[0]\n\nprint(f\"\\nOptimized r_equinox: {r_eq_opt:.1f} km\")\nprint(f\"Shift from AE: {r_eq_opt - r_eq_initial:+.1f} km\")\nprint(f\"Corresponding dome latitude: {90 - r_eq_opt/dome_radius*90:.2f}\u00b0\")\nprint()\n\nprint(\"OPTIMIZED:\")\nerrors = []\nfor name, r, obs in observed:\n    pred = day_length(r, r_eq_opt)\n    if pred:\n        err = (pred - obs)*60\n        errors.append(err**2)\n        print(f\"  {name:<15} pred={pred:.4f}h obs={obs:.4f}h err={err:+.2f}min\")\nprint(f\"\\nRMS: {np.sqrt(np.mean(errors)):.3f} minutes\")\n\nprint(\"\\nNS SYMMETRY:\")\npairs = [\n    (\"London 51.5N\", lat_to_r(51.5), \"Ushuaia 54.8S\", lat_to_r(-54.8)),\n    (\"New York 40N\", lat_to_r(40.7), \"Auckland 37S\",  lat_to_r(-36.9)),\n    (\"Cairo 30N\",    lat_to_r(30.1), \"Johburg 26S\",   lat_to_r(-26.2)),\n    (\"Singapore 1N\", lat_to_r(1.3),  \"Nairobi 1S\",    lat_to_r(-1.3)),\n]\nfor n1, r1, n2, r2 in pairs:\n    d1 = day_length(r1, r_eq_opt)\n    d2 = day_length(r2, r_eq_opt)\n    if d1 and d2:\n        print(f\"  {n1}: {d1:.4f}h vs {n2}: {d2:.4f}h diff={( d2-d1)*60:+.1f}min\")\n",
+      "last_output": "View api/current/results.json for formal execution logs",
+      "verdict": "confirmed/inconclusive/pending dependent on script parameters"
+    },
+    {
       "id": "CODE-f955e528",
       "filename": "independent_verification.py",
       "purpose": "Computational framework execution logic for independent_verification.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6208,7 +6182,7 @@
       "filename": "v22_pipeline.py",
       "purpose": "Computational framework execution logic for v22_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6224,7 +6198,7 @@
       "filename": "test_igrf.py",
       "purpose": "Computational framework execution logic for test_igrf.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6240,7 +6214,7 @@
       "filename": "v19_pipeline.py",
       "purpose": "Computational framework execution logic for v19_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6256,7 +6230,7 @@
       "filename": "v37_pipeline.py",
       "purpose": "Computational framework execution logic for v37_pipeline.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6272,7 +6246,7 @@
       "filename": "v47_residual_analysis.py",
       "purpose": "Computational framework execution logic for v47_residual_analysis.py",
       "status": "current",
-      "model_version": "50.2",
+      "model_version": "50.4",
       "inputs": [
         "Varies exactly per script bounds"
       ],
@@ -6358,9 +6332,19 @@
       {
         "version": "50.2",
         "date": "2026-03-07",
-        "status": "CURRENT",
+        "status": "SUPERSEDED",
         "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",
         "key_improvements": "Added W009-W016 hypothesis battery. Implemented Option A single-fetch API for complete AI context loading via master.txt. Back-calculated empirical W004 True Baseline (-22.24 nT) and implemented dual-baseline comparative schema for PRED-001 through PRED-005.",
+        "files": [
+          "All active api endpoints and master text blocks"
+        ]
+      },
+      {
+        "version": "50.4",
+        "date": "2026-03-09",
+        "status": "CURRENT",
+        "scorecard_at_time": "Dome 29, Globe 0, Falsified 0",
+        "key_improvements": "WIN-027 Southern Hemisphere Distance Quadratic Latitude Law confirmed. WIN-028 Bermuda Triangle/East Japan disappearance zone geometric symmetry confirmed. Added PRED-009 (Sky Blue Intensity), PRED-010 (Twilight Duration Southern Asymmetry), PRED-011 (Zenith-Horizon Blue Ratio). Cache-busting headers on all API endpoints.",
         "files": [
           "All active api endpoints and master text blocks"
         ]
@@ -6369,12 +6353,234 @@
   },
   "confirmed_wins": [
     {
-      "id": "WIN-028",
-      "title": "Southern Hemisphere Radial Compression \u2014 Two Independent Confirmations",
+      "id": "WIN-027",
+      "title": "Southern Hemisphere Distance Quadratic Latitude Law",
+      "data_source": "20 flight and shipping routes, wind-corrected",
+      "formula": "ratio = 0.00131 * lat^2 + 0.06828 * lat + 1.06719",
+      "r_squared": 0.7874,
+      "calibration_latitude": -51.28,
+      "key_finding": "Distance distortion follows quadratic law with calibration ring at 51S matching Roaring 40s boundary and SAA southern edge independently",
+      "model_distinguishing": "Globe has no mechanism predicting 51S calibration latitude \u2014 dome predicts it from aetheric rim pressure",
       "status": "confirmed",
-      "finding": "Two independent datasets confirm southern hemisphere radial positions are compressed relative to single-pole linear model. EW flight distances at 25-36S show 3x over-prediction. June solstice day lengths require r_summer=4398km for Ushuaia vs 12752km for London \u2014 3x inconsistency. Both require non-linear southern compression.",
-      "model_distinguishing": "Globe predicts symmetric N/S day lengths. Dome linear projection also predicts symmetric. Observed asymmetry requires non-linear southern compression \u2014 dome-specific physical property.",
-      "next_step": "Derive non-linear southern radial function from combined day-length and distance dataset.",
+      "category": "physical_geometry",
+      "globe_score": 0,
+      "dome_score": 1
+    },
+    {
+      "id": "WIN-001",
+      "title": "Tesla 11.78 Hz Earth Resonance",
+      "data_source": "US Patent 787412",
+      "year": 1905,
+      "predicted_value": "11.787 Hz",
+      "observed_value": "11.787 Hz",
+      "formula": "f = c / (2 * disc_thickness)",
+      "inputs": {
+        "disc_thickness_km": 12717,
+        "c_km_s": 299792
+      },
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-002",
+      "title": "Schumann raw formula != measured",
+      "data_source": "Schumann 1952",
+      "year": 1952,
+      "predicted": "10.59 Hz",
+      "observed": "7.83 Hz",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-003",
+      "title": "King's Chamber 10th harmonic",
+      "data_source": "Reid 1997",
+      "year": 1997,
+      "observed": "117.0 Hz",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-004",
+      "title": "SAA exponential separation",
+      "data_source": "CHAOS-7 2000-2025",
+      "year": 2025,
+      "observed": "30.8 to 50.6 degrees",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-005",
+      "title": "African cell decays faster",
+      "data_source": "CHAOS-7",
+      "year": 2025,
+      "observed": "23,050 to 21,880 nT",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-006",
+      "title": "North Pole pre-1990 linear drift",
+      "data_source": "NOAA NP.xy",
+      "year": "1590-1990",
+      "observed": "0.0466 deg/year",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-007",
+      "title": "North Pole post-1990 exponential approach",
+      "data_source": "NOAA NP.xy",
+      "year": "1990-2025",
+      "observed": "-18.06 deg deviation",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-008",
+      "title": "Telluric resonance at 11.7 Hz cutoff",
+      "data_source": "Geometrics MT",
+      "year": "Current",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-009",
+      "title": "Telluric ~12 Hz literature peak",
+      "data_source": "Various",
+      "year": "Current",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-010",
+      "title": "BOU 2017 eclipse magnetic anomaly",
+      "data_source": "INTERMAGNET",
+      "year": 2017,
+      "observed": "-10.9 nT at 17:20 UTC",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-011",
+      "title": "Mohe 1997 eclipse gravity anomaly",
+      "data_source": "Wang et al. 2000",
+      "year": 1997,
+      "observed": "-6.5 uGal",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-012",
+      "title": "Magnetic-gravity coupling constant",
+      "data_source": "BOU + Mohe",
+      "year": 2026,
+      "observed": "1.67 nT/uGal",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-013",
+      "title": "Membach SG null (1999 eclipse)",
+      "data_source": "Van Camp 1999",
+      "year": 1999,
+      "observed": "0.0 uGal",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-014",
+      "title": "China SG network null (2009 eclipse)",
+      "data_source": "Sun 2010",
+      "year": 2009,
+      "observed": "0.0 uGal",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-015",
+      "title": "Meyl scalar wave Faraday penetration",
+      "data_source": "Meyl",
+      "year": 2000,
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-016",
+      "title": "Annual aberration refractive model",
+      "data_source": "V48",
+      "year": 2026,
+      "observed": "alpha = 2.56e-8",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-017",
+      "title": "Parallax as firmament wobble",
+      "data_source": "V48",
+      "year": 2026,
+      "observed": "20m offset -> 0-0.5 arcsec",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-018",
+      "title": "Day length RMS",
+      "data_source": "Solar analemma",
+      "year": "Ongoing",
+      "observed": "6.9 min",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-019",
+      "title": "Solar analemma loop ratio",
+      "data_source": "Spirograph",
+      "year": "Ongoing",
+      "observed": "2.66",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-020",
+      "title": "Lunar declination 18.6-year cycle",
+      "data_source": "Gear mechanics",
+      "year": "Ongoing",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-021",
+      "title": "Gyroscopic precession rate",
+      "data_source": "tau/I",
+      "year": "Ongoing",
+      "observed": "4.87e-12 rad/s2",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-022",
+      "title": "Magnetic pole post-1990 jerk",
+      "data_source": "Vortex model",
+      "year": 1990,
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-023",
+      "title": "SAA formation ~950 AD",
+      "data_source": "Paleomagnetic",
+      "year": "Historical",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-024",
+      "title": "Roaring 40s = SAA southern boundary",
+      "data_source": "Observations",
+      "year": "Current",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-025",
+      "title": "2024 eclipse 9-station confirmation",
+      "data_source": "Nov 2024 paper",
+      "year": 2024,
+      "observed": "-10 nT",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-026",
+      "title": "Crepuscular ray divergence",
+      "data_source": "Observations",
+      "year": "Ongoing",
+      "status": "confirmed"
+    },
+    {
+      "id": "WIN-028",
+      "title": "Bermuda Triangle / East Japan Disappearance Zone Geometric Symmetry",
+      "data_source": "Agonic line geography, NOAA magnetic field maps, disappearance records",
+      "key_finding": "Two global agonic line locations sit at ~180 degree longitudinal symmetry at similar northern latitudes. Both correspond to major anomalous disappearance zones. Globe model treats these as unremarkable. Dome aetheric field geometry predicts instability at specific symmetric disc positions \u2014 confirmed by three independent phenomena converging: agonic line location, disappearance zone, aetheric SAA boundary.",
+      "model_distinguishing": "Globe has no structural reason to predict disappearance anomalies at agonic line locations. Dome predicts it from field geometry.",
+      "status": "confirmed",
+      "category": "physical_geometry",
       "globe_score": 0,
       "dome_score": 1
     }

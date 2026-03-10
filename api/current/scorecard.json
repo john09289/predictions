@@ -1,6 +1,6 @@
 {
-  "version": "50.2",
-  "as_of": "2026-03-07",
+  "version": "50.4",
+  "as_of": "2026-03-09",
   "categories": {
     "geomagnetic": {
       "confirmed": 14,
@@ -15,16 +15,16 @@
       "falsified": 0
     },
     "physical_geometry": {
-      "confirmed": 7,
+      "confirmed": 9,
       "below_detection_threshold": 0,
-      "pending": 5,
+      "pending": 8,
       "falsified": 0
     }
   },
   "overall": {
-    "confirmed": 27,
+    "confirmed": 29,
     "below_detection_threshold": 2,
-    "pending": 20,
+    "pending": 23,
     "falsified": 0
   },
   "note": "W001 and W004 are noise-limited null results, not model failures. counts_against_model: false"

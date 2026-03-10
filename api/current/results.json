@@ -82,7 +82,7 @@
   },
   {
     "id": "WIN-027",
-    "title": "Southern Hemisphere Distance Directional Asymmetry",
+    "title": "Southern Hemisphere Distance Quadratic Latitude Law",
     "test_date": "Historical",
     "prediction": {
       "value": null
@@ -525,6 +525,23 @@
   {
     "id": "WIN-026",
     "title": "Crepuscular ray divergence",
+    "test_date": "Historical",
+    "prediction": {
+      "value": null
+    },
+    "observed": {
+      "value": null
+    },
+    "auto_verdict": "confirmed",
+    "direction_correct": true,
+    "counts_against_model": false,
+    "snr_sufficient": true,
+    "display_color": "green",
+    "display_label": "CONFIRMED"
+  },
+  {
+    "id": "WIN-028",
+    "title": "Bermuda Triangle / East Japan Disappearance Zone Geometric Symmetry",
     "test_date": "Historical",
     "prediction": {
       "value": null

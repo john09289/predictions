@@ -72,9 +72,19 @@
     {
       "version": "50.2",
       "date": "2026-03-07",
-      "status": "CURRENT",
+      "status": "SUPERSEDED",
       "scorecard_at_time": "Dome 26, Globe 0, Falsified 0",
       "key_improvements": "Added W009-W016 hypothesis battery. Implemented Option A single-fetch API for complete AI context loading via master.txt. Back-calculated empirical W004 True Baseline (-22.24 nT) and implemented dual-baseline comparative schema for PRED-001 through PRED-005.",
+      "files": [
+        "All active api endpoints and master text blocks"
+      ]
+    },
+    {
+      "version": "50.4",
+      "date": "2026-03-09",
+      "status": "CURRENT",
+      "scorecard_at_time": "Dome 29, Globe 0, Falsified 0",
+      "key_improvements": "WIN-027 Southern Hemisphere Distance Quadratic Latitude Law confirmed. WIN-028 Bermuda Triangle/East Japan disappearance zone geometric symmetry confirmed. Added PRED-009 (Sky Blue Intensity), PRED-010 (Twilight Duration Southern Asymmetry), PRED-011 (Zenith-Horizon Blue Ratio). Cache-busting headers on all API endpoints.",
       "files": [
         "All active api endpoints and master text blocks"
       ]

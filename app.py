@@ -17,21 +17,28 @@ logger = logging.getLogger("dome_registry")
 
 app = FastAPI(title="Dome Cosmology Registry API")
 
-# Helper to safely read JSON files
+# No-cache headers for all API responses
+NO_CACHE_HEADERS = {
+    "Cache-Control": "no-cache, no-store, must-revalidate",
+    "Pragma": "no-cache",
+    "Expires": "0"
+}
+
+# Helper to safely read JSON files with no-cache headers
 def safe_json_response(filepath: str):
     try:
         with open(filepath, 'r') as f:
             data = json.load(f)
-        return JSONResponse(content=data, headers={"Cache-Control": "no-store"})
+        return JSONResponse(content=data, headers=NO_CACHE_HEADERS)
     except FileNotFoundError:
         logger.error(f"File not found: {filepath}")
-        return JSONResponse(status_code=404, content={"error": "Not found"})
+        return JSONResponse(status_code=404, content={"error": "Not found"}, headers=NO_CACHE_HEADERS)
     except json.JSONDecodeError as e:
         logger.error(f"JSON decode error in {filepath}: {e}")
-        return JSONResponse(status_code=500, content={"error": "Internal server error"})
+        return JSONResponse(status_code=500, content={"error": "Internal server error"}, headers=NO_CACHE_HEADERS)
     except Exception as e:
         logger.error(f"Unexpected error reading {filepath}: {traceback.format_exc()}")
-        return JSONResponse(status_code=500, content={"error": "Internal server error"})
+        return JSONResponse(status_code=500, content={"error": "Internal server error"}, headers=NO_CACHE_HEADERS)
 
 # Helper to safely read static files (CSS, JS)
 def safe_text_response(filepath: str, media_type: str):
@@ -49,9 +56,9 @@ def safe_text_response(filepath: str, media_type: str):
 # Health check endpoint
 @app.get("/health")
 async def health():
-    return {"status": "ok", "version": "50.2"}
+    return {"status": "ok", "version": "50.4"}
 
-# API endpoints
+# API endpoints — all with no-cache headers
 @app.get("/api/master.json")
 async def master():
     return safe_json_response("api/master.json")
@@ -60,13 +67,33 @@ async def master():
 async def current(filename: str):
     # Prevent path traversal
     if ".." in filename or "/" in filename:
-        return JSONResponse(status_code=400, content={"error": "Invalid filename"})
+        return JSONResponse(status_code=400, content={"error": "Invalid filename"}, headers=NO_CACHE_HEADERS)
     path = f"api/current/{filename}"
     return safe_json_response(path)
 
 @app.get("/api/predictions.json")
 async def predictions():
     return safe_json_response("api/predictions.json")
+
+@app.get("/api/current/scorecard.json")
+async def scorecard():
+    return safe_json_response("api/current/scorecard.json")
+
+@app.get("/api/current/results.json")
+async def results():
+    return safe_json_response("api/current/results.json")
+
+@app.get("/api/current/formulas.json")
+async def formulas():
+    return safe_json_response("api/current/formulas.json")
+
+@app.get("/api/current/data.json")
+async def data():
+    return safe_json_response("api/current/data.json")
+
+@app.get("/api/current/code.json")
+async def code():
+    return safe_json_response("api/current/code.json")
 
 # Static files
 @app.get("/style.css")
