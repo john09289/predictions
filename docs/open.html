@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Open Problems — Dome Cosmological Model</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="model.html">Model</a>
+  <a href="coordinates.html">Coordinates</a>
+  <a href="wins.html">Confirmed Wins</a>
+  <a href="predictions.html">Predictions</a>
+  <a href="open.html">Open Problems</a>
+  <a href="context.html">AI Context</a>
+</nav>
+
+<h1>Open Problems</h1>
+<p class="subtitle">Active research questions. Not falsifications &mdash; open problems are how models improve.</p>
+
+<div class="open-problem">
+<h3>OPEN-001 &mdash; No Fully Validated Dome Coordinate System Yet</h3>
+<p>All distance tests to date use coordinates derived from WGS84 globe data. This is circular. V9 begins fixing this using Polaris elevation and solar noon UTC as raw observational inputs. V10 will complete it.</p>
+<p><strong>Fix in progress:</strong> Build complete coordinate table from sunrise/sunset times and Polaris elevations only &mdash; zero globe-derived inputs.</p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-002 &mdash; Three Firmament Height Values Need Reconciliation</h3>
+<p>Three independent methods give different values for H:</p>
+<ul>
+  <li><strong>4,750 km</strong> &mdash; Direct physical measurement, Chapel Hill NC. Most trusted.</li>
+  <li><strong>9,086 km</strong> &mdash; Original model parameterization.</li>
+  <li><strong>9,572 km</strong> &mdash; WIN-029 Schumann derivation. 5.3% from model H.</li>
+</ul>
+<p><strong>Hypothesis:</strong> North pole mountain topography correction h(r) in V10 will reconcile these values.</p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-003 &mdash; Ellipse Parameters Not Yet Locked</h3>
+<p>b/a ratio ranges 0.70&ndash;0.90 across V5&ndash;V9. Root cause: OPEN-001 WGS84 contamination. Once dome-native coordinates are available, re-running the ellipse optimization is expected to lock the parameters.</p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-004 &mdash; Polaris Invisible From Southern Hemisphere</h3>
+<p>The dome model predicts Polaris should be invisible from latitudes south of approximately 10&ndash;15&deg;S due to aetheric refraction. Exact cutoff latitude formula not yet derived. Formal derivation pending.</p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-005 &mdash; Oslo-Stockholm Polar Singularity</h3>
+<p>Both cities ~2,800 km from pole with only 0.6&deg; angular separation. Flat-disc formula predicts ~64 km; actual is 520 km. North pole mountain topography correction h(r) in V10 is the fix.</p>
+</div>
+
+<h2>V10 Task List</h2>
+<ol>
+  <li>Derive north pole mountain topography function h(r) = H_mtn &times; exp(&minus;r/decay).</li>
+  <li>Re-run ellipse optimization after topographic correction. Lock a, b, orientation permanently.</li>
+  <li>Fix PRED-009/011 density propagation &mdash; wavelength-dependent coupling formula.</li>
+  <li>Fix PRED-010 northern latitude twilight geometry formula.</li>
+  <li>Re-register PRED-009/010/011 with corrected formulas and new timestamps.</li>
+  <li>Formalize sigma Octantis dimness asymmetry as WIN-033 candidate.</li>
+  <li>Formalize moon cooling as independent light source WIN candidate.</li>
+  <li>Derive Polaris visibility cutoff latitude from aetheric refraction (OPEN-004).</li>
+</ol>
+
+</body>
+</html>

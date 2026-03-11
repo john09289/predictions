@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Coordinates — Dome Cosmological Model</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="model.html">Model</a>
+  <a href="coordinates.html">Coordinates</a>
+  <a href="wins.html">Confirmed Wins</a>
+  <a href="predictions.html">Predictions</a>
+  <a href="open.html">Open Problems</a>
+  <a href="context.html">AI Context</a>
+</nav>
+
+<h1>Coordinate System</h1>
+<p class="subtitle">Version 9 (V9) &mdash; V10 in progress (north pole mountain topography)</p>
+
+<h2>The Core Problem With All Prior Coordinates</h2>
+<p>All prior distance tests including versions V1 through V8 used WGS84 globe-derived coordinates projected onto an azimuthal equidistant map. This is circular: you cannot test whether the dome model correctly predicts distances if the coordinates used to place cities on the disc were derived assuming a globe. V9 begins fixing this. V10 will complete it.</p>
+<p>The solution: derive all coordinates from direct astronomical observation only &mdash; no GPS, no globe-derived data. Polaris elevation gives radial distance from north pole. Solar noon UTC gives angular position. Both are raw observable quantities requiring no globe assumption.</p>
+
+<h2>Northern Hemisphere Method</h2>
+<pre>Input:  Polaris elevation angle (degrees) + solar noon UTC time
+Output: r (radial distance from north pole in km), &theta; (angular position in degrees)
+
+r = H / tan(polaris_elevation_deg)     where H = 4,750 km (physically derived)
+&theta; = (solar_noon_utc &minus; 12.0) &times; 15&deg;
+x = r &times; cos(&theta;)
+y = r &times; sin(&theta;)</pre>
+
+<h2>Southern Hemisphere Method</h2>
+<pre>Input:  Solar noon altitude at June solstice + solar noon UTC time
+Output: r, &theta;
+
+lat_S = 90 &minus; noon_altitude_june + 23.44     (June solstice dec = &minus;23.44&deg;)
+r     = H / tan(lat_S)
+&theta;     = (solar_noon_utc &minus; 12.0) &times; 15&deg;</pre>
+
+<h2>Distance Formula (V9 &mdash; Law of Cosines)</h2>
+<pre>d = sqrt(r1&sup2; + r2&sup2; &minus; 2 &times; r1 &times; r2 &times; cos(&Delta;&theta;))
+
+This is the correct formula for polar disc geometry.
+The arc formula d = r_avg &times; &Delta;&theta; was used in V1&ndash;V8 and is only valid for very small &Delta;&theta;.
+It was replaced at V9.</pre>
+
+<h2>Ellipse Correction</h2>
+<pre>Scale factor at azimuth &theta;:
+r_ellipse(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta; &minus; orient))&sup2; + (a &times; sin(&theta; &minus; orient))&sup2;)
+
+orient &asymp; 60&deg; from Greenwich NE (being locked in V10)
+a &asymp; 20,015 km, b &asymp; 15,000 km (being locked in V10)</pre>
+
+<h2>Known Issues Being Fixed in V10</h2>
+<table>
+  <tr><th>Issue</th><th>Description</th><th>Cause</th><th>Fix</th></tr>
+  <tr><td>Oslo-Stockholm singularity</td><td>Model predicts 64 km, actual 520 km</td><td>Both cities ~2,800 km from pole, only 0.6&deg; angular separation. Flat disc formula breaks near pole where disc surface actually rises.</td><td>North pole mountain topography h(r)</td></tr>
+  <tr><td>Southern distance over-prediction</td><td>Distances grow with southern latitude</td><td>WIN-027 quadratic law. Root cause: WGS84 coordinate contamination.</td><td>Dome-native coordinates from sunrise/sunset times</td></tr>
+  <tr><td>EW error grows with distance</td><td>Short pairs nearly perfect, long pairs 25&ndash;78% error</td><td>Non-linear geometry + ellipse parameters not yet locked</td><td>Lock ellipse in V10 after topographic correction</td></tr>
+</table>
+
+<h2>Northern Hemisphere City Coordinates (H = 4,750 km)</h2>
+<table>
+  <tr><th>City</th><th>Polaris &deg;</th><th>Solar Noon UTC</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><td>North Pole</td><td>89.99</td><td>0.00</td><td>1</td><td>&minus;180.0</td><td>&minus;1</td><td>0</td></tr>
+  <tr><td>Reykjavik</td><td>64.10</td><td>13.93</td><td>2,306</td><td>+28.9</td><td>2,018</td><td>1,116</td></tr>
+  <tr><td>Anchorage AK</td><td>61.20</td><td>22.80</td><td>2,611</td><td>+162.0</td><td>&minus;2,484</td><td>807</td></tr>
+  <tr><td>Oslo</td><td>59.90</td><td>12.23</td><td>2,753</td><td>+3.5</td><td>2,748</td><td>166</td></tr>
+  <tr><td>Stockholm</td><td>59.33</td><td>12.07</td><td>2,817</td><td>+1.1</td><td>2,817</td><td>54</td></tr>
+  <tr><td>Moscow</td><td>55.75</td><td>9.57</td><td>3,234</td><td>&minus;36.4</td><td>2,601</td><td>&minus;1,921</td></tr>
+  <tr><td>London</td><td>51.50</td><td>12.00</td><td>3,778</td><td>+0.0</td><td>3,778</td><td>0</td></tr>
+  <tr><td>Warsaw</td><td>52.20</td><td>10.60</td><td>3,684</td><td>&minus;21.0</td><td>3,440</td><td>&minus;1,320</td></tr>
+  <tr><td>Berlin</td><td>52.50</td><td>11.07</td><td>3,645</td><td>&minus;13.9</td><td>3,537</td><td>&minus;879</td></tr>
+  <tr><td>Paris</td><td>48.90</td><td>11.85</td><td>4,144</td><td>&minus;2.3</td><td>4,140</td><td>&minus;163</td></tr>
+  <tr><td>Chicago</td><td>41.88</td><td>17.80</td><td>5,298</td><td>+87.0</td><td>277</td><td>5,290</td></tr>
+  <tr><td>Istanbul</td><td>41.01</td><td>9.47</td><td>5,462</td><td>&minus;37.9</td><td>4,307</td><td>&minus;3,359</td></tr>
+  <tr><td>Madrid</td><td>40.42</td><td>12.47</td><td>5,577</td><td>+7.1</td><td>5,535</td><td>685</td></tr>
+  <tr><td>New York</td><td>40.71</td><td>16.87</td><td>5,520</td><td>+73.1</td><td>1,609</td><td>5,281</td></tr>
+  <tr><td>Denver</td><td>39.73</td><td>19.13</td><td>5,715</td><td>+106.9</td><td>&minus;1,666</td><td>5,467</td></tr>
+  <tr><td>Chapel Hill NC</td><td>36.18</td><td>17.25</td><td>6,495</td><td>+78.8</td><td>1,267</td><td>6,370</td></tr>
+  <tr><td>Tokyo</td><td>35.70</td><td>2.73</td><td>6,610</td><td>&minus;139.0</td><td>&minus;4,993</td><td>&minus;4,332</td></tr>
+  <tr><td>Los Angeles</td><td>34.05</td><td>19.87</td><td>7,029</td><td>+118.1</td><td>&minus;3,305</td><td>6,203</td></tr>
+  <tr><td>Cairo</td><td>30.10</td><td>9.87</td><td>8,194</td><td>&minus;32.0</td><td>6,953</td><td>&minus;4,336</td></tr>
+  <tr><td>Baghdad</td><td>33.30</td><td>8.47</td><td>7,231</td><td>&minus;52.9</td><td>4,357</td><td>&minus;5,771</td></tr>
+  <tr><td>Miami</td><td>25.80</td><td>17.27</td><td>9,826</td><td>+79.0</td><td>1,866</td><td>9,647</td></tr>
+  <tr><td>Mexico City</td><td>19.43</td><td>18.60</td><td>13,466</td><td>+99.0</td><td>&minus;2,107</td><td>13,300</td></tr>
+  <tr><td>Mumbai</td><td>19.08</td><td>6.20</td><td>13,733</td><td>&minus;87.0</td><td>719</td><td>&minus;13,714</td></tr>
+  <tr><td>Hong Kong</td><td>22.32</td><td>3.80</td><td>11,570</td><td>&minus;123.0</td><td>&minus;6,302</td><td>&minus;9,704</td></tr>
+</table>
+
+<h2>Southern Hemisphere City Coordinates</h2>
+<table>
+  <tr><th>City</th><th>Noon Alt (June)</th><th>Solar Noon UTC</th><th>lat_S &deg;</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><td>Sydney</td><td>33.0&deg;</td><td>14.17</td><td>33.6&deg;S</td><td>7,160</td><td>+32.5</td><td>6,035</td><td>3,852</td></tr>
+  <tr><td>Cape Town</td><td>33.6&deg;</td><td>10.00</td><td>33.0&deg;S</td><td>7,326</td><td>&minus;30.0</td><td>6,344</td><td>&minus;3,663</td></tr>
+  <tr><td>Buenos Aires</td><td>33.5&deg;</td><td>15.87</td><td>33.1&deg;S</td><td>7,298</td><td>+58.0</td><td>3,862</td><td>6,192</td></tr>
+  <tr><td>Santiago</td><td>37.0&deg;</td><td>16.87</td><td>29.6&deg;S</td><td>8,375</td><td>+73.1</td><td>2,442</td><td>8,011</td></tr>
+  <tr><td>Melbourne</td><td>30.0&deg;</td><td>14.40</td><td>36.6&deg;S</td><td>6,405</td><td>+36.0</td><td>5,182</td><td>3,765</td></tr>
+  <tr><td>Auckland</td><td>23.5&deg;</td><td>14.27</td><td>43.1&deg;S</td><td>5,083</td><td>+34.0</td><td>4,212</td><td>2,846</td></tr>
+  <tr><td>Johannesburg</td><td>42.0&deg;</td><td>9.73</td><td>24.6&deg;S</td><td>10,394</td><td>&minus;34.0</td><td>8,612</td><td>&minus;5,820</td></tr>
+  <tr><td>Perth</td><td>38.0&deg;</td><td>12.13</td><td>28.6&deg;S</td><td>8,727</td><td>+2.0</td><td>8,722</td><td>297</td></tr>
+</table>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Model Parameters — Dome Cosmological Model</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="model.html">Model</a>
+  <a href="coordinates.html">Coordinates</a>
+  <a href="wins.html">Confirmed Wins</a>
+  <a href="predictions.html">Predictions</a>
+  <a href="open.html">Open Problems</a>
+  <a href="context.html">AI Context</a>
+</nav>
+
+<h1>Model Parameters</h1>
+<p class="subtitle">Version 50.5 &mdash; All values physically derived or observationally constrained</p>
+
+<h2>Core Architecture</h2>
+<table>
+  <tr><th>Parameter</th><th>Value</th><th>Method</th></tr>
+  <tr><td>Disc shape</td><td>Ellipse</td><td>Confirmed WIN-030 — ellipse outperforms circle across all coordinate versions V5-V9, never reversed</td></tr>
+  <tr><td>Disc semi-major axis (a)</td><td>~20,015 km</td><td>Pole-to-equatorial boundary</td></tr>
+  <tr><td>Disc semi-minor axis (b)</td><td>~15,000 km (refining)</td><td>V10 will lock</td></tr>
+  <tr><td>b/a ratio</td><td>0.70&ndash;0.90</td><td>V5&ndash;V9 optimization, converging</td></tr>
+  <tr><td>Major axis orientation</td><td>~60&deg; NE from Greenwich</td><td>Atlantic-to-Asia axis, V5&ndash;V9</td></tr>
+  <tr><td>Polaris height (H)</td><td><strong>4,750 km</strong></td><td>Physically derived. Chapel Hill NC personal measurement: Polaris elevation 36&deg;10'40.1&quot; at azimuth 359&deg;23', lat 36.178&deg;N. Zero assumptions.</td></tr>
+  <tr><td>Firmament height (model)</td><td>9,086 km</td><td>Original model parameterization</td></tr>
+  <tr><td>Firmament height (Schumann)</td><td>9,572 km</td><td>WIN-029: H = c/(4&times;7.83 Hz)</td></tr>
+  <tr><td>Sun altitude</td><td>5,733 km</td><td>Triangulation from simultaneous observations</td></tr>
+  <tr><td>Moon altitude</td><td>2,534 km</td><td>Triangulation</td></tr>
+  <tr><td>Magnetic-gravity coupling</td><td>1.67 nT/&micro;Gal</td><td>WIN-012: BOU 2017 + Mohe 1997</td></tr>
+  <tr><td>Field decay rate</td><td>&ge;28 nT/year</td><td>INTERMAGNET trend</td></tr>
+  <tr><td>SAA separation (2025)</td><td>50.57&deg;</td><td>CHAOS-7</td></tr>
+  <tr><td>North pole mountain</td><td>h(r) = H_mtn &times; e<sup>&minus;r/decay</sup></td><td>Formula being derived in V10 from Polaris over-prediction near pole</td></tr>
+</table>
+
+<h2>Three H Values — Open Problem</h2>
+<p>Three independent derivations give different firmament heights. This is an open problem being addressed in V10.</p>
+<table>
+  <tr><th>Source</th><th>H Value</th><th>Method</th><th>Trust</th></tr>
+  <tr><td>Polaris measurement</td><td>4,750 km</td><td>Direct physical measurement, Chapel Hill NC. Zero fitted parameters.</td><td>Highest — only direct measurement</td></tr>
+  <tr><td>Model</td><td>9,086 km</td><td>Original parameterization</td><td>Medium</td></tr>
+  <tr><td>Schumann resonance</td><td>9,572 km</td><td>WIN-029: c/(4&times;7.83 Hz)</td><td>High — independent derivation, 5.3% from model H</td></tr>
+</table>
+<p>Hypothesis: north pole mountain topography adds effective height near the pole, meaning the Polaris-derived value of 4,750 km underestimates true H because the disc surface is elevated beneath Polaris. V10 topographic correction h(r) is intended to resolve this.</p>
+
+<h2>Key Formulas</h2>
+
+<h3>Ellipse Polar Form (Disc Shape)</h3>
+<pre>r(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta;))&sup2; + (a &times; sin(&theta;))&sup2;)
+
+a = semi-major axis (~20,015 km)
+b = semi-minor axis (~15,000 km, refining)
+&theta; = azimuth angle from major axis orientation</pre>
+
+<h3>Schumann Resonance &rarr; Firmament Height (WIN-029)</h3>
+<pre>H = c / (4 &times; f_Schumann)
+H = 299,792 km/s / (4 &times; 7.83 Hz)
+H = 9,572 km
+
+Convergence with model H (9,086 km): 5.3% &mdash; zero fitted parameters</pre>
+
+<h3>WIN-027 Southern Distance Quadratic Law</h3>
+<pre>distance_ratio = 0.00131 &times; lat&sup2; + 0.06828 &times; lat + 1.06719
+R&sup2; = 0.7874
+Calibration ring at 51&deg;S
+
+The 51&deg;S calibration latitude independently matches:
+&bull; Roaring 40s boundary
+&bull; SAA southern edge
+Globe has no mechanism predicting 51&deg;S as special. Dome predicts it from aetheric rim pressure.</pre>
+
+<h3>Magnetic-Gravity Coupling (WIN-012)</h3>
+<pre>coupling = magnetic_anomaly / gravity_anomaly
+         = 10.9 nT / 6.5 &micro;Gal
+         = 1.67 nT/&micro;Gal
+
+Source: BOU 2017 eclipse (INTERMAGNET) + Mohe 1997 eclipse (Wang et al. 2000)
+Two independent eclipse events, same coupling constant.</pre>
+
+<h2>Schumann Reconciliation (WIN-002 + WIN-029)</h2>
+<p>These two wins use Schumann resonance at different layers and are fully compatible:</p>
+<p><strong>WIN-002:</strong> The raw theoretical Schumann formula for a sphere gives 10.59 Hz. The measured value is 7.83 Hz. The gap (26%) is explained by aetheric damping in the medium — the aetheric field damps the resonance below the vacuum prediction, just as air damps acoustic resonances below vacuum values.</p>
+<p><strong>WIN-029:</strong> Taking the measured value (7.83 Hz) as input and back-deriving the cavity height gives H = 9,572 km. This is independent of the damping question — it uses the measured resonance to derive a physical dimension, and that dimension matches the model to 5.3%.</p>
+<p>Together: the dome medium damps the resonance (WIN-002), and the damped measured frequency still back-derives the correct dome height (WIN-029). Both are confirmed.</p>
+
+<h2>Aetheric Field Decay Timeline</h2>
+<table>
+  <tr><th>Date</th><th>Event</th><th>Source</th></tr>
+  <tr><td>~950 AD</td><td>SAA first appears</td><td>WIN-023, paleomagnetic</td></tr>
+  <tr><td>~1000 AD</td><td>Satan's little season onset (full preterist timeline)</td><td>Rev 20:3, preterist framework</td></tr>
+  <tr><td>1590&ndash;1990</td><td>North pole linear drift 0.0466&deg;/year</td><td>WIN-006, NOAA</td></tr>
+  <tr><td>1990</td><td>Phase transition &mdash; exponential acceleration begins</td><td>WIN-007, WIN-022</td></tr>
+  <tr><td>2000&ndash;2025</td><td>Field decay 5%/decade (10&times; acceleration post-2000)</td><td>INTERMAGNET</td></tr>
+  <tr><td>2026</td><td>SAA separation 50.57&deg;, pole deviation &minus;18.06&deg;</td><td>WIN-004, WIN-007</td></tr>
+  <tr><td>2030</td><td>Predicted: field decay &ge;28 nT/year</td><td>PRED-012</td></tr>
+  <tr><td>2055</td><td>Predicted: SAA cells at 120&ndash;180&deg; separation</td><td>PRED-013</td></tr>
+</table>
+
+</body>
+</html>
