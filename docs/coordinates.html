@@ -2,72 +2,81 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coordinates — Dome Cosmological Model</title>
+<meta name="description" content="V9 coordinate system with full city table. Dome-native coordinates from astronomical observation.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="model.html">Model</a>
-  <a href="coordinates.html">Coordinates</a>
-  <a href="wins.html">Confirmed Wins</a>
+  <a href="wins.html">Wins <span class="nav-badge">33</span></a>
   <a href="predictions.html">Predictions</a>
-  <a href="open.html">Open Problems</a>
+  <a href="coordinates.html" class="active">Coordinates</a>
+  <a href="model.html">Model</a>
+  <a href="evolution.html">Evolution</a>
   <a href="context.html">AI Context</a>
 </nav>
 
 <h1>Coordinate System</h1>
-<p class="subtitle">Version 9 (V9) &mdash; V10 in progress (north pole mountain topography)</p>
+<p class="subtitle">V9 current &mdash; V10 in progress (north pole mountain topography)</p>
 
-<h2>The Core Problem With All Prior Coordinates</h2>
-<p>All prior distance tests including versions V1 through V8 used WGS84 globe-derived coordinates projected onto an azimuthal equidistant map. This is circular: you cannot test whether the dome model correctly predicts distances if the coordinates used to place cities on the disc were derived assuming a globe. V9 begins fixing this. V10 will complete it.</p>
-<p>The solution: derive all coordinates from direct astronomical observation only &mdash; no GPS, no globe-derived data. Polaris elevation gives radial distance from north pole. Solar noon UTC gives angular position. Both are raw observable quantities requiring no globe assumption.</p>
+<!-- ===== V9 ===== -->
+<h2>V9 Current System</h2>
 
-<h2>Northern Hemisphere Method</h2>
+<h3>Northern Hemisphere</h3>
 <pre>Input:  Polaris elevation angle (degrees) + solar noon UTC time
-Output: r (radial distance from north pole in km), &theta; (angular position in degrees)
+Output: r (radial distance from pole, km), &theta; (angular position, degrees)
 
-r = H / tan(polaris_elevation_deg)     where H = 4,750 km (physically derived)
+r = H / tan(polaris_elevation)     H = 4,750 km (physically derived)
 &theta; = (solar_noon_utc &minus; 12.0) &times; 15&deg;
 x = r &times; cos(&theta;)
 y = r &times; sin(&theta;)</pre>
 
-<h2>Southern Hemisphere Method</h2>
-<pre>Input:  Solar noon altitude at June solstice + solar noon UTC time
+<p><strong>Why H = 4,750 km:</strong> Chapel Hill NC personal measurement. Polaris elevation 36&deg;10'40.1" at azimuth 359&deg;23', latitude 36.178&deg;N. Zero assumptions, not fitted. Most trusted value in the entire model.</p>
+
+<h3>Southern Hemisphere</h3>
+<pre>Input:  Solar noon altitude at June solstice + solar noon UTC
 Output: r, &theta;
 
-lat_S = 90 &minus; noon_altitude_june + 23.44     (June solstice dec = &minus;23.44&deg;)
+lat_S = 90 &minus; noon_altitude_june + 23.44     (June dec = &minus;23.44&deg;)
 r     = H / tan(lat_S)
 &theta;     = (solar_noon_utc &minus; 12.0) &times; 15&deg;</pre>
 
-<h2>Distance Formula (V9 &mdash; Law of Cosines)</h2>
+<h3>Distance Formula (V9 &mdash; Law of Cosines)</h3>
 <pre>d = sqrt(r1&sup2; + r2&sup2; &minus; 2 &times; r1 &times; r2 &times; cos(&Delta;&theta;))
 
-This is the correct formula for polar disc geometry.
-The arc formula d = r_avg &times; &Delta;&theta; was used in V1&ndash;V8 and is only valid for very small &Delta;&theta;.
-It was replaced at V9.</pre>
+Correct for polar disc geometry.
+Arc formula d = r_avg &times; &Delta;&theta; used in V1&ndash;V8 is only valid for very small &Delta;&theta;.
+Replaced at V9.</pre>
 
+<!-- ===== ELLIPSE ===== -->
 <h2>Ellipse Correction</h2>
-<pre>Scale factor at azimuth &theta;:
-r_ellipse(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta; &minus; orient))&sup2; + (a &times; sin(&theta; &minus; orient))&sup2;)
+<pre>r_ellipse(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta; &minus; orient))&sup2; + (a &times; sin(&theta; &minus; orient))&sup2;)
 
-orient &asymp; 60&deg; from Greenwich NE (being locked in V10)
-a &asymp; 20,015 km, b &asymp; 15,000 km (being locked in V10)</pre>
+a &asymp; 20,015 km     (semi-major, pole to equatorial boundary)
+b &asymp; 15,000 km     (semi-minor, refining)
+b/a = 0.70&ndash;0.90   (V5&ndash;V9 range, converging)
+orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
 
-<h2>Known Issues Being Fixed in V10</h2>
+<p><strong>Ellipse-over-circle: LOCKED.</strong> Ellipse outperforms circle across all versions (WIN-030). Parameters: not yet locked &mdash; WGS84 contamination in source coordinates (OPEN-001). V10 will use sunrise/sunset times only.</p>
+
+<!-- ===== KNOWN ISSUES ===== -->
+<h2>Known Issues (Honest)</h2>
 <table>
-  <tr><th>Issue</th><th>Description</th><th>Cause</th><th>Fix</th></tr>
-  <tr><td>Oslo-Stockholm singularity</td><td>Model predicts 64 km, actual 520 km</td><td>Both cities ~2,800 km from pole, only 0.6&deg; angular separation. Flat disc formula breaks near pole where disc surface actually rises.</td><td>North pole mountain topography h(r)</td></tr>
-  <tr><td>Southern distance over-prediction</td><td>Distances grow with southern latitude</td><td>WIN-027 quadratic law. Root cause: WGS84 coordinate contamination.</td><td>Dome-native coordinates from sunrise/sunset times</td></tr>
-  <tr><td>EW error grows with distance</td><td>Short pairs nearly perfect, long pairs 25&ndash;78% error</td><td>Non-linear geometry + ellipse parameters not yet locked</td><td>Lock ellipse in V10 after topographic correction</td></tr>
+  <tr><th>Issue</th><th>Error</th><th>Cause</th><th>Fix</th></tr>
+  <tr><td>Oslo-Stockholm</td><td>&minus;89%</td><td>Both ~2,800 km from pole, 0.6&deg; angular separation. Flat disc formula breaks where disc rises.</td><td>North pole mountain h(r) in V10</td></tr>
+  <tr><td>Southern over-prediction</td><td>Quadratic with latitude</td><td>WIN-027 quadratic law. Root: WGS84 contamination.</td><td>Dome-native coords from sunrise/sunset</td></tr>
+  <tr><td>Cross-equator</td><td>25&ndash;78% on long pairs</td><td>Non-linear geometry + ellipse parameters unlocked</td><td>Under revision with ellipse + dome-native coords</td></tr>
 </table>
 
+<!-- ===== NORTHERN CITIES ===== -->
 <h2>Northern Hemisphere City Coordinates (H = 4,750 km)</h2>
 <table>
-  <tr><th>City</th><th>Polaris &deg;</th><th>Solar Noon UTC</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><th>City</th><th>Polaris &deg;</th><th>Noon UTC</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
   <tr><td>North Pole</td><td>89.99</td><td>0.00</td><td>1</td><td>&minus;180.0</td><td>&minus;1</td><td>0</td></tr>
   <tr><td>Reykjavik</td><td>64.10</td><td>13.93</td><td>2,306</td><td>+28.9</td><td>2,018</td><td>1,116</td></tr>
-  <tr><td>Anchorage AK</td><td>61.20</td><td>22.80</td><td>2,611</td><td>+162.0</td><td>&minus;2,484</td><td>807</td></tr>
+  <tr><td>Anchorage</td><td>61.20</td><td>22.80</td><td>2,611</td><td>+162.0</td><td>&minus;2,484</td><td>807</td></tr>
   <tr><td>Oslo</td><td>59.90</td><td>12.23</td><td>2,753</td><td>+3.5</td><td>2,748</td><td>166</td></tr>
   <tr><td>Stockholm</td><td>59.33</td><td>12.07</td><td>2,817</td><td>+1.1</td><td>2,817</td><td>54</td></tr>
   <tr><td>Moscow</td><td>55.75</td><td>9.57</td><td>3,234</td><td>&minus;36.4</td><td>2,601</td><td>&minus;1,921</td></tr>
@@ -91,9 +100,10 @@ a &asymp; 20,015 km, b &asymp; 15,000 km (being locked in V10)</pre>
   <tr><td>Hong Kong</td><td>22.32</td><td>3.80</td><td>11,570</td><td>&minus;123.0</td><td>&minus;6,302</td><td>&minus;9,704</td></tr>
 </table>
 
+<!-- ===== SOUTHERN CITIES ===== -->
 <h2>Southern Hemisphere City Coordinates</h2>
 <table>
-  <tr><th>City</th><th>Noon Alt (June)</th><th>Solar Noon UTC</th><th>lat_S &deg;</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
+  <tr><th>City</th><th>Noon Alt (June)</th><th>Noon UTC</th><th>lat_S &deg;</th><th>r (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
   <tr><td>Sydney</td><td>33.0&deg;</td><td>14.17</td><td>33.6&deg;S</td><td>7,160</td><td>+32.5</td><td>6,035</td><td>3,852</td></tr>
   <tr><td>Cape Town</td><td>33.6&deg;</td><td>10.00</td><td>33.0&deg;S</td><td>7,326</td><td>&minus;30.0</td><td>6,344</td><td>&minus;3,663</td></tr>
   <tr><td>Buenos Aires</td><td>33.5&deg;</td><td>15.87</td><td>33.1&deg;S</td><td>7,298</td><td>+58.0</td><td>3,862</td><td>6,192</td></tr>
@@ -104,5 +114,22 @@ a &asymp; 20,015 km, b &asymp; 15,000 km (being locked in V10)</pre>
   <tr><td>Perth</td><td>38.0&deg;</td><td>12.13</td><td>28.6&deg;S</td><td>8,727</td><td>+2.0</td><td>8,722</td><td>297</td></tr>
 </table>
 
+<!-- ===== V10 PLAN ===== -->
+<h2>V10 Plan</h2>
+<ol>
+  <li><strong>h(r)</strong> &mdash; North pole mountain topographic correction. Constrain from Polaris over-prediction &gt;70&deg;N.</li>
+  <li><strong>Dome-native coordinates</strong> &mdash; All positions from sunrise/sunset times. Zero WGS84 input.</li>
+  <li><strong>Lock ellipse</strong> &mdash; Re-run optimization on clean coordinates. Lock a, b, orientation permanently.</li>
+  <li><strong>Reconcile H values</strong> &mdash; 4,750 (measured), 9,086 (model), 9,572 (Schumann). Mountain correction expected to unify.</li>
+</ol>
+
+<footer>
+  <span>Version 50.5</span>
+  <span>2026-03-10</span>
+  <span style="color:var(--gold)">33 confirmed</span>
+  <span style="color:var(--red)">0 falsified</span>
+  <a href="https://github.com/Nhughes09/predictions">GitHub</a>
+  <a href="context.html">AI Context</a>
+</footer>
 </body>
 </html>
