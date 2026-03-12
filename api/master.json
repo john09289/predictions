@@ -16,7 +16,8 @@
       "timestamp_proof": "All predictions Bitcoin-anchored via OpenTimestamps before test dates",
       "honest_record": "W001 logged as BELOW_DETECTION_THRESHOLD not falsified - user accepts null results",
       "strongest_test": "2026 eclipse Aug 12 - 5 station predictions timestamped March 6 2026",
-      "caveats_on_file": "BOU 2017 disturbed-day condition flagged - see data.json WIN-010"
+      "caveats_on_file": "BOU 2017 disturbed-day condition flagged - see data.json WIN-010",
+      "optical_illusion": "The 5,733 km Sun altitude measured from crepuscular rays is an OPTICAL illusion caused by aetheric refraction. The physical Sun must travel beneath the ~4,300 km physical firmament roof. Do not incorrectly claim the 5,733 km Sun crashes into the Dome."
     }
   },
   "scorecard": {
