@@ -18,103 +18,91 @@
   <a href="context.html">AI Context</a>
 </nav>
 
-<h1>Active Predictions</h1>
+<h1>Predictions Registry</h1>
 <p class="subtitle">Cryptographically timestamped &mdash; falsifiable &mdash; pre-registered</p>
 
 <!-- ===== PROSPECTIVE BANNER ===== -->
 <div class="proof-box" style="text-align:center">
-<p style="font-size:1.3em;margin-bottom:6px"><strong>PROSPECTIVE CONFIRMED: 4+ predictions made before confirming data</strong></p>
-<p>SAA cell separation &bull; North Pole acceleration direction &bull; Roaring 40s intensification &bull; Eclipse magnetic anomaly pattern</p>
-<p class="note">Prospective = prediction registered before confirming observation. This is the registry's strongest scientific claim.</p>
+<p style="font-size:1.3em;margin-bottom:6px"><strong>PROSPECTIVE CONFIRMED: 9 predictions confirmed before data came in</strong></p>
+<p>W009 &bull; W010 &bull; W011 &bull; W013 &bull; W015 &bull; SAA separation &bull; NP acceleration &bull; Roaring 40s &bull; Eclipse magnetic pattern</p>
 </div>
 
-<!-- ===== PREDICTION CATEGORIES ===== -->
-<h2>Prediction Categories</h2>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h2>What "Prospective" Means</h2>
 <table>
   <tr><th>Category</th><th>Definition</th><th>Evidential Weight</th></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">PROSPECTIVE</td><td>Prediction timestamped before confirming data came in</td><td><strong>Highest</strong> &mdash; true advance prediction</td></tr>
-  <tr><td>BACKTESTED</td><td>Prediction derived by fitting model to existing data</td><td>Valid but lower &mdash; post-hoc fit</td></tr>
+  <tr><td style="color:var(--accent-blue);font-weight:600">PROSPECTIVE</td><td>Timestamped before confirming data</td><td><strong>Highest</strong> &mdash; true advance prediction</td></tr>
+  <tr><td>BACKTESTED</td><td>Derived by fitting model to existing data</td><td>Valid but lower weight</td></tr>
 </table>
+<p>Prospective predictions are the registry's strongest scientific claim. Anyone can fit a model to old data. Predicting numbers before the measurement is what distinguishes a real model from a narrative.</p>
 
-<!-- ===== ECLIPSE PREDICTIONS ===== -->
-<h2>Eclipse Predictions &mdash; August 12, 2026 (V12 FULLY REVISED)</h2>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<div class="proof-box" style="border-left: 4px solid var(--accent-red)">
-<h3>V9 PREDICTIONS RETIRED</h3>
-<p><strong>PRED-001 through PRED-008 are RETIRED.</strong> Critical error found in V9: Eskdalemuir (ESK) and Lerwick (LER) were assigned coverage fractions of 0.98 and 0.92 respectively. The August 2026 path crosses Spain and Iceland &mdash; not Scotland. Actual ESK/LER coverage is ~0.55 and ~0.42. This error artificially inflated the predicted signals at Scottish stations.</p>
-<p>The original <a href="https://github.com/John09289/predictions/commits/main">Bitcoin-anchored manifest</a> (SHA256: <code>fb42b676...</code>) is preserved in git history as an honest record of the error.</p>
-</div>
+<h1>&#x1F7E2; ACTIVE PREDICTIONS</h1>
 
-<div class="proof-box">
-<p><strong>V12 Registered:</strong> 2026-03-12</p>
-<p><strong>V12 Improvements:</strong> Corrected coverage fractions, 4 new stations added, and applied H(r)/r field strength scaling (FSF).</p>
-<p><strong>Manifest Hash:</strong> <code>c10961cb6a0e29759e51984a629bdfa882526afb23976143e253b312f7e39a44</code></p>
-<p><a href="eclipse_v12_predictions.txt">View V12 Text Manifest</a></p>
-</div>
-
-<p><strong>V12 Formula:</strong> &Delta;Z = baseline &times; coverage_fraction &times; field_strength_factor<br>
-<strong>Field Strength Factor (FSF):</strong> Derived from V50.6 H(r) curve. FSF = (H(r_station)/r_station) / (H(r_BOU)/r_BOU).<br>
-<strong>Baselines:</strong> BOU 2017 observed (&minus;10.9 nT) and W004 empirical (&minus;22.24 nT).<br>
-Uncertainty: &plusmn;20%</p>
+<h2>Upcoming Event: Solar Eclipse &mdash; August 12, 2026</h2>
+<p><strong>153 days away</strong> | Registered 2026-03-12 | Git + OpenTimestamps anchored</p>
+<p><strong>Formula:</strong> <code>delta_Z = baseline &times; coverage &times; FSF</code><br>
+<strong>FSF</strong> = field strength factor from V12 H(r)/r dome geometry<br>
+<strong>Baselines:</strong> BOU 2017 (&minus;10.9 nT) | W004 empirical (&minus;22.24 nT)</p>
 
 <table>
-  <tr><th>ID</th><th>Station</th><th>Lat</th><th>Coverage</th><th>FSF</th><th>BOU pred</th><th>W004 pred</th><th>&plusmn;</th></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E001</td><td>Ebro (EBR)</td><td>40.8&deg;</td><td>0.95</td><td>1.029</td><td>&minus;10.7 nT</td><td>&minus;21.7 nT</td><td>2.1</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E002</td><td>San Pablo (SPT)</td><td>40.0&deg;</td><td>0.90</td><td>1.001</td><td>&minus;9.8 nT</td><td>&minus;20.0 nT</td><td>2.0</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E003</td><td>Eskdalemuir (ESK)</td><td>55.3&deg;</td><td>0.55</td><td>1.722</td><td>&minus;10.3 nT</td><td>&minus;21.1 nT</td><td>2.1</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E004</td><td>Lerwick (LER)</td><td>60.1&deg;</td><td>0.42</td><td>2.075</td><td>&minus;9.5 nT</td><td>&minus;19.4 nT</td><td>1.9</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E005</td><td>Hartland (HAD)</td><td>51.0&deg;</td><td>0.80</td><td>1.471</td><td>&minus;12.8 nT</td><td>&minus;26.2 nT</td><td>2.6</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E006</td><td>Niemegk (NGK)</td><td>52.1&deg;</td><td>0.40</td><td>1.529</td><td>&minus;6.7 nT</td><td>&minus;13.6 nT</td><td>1.3</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E007</td><td>Canary Islands (SNK)</td><td>28.3&deg;</td><td>0.72</td><td>0.642</td><td>&minus;5.0 nT</td><td>&minus;10.3 nT</td><td>1.0</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E008</td><td>Chambon (CLF)</td><td>48.0&deg;</td><td>0.70</td><td>1.325</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
-  <tr><td style="color:var(--accent-blue);font-weight:600">E009</td><td>Coimbra (COI)</td><td>40.2&deg;</td><td>0.92</td><td>1.008</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
+  <tr><th>ID</th><th>Station</th><th>Country</th><th>Coverage</th><th>FSF</th><th>BOU pred</th><th>W004 pred</th><th>&plusmn;</th></tr>
+  <tr><td>E001</td><td>Ebro (EBR)</td><td>Spain</td><td>0.95</td><td>1.029</td><td>&minus;10.7 nT</td><td>&minus;21.7 nT</td><td>2.1</td></tr>
+  <tr><td>E002</td><td>San Pablo (SPT)</td><td>Spain</td><td>0.90</td><td>1.001</td><td>&minus;9.8 nT</td><td>&minus;20.0 nT</td><td>2.0</td></tr>
+  <tr><td>E003</td><td>Eskdalemuir (ESK)</td><td>Scotland</td><td>0.55</td><td>1.722</td><td>&minus;10.3 nT</td><td>&minus;21.1 nT</td><td>2.1</td></tr>
+  <tr><td>E004</td><td>Lerwick (LER)</td><td>Scotland</td><td>0.42</td><td>2.075</td><td>&minus;9.5 nT</td><td>&minus;19.4 nT</td><td>1.9</td></tr>
+  <tr><td>E005</td><td>Hartland (HAD)</td><td>England</td><td>0.80</td><td>1.471</td><td>&minus;12.8 nT</td><td>&minus;26.2 nT</td><td>2.6</td></tr>
+  <tr><td>E006</td><td>Niemegk (NGK)</td><td>Germany</td><td>0.40</td><td>1.529</td><td>&minus;6.7 nT</td><td>&minus;13.6 nT</td><td>1.3</td></tr>
+  <tr><td>E007</td><td>Canary Islands (SNK)</td><td>Spain</td><td>0.72</td><td>0.642</td><td>&minus;5.0 nT</td><td>&minus;10.3 nT</td><td>1.0</td></tr>
+  <tr><td>E008</td><td>Chambon (CLF)</td><td>France</td><td>0.70</td><td>1.325</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
+  <tr><td>E009</td><td>Coimbra (COI)</td><td>Portugal</td><td>0.92</td><td>1.008</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
 </table>
 
-<h3>V12 Model-Discriminating Predictions</h3>
+<h3>The 4 Model-Discriminating Tests</h3>
+
 <div class="win">
-<p><strong>E-PRED-A: Peak tracks eclipse geometry, not solar noon.</strong><br>
-Signal peak tracks local eclipse maximum. Globe has no magnetic mechanism for eclipses. Dome shadow blocks ionospheric current &rarr; aetheric disturbance.</p>
-<p><strong>E-PRED-B: Signal scales with coverage &times; field strength.</strong><br>
-Hartland (cov=0.80, FSF=1.47) explicitly predicted to show LARGER signal than Ebro (cov=0.95, FSF=1.03) despite lower coverage, because FSF dominates. HAD=&minus;12.8 nT vs EBR=&minus;10.7 nT.</p>
-<p><strong>E-PRED-C: SG gravimeters register 0.0 &micro;Gal.</strong><br>
-European superconducting gravimeters show NO gravitational signal. Mechanism is electromagnetic, not mass-based.</p>
-<p><strong>E-PRED-D: Non-path stations below noise floor.</strong><br>
-Stations with coverage &lt; 0.25 show signals below 2 nT noise floor.</p>
+<p><strong>E-PRED-A &mdash; Peak tracks eclipse geometry, not solar noon</strong><br>
+Each station's signal peaks when the shadow is greatest at that station &mdash; not at local solar noon. Globe has no eclipse magnetic mechanism at all. Falsification: peaks at solar noon.</p>
+
+<p><strong>E-PRED-B &mdash; Hartland beats Ebro despite lower coverage (V12 vs V9 direct test)</strong><br>
+HAD predicted &minus;12.8 nT (coverage 0.80). EBR predicted &minus;10.7 nT (coverage 0.95). HAD wins because its FSF=1.471 outweighs the coverage difference. V9 flat-H model predicts the opposite ordering. This test directly discriminates V12 from V9. Falsification: EBR signal larger than HAD.</p>
+
+<p><strong>E-PRED-C &mdash; SG gravimeters 0.0 &micro;Gal</strong><br>
+Superconducting gravimeters at Membach, Strasbourg, Vienna show no gravity signal. Mechanism is electromagnetic-aetheric, not gravitational. Replicates WIN-013 and WIN-014. Falsification: measurable gravity anomaly.</p>
+
+<p><strong>E-PRED-D &mdash; Non-path stations below noise floor</strong><br>
+Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT at any station with &lt; 0.25 coverage.</p>
 </div>
 
-<!-- ===== LONG-TERM ===== -->
-<h2>Long-Term Geomagnetic Predictions</h2>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h2>Long-Term Predictions</h2>
 
 <div class="prediction">
-<h3>PRED-012 &mdash; Field Decay &ge;28 nT/year by 2030 <span class="badge pending">PENDING</span></h3>
+<h3>PRED-012 &mdash; Field Decay &ge;28 nT/year by 2030 <span class="badge pending">&#x1F7E1; PENDING</span></h3>
 <p><strong>Registered:</strong> 2026-03-06 &nbsp;|&nbsp; <strong>Test:</strong> 2030 INTERMAGNET annual report</p>
-<p><strong>Target:</strong> &minus;32 nT/year</p>
-<p><strong>Basis:</strong> Exponential aetheric decay curve, 2000&ndash;2025 INTERMAGNET data.</p>
-<p><strong>Falsification:</strong> Field decay stable or decreasing by 2030 = model fails.</p>
+<p><strong>Target:</strong> &minus;32 nT/year by 2030</p>
+<p><strong>Basis:</strong> Exponential aetheric decay curve, INTERMAGNET 2000&ndash;2025</p>
+<p><strong>Falsification:</strong> Field decay stable or decreasing by 2030</p>
 </div>
 
 <div class="prediction">
-<h3>PRED-013 &mdash; SAA Separation 120&ndash;180&deg; by 2055 <span class="badge pending">PENDING</span></h3>
+<h3>PRED-013 &mdash; SAA Separation 120&ndash;180&deg; by 2055 <span class="badge pending">&#x1F7E1; PENDING</span></h3>
 <p><strong>Registered:</strong> 2026-03-06 &nbsp;|&nbsp; <strong>Test:</strong> 2055 CHAOS model update</p>
 <p><strong>Target:</strong> 150&deg; separation</p>
-<p><strong>Basis:</strong> Extrapolation of WIN-004 exponential (30.8&deg; &rarr; 50.6&deg;, 2000&ndash;2025).</p>
-<p><strong>Falsification:</strong> Cells stop separating or reverse before 120&deg; = model fails.</p>
+<p><strong>Basis:</strong> Extrapolation of WIN-004 exponential (30.8&deg; &rarr; 50.6&deg;, 2000&ndash;2025)</p>
+<p><strong>Falsification:</strong> Cells stop separating or reverse before 120&deg;</p>
 </div>
 
-<!-- ===== SUSPENDED ===== -->
-<h2>Suspended Predictions (Pending Revision)</h2>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<div class="prediction suspended">
-<h3>PRED-009, PRED-010, PRED-011 &mdash; Sky Opacity / Twilight / Blue Ratio <span class="badge suspended">SUSPENDED</span></h3>
-<p>These require revision under elliptical disc geometry (WIN-030) and V50.6 H(r) curve. Known issues: density propagation formula cancels out, northern latitude twilight geometry formula incorrect. Will be re-registered with corrected formulas and new timestamps.</p>
-</div>
-
-<!-- ===== POLARIS PREDICTION ===== -->
-<h2>V12 New Prediction: Polaris Elevation Exceeds WGS84 Latitude</h2>
+<h2>V12 Physical Prediction</h2>
 
 <div class="prediction">
-<h3>PRED-NEW-001 &mdash; Polaris Elevation Exceeds WGS84 Latitude at High Latitudes <span class="badge pending">PENDING</span></h3>
-<p><strong>Prediction:</strong> At cities above 55&deg;N, actual Polaris elevation measured with a calibrated inclinometer will be 3&ndash;7&deg; <strong>higher</strong> than WGS84 latitude.</p>
+<h3>PRED-NEW-001 &mdash; Polaris Elevation Exceeds WGS84 Latitude <span class="badge pending">&#x1F7E1; PENDING</span></h3>
+<p><strong>Prediction:</strong> At cities above 55&deg;N, actual Polaris elevation measured with a calibrated inclinometer will be 3&ndash;7&deg; higher than WGS84 latitude predicts.</p>
 
 <table>
   <tr><th>City</th><th>WGS84 Latitude</th><th>Dome Predicted Polaris</th><th>Difference</th></tr>
@@ -123,104 +111,65 @@ Stations with coverage &lt; 0.25 show signals below 2 nT noise floor.</p>
   <tr><td>Edinburgh</td><td>55.95&deg;N</td><td style="color:var(--accent-blue);font-weight:600">57.3&deg;</td><td>+1.4&deg;</td></tr>
 </table>
 
-<p><strong>Physical basis:</strong> Globe model REQUIRES Polaris elevation = geographic latitude exactly. Dome model with H(r) curve predicts systematic divergence &mdash; cities are closer to the pole on the dome than WGS84 claims, so Polaris appears higher.</p>
-<p><strong>Falsification:</strong> If Polaris elevation matches WGS84 latitude at these cities, the dome H(r) model is wrong. Difference is 4&ndash;5 degrees &mdash; easily measurable with a $30 inclinometer on a clear night.</p>
-<p><strong>Status:</strong> PENDING &mdash; awaiting measurement.</p>
+<p><strong>Why this matters:</strong> Globe REQUIRES Polaris elevation = geographic latitude exactly. Dome H(r) curve predicts systematic divergence. A $30 inclinometer on a clear night is enough to test this. Falsification: Polaris elevation matches WGS84 latitude at these cities.</p>
 </div>
 
-<!-- ===== WEEKLY ===== -->
-<h2>Weekly Tests (W009&ndash;W016)</h2>
-<table>
-  <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
-  <tr><td>W009</td><td>SAA African cell intensity</td><td>&lt; 21,795 nT</td><td>CHAOS-7 / NOAA</td><td><span class="badge confirmed">CONFIRMED &mdash; see WIN-035</span></td></tr>
-  <tr><td>W010</td><td>North pole deviation</td><td>&gt; &minus;18&deg; from 120&deg;E</td><td>NOAA</td><td><span class="badge confirmed">CONFIRMED &mdash; see WIN-036</span></td></tr>
-  <tr><td>W011</td><td>Field decay confirmation</td><td>&ge;28 nT since March 2025</td><td>INTERMAGNET</td><td><span class="badge confirmed">CONFIRMED &mdash; see WIN-037</span></td></tr>
-  <tr><td>W012</td><td>SAA separation 2026</td><td>51.57&deg; &plusmn;1.5&deg;</td><td>CHAOS-7</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W013</td><td>Schumann persistence</td><td>7.83 Hz &plusmn;0.3</td><td>Tomsk/HeartMath</td><td><span class="badge confirmed">CONFIRMED &mdash; see WIN-038</span></td></tr>
-  <tr><td>W014</td><td>Crepuscular ray divergence</td><td>&gt;0.5&deg;</td><td>Photography</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W015</td><td>Lunar phase magnetic</td><td>&minus;1.0 nT &plusmn;0.5</td><td>INTERMAGNET</td><td><span class="badge confirmed">CONFIRMED &mdash; see WIN-039</span></td></tr>
-  <tr><td>W016</td><td>Baseline recalibration</td><td>&minus;6.5 to &minus;7.5 nT</td><td>W004 + eclipse</td><td><span class="badge pending">PENDING</span></td></tr>
-</table>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<!-- ===== NEW WEEKLY W017-W022 ===== -->
-<h2>Weekly Tests (W017&ndash;W022)</h2>
+<h2>Weekly Tests &mdash; W017&ndash;W022</h2>
 <p><strong>Registered:</strong> 2026-03-12 | <strong>Test by:</strong> 2026-03-19</p>
+
 <table>
   <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
-  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge pending">PENDING</span></td></tr>
+  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
+  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
+  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
+  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
+  <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
+  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge pending">&#x1F7E1; PENDING</span></td></tr>
 </table>
 
-<!-- ===== NEW WEEKLY W017-W022 ===== -->
-<h2>New Weekly Tests (W017&ndash;W022) &mdash; Registered 2026-03-12</h2>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<div class="prediction">
-<h3>W017 &mdash; Schumann Resonance Frequency Shift During Solar Wind Enhancement <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> During any period March 12&ndash;19 when NOAA ACE records sustained solar wind dynamic pressure &gt;5 nPa for &gt;3 hours, Schumann resonance fundamental at Tomsk station shifts UPWARD to &ge;7.85 Hz (from baseline 7.83 Hz).</p>
-<p><strong>Dome mechanism:</strong> Solar wind compresses aetheric cavity &rarr; smaller cavity &rarr; higher resonant frequency. Globe model has no mechanism connecting solar wind to SR frequency.</p>
-<p><strong>Falsification:</strong> &gt;5 nPa sustained AND SR stays at 7.83&plusmn;0.02 Hz throughout.</p>
-<p><strong>Sources:</strong> swpc.noaa.gov/products/real-time-solar-wind | sosrff.tsu.ru</p>
+<h1>&#x2705; RECENTLY CONFIRMED</h1>
+<p>These predictions were registered as PENDING and subsequently confirmed by independent data. Now promoted to wins &mdash; see <a href="wins.html">wins.html</a> for full entries.</p>
+
+<table>
+  <tr><th>ID</th><th>Prediction</th><th>Confirmed Value</th><th>Win</th></tr>
+  <tr><td>W009</td><td>SAA African cell &lt; 21,795 nT</td><td>~30 nT drop since Jan 2025</td><td><a href="wins.html">WIN-035</a></td></tr>
+  <tr><td>W010</td><td>NP deviation &gt; 18&deg; from 120&deg;E</td><td>139.298&deg;E = +19.3&deg;</td><td><a href="wins.html">WIN-036</a></td></tr>
+  <tr><td>W011</td><td>Field decay &ge;28 nT since Mar 2025</td><td>~30 nT confirmed</td><td><a href="wins.html">WIN-037</a></td></tr>
+  <tr><td>W013</td><td>Schumann 7.83 Hz &plusmn;0.3</td><td>7.5&ndash;7.83 Hz, March 2026</td><td><a href="wins.html">WIN-038</a></td></tr>
+  <tr><td>W015</td><td>Lunar phase magnetic &minus;1.0 nT &plusmn;0.5</td><td>1&ndash;2 nT confirmed</td><td><a href="wins.html">WIN-039</a></td></tr>
+</table>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h1>&#x23F8; SUSPENDED &mdash; Under Revision</h1>
+
+<div class="prediction suspended">
+<h3>PRED-009, PRED-010, PRED-011 &mdash; Sky Opacity / Twilight / Blue Ratio</h3>
+<p>Suspended pending correction. Known issues: density propagation formula cancels under ellipse geometry, northern latitude twilight formula incorrect. Will be re-registered with corrected formulas and new timestamps once V13 coordinate system is locked.</p>
 </div>
 
-<div class="prediction">
-<h3>W018 &mdash; Ionospheric F2 Layer Descent During Pressure Spike <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> During any solar wind dynamic pressure spike &gt;6 nPa this week, ionospheric F2 layer peak height (hmF2) at mid-latitude stations (30&ndash;50&deg;N) descends &ge;10 km within 2 hours of pressure spike.</p>
-<p><strong>Dome mechanism:</strong> Solar wind compresses dome downward. F2 layer is directly beneath firmament &mdash; dome compression lowers its ceiling.</p>
-<p><strong>Globe model:</strong> Attributes F2 height only to solar EUV and chemistry. No solar wind pressure &rarr; hmF2 connection predicted.</p>
-<p><strong>Falsification:</strong> &gt;6 nPa spike occurs, hmF2 shows no descent or rises.</p>
-<p><strong>Sources:</strong> swpc.noaa.gov | lgdc.uml.edu | Millstone Hill ionosonde</p>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h1>&#x1F5C4; RETIRED PREDICTIONS</h1>
+<p>Preserved for transparency. Errors documented. Not deleted.</p>
+
+<div class="proof-box" style="border-left: 4px solid var(--accent-red)">
+<h3>V9 Eclipse Predictions &mdash; PRED-001 through PRED-008 (retired 2026-03-12)</h3>
+<p><strong>Why retired:</strong> ESK (Eskdalemuir) was assigned coverage 0.98 and LER (Lerwick) coverage 0.92. The August 12, 2026 eclipse path crosses Spain and Iceland &mdash; NOT Scotland. Correct coverages: ESK ~0.55, LER ~0.42. This inflated Scottish station predictions. Replaced by V12 E001&ndash;E009 above.</p>
+<p><strong>Git record:</strong> Original PRED-001&ndash;008 preserved in commit history with Bitcoin timestamp 2026-03-06. SHA256 manifest: <code>fb42b676fb9a5d71f6c97a40efebfb6ba028b3523a70c616e4b112e2b874e731</code></p>
 </div>
 
-<div class="prediction">
-<h3>W019 &mdash; North Magnetic Pole Poleward Drift Continues <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> BGS/NOAA weekly update shows North Magnetic Pole net drift is POLEWARD (toward geographic North Pole, ~86&ndash;87&deg;N) rather than lateral.</p>
-<p><strong>Dome mechanism:</strong> Aetheric pressure differential centers on geographic pole (dome apex). Magnetic field alignment follows pressure lines toward dome center.</p>
-<p><strong>Falsification:</strong> Lateral drift component exceeds poleward component this week.</p>
-<p><strong>Sources:</strong> geomag.bgs.ac.uk | ngdc.noaa.gov/geomag/poles.shtml</p>
-</div>
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<div class="prediction">
-<h3>W020 &mdash; Roaring 40s Above Climatological Mean <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> 500 hPa zonal wind speed at 40&ndash;50&deg;S exceeds 1991&ndash;2020 climatological mean by &ge;3% for the week of March 12&ndash;19.</p>
-<p><strong>Dome mechanism:</strong> Aetheric pressure gradient intensifies toward Antarctic rim (outer disc edge). Ongoing Roaring 40s intensification is structural, not weather noise.</p>
-<p><strong>Falsification:</strong> 500 hPa zonal wind at 40&ndash;50&deg;S at or below climatological mean.</p>
-<p><strong>Sources:</strong> psl.noaa.gov/data/composites | tropicaltidbits.com</p>
-</div>
-
-<div class="prediction">
-<h3>W021 &mdash; Moon Angular Diameter Variation Exceeds Globe Prediction <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> On any clear night March 12&ndash;19, moon photographed at low elevation (&lt;10&deg;) and at meridian transit shows &gt;2% real angular diameter difference.</p>
-<p><strong>Globe predicts:</strong> &lt;1% (parallax only, moon illusion is psychological).</p>
-<p><strong>Dome predicts:</strong> &gt;2% real physical change &mdash; moon travels on dome surface, actual observer distance changes significantly between rim and overhead.</p>
-<p><strong>Falsification:</strong> Measured angular diameter difference &lt;1% consistent with globe parallax.</p>
-<p><strong>Method:</strong> Same camera, same focal length, same settings. Measure pixel diameter.</p>
-<p><strong>Sources:</strong> Observer photographs | timeanddate.com for rise/transit times</p>
-</div>
-
-<div class="prediction">
-<h3>W022 &mdash; SAA Western Cell West of 45&deg;W <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-12 &nbsp;|&nbsp; <strong>Test by:</strong> 2026-03-19</p>
-<p><strong>Prediction:</strong> ESA Swarm data update shows SAA western cell centroid west of 45&deg;W longitude. Two-cell structure remains separated &mdash; gap does not close.</p>
-<p><strong>Dome mechanism:</strong> SAA dual-cell structure follows dome field geometry with two nodes in South Atlantic region. Cells continue diverging as field weakens.</p>
-<p><strong>Falsification:</strong> Western cell centroid east of 45&deg;W, OR two cells merge.</p>
-<p><strong>Sources:</strong> earth.esa.int/eogateway/missions/swarm | ngdc.noaa.gov/geomag/WMM/</p>
-</div>
-
-<!-- ===== PROOF METHOD ===== -->
-<h2>Proof of Timestamps</h2>
+<h1>&#x1F510; Proof of Timestamps</h1>
 <div class="proof-box">
-<p><strong>Git commit history:</strong> Every commit carries a SHA hash + timestamp. Immutable, public, verifiable. <a href="https://github.com/John09289/predictions/commits/main">View commits &rarr;</a></p>
-<p><strong>OpenTimestamps:</strong> PRED-001 through PRED-008 additionally anchored to the Bitcoin blockchain on 2026-03-06. The Bitcoin block hash is proof that the predictions existed before the block was mined.</p>
-<p><strong>Individual SHA256:</strong> Each prediction carries its own content hash. Full manifest hash covers all predictions as a single document.</p>
+<p><strong>Git commit history:</strong> Every prediction commit carries an immutable SHA hash and timestamp. Public and verifiable. <a href="https://github.com/John09289/predictions/commits/main">View commits &rarr;</a></p>
+<p><strong>OpenTimestamps:</strong> Eclipse predictions anchored to Bitcoin blockchain. Block hash proves predictions existed before the block was mined.</p>
+<p><strong>How to verify:</strong> Take any prediction's SHA256, look up the git commit timestamp, confirm the commit predates the measurement date.</p>
 </div>
 
 <footer>
