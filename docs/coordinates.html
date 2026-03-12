@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coordinates — Dome Cosmological Model V12</title>
+<title>Coordinates — Dome Cosmological Model V50.6</title>
 <meta name="description" content="V12 coordinate system with H(r) exponential curve. Full city table. Mean error 5.2%.">
 <link rel="stylesheet" href="style.css">
 </head>
@@ -21,11 +21,11 @@
 <h1>Coordinate System</h1>
 <p class="subtitle">V12 current &mdash; H(r) exponential curve &mdash; mean error 5.2%, median 4.4%</p>
 
-<!-- ===== V12 ===== -->
+<!-- ===== V50.6 ===== -->
 <h2>V12 Coordinate System (Current)</h2>
 
 <div class="proof-box">
-<p><strong>Key V12 discovery:</strong> H is not constant. The firmament curves downward from pole toward rim.</p>
+<p><strong>Key V50.6 discovery:</strong> H is not constant. The firmament curves downward from pole toward rim.</p>
 <pre>H(r) = 8537 &times; exp(&minus;r / 8619) km
 
 r(city) = solve numerically:  r &times; tan(polaris_elevation) = H(r)
@@ -36,7 +36,7 @@ where    &Delta;&theta; = &Delta;lon &times; 0.9941</pre>
 </div>
 
 <h3>V9 Reference (Superseded by V12)</h3>
-<p class="note">V9 used flat H=4,750 km and solar noon UTC as theta proxy. V12 replaced both with H(r) exponential and &Delta;lon &times; 0.9941.</p>
+<p class="note">V9 used flat H=4,750 km and solar noon UTC as theta proxy. V50.6 replaced both with H(r) exponential and &Delta;lon &times; 0.9941.</p>
 
 <h3>Southern Hemisphere</h3>
 <pre>Input:  Solar noon altitude at June solstice + solar noon UTC
@@ -118,7 +118,7 @@ orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
 </table>
 
 <!-- ===== V10 PLAN ===== -->
-<h2>What Changed V9 &rarr; V12</h2>
+<h2>What Changed V9 &rarr; V50.6</h2>
 <ol>
   <li><strong>H(r) = 8537&times;exp(&minus;r/8619)</strong> &mdash; Firmament height is not constant. Pure exponential fit.</li>
   <li><strong>&theta; = &Delta;lon &times; 0.9941</strong> &mdash; EW angular scale replaces solar noon proxy. Fixed V9 theta bug.</li>
@@ -128,7 +128,7 @@ orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
 </ol>
 
 <footer>
-  <span>Version 12</span>
+  <span>Version 50.6</span>
   <span>2026-03-12</span>
   <span style="color:var(--accent-blue);font-weight:600">34 confirmed</span>
   <span style="color:var(--accent-red)">0 falsified</span>

@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Model — Dome Cosmological Model V12</title>
-<meta name="description" content="Full model architecture, V12 parameters with H(r) exponential curve, formulas, and open problems.">
+<title>Model — Dome Cosmological Model V50.6</title>
+<meta name="description" content="Full model architecture, V50.6 parameters with H(r) exponential curve, formulas, and open problems.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -19,13 +19,13 @@
 </nav>
 
 <h1>Model Architecture &amp; Parameters</h1>
-<p class="subtitle">Version 12 &mdash; All values physically derived or observationally constrained</p>
+<p class="subtitle">Version 50.6 &mdash; All values physically derived or observationally constrained</p>
 
 <!-- ===== ARCHITECTURE ===== -->
 <h2>Architecture</h2>
 <p>Elliptical disc, north pole centre. Cast copper/bronze firmament (Job 37:18, Deut 28:23 &mdash; conductive metal ceiling creating resonant EM cavity). Aetheric medium (physical = Tesla's medium, spiritual = Eph 6:12 &mdash; same thing). Local sun and moon. Polaris fixed above pole axis. North pole mountain (WIN-031). New Jerusalem descending along pole axis (WIN-032).</p>
 
-<!-- ===== V12 KEY DISCOVERY ===== -->
+<!-- ===== V50.6 KEY DISCOVERY ===== -->
 <h2>V12 Key Discovery: H(r) Is Not Constant</h2>
 <div class="proof-box">
 <p>The firmament is <strong>not flat</strong>. It curves downward from pole toward the rim following a pure exponential:</p>
@@ -45,13 +45,15 @@
 <table>
   <tr><th>Parameter</th><th>Value</th><th>Unit</th><th>Source</th><th>Notes</th></tr>
   <tr><td>Disc shape</td><td>Ellipse</td><td>&mdash;</td><td>WIN-030</td><td>Circular retired V5</td></tr>
+  <tr><td>Polaris H (StarWalk)</td><td>4,750</td><td>km</td><td>StarWalk app</td><td style="color:var(--accent-red);font-weight:600">UNTRUSTED &mdash; app, not direct measurement</td></tr>
   <tr><td>Semi-major axis (a)</td><td>~20,015</td><td>km</td><td>Pole to equatorial boundary</td><td>&mdash;</td></tr>
   <tr><td>Semi-minor axis (b)</td><td>~15,000</td><td>km</td><td>V12 will lock</td><td>Refining</td></tr>
   <tr><td>b/a ratio</td><td>0.70&ndash;0.90</td><td>&mdash;</td><td>V5&ndash;V9 optimization</td><td>Converging</td></tr>
   <tr><td>Major axis orientation</td><td>~60&deg;</td><td>NE from Greenwich</td><td>V5&ndash;V9</td><td>Atlantic-to-Asia</td></tr>
-  <tr style="background:rgba(37,99,235,0.06)"><td><strong>H(r) &mdash; Firmament Height Curve</strong></td><td><strong>8537 &times; e<sup>&minus;r/8619</sup></strong></td><td><strong>km</strong></td><td><strong>V12 fit</strong></td><td style="color:var(--accent-blue);font-weight:600"><strong>KEY V12 RESULT</strong></td></tr>
+  <tr style="background:rgba(37,99,235,0.06)"><td><strong>H(r) &mdash; Firmament Height Curve</strong></td><td><strong>8537 &times; e<sup>&minus;r/8619</sup></strong></td><td><strong>km</strong></td><td><strong>V12 fit</strong></td><td style="color:var(--accent-blue);font-weight:600"><strong>KEY V50.6 RESULT</strong></td></tr>
   <tr><td>H at pole (r=0)</td><td>8,537</td><td>km</td><td>H(0) = 8537</td><td>Consistent with Schumann ~9,500</td></tr>
-  <tr><td>H at Chapel Hill (r&asymp;5960)</td><td>~4,300</td><td>km</td><td>H(5960)</td><td>Consistent with 4,750 measurement</td></tr>
+  <tr><td>H at Chapel Hill (r&asymp;5960)</td><td>~4,359</td><td>km</td><td>H(5960)</td><td>Consistent with StarWalk 4,750 region</td></tr>
+  <tr><td>H at equatorial rim</td><td>~2,100</td><td>km</td><td>H(~12000)</td><td>V12 model</td></tr>
   <tr><td>EW angular scale</td><td>0.9941</td><td>&mdash;</td><td>V12 calibration</td><td>&Delta;&theta; = &Delta;lon &times; 0.9941</td></tr>
   <tr><td>Sun altitude</td><td>5,733</td><td>km</td><td>Triangulation</td><td>Review pending with H(r)</td></tr>
   <tr><td>Moon altitude</td><td>2,534</td><td>km</td><td>Triangulation</td><td>Review pending with H(r)</td></tr>
@@ -63,7 +65,7 @@
 
 <h3>V12 Performance</h3>
 <table>
-  <tr><th>Metric</th><th>V9</th><th>V12</th></tr>
+  <tr><th>Metric</th><th>V9</th><th>V50.6</th></tr>
   <tr><td>Mean distance error</td><td>~40%</td><td style="color:var(--accent-blue);font-weight:600">5.2%</td></tr>
   <tr><td>Median distance error</td><td>~35%</td><td style="color:var(--accent-blue);font-weight:600">4.4%</td></tr>
   <tr><td>Worst case</td><td>89% (Oslo-Stockholm)</td><td style="color:var(--accent-blue);font-weight:600">0.0% (Oslo-Stockholm resolved)</td></tr>
@@ -91,7 +93,7 @@ where &Delta;&theta; = &Delta;lon &times; 0.9941</pre>
   = 299,792 / (4 &times; 7.83)
   = 9,572 km
 
-H(0) from V12 = 8,537 km &mdash; agreement ~10% &mdash; consistent with pole-proximal sampling</pre>
+H(0) from V50.6 = 8,537 km &mdash; agreement ~10% &mdash; consistent with pole-proximal sampling</pre>
 
 <h3>Ellipse Polar Form</h3>
 <pre>r(&theta;) = (a &times; b) / sqrt((b &times; cos(&theta;))&sup2; + (a &times; sin(&theta;))&sup2;)</pre>
@@ -158,18 +160,19 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 </div>
 
 <!-- ===== OPEN PROBLEMS ===== -->
-<h2>Open Problems (3)</h2>
+<h2>Open Problems (4)</h2>
 <p class="note">V12 resolved 2 of the original 5 open problems: OPEN-002 (H reconciliation) and OPEN-005 (Oslo-Stockholm).</p>
 
 <div class="open-problem">
-<h3>OPEN-001 &mdash; WGS84 Contamination in Source Coordinates</h3>
-<p>V12 uses lon/lat directly (not solar noon proxy), which fixed V9's theta bug. However, the underlying coordinate inputs still derive from WGS84. Full dome-native coordinates from sunrise/sunset times only remain a future goal.</p>
-<p><strong>Status:</strong> Partially mitigated in V12. Full fix requires dome-native coordinate derivation.</p>
+<h3>OPEN-001 &mdash; Dome-Native Coordinates Without WGS84</h3>
+<p>V12 uses longitude&times;0.9941 as angular proxy. This fixed V9's theta bug but still derives from WGS84 longitudes. Full dome-native coordinates require sunrise/sunset azimuth method for complete independence from WGS84.</p>
+<p><strong>Status:</strong> IN PROGRESS. V12 partially mitigated. Full fix requires dome-native coordinate derivation.</p>
 </div>
 
 <div class="open-problem">
-<h3>OPEN-003 &mdash; Ellipse Parameters Not Locked</h3>
-<p>b/a 0.70&ndash;0.90, orientation 47&ndash;72&deg; across V5&ndash;V9. Root cause: OPEN-001. Will lock after dome-native coordinates.</p>
+<h3>OPEN-003 &mdash; Ellipse Parameters Still Converging</h3>
+<p>b/a 0.70&ndash;0.90, orientation 47&ndash;72&deg; across V5&ndash;V9. EW scale 0.9941 from V12 is a clue: disc is 0.6% smaller angularly than WGS84 longitudes suggest. Root cause: OPEN-001.</p>
+<p><strong>Status:</strong> ONGOING. Will lock after dome-native coordinates.</p>
 </div>
 
 <div class="open-problem">
@@ -179,12 +182,19 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 
 <div class="param-box" style="border-left:3px solid var(--accent-blue)">
 <h3>RESOLVED: OPEN-002 &mdash; Three H Values Reconciled</h3>
-<p>H(r) = 8537 &times; exp(&minus;r/8619) unifies all three measurements. They sample the same exponential curve at different radial positions. <strong>Resolved in V12.</strong></p>
+<p>H(r) = 8537 &times; exp(&minus;r/8619) unifies all three measurements. They sample the same exponential curve at different radial positions. <strong>Resolved in V50.6.</strong></p>
 </div>
 
 <div class="param-box" style="border-left:3px solid var(--accent-blue)">
 <h3>RESOLVED: OPEN-005 &mdash; Oslo-Stockholm Error</h3>
-<p>V9 had TWO bugs: wrong &theta; (solar noon proxy instead of longitude) and flat H=4,750 assumption. These produced 74&ndash;89% error. This was a <strong>coordinate system bug</strong>, not a falsified prediction. V12 corrected model gives <strong>0.0% error</strong> on Oslo-Stockholm. <strong>Resolved in V12.</strong></p>
+<p>V9 had TWO bugs: wrong &theta; (solar noon proxy instead of longitude) and flat H=4,750 assumption. These produced 74&ndash;89% error. This was a <strong>coordinate system bug</strong>, not a falsified prediction. V50.6 corrected model gives <strong>0.0% error</strong> on Oslo-Stockholm. <strong>Resolved in V50.6.</strong></p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-006 &mdash; WGS84 Latitude Bias at High Latitudes</h3>
+<p>Back-solve from NS distances shows cities at 55&ndash;60&deg;N have implied Polaris elevations 1&ndash;6&deg; <strong>HIGHER</strong> than WGS84 latitude. Globe model REQUIRES Polaris = geographic latitude exactly. Dome model predicts systematic divergence.</p>
+<p><strong>Test:</strong> Calibrated inclinometer at Oslo (predicted: 64.4&deg;, WGS84: 59.91&deg;).</p>
+<p><strong>Status:</strong> OPEN &mdash; awaiting direct measurement.</p>
 </div>
 
 <!-- ===== FALSIFIED ===== -->
@@ -207,7 +217,7 @@ Projected 2030: &minus;32 nT/year (PRED-012)</pre>
 </table>
 
 <footer>
-  <span>Version 12</span>
+  <span>Version 50.6</span>
   <span>2026-03-12</span>
   <span style="color:var(--accent-blue);font-weight:600">34 confirmed</span>
   <span style="color:var(--accent-red)">0 falsified</span>
