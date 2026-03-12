@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coordinates — Dome Cosmological Model</title>
-<meta name="description" content="V9 coordinate system with full city table. Dome-native coordinates from astronomical observation.">
+<title>Coordinates — Dome Cosmological Model V12</title>
+<meta name="description" content="V12 coordinate system with H(r) exponential curve. Full city table. Mean error 5.2%.">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">33</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">34</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="coordinates.html" class="active">Coordinates</a>
   <a href="model.html">Model</a>
@@ -19,21 +19,24 @@
 </nav>
 
 <h1>Coordinate System</h1>
-<p class="subtitle">V9 current &mdash; V10 in progress (north pole mountain topography)</p>
+<p class="subtitle">V12 current &mdash; H(r) exponential curve &mdash; mean error 5.2%, median 4.4%</p>
 
-<!-- ===== V9 ===== -->
-<h2>V9 Current System</h2>
+<!-- ===== V12 ===== -->
+<h2>V12 Coordinate System (Current)</h2>
 
-<h3>Northern Hemisphere</h3>
-<pre>Input:  Polaris elevation angle (degrees) + solar noon UTC time
-Output: r (radial distance from pole, km), &theta; (angular position, degrees)
+<div class="proof-box">
+<p><strong>Key V12 discovery:</strong> H is not constant. The firmament curves downward from pole toward rim.</p>
+<pre>H(r) = 8537 &times; exp(&minus;r / 8619) km
 
-r = H / tan(polaris_elevation)     H = 4,750 km (physically derived)
-&theta; = (solar_noon_utc &minus; 12.0) &times; 15&deg;
-x = r &times; cos(&theta;)
-y = r &times; sin(&theta;)</pre>
+r(city) = solve numerically:  r &times; tan(polaris_elevation) = H(r)
+&theta;        = &Delta;lon &times; 0.9941   (EW angular scale)
+distance = sqrt(r1&sup2; + r2&sup2; &minus; 2 &times; r1 &times; r2 &times; cos(&Delta;&theta;))
+where    &Delta;&theta; = &Delta;lon &times; 0.9941</pre>
+<p>Performance: <strong>mean 5.2%</strong>, <strong>median 4.4%</strong> across 19 city pairs (was ~40% in V9).</p>
+</div>
 
-<p><strong>Why H = 4,750 km:</strong> Chapel Hill NC personal measurement. Polaris elevation 36&deg;10'40.1" at azimuth 359&deg;23', latitude 36.178&deg;N. Zero assumptions, not fitted. Most trusted value in the entire model.</p>
+<h3>V9 Reference (Superseded by V12)</h3>
+<p class="note">V9 used flat H=4,750 km and solar noon UTC as theta proxy. V12 replaced both with H(r) exponential and &Delta;lon &times; 0.9941.</p>
 
 <h3>Southern Hemisphere</h3>
 <pre>Input:  Solar noon altitude at June solstice + solar noon UTC
@@ -64,10 +67,10 @@ orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
 <!-- ===== KNOWN ISSUES ===== -->
 <h2>Known Issues (Honest)</h2>
 <table>
-  <tr><th>Issue</th><th>Error</th><th>Cause</th><th>Fix</th></tr>
-  <tr><td>Oslo-Stockholm</td><td>&minus;89%</td><td>Both ~2,800 km from pole, 0.6&deg; angular separation. Flat disc formula breaks where disc rises.</td><td>North pole mountain h(r) in V10</td></tr>
-  <tr><td>Southern over-prediction</td><td>Quadratic with latitude</td><td>WIN-027 quadratic law. Root: WGS84 contamination.</td><td>Dome-native coords from sunrise/sunset</td></tr>
-  <tr><td>Cross-equator</td><td>25&ndash;78% on long pairs</td><td>Non-linear geometry + ellipse parameters unlocked</td><td>Under revision with ellipse + dome-native coords</td></tr>
+  <tr><th>Issue</th><th>V9 Error</th><th>V12 Status</th><th>Fix</th></tr>
+  <tr><td>Oslo-Stockholm</td><td>&minus;89%</td><td style="color:var(--accent-blue);font-weight:600">0.0% &mdash; RESOLVED</td><td>V12 H(r) + correct &theta; from longitude</td></tr>
+  <tr><td>Southern over-prediction</td><td>Quadratic with latitude</td><td>Reduced (V12 EW scale)</td><td>Further refinement with dome-native coords</td></tr>
+  <tr><td>Cross-equator</td><td>25&ndash;78% on long pairs</td><td>Under revision</td><td>V12 H(r) + ellipse</td></tr>
 </table>
 
 <!-- ===== NORTHERN CITIES ===== -->
@@ -115,18 +118,19 @@ orient &asymp; 60&deg;       (NE from Greenwich, Atlantic-to-Asia axis)</pre>
 </table>
 
 <!-- ===== V10 PLAN ===== -->
-<h2>V10 Plan</h2>
+<h2>What Changed V9 &rarr; V12</h2>
 <ol>
-  <li><strong>h(r)</strong> &mdash; North pole mountain topographic correction. Constrain from Polaris over-prediction &gt;70&deg;N.</li>
-  <li><strong>Dome-native coordinates</strong> &mdash; All positions from sunrise/sunset times. Zero WGS84 input.</li>
-  <li><strong>Lock ellipse</strong> &mdash; Re-run optimization on clean coordinates. Lock a, b, orientation permanently.</li>
-  <li><strong>Reconcile H values</strong> &mdash; 4,750 (measured), 9,086 (model), 9,572 (Schumann). Mountain correction expected to unify.</li>
+  <li><strong>H(r) = 8537&times;exp(&minus;r/8619)</strong> &mdash; Firmament height is not constant. Pure exponential fit.</li>
+  <li><strong>&theta; = &Delta;lon &times; 0.9941</strong> &mdash; EW angular scale replaces solar noon proxy. Fixed V9 theta bug.</li>
+  <li><strong>Numerical r solve</strong> &mdash; r &times; tan(polaris) = H(r) solved iteratively. No flat-H assumption.</li>
+  <li><strong>H reconciliation</strong> &mdash; Schumann (~9,500 km), Polaris (4,750 km), model (9,086 km) all sampling same H(r) curve at different r.</li>
+  <li><strong>Oslo-Stockholm resolved</strong> &mdash; 0.0% error. V9 bug was wrong &theta; + flat H.</li>
 </ol>
 
 <footer>
-  <span>Version 50.5</span>
-  <span>2026-03-10</span>
-  <span style="color:var(--accent-blue);font-weight:600">33 confirmed</span>
+  <span>Version 12</span>
+  <span>2026-03-12</span>
+  <span style="color:var(--accent-blue);font-weight:600">34 confirmed</span>
   <span style="color:var(--accent-red)">0 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
