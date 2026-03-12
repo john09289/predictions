@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Analytics Dashboard</title>
+<style>
+    body {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        background-color: #0d1117;
+        color: #c9d1d9;
+        margin: 0;
+        padding: 40px 20px;
+        line-height: 1.6;
+    }
+    .container {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    h1 {
+        color: #58a6ff;
+        border-bottom: 1px solid #30363d;
+        padding-bottom: 15px;
+        margin-bottom: 30px;
+    }
+    .auth-box {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 30px;
+        text-align: center;
+        max-width: 400px;
+        margin: 100px auto;
+    }
+    input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        margin: 15px 0;
+        background: #0d1117;
+        border: 1px solid #30363d;
+        color: #c9d1d9;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button {
+        background: #238636;
+        color: #ffffff;
+        border: 1px solid rgba(240, 246, 252, 0.1);
+        padding: 10px 20px;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 600;
+        width: 100%;
+        transition: 0.2s;
+    }
+    button:hover {
+        background: #2ea043;
+    }
+    #dashboard-content {
+        display: none;
+    }
+    .stat-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        margin-bottom: 40px;
+    }
+    .stat-card {
+        background: #161b22;
+        border: 1px solid #30363d;
+        border-radius: 6px;
+        padding: 20px;
+        text-align: center;
+    }
+    .stat-value {
+        font-size: 32px;
+        font-weight: bold;
+        color: #58a6ff;
+    }
+    .stat-label {
+        font-size: 14px;
+        color: #8b949e;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-top: 5px;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #161b22;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+    th, td {
+        padding: 12px 15px;
+        text-align: left;
+        border-bottom: 1px solid #30363d;
+    }
+    th {
+        background-color: #21262d;
+        color: #8b949e;
+        font-weight: 600;
+        font-size: 14px;
+    }
+    tr:last-child td {
+        border-bottom: none;
+    }
+    .error {
+        color: #ff7b72;
+        margin-top: 15px;
+        display: none;
+        font-size: 14px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <!-- AUTHENTICATION VIEW -->
+    <div id="auth-view" class="auth-box">
+        <h2>Analytics Access</h2>
+        <p style="color:#8b949e; font-size:14px;">Enter your Supabase Service Role Key to view visitor data.</p>
+        <input type="password" id="secret-key" placeholder="sb_secret_..." />
+        <button onclick="authenticate()">View Dashboard</button>
+        <div id="auth-error" class="error">Invalid key or connection error.</div>
+    </div>
+
+    <!-- DASHBOARD VIEW -->
+    <div id="dashboard-content">
+        <h1>Dome Registry Analytics</h1>
+        
+        <div class="stat-grid">
+            <div class="stat-card">
+                <div class="stat-value" id="total-views">0</div>
+                <div class="stat-label">Total Views</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="today-views">0</div>
+                <div class="stat-label">Views Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value" id="unique-paths">0</div>
+                <div class="stat-label">Pages Hit</div>
+            </div>
+        </div>
+
+        <h2>Recent Visitors (Last 50)</h2>
+        <table id="visitors-table">
+            <thead>
+                <tr>
+                    <th>Time (UTC)</th>
+                    <th>Page</th>
+                    <th>Timezone</th>
+                    <th>Device Size</th>
+                    <th>Platform</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Populated via JS -->
+            </tbody>
+        </table>
+        
+        <p style="text-align:center; color:#8b949e; margin-top:50px;">
+            <a href="index.html" style="color:#58a6ff; text-decoration:none;">&larr; Back to Public Site</a>
+        </p>
+    </div>
+</div>
+
+<script>
+    const SUPABASE_URL = 'https://wxanombcqzsbecwg.supabase.co';
+    let serviceRoleKey = '';
+
+    async function authenticate() {
+        const input = document.getElementById('secret-key').value.trim();
+        const errorDiv = document.getElementById('auth-error');
+        
+        if (!input) return;
+        
+        // Test the key by trying to fetch 1 row
+        try {
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/page_views?limit=1`, {
+                method: 'GET',
+                headers: {
+                    'apikey': input,
+                    'Authorization': `Bearer ${input}`
+                }
+            });
+
+            if (res.ok) {
+                serviceRoleKey = input;
+                document.getElementById('auth-view').style.display = 'none';
+                document.getElementById('dashboard-content').style.display = 'block';
+                loadData();
+            } else {
+                errorDiv.style.display = 'block';
+            }
+        } catch (err) {
+            errorDiv.style.display = 'block';
+        }
+    }
+
+    async function loadData() {
+        try {
+            // Fetch the last 1000 views to calculate stats, 
+            // sort descending so recent are first
+            const res = await fetch(`${SUPABASE_URL}/rest/v1/page_views?order=created_at.desc&limit=1000`, {
+                headers: {
+                    'apikey': serviceRoleKey,
+                    'Authorization': `Bearer ${serviceRoleKey}`
+                }
+            });
+            
+            const data = await res.json();
+            
+            // --- Stats Calculation ---
+            document.getElementById('total-views').textContent = data.length + (data.length === 1000 ? '+' : '');
+            
+            const now = new Date();
+            const todayStr = now.toISOString().split('T')[0];
+            const todayViews = data.filter(r => r.created_at.startsWith(todayStr)).length;
+            document.getElementById('today-views').textContent = todayViews;
+            
+            const paths = new Set(data.map(r => r.path));
+            document.getElementById('unique-paths').textContent = paths.size;
+
+            // --- Table Population (top 50) ---
+            const tbody = document.querySelector('#visitors-table tbody');
+            tbody.innerHTML = '';
+            
+            const top50 = data.slice(0, 50);
+            top50.forEach(row => {
+                const tr = document.createElement('tr');
+                
+                // Format Date
+                const date = new Date(row.created_at);
+                const timeStr = date.toISOString().replace('T', ' ').substring(0, 19);
+                
+                // Parse a simple platform from user agent
+                let platform = "Unknown";
+                if(row.user_agent.includes('Windows')) platform = "Windows";
+                else if(row.user_agent.includes('Mac OS')) platform = "Mac OS";
+                else if(row.user_agent.includes('Linux')) platform = "Linux";
+                else if(row.user_agent.includes('Android')) platform = "Android";
+                else if(row.user_agent.includes('iPhone') || row.user_agent.includes('iPad')) platform = "iOS";
+                
+                tr.innerHTML = `
+                    <td style="color:#8b949e">${timeStr}</td>
+                    <td style="color:#58a6ff; font-weight:bold;">${row.path || '/'}</td>
+                    <td>${row.timezone || 'Unknown'}</td>
+                    <td>${row.screen_width || '?'}x${row.screen_height || '?'}</td>
+                    <td>${platform}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+            
+        } catch (e) {
+            console.error("Failed to load data", e);
+        }
+    }
+</script>
+
+</body>
+</html>
