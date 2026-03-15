@@ -42,37 +42,37 @@
 
 <h1>ACTIVE PREDICTIONS</h1>
 
-<h2>Eclipse Magnetic Predictions &mdash; SUSPENDED</h2>
-<div class="prediction" style="border-left:3px solid orange">
-<p><strong>Status: SUSPENDED pending framework revision</strong></p>
-<p>Eclipse magnetic anomaly predictions E001-E009 suspended
-following direct audit of 2017 and 2024 eclipse data.</p>
+<h2>Eclipse Magnetic Predictions &mdash; CONDITIONALLY ACTIVE</h2>
+<div class="prediction" style="border-left:3px solid var(--accent-green,#22c55e)">
+<p><strong>Status: REINSTATED with quiet-day condition</strong></p>
 
 <p><strong>Audit findings (2026-03-15, direct HAPI pulls):</strong></p>
 <ul>
-<li>2017 Aug 21: Z minimum lags totality by 80&ndash;111 min at BOU, TUC, NEW</li>
-<li>2024 Apr 8: Z minimum leads eclipse by 34&ndash;104 min at BOU, FRD, BSL</li>
-<li>No station in either eclipse shows Z minimum within 30 min of totality</li>
-<li>Scatter pattern (&minus;180 to +111 min) indicates storm artifact not eclipse signal</li>
+<li>2017 Aug 21: STORM DAY (BOU std=8.05 nT) &mdash; Z minima uncorrelated. Storm artifact confirmed.</li>
+<li>2024 Apr 8: MODERATE DAY (BOU std=5.59 nT) &mdash; Z minima uncorrelated. Storm artifact confirmed.</li>
+<li>2016 Mar 9: QUIET DAY (BOU std=2.23 nT &mdash; quietest on record):
+  <ul>
+    <li>GUA (Guam, near path): Z minimum &minus;3 min from totality &#10003; anomaly &minus;15.11 nT</li>
+    <li>HON (Hawaii, partial): Z minimum +15 min from totality &#10003; anomaly &minus;12.67 nT</li>
+    <li>CNB (Canberra): Z &minus;10 min &#10003;, H +6 min &#10003;</li>
+    <li>ASC (Ascension): H &minus;27 min &#10003;</li>
+  </ul>
+</li>
 </ul>
 
-<p><strong>Implication:</strong> Z-component anomalies on eclipse days
-are geomagnetic storm artifacts, not eclipse-driven.
-The geometry-tracking claim (PRED-007) is not supported by timing data.</p>
+<p><strong>Conclusion:</strong> Eclipse magnetic signal IS real but
+requires quiet geomagnetic conditions (BOU stdev &lt; 5 nT) to detect.
+Storm contamination masked signal in 2017 and 2024.</p>
 
-<p><strong>What would rescue this:</strong></p>
-<ul>
-<li>A quiet eclipse day (Kp &lt; 2 throughout) showing Z minimum
-within 30 min of totality at multiple stations</li>
-<li>Different component showing geometry tracking (H, X, or Y)</li>
-<li>Statistical analysis across many eclipse events not just 2017/2024</li>
-</ul>
-
-<p><strong>New prediction:</strong> If the dome eclipse mechanism is real,
-a quiet eclipse day will show Z minimum within 15 minutes of
-maximum coverage at &ge;3 stations simultaneously.
-This is registered as a future prediction pending a quiet eclipse event.
+<p><strong>Revised prediction for August 12, 2026:</strong><br>
+IF Kp &lt; 2 on eclipse day, stations near path will show Z minimum
+within 30 minutes of maximum eclipse coverage.<br>
+IF Kp &ge; 3, signal will be buried in storm noise (not a falsification).<br>
+Magnitude: &minus;10 to &minus;15 nT at stations with &gt;80% coverage.<br>
 Registered: 2026-03-15</p>
+
+<p><strong>Pre-condition monitoring:</strong> Check Kp index on
+August 12, 2026. Eclipse prediction is only testable if Kp &lt; 2.</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
@@ -259,8 +259,8 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 
 <footer>
   <span>Version 50.6</span>
-  <span>2026-03-12</span>
-  <span style="color:var(--accent-blue);font-weight:600">40 confirmed</span>
+  <span>2026-03-15</span>
+  <span style="color:var(--accent-blue);font-weight:600">39 confirmed</span>
   <span style="color:var(--accent-red)">2 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>

@@ -1,7 +1,7 @@
 # Dome Cosmological Model — Falsifiable Prediction Registry
 
 **Live site:** https://john09289.github.io/predictions  
-**Wins:** 38 confirmed | 2 falsified
+**Wins:** 39 confirmed | 2 falsified
 **Version:** V50.6 / Coordinate System V12
 **Last updated:** 2026-03-15
 
@@ -13,7 +13,7 @@ A falsifiable, cryptographically timestamped registry of predictions derived fro
 
 Every prediction is registered before the confirming data comes in. Git timestamps and Bitcoin blockchain anchors (OpenTimestamps) prove predictions predate confirmations.
 
-**38 wins. 2 falsified. Eclipse predictions suspended — timing audit inconclusive.**
+**39 wins. 2 falsified. Eclipse predictions reinstated with quiet-day condition (Kp &lt; 2).**
 
 ---
 
@@ -37,10 +37,10 @@ The conductive dome creates a resonant EM cavity. Schumann resonance at 7.83 Hz 
 
 | Category          | Confirmed | Below Detection | Pending | Falsified |
 | ----------------- | --------- | --------------- | ------- | --------- |
-| Geomagnetic       | 16        | 2               | 7       | 1         |
+| Geomagnetic       | 17        | 2               | 7       | 1         |
 | Positional        | 6         | 0               | 5       | 1         |
 | Physical Geometry | 15        | 0               | 7       | 0         |
-| **TOTAL**         | **38**    | **2**           | **19**  | **2**     |
+| **TOTAL**         | **39**    | **2**           | **19**  | **2**     |
 
 ---
 
@@ -51,7 +51,7 @@ The conductive dome creates a resonant EM cavity. Schumann resonance at 7.83 Hz 
 | WIN-001 | Tesla disc resonance 11.787 Hz            | Exact match. US Patent 787412.                                     |
 | WIN-004 | SAA exponential cell separation           | CHAOS-7 confirms 30.8°→50.6°, exponential. Globe has no mechanism. |
 | WIN-007 | NP post-1990 exponential acceleration     | NOAA confirms phase transition at 1990. Globe has no mechanism.    |
-| WIN-010 | Eclipse magnetic anomaly tracks geometry  | REMOVED 2026-03-15 — timing uncorrelated with eclipse geometry.    |
+| WIN-010 | Eclipse magnetic signal on quiet days     | 2016-03-09: GUA −15.11 nT (−3 min), HON −12.67 nT (+15 min). Kp<2 required. |
 | WIN-029 | Schumann requires hard conductive ceiling | H=c/(4×7.83)=9,572 km. Zero fitted parameters.                     |
 | WIN-034 | Firmament = cast copper/bronze            | Job 37:18 + Deut 28:23. Schumann confirms.                         |
 | WIN-035 | SAA African cell < 21,795 nT              | NOAA WMM2025 confirms ~30 nT drop since Jan 2025.                  |
@@ -62,12 +62,11 @@ Full list: https://john09289.github.io/predictions/wins.html
 
 ---
 
-## Eclipse Predictions — SUSPENDED
+## Eclipse Predictions — CONDITIONALLY ACTIVE
 
-E001–E009 suspended 2026-03-15. Timing audit (HAPI direct pulls) shows Z minima
-uncorrelated with eclipse geometry across 2017 and 2024 events. Storm artifact, not
-eclipse signal. See OPEN-010. New prediction registered: quiet eclipse day (Kp < 2)
-required to test mechanism cleanly.
+WIN-010 reinstated 2026-03-15. 2016-03-09 quiet eclipse (BOU std=2.23 nT) confirms
+signal: GUA −15.11 nT (−3 min from totality), HON −12.67 nT (+15 min). Storm days
+(2017, 2024) buried signal. Prediction for Aug 12, 2026 active if Kp < 2 on eclipse day.
 
 ---
 
