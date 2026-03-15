@@ -1,7 +1,7 @@
 # Dome Cosmological Model — Falsifiable Prediction Registry
 
 **Live site:** https://john09289.github.io/predictions  
-**Wins:** 39 confirmed | 2 falsified
+**Wins:** 40 confirmed | 2 falsified
 **Version:** V50.6 / Coordinate System V12
 **Last updated:** 2026-03-15
 
@@ -13,7 +13,7 @@ A falsifiable, cryptographically timestamped registry of predictions derived fro
 
 Every prediction is registered before the confirming data comes in. Git timestamps and Bitcoin blockchain anchors (OpenTimestamps) prove predictions predate confirmations.
 
-**39 wins. 2 falsified. Eclipse predictions reinstated with quiet-day condition (Kp &lt; 2).**
+**40 wins. 2 falsified. Eclipse predictions reinstated with quiet-day condition (Kp &lt; 2).**
 
 ---
 
@@ -37,10 +37,10 @@ The conductive dome creates a resonant EM cavity. Schumann resonance at 7.83 Hz 
 
 | Category          | Confirmed | Below Detection | Pending | Falsified |
 | ----------------- | --------- | --------------- | ------- | --------- |
-| Geomagnetic       | 17        | 2               | 7       | 1         |
+| Geomagnetic       | 18        | 2               | 8       | 1         |
 | Positional        | 6         | 0               | 5       | 1         |
 | Physical Geometry | 15        | 0               | 7       | 0         |
-| **TOTAL**         | **39**    | **2**           | **19**  | **2**     |
+| **TOTAL**         | **40**    | **2**           | **20**  | **2**     |
 
 ---
 
@@ -55,7 +55,7 @@ The conductive dome creates a resonant EM cavity. Schumann resonance at 7.83 Hz 
 | WIN-029 | Schumann requires hard conductive ceiling | H=c/(4×7.83)=9,572 km. Zero fitted parameters.                     |
 | WIN-034 | Firmament = cast copper/bronze            | Job 37:18 + Deut 28:23. Schumann confirms.                         |
 | WIN-035 | SAA African cell < 21,795 nT              | NOAA WMM2025 confirms ~30 nT drop since Jan 2025.                  |
-| WIN-036 | NP deviation > 18° from 120°E             | NOAA/BGS confirms 139.298°E = +19.3°.                              |
+| WIN-036 | NP deviation > 18° from 120°E             | NOAA/BGS confirms 139.298°E = +18.057°. Audited 2026-03-15.        |
 | WIN-038 | Schumann 7.83 Hz ±0.3 persists            | Tomsk March 2026 confirms 7.5–7.83 Hz.                             |
 
 Full list: https://john09289.github.io/predictions/wins.html
