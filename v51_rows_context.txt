@@ -1,0 +1,33 @@
+<tr><td>North Pole</td><td>89.99</td><td>0.00</td><td>1</td><td>-180.0</td><td>-2</td><td>0</td></tr>
+<tr><td>Reykjavik</td><td>64.10</td><td>13.93</td><td>4527</td><td>+28.9</td><td>3964</td><td>2188</td></tr>
+<tr><td>Anchorage</td><td>61.20</td><td>22.80</td><td>5089</td><td>+162.0</td><td>-4840</td><td>1573</td></tr>
+<tr><td>Oslo</td><td>59.90</td><td>12.23</td><td>5347</td><td>+3.5</td><td>5337</td><td>326</td></tr>
+<tr><td>Stockholm</td><td>59.33</td><td>12.07</td><td>5461</td><td>+1.1</td><td>5460</td><td>105</td></tr>
+<tr><td>Moscow</td><td>55.75</td><td>9.57</td><td>6197</td><td>-36.4</td><td>4988</td><td>-3677</td></tr>
+<tr><td>London</td><td>51.50</td><td>12.00</td><td>7116</td><td>+0.0</td><td>7116</td><td>0</td></tr>
+<tr><td>Warsaw</td><td>52.20</td><td>10.60</td><td>6961</td><td>-21.0</td><td>6499</td><td>-2495</td></tr>
+<tr><td>Berlin</td><td>52.50</td><td>11.07</td><td>6895</td><td>-13.9</td><td>6693</td><td>-1656</td></tr>
+<tr><td>Paris</td><td>48.90</td><td>11.85</td><td>7706</td><td>-2.3</td><td>7700</td><td>-309</td></tr>
+<tr><td>Chicago</td><td>41.88</td><td>17.80</td><td>9420</td><td>+87.0</td><td>493</td><td>9407</td></tr>
+<tr><td>Istanbul</td><td>41.01</td><td>9.47</td><td>9645</td><td>-37.9</td><td>7611</td><td>-5925</td></tr>
+<tr><td>Madrid</td><td>40.42</td><td>12.47</td><td>9800</td><td>+7.1</td><td>9725</td><td>1211</td></tr>
+<tr><td>New York</td><td>40.71</td><td>16.87</td><td>9724</td><td>+73.1</td><td>2827</td><td>9304</td></tr>
+<tr><td>Denver</td><td>39.73</td><td>19.13</td><td>9983</td><td>+106.9</td><td>-2902</td><td>9551</td></tr>
+<tr><td>Chapel Hill NC</td><td>36.18</td><td>17.25</td><td>10954</td><td>+78.8</td><td>2128</td><td>10745</td></tr>
+<tr><td>Tokyo</td><td>35.70</td><td>2.73</td><td>11089</td><td>-139.0</td><td>-8369</td><td>-7275</td></tr>
+<tr><td>Los Angeles</td><td>34.05</td><td>19.87</td><td>11562</td><td>+118.1</td><td>-5446</td><td>10199</td></tr>
+<tr><td>Cairo</td><td>30.10</td><td>9.87</td><td>12737</td><td>-32.0</td><td>10802</td><td>-6750</td></tr>
+<tr><td>Baghdad</td><td>33.30</td><td>8.47</td><td>11781</td><td>-52.9</td><td>7106</td><td>-9396</td></tr>
+<tr><td>Miami</td><td>25.80</td><td>17.27</td><td>14076</td><td>+79.0</td><td>2686</td><td>13818</td></tr>
+<tr><td>Mexico City</td><td>19.43</td><td>18.60</td><td>16107</td><td>+99.0</td><td>-2520</td><td>15909</td></tr>
+<tr><td>Mumbai</td><td>19.08</td><td>6.20</td><td>16218</td><td>-87.0</td><td>849</td><td>-16196</td></tr>
+<tr><td>Hong Kong</td><td>22.32</td><td>3.80</td><td>15187</td><td>-123.0</td><td>-8271</td><td>-12737</td></tr>
+=====
+<tr><td>Sydney</td><td>33.0</td><td>14.17</td><td>33.6S</td><td>11693</td><td>+32.5</td><td>9856</td><td>6291</td></tr>
+<tr><td>Cape Town</td><td>33.6</td><td>10.00</td><td>33.0S</td><td>11869</td><td>-30.0</td><td>10278</td><td>-5934</td></tr>
+<tr><td>Buenos Aires</td><td>33.5</td><td>15.87</td><td>33.1S</td><td>11839</td><td>+58.0</td><td>6265</td><td>10046</td></tr>
+<tr><td>Santiago</td><td>37.0</td><td>16.87</td><td>29.6S</td><td>12890</td><td>+73.1</td><td>3758</td><td>12330</td></tr>
+<tr><td>Melbourne</td><td>30.0</td><td>14.40</td><td>36.6S</td><td>10836</td><td>+36.0</td><td>8767</td><td>6369</td></tr>
+<tr><td>Auckland</td><td>23.5</td><td>14.27</td><td>43.1S</td><td>9108</td><td>+34.0</td><td>7547</td><td>5100</td></tr>
+<tr><td>Johannesburg</td><td>42.0</td><td>9.73</td><td>24.6S</td><td>14458</td><td>-34.0</td><td>11979</td><td>-8095</td></tr>
+<tr><td>Perth</td><td>38.0</td><td>12.13</td><td>28.6S</td><td>13198</td><td>+2.0</td><td>13191</td><td>449</td></tr>

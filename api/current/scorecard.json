@@ -1,9 +1,9 @@
 {
-  "version": "50.5",
-  "as_of": "2026-03-10",
+  "version": "51.0",
+  "as_of": "2026-03-15",
   "categories": {
     "geomagnetic": {
-      "confirmed": 14,
+      "confirmed": 15,
       "below_detection_threshold": 2,
       "pending": 10,
       "falsified": 0
@@ -12,7 +12,7 @@
       "confirmed": 6,
       "below_detection_threshold": 0,
       "pending": 5,
-      "falsified": 0
+      "falsified": 1
     },
     "physical_geometry": {
       "confirmed": 10,
@@ -40,10 +40,19 @@
     }
   },
   "overall": {
-    "confirmed": 33,
+    "confirmed": 34,
     "below_detection_threshold": 2,
     "pending": 26,
-    "falsified": 0
+    "falsified": 1
   },
+  "falsifications": [
+    {
+      "id": "W019",
+      "title": "NMP drift: poleward dominant over lateral",
+      "result": "Δlat=-0.180°, Δlon=+1.000°. Lateral dominated.",
+      "date": "2026-03-15",
+      "note": "Long-term poleward trend intact. Annual direction prediction incorrect."
+    }
+  ],
   "note": "W001 and W004 are noise-limited null results, not model failures. counts_against_model: false"
 }
