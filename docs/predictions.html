@@ -46,7 +46,10 @@
 <p><strong>153 days away</strong> | Registered 2026-03-12 | Git + OpenTimestamps anchored</p>
 <p><strong>Formula:</strong> <code>delta_Z = baseline &times; coverage &times; FSF</code><br>
 <strong>FSF</strong> = field strength factor from V12 H(r)/r dome geometry<br>
-<strong>Baselines:</strong> BOU 2017 (&minus;10.9 nT) | W004 empirical (&minus;22.24 nT)</p>
+<strong>Baselines:</strong> BOU 2017 (&minus;10.9 nT, see correction below) | W004 empirical (&minus;22.24 nT)</p>
+<div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b);margin-bottom:1em">
+<p><strong>BASELINE CORRECTION PENDING (2026-03-15 audit):</strong> 2026 eclipse predictions used BOU baseline of &minus;10.9 nT. Audit shows actual BOU 2017 anomaly = &minus;18.22 nT (vs Aug 20 quiet-day baseline). Eclipse predictions E001&ndash;E009 (BOU column) may be underestimated by ~67%. Recalculation required before August 12, 2026. W004 empirical baseline (&minus;22.24 nT) also needs independent audit.</p>
+</div>
 
 <table>
   <tr><th>ID</th><th>Station</th><th>Country</th><th>Coverage</th><th>FSF</th><th>BOU pred</th><th>W004 pred</th><th>&plusmn;</th></tr>
@@ -179,23 +182,43 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 <p><strong>Resolution path:</strong> Firmament curve OR aetheric refraction below ~0.15&deg; elevation needed to produce realistic moonrise/moonset behavior.</p>
 </div>
 
-<div class="prediction">
-<h3>W024 &mdash; Polaris Elevation at High Latitudes CRITICAL TEST <span class="badge pending">PENDING</span></h3>
-<p><strong>CORRECTED FROM V12 DERIVATION (2026-03-15):</strong></p>
+<div class="prediction" style="border-left:3px solid var(--accent-red)">
+<h3>W024 &mdash; Polaris Elevation at High Latitudes
+<span class="badge falsified">FALSIFIED</span></h3>
+
+<p><strong>Prediction:</strong> V12 predicts systematic +0.32&deg; to
++1.29&deg; excess above WGS84 latitude at northern cities.</p>
+
 <table>
-  <tr><th>City</th><th>WGS84 Lat</th><th>V12 Dome Prediction</th><th>Difference</th></tr>
-  <tr><td>Edinburgh</td><td>55.95&deg;</td><td style="color:var(--accent-blue);font-weight:600">56.27&deg;</td><td>+0.32&deg;</td></tr>
-  <tr><td>Oslo</td><td>59.91&deg;</td><td style="color:var(--accent-blue);font-weight:600">60.70&deg;</td><td>+0.79&deg;</td></tr>
-  <tr><td>Helsinki</td><td>60.17&deg;</td><td style="color:var(--accent-blue);font-weight:600">60.99&deg;</td><td>+0.82&deg;</td></tr>
-  <tr><td>Reykjavik</td><td>64.13&deg;</td><td style="color:var(--accent-blue);font-weight:600">65.42&deg;</td><td>+1.29&deg;</td></tr>
+<tr><th>City</th><th>WGS84</th><th>V12 pred</th><th>Globe range</th>
+<th>V12 in range?</th><th>Observed</th></tr>
+<tr><td>Edinburgh</td><td>55.95&deg;</td><td>56.27&deg;</td>
+<td>55.29&ndash;56.61&deg;</td><td>YES</td><td>~55.95&deg; &#10003;</td></tr>
+<tr><td>Oslo</td><td>59.91&deg;</td><td>60.70&deg;</td>
+<td>59.25&ndash;60.57&deg;</td><td>EDGE</td><td>~59.91&deg; &#10003;</td></tr>
+<tr><td>Helsinki</td><td>60.17&deg;</td><td>60.99&deg;</td>
+<td>59.51&ndash;60.83&deg;</td><td>YES</td><td>~60.17&deg; &#10003;</td></tr>
+<tr><td>Reykjavik</td><td>64.13&deg;</td><td>65.42&deg;</td>
+<td>63.47&ndash;64.79&deg;</td><td>NO</td><td>~64&deg; &#10003; globe</td></tr>
 </table>
-<p><strong>Globe REQUIRES:</strong> Polaris elevation = WGS84 latitude exactly (0.00&deg; divergence)</p>
-<p><strong>V12 PREDICTS:</strong> systematic positive divergence increasing with latitude</p>
-<p><strong>Key claim:</strong> The <em>pattern</em> itself is the prediction &mdash; not just a single city value</p>
-<p><strong>Falsification:</strong> All four cities within 0.3&deg; of WGS84 latitude</p>
-<p><strong>Chapel Hill calibration:</strong> Measured 36.18&deg;, V12 r=5892.2 km (&delta; &minus;67.8 km from baseline)</p>
-<p><strong>Correction note:</strong> Original estimate of +3&ndash;5&deg; was wrong &mdash; V12 derives +0.79&deg; at Oslo. Registered correction 2026-03-15.</p>
-<p><strong>Test method:</strong> $30 calibrated inclinometer, clear night, Polaris</p>
+
+<p><strong>Result:</strong> Edinburgh, Oslo, Helsinki fall within
+Polaris wobble range (&plusmn;0.66&deg;) &mdash; V12 signal undetectable against noise.
+Reykjavik prediction (+1.29&deg;) exceeds wobble range but online sources
+consistently report ~64&deg;, matching globe prediction not V12.</p>
+
+<p><strong>Falsification reason:</strong> V12 H(r) curve predicts
+systematic divergence not observed in any independent source.
+Polaris elevation = latitude confirmed by USNO, Stellarium,
+amateur observations globally.</p>
+
+<p><strong>Model implication:</strong> V12 radial coordinate derivation
+for high-latitude cities needs revision. The r(city) = solve from
+r&times;tan(polaris_elev) = H(r) formula may have an error in how
+WGS84 latitudes map to dome radial positions at high latitudes.</p>
+
+<p><strong>Registered:</strong> 2026-03-15 |
+<strong>Falsified:</strong> 2026-03-15</p>
 </div>
 
 <div class="prediction">

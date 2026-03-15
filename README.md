@@ -1,9 +1,9 @@
 # Dome Cosmological Model — Falsifiable Prediction Registry
 
 **Live site:** https://john09289.github.io/predictions  
-**Wins:** 40 confirmed | 1 falsified
-**Version:** V50.6 / Coordinate System V12  
-**Last updated:** 2026-03-12
+**Wins:** 40 confirmed | 2 falsified
+**Version:** V50.6 / Coordinate System V12
+**Last updated:** 2026-03-15
 
 ---
 
@@ -13,7 +13,7 @@ A falsifiable, cryptographically timestamped registry of predictions derived fro
 
 Every prediction is registered before the confirming data comes in. Git timestamps and Bitcoin blockchain anchors (OpenTimestamps) prove predictions predate confirmations.
 
-**40 wins. 1 falsified. August 12 2026 eclipse predictions locked.**
+**40 wins. 2 falsified. August 12 2026 eclipse predictions locked.**
 
 ---
 
