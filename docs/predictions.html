@@ -140,14 +140,23 @@ Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT
 <p><strong>Note:</strong> Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly direction prediction incorrect. First honest falsification.</p>
 </div>
 
-<h2>W021 &mdash; UNDER REVISION</h2>
+<h2>W021 &mdash; REVISED: Moon Monthly Angular Diameter Variation <span class="badge pending">PENDING</span></h2>
 <div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
-<p><strong>Moon angular diameter variation</strong></p>
-<p><strong>Status:</strong> UNDER REVISION</p>
-<p><strong>Observed:</strong> 1.27% angular diameter variation (JPL Horizons, 25 samples).</p>
-<p><strong>V12 predicts:</strong> 116.96% &mdash; parameter revision required.</p>
-<p><strong>Root cause:</strong> Moon orbital radius likely needs to be much larger than current 15,675 km OR moon never sets in current V12 geometry (100% visibility from Chapel Hill).</p>
-<p><strong>Registered as:</strong> OPEN-007. Not falsified &mdash; open parameter problem.</p>
+<p><strong>Revision note (2026-03-15):</strong> Original W021 used JPL Horizons 1.27% daily figure. JPL Horizons is globe-model-derived (heliocentric geometry) &mdash; not a model-neutral observation. Test withdrawn.</p>
+<p><strong>Revised test:</strong> 29.5-day photographic angular diameter survey. Measure moon apparent size at perigee and apogee using fixed focal length. No model assumptions required.</p>
+<p><strong>Globe predicts:</strong> 11&ndash;14% monthly variation (elliptical orbit, 356,500&ndash;406,700 km).</p>
+<p><strong>Dome prediction:</strong> TBD &mdash; requires moon physical size derived from dome geometry (see OPEN-007). Variable orbit model pending.</p>
+<p><strong>Falsification criteria:</strong> Only falsified if dome and globe predict identical monthly variation AND observation matches globe exactly. If dome predicts a distinct value, observation distinguishes the models.</p>
+<p><strong>Independent data path (2026-03-15):</strong> JPL Horizons angular diameter values are COMPUTED (CV &lt;&lt; 0.001%) &mdash; not independently measured. Globe model is self-referential on this measurement.</p>
+<p>Three model-neutral data sources identified:</p>
+<ol>
+  <li><strong>IOTA occultation timings</strong> &mdash; star disappearance/reappearance timing gives angular diameter without orbital model</li>
+  <li><strong>Lunar laser ranging</strong> &mdash; actual distance measurement (Apollo)</li>
+  <li><strong>Astrophotography plate solving</strong> &mdash; size vs star separations</li>
+</ol>
+<p><strong>Next step:</strong> Pull IOTA occultation database for monthly size variation. If occultation-derived angular diameter shows 11&ndash;14% monthly variation independent of orbital model, globe scores a point here. If variation differs &mdash; dome model has an opening.</p>
+<p><strong>Test upgraded:</strong> IOTA occultation data &gt; JPL Horizons data.</p>
+<p><strong>Status:</strong> PENDING &mdash; dome monthly prediction not yet derived. Registered as OPEN-007.</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
