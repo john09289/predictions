@@ -24,8 +24,8 @@
 
 <!-- ===== PROSPECTIVE BANNER ===== -->
 <div class="proof-box" style="text-align:center">
-<p style="font-size:1.3em;margin-bottom:6px"><strong>PROSPECTIVE CONFIRMED: 9 predictions confirmed before data came in</strong></p>
-<p>W009 &bull; W010 &bull; W011 &bull; W013 &bull; W015 &bull; SAA separation &bull; NP acceleration &bull; Roaring 40s &bull; Eclipse magnetic pattern</p>
+<p style="font-size:1.3em;margin-bottom:6px"><strong>PROSPECTIVE CONFIRMED: 8 predictions confirmed before data came in</strong></p>
+<p>W009 &bull; W010 &bull; W011 &bull; W013 &bull; W015 &bull; SAA separation &bull; NP acceleration &bull; Roaring 40s</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
@@ -42,51 +42,37 @@
 
 <h1>ACTIVE PREDICTIONS</h1>
 
-<h2>Upcoming Event: Solar Eclipse &mdash; August 12, 2026</h2>
-<p><strong>153 days away</strong> | Registered 2026-03-12 | Git + OpenTimestamps anchored</p>
-<p><strong>Formula:</strong> <code>delta_Z = baseline &times; coverage &times; FSF</code><br>
-<strong>FSF</strong> = field strength factor from V12 H(r)/r dome geometry<br>
-<strong>Baselines:</strong> BOU 2017 (&minus;10.9 nT, see correction below) | W004 empirical (&minus;22.24 nT)</p>
-<div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b);margin-bottom:1em">
-<p><strong>OPEN-009 &mdash; Eclipse Baseline Audit Results (2026-03-15, direct HAPI pulls):</strong></p>
-<table>
-  <tr><th>Station / Eclipse</th><th>Quiet-day baseline</th><th>Eclipse min</th><th>Anomaly</th><th>SNR / Notes</th></tr>
-  <tr><td>BOU 2017-08-21</td><td>47,731.12 nT (Aug 20)</td><td>47,712.90 nT</td><td>&minus;18.22 nT</td><td>Corrected from &minus;10.9 nT</td></tr>
-  <tr><td>BOU 2024-04-08</td><td>46,951.74 nT (Apr 5)</td><td>46,941.50 nT</td><td>&minus;10.24 nT</td><td>SNR 3.72, clean</td></tr>
-  <tr><td>BSL 2024-04-08</td><td>40,093.23 nT (Apr 5)</td><td>40,077.80 nT</td><td>&minus;15.43 nT</td><td>SNR 4.45, clean, strongest verified</td></tr>
-  <tr><td>W004 source (&minus;22.24 nT)</td><td>&mdash;</td><td>&mdash;</td><td>NOT FOUND</td><td>Not in HAPI data &mdash; unverified</td></tr>
-</table>
-<p>2026 eclipse predictions currently use &minus;10.9 nT BOU baseline. Recommended recalibration: use BSL &minus;15.43 nT as upper bound, BOU &minus;10.24 nT as lower bound (2024 eclipse comparison). 2017 vs 2024 BOU difference (&minus;18.22 vs &minus;10.24 nT) likely reflects different eclipse coverage percentage at BOU. Recalculation required before August 12, 2026.</p>
-<p><strong>Additional audit note (2026-03-15):</strong> April 8 2024 was geomagnetically disturbed (Kp ~5&ndash;6). All BOU components show SNR ~1.05&ndash;1.13 when using same-day baseline &mdash; signal buried in storm noise. BSL remains strongest verified clean signal at &minus;15.43 nT using quiet-day (Apr 5) baseline method. W004 source (&minus;22.24 nT) remains unverified. Recommendation: use only quiet-day eclipse dates for baseline calibration. Aug 21 2017 and Apr 8 2024 both had storm contamination requiring careful baseline selection.</p>
-</div>
+<h2>Eclipse Magnetic Predictions &mdash; SUSPENDED</h2>
+<div class="prediction" style="border-left:3px solid orange">
+<p><strong>Status: SUSPENDED pending framework revision</strong></p>
+<p>Eclipse magnetic anomaly predictions E001-E009 suspended
+following direct audit of 2017 and 2024 eclipse data.</p>
 
-<table>
-  <tr><th>ID</th><th>Station</th><th>Country</th><th>Coverage</th><th>FSF</th><th>BOU pred</th><th>W004 pred</th><th>&plusmn;</th></tr>
-  <tr><td>E001</td><td>Ebro (EBR)</td><td>Spain</td><td>0.95</td><td>1.029</td><td>&minus;10.7 nT</td><td>&minus;21.7 nT</td><td>2.1</td></tr>
-  <tr><td>E002</td><td>San Pablo (SPT)</td><td>Spain</td><td>0.90</td><td>1.001</td><td>&minus;9.8 nT</td><td>&minus;20.0 nT</td><td>2.0</td></tr>
-  <tr><td>E003</td><td>Eskdalemuir (ESK)</td><td>Scotland</td><td>0.55</td><td>1.722</td><td>&minus;10.3 nT</td><td>&minus;21.1 nT</td><td>2.1</td></tr>
-  <tr><td>E004</td><td>Lerwick (LER)</td><td>Scotland</td><td>0.42</td><td>2.075</td><td>&minus;9.5 nT</td><td>&minus;19.4 nT</td><td>1.9</td></tr>
-  <tr><td>E005</td><td>Hartland (HAD)</td><td>England</td><td>0.80</td><td>1.471</td><td>&minus;12.8 nT</td><td>&minus;26.2 nT</td><td>2.6</td></tr>
-  <tr><td>E006</td><td>Niemegk (NGK)</td><td>Germany</td><td>0.40</td><td>1.529</td><td>&minus;6.7 nT</td><td>&minus;13.6 nT</td><td>1.3</td></tr>
-  <tr><td>E007</td><td>Canary Islands (SNK)</td><td>Spain</td><td>0.72</td><td>0.642</td><td>&minus;5.0 nT</td><td>&minus;10.3 nT</td><td>1.0</td></tr>
-  <tr><td>E008</td><td>Chambon (CLF)</td><td>France</td><td>0.70</td><td>1.325</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
-  <tr><td>E009</td><td>Coimbra (COI)</td><td>Portugal</td><td>0.92</td><td>1.008</td><td>&minus;10.1 nT</td><td>&minus;20.6 nT</td><td>2.0</td></tr>
-</table>
+<p><strong>Audit findings (2026-03-15, direct HAPI pulls):</strong></p>
+<ul>
+<li>2017 Aug 21: Z minimum lags totality by 80&ndash;111 min at BOU, TUC, NEW</li>
+<li>2024 Apr 8: Z minimum leads eclipse by 34&ndash;104 min at BOU, FRD, BSL</li>
+<li>No station in either eclipse shows Z minimum within 30 min of totality</li>
+<li>Scatter pattern (&minus;180 to +111 min) indicates storm artifact not eclipse signal</li>
+</ul>
 
-<h3>The 4 Model-Discriminating Tests</h3>
+<p><strong>Implication:</strong> Z-component anomalies on eclipse days
+are geomagnetic storm artifacts, not eclipse-driven.
+The geometry-tracking claim (PRED-007) is not supported by timing data.</p>
 
-<div class="win">
-<p><strong>E-PRED-A &mdash; Peak tracks eclipse geometry, not solar noon</strong><br>
-Each station's signal peaks when the shadow is greatest at that station &mdash; not at local solar noon. Globe has no eclipse magnetic mechanism at all. Falsification: peaks at solar noon.</p>
+<p><strong>What would rescue this:</strong></p>
+<ul>
+<li>A quiet eclipse day (Kp &lt; 2 throughout) showing Z minimum
+within 30 min of totality at multiple stations</li>
+<li>Different component showing geometry tracking (H, X, or Y)</li>
+<li>Statistical analysis across many eclipse events not just 2017/2024</li>
+</ul>
 
-<p><strong>E-PRED-B &mdash; Hartland beats Ebro despite lower coverage (V12 vs V9 direct test)</strong><br>
-HAD predicted &minus;12.8 nT (coverage 0.80). EBR predicted &minus;10.7 nT (coverage 0.95). HAD wins because its FSF=1.471 outweighs the coverage difference. V9 flat-H model predicts the opposite ordering. This test directly discriminates V12 from V9. Falsification: EBR signal larger than HAD.</p>
-
-<p><strong>E-PRED-C &mdash; SG gravimeters 0.0 &micro;Gal</strong><br>
-Superconducting gravimeters at Membach, Strasbourg, Vienna show no gravity signal. Mechanism is electromagnetic-aetheric, not gravitational. Replicates WIN-013 and WIN-014. Falsification: measurable gravity anomaly.</p>
-
-<p><strong>E-PRED-D &mdash; Non-path stations below noise floor</strong><br>
-Stations with coverage &lt; 0.25 show &lt; 2 nT signal. Falsification: &gt; 3 nT at any station with &lt; 0.25 coverage.</p>
+<p><strong>New prediction:</strong> If the dome eclipse mechanism is real,
+a quiet eclipse day will show Z minimum within 15 minutes of
+maximum coverage at &ge;3 stations simultaneously.
+This is registered as a future prediction pending a quiet eclipse event.
+Registered: 2026-03-15</p>
 </div>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
@@ -275,7 +261,7 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
   <span>Version 50.6</span>
   <span>2026-03-12</span>
   <span style="color:var(--accent-blue);font-weight:600">40 confirmed</span>
-  <span style="color:var(--accent-red)">1 falsified</span>
+  <span style="color:var(--accent-red)">2 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
