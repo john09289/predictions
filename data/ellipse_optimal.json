@@ -1,0 +1,11 @@
+{
+  "optimal_ba_ratio": 0.85,
+  "optimal_orient_deg": 45,
+  "optimal_b_km": 17012.75,
+  "optimal_a_km": 20015,
+  "mean_absolute_error_all_pct": 24.8,
+  "northern_only_ba": 0.85,
+  "northern_only_orient": 45,
+  "northern_only_error_pct": 7.1,
+  "version": "V12"
+}

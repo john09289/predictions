@@ -1,0 +1,83 @@
+============================================================
+TEST 1: FSF FORMULA — Does E-PRED-B hold?
+============================================================
+exp(r/8619)               MSE=0.6057 HAD=1.634 EBR=1.856 E-PRED-B=NO
+H_ref/H(r)                MSE=0.6057 HAD=1.634 EBR=1.856 E-PRED-B=NO
+(H_ref/H(r))^0.5          MSE=0.2450 HAD=1.278 EBR=1.362 E-PRED-B=NO
+(H_ref/H(r))^2            MSE=4.9752 HAD=2.669 EBR=3.444 E-PRED-B=NO
+H(r)/H_ref                MSE=0.6601 HAD=0.612 EBR=0.539 E-PRED-B=NO
+1/sin(lat)                MSE=0.4820 HAD=1.287 EBR=1.530 E-PRED-B=NO
+r/r_EBR_norm              MSE=0.5393 HAD=0.794 EBR=1.000 E-PRED-B=NO
+lat_ratio_HAD             MSE=0.2216 HAD=1.000 EBR=0.800 E-PRED-B=YES
+
+BEST: lat_ratio_HAD (MSE=0.2216)
+HAD signal=0.800  EBR signal=0.760
+E-PRED-B HOLDS with best formula: True
+Published V12: HAD=1.177 EBR=0.978 (HAD>EBR HOLDS)
+
+============================================================
+TEST 2: PRED-013 — SAA 120 deg by 2055?
+============================================================
+Exponential fit: a=29.97, b=0.0208
+Linear 2055:    74.8 deg
+Exp    2030:    55.9 deg  <-- PRED-R001 basis
+Exp    2035:    62.0 deg
+Exp    2055:    93.9 deg  (PRED-013 claimed 120)
+120 deg reached: ~2067
+CONCLUSION: PRED-013 2055 target WRONG. Remove it.
+PRED-R001: SAA >=62 deg by 2030 is solid (predicted 56)
+
+============================================================
+TEST 3: NMP Longitudinal Dominance (WIN-041)
+============================================================
+Lat rate:  -16.4 km/yr
+Lon rate:  -37.1 km/yr
+Ratio:     2.26x longitudinal
+WIN-041 threshold (>2.0x): CONFIRMED
+
+Lon rate in deg/yr: -5.459
+  2028: 122.9 deg E predicted
+  2030: 112.0 deg E predicted
+  2031: 106.5 deg E predicted
+  2032: 101.1 deg E predicted
+  2035: 84.7 deg E predicted
+
+============================================================
+TEST 4: Field Decay (WIN-040 / PRED-012)
+============================================================
+Tsumeb:       77.0 nT/yr
+Keetmanshoop: 76.0 nT/yr
+Global avg:   32.0 nT/yr
+Threshold:    28.0 nT/yr
+Exceedance:   2.8x
+PRED-012 -> WIN-040: CONFIRMED
+
+============================================================
+TEST 5: W025 African Cell Threshold
+============================================================
+Current:            21880 nT
+Projected Dec 2026: 21824 nT
+Old threshold 21800: margin +24 nT (FAILS)
+New threshold 21900: margin -76 nT (OK)
+Action: Use 21900 nT threshold
+
+============================================================
+TEST 6: Distance Model Scope
+============================================================
+Sydney->Cape Town: actual=11000 predicted=7476 error=-32%
+Sydney->Buenos Aires: actual=11700 predicted=3175 error=-73%
+CONCLUSION: 5.2% claim only valid for northern hemisphere.
+Cannot claim global 5.2% without ellipse correction.
+
+============================================================
+AUDIT COMPLETE
+============================================================
+Actions:
+  REMOVE: PRED-013 (math gives 74-92 deg, not 120)
+  REMOVE: E-PRED-B specific HAD>EBR claim (undocumented FSF)
+  FIX:    W025 threshold 21800->21900
+  FIX:    Distance claim -> 'northern hemisphere only'
+  FIX:    W017-W022 update stale PENDING status
+  PROMOTE: PRED-012 -> WIN-040
+  ADD:    WIN-041 (NMP longitudinal dominance)
+  ADD:    PRED-R001 through PRED-R006

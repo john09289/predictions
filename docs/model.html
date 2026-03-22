@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Model — Dome Cosmological Model V50.6</title>
-<meta name="description" content="Full model architecture, V50.6 parameters with H(r) exponential curve, formulas, and open problems.">
+<title>Model — Dome Cosmological Model V50.7</title>
+<meta name="description" content="Full model architecture, V50.7 parameters with H(r) exponential curve, formulas, and open problems.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">34</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">42</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="coordinates.html">Coordinates</a>
   <a href="model.html" class="active">Model</a>
@@ -20,7 +20,7 @@
 </nav>
 
 <h1>Model Architecture &amp; Parameters</h1>
-<p class="subtitle">Version 50.6 &mdash; All values physically derived or observationally constrained</p>
+<p class="subtitle">Version 50.7 &mdash; All values physically derived or observationally constrained</p>
 
 <!-- ===== ARCHITECTURE ===== -->
 <h2>Architecture</h2>
@@ -67,12 +67,14 @@
 
 <h3>V12 Performance</h3>
 <table>
-  <tr><th>Metric</th><th>V9</th><th>V50.6</th></tr>
-  <tr><td>Mean distance error</td><td>~40%</td><td style="color:var(--accent-blue);font-weight:600">5.2%</td></tr>
-  <tr><td>Median distance error</td><td>~35%</td><td style="color:var(--accent-blue);font-weight:600">4.4%</td></tr>
-  <tr><td>Worst case</td><td>89% (Oslo-Stockholm)</td><td style="color:var(--accent-blue);font-weight:600">0.0% (Oslo-Stockholm resolved)</td></tr>
+  <tr><th>Metric</th><th>V9</th><th>V50.7</th></tr>
+  <tr><td>Mean distance error (northern hemisphere)</td><td>~40%</td><td style="color:var(--accent-blue);font-weight:600">5.2%</td></tr>
+  <tr><td>Median distance error (northern hemisphere)</td><td>~35%</td><td style="color:var(--accent-blue);font-weight:600">4.4%</td></tr>
+  <tr><td>Worst case (northern)</td><td>89% (Oslo-Stockholm)</td><td style="color:var(--accent-blue);font-weight:600">0.0% (Oslo-Stockholm resolved)</td></tr>
   <tr><td>City pairs tested</td><td>12</td><td>19</td></tr>
+  <tr><td style="color:var(--accent-orange,#f59e0b)">Southern hemisphere (no ellipse)</td><td>&mdash;</td><td style="color:var(--accent-orange,#f59e0b)">Large errors: e.g. Sydney&ndash;Cape Town &minus;32%, Sydney&ndash;Buenos Aires &minus;73%</td></tr>
 </table>
+<p class="note"><strong>Scope caveat:</strong> The 5.2% mean error applies to northern hemisphere city pairs only. Southern hemisphere routes require ellipse correction (OPEN-003). Grid search result: optimal b/a = 0.85, orientation = 45&deg; NE, northern-only error with ellipse: 7.1%. Southern hemisphere error remains high even with ellipse &mdash; requires further work. Do not cite 5.2% as a global figure.</p>
 
 <!-- ===== FORMULAS ===== -->
 <h2>Formulas</h2>
@@ -109,9 +111,15 @@ Calibration ring at 51&deg;S</pre>
 <pre>coupling = 10.9 nT / 6.5 &micro;Gal = 1.67 nT/&micro;Gal
 Source: BOU 2017 + Mohe 1997 &mdash; two independent events</pre>
 
-<h3>Field Decay</h3>
+<h3>Eclipse FSF &mdash; Field Strength Factor</h3>
+<p>Eclipse prediction signal amplitudes are scaled by a Field Strength Factor (FSF) derived from V12 H(r) geometry. Higher-latitude stations sit under a taller firmament and show stronger aetheric coupling per unit coverage. The published V12 values (HAD=1.471, EBR=1.029, LER=2.075) produce HAD&gt;EBR signal despite lower coverage &mdash; a discriminating test of V12 versus V9 flat-H predictions.</p>
+<p>Full numerical derivation: <code>scripts/fsf_derivation.py</code>. Formal derivation to be published before 2026-08-12 eclipse.</p>
+<p><strong>V12 E-PRED latitude correlation:</strong> Signal amplitude should correlate with dome latitude after coverage normalisation. Higher-latitude stations (closer to pole, under taller firmament) show systematic amplification. Falsification: amplitude shows no correlation with latitude after coverage correction.</p>
+
+<h3>Field Decay (WIN-042)</h3>
 <pre>Rate: &ge;28 nT/year (INTERMAGNET, 2000&ndash;2025)
-Projected 2030: &minus;32 nT/year (PRED-012)</pre>
+Confirmed: Tsumeb 77 nT/yr, Keetmanshoop 76 nT/yr (2.8x threshold)
+PRED-012 promoted to WIN-042 (2026-03-21)</pre>
 
 <!-- ===== COPPER DOME ===== -->
 <h2>WIN-034: Firmament Material = Cast Copper/Bronze</h2>

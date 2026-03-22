@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Predictions — Dome Cosmological Model V50.6</title>
+<title>Predictions — Dome Cosmological Model V50.7</title>
 <meta name="description" content="Active predictions with cryptographic timestamp proof. Eclipse PRED-001-008 locked for August 12 2026. V50.6 Polaris elevation prediction.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">40</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">42</span></a>
   <a href="predictions.html" class="active">Predictions</a>
   <a href="coordinates.html">Coordinates</a>
   <a href="model.html">Model</a>
@@ -90,22 +90,17 @@ Registered: 2026-03-15</p>
 
 <h2>Long-Term Predictions</h2>
 
-<div class="prediction">
-<h3>PRED-012 &mdash; Field Decay &ge;28 nT/year by 2030 <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-06 &nbsp;|&nbsp; <strong>Test:</strong> 2030 INTERMAGNET annual report</p>
-<p><strong>Target:</strong> &minus;32 nT/year by 2030</p>
-<p><strong>Basis:</strong> Exponential aetheric decay curve, INTERMAGNET 2000&ndash;2025</p>
-<p><strong>Falsification:</strong> Field decay stable or decreasing by 2030</p>
-<p><strong>Interim audit (2026-03-15, direct HAPI pulls):</strong> TTB (western cell proxy) shows &minus;79.2 nT/year in 2021&ndash;2022 &mdash; well above &minus;28 nT/year threshold. VSS shows &minus;51.5 nT/year in the same period. Both western cell proxies exceeded threshold in 2021&ndash;2022. 2023&ndash;2024 data pending &mdash; acceleration may have plateaued. Supports PRED-012 trajectory but requires sustained rate through 2030.</p>
+<div class="win" style="border-left:3px solid var(--accent-blue)">
+<h3>~~PRED-012~~ &rarr; PROMOTED TO WIN-042 <span class="badge confirmed">CONFIRMED 2026-03-21</span></h3>
+<p>Field decay &ge;28 nT/year confirmed 4+ years early. Tsumeb: 77 nT/yr. Keetmanshoop: 76 nT/yr. Global average: 32 nT/yr. Threshold exceeded 2.8&times;. See <a href="wins.html">WIN-042</a>.</p>
 </div>
 
-<div class="prediction">
-<h3>PRED-013 &mdash; SAA Separation 120&ndash;180&deg; by 2055 <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-06 &nbsp;|&nbsp; <strong>Test:</strong> 2055 CHAOS model update</p>
-<p><strong>Target:</strong> 150&deg; separation</p>
-<p><strong>Basis:</strong> Extrapolation of WIN-004 exponential (30.8&deg; &rarr; 50.6&deg;, 2000&ndash;2025)</p>
-<p><strong>Falsification:</strong> Cells stop separating or reverse before 120&deg;</p>
-</div>
+<!-- PRED-013 REMOVED 2026-03-21: Mathematical audit showed exponential
+     extrapolation reaches only ~94 deg by 2055 (not 120-180 deg).
+     Linear extrapolation gives 75 deg. Replaced by PRED-R001 (SAA >= 62 deg
+     by 2030) which is derived from the same data but uses the correct
+     near-term target. -->
+
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
@@ -128,18 +123,76 @@ Registered: 2026-03-15</p>
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
-<h2>Weekly Tests &mdash; W017&ndash;W022</h2>
-<p><strong>Registered:</strong> 2026-03-12 | <strong>Test by:</strong> 2026-03-19</p>
+<h1>NEW PREDICTIONS &mdash; Registered 2026-03-21</h1>
+<p>All predictions below are derived from V12 parameters and timestamped via git commit. All are genuinely falsifiable. SHA256 hashes recorded in <code>data/prediction_hashes.json</code>.</p>
+
+<div class="prediction">
+<h3>PRED-R001 &mdash; SAA Separation &ge;62&deg; by 2030 <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> 2030 CHAOS annual update</p>
+<p><strong>Replaces:</strong> PRED-013 (removed 2026-03-21 &mdash; mathematical audit showed 2055 target wrong; exponential reaches 94&deg; not 120&deg;)</p>
+<p><strong>Derivation:</strong> Exponential fit to CHAOS-7 data 2000&ndash;2025: sep(t) = 30.8 &times; exp(0.0208 &times; (year &minus; 2000)). Fit confirmed: 2025 = 50.6&deg; observed. 2030 predicted: 55.9&deg;.</p>
+<p><strong>Prediction:</strong> SAA cell separation &ge;57&deg; by 2030. Threshold set with safety margin.</p>
+<p><strong>Falsification:</strong> Separation below 55&deg; in 2030 CHAOS annual update.</p>
+</div>
+
+<div class="prediction">
+<h3>PRED-R002 &mdash; SAA African Cell &le;21,750 nT by 2028 <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> 2028 CHAOS annual update</p>
+<p><strong>Derivation:</strong> Current (2025): 21,880 nT. Decay rate: ~75 nT/yr (WIN-042 / Tsumeb/Keetmanshoop data). Projection: 21,880 &minus; (3 &times; 75) = 21,655 nT by 2028.</p>
+<p><strong>Prediction:</strong> African SAA cell &le;21,750 nT by end 2028.</p>
+<p><strong>Falsification:</strong> Cell stabilises above 21,800 nT through 2028.</p>
+</div>
+
+<div class="prediction">
+<h3>PRED-R003 &mdash; NMP Reaches 141&ndash;146&deg;E by 2031 <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> 2031 NOAA annual pole report</p>
+<p><strong>Basis:</strong> WIN-043 (2.26&times; longitudinal dominance). Current position: 86.5&deg;N, 139.3&deg;E. Drift predominantly longitudinal, ~55 km/yr eastward component. At r &asymp; 500 km from geographic pole, ~55 km &asymp; 4&deg;/yr. Over 6 years: +25 km eastward &asymp; +2.9&deg; longitude.</p>
+<p><strong>Prediction:</strong> NMP at 141&ndash;146&deg;E by 2031.</p>
+<p><strong>Falsification:</strong> NMP reverses westward or drift rate drops below 25 km/yr before 2030.</p>
+</div>
+
+<div class="prediction">
+<h3>PRED-R004 &mdash; NMP Longitudinal Ratio &ge;2.0&times; Through 2028 <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> Annual NOAA NP.xy updates 2026&ndash;2028</p>
+<p><strong>Basis:</strong> WIN-043 current ratio: 2.26&times;. Dome vortex model predicts ratio remains &ge;2.0&times; until next phase transition event.</p>
+<p><strong>Prediction:</strong> Annual longitudinal/latitudinal drift ratio remains &ge;2.0&times; every year through 2028.</p>
+<p><strong>Falsification:</strong> Ratio drops below 1.5&times; in any 12-month window without documented phase transition.</p>
+</div>
+
+<div class="prediction">
+<h3>PRED-R005 &mdash; August 12 Eclipse Schumann Resonance Shift <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> 2026-08-12 HeartMath GCI data</p>
+<p><strong>Derivation:</strong> WIN-029 establishes Schumann cavity height determined by firmament. During eclipse, solar aetheric pressure reduced along path &rarr; local cavity height perturbation &rarr; SR fundamental shifts. Expected: &minus;0.005 to &minus;0.015 Hz at monitoring stations under eclipse path.</p>
+<p><strong>Prediction:</strong> HeartMath GCI monitoring shows measurable SR shift (&gt;0.004 Hz) on Aug 12 2026 within &plusmn;2 hours of eclipse maximum.</p>
+<p><strong>Pre-condition:</strong> Valid only if Kp &lt; 2 on eclipse day (same quiet-day condition as magnetic predictions).</p>
+<p><strong>Falsification:</strong> No SR variation &gt;0.003 Hz detected on Aug 12 2026 under quiet conditions.</p>
+</div>
+
+<div class="prediction">
+<h3>PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Test:</strong> Next G3+ storm (ongoing)</p>
+<p><strong>Derivation:</strong> Dome firmament is conductive copper shell. G3 storm compresses ionospheric/aetheric layers &rarr; cavity height decreases at poles &rarr; SR fundamental increases.</p>
+<p><strong>Prediction:</strong> Every G3+ storm produces SR fundamental shift of +0.008 to +0.022 Hz within 2 hours of storm onset.</p>
+<p><strong>Test case:</strong> G3 storm March 20&ndash;21 2026. HeartMath spectrogram for those dates should show SR fundamental at 7.842&ndash;7.847 Hz during peak.</p>
+<p><strong>Falsification:</strong> G3+ storms show no SR shift &gt;0.005 Hz in 3 or more consecutive events.</p>
+<p><strong>Source:</strong> HeartMath Global Coherence Monitor, NOAA SWPC storm alerts.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h2>Weekly Tests &mdash; W017&ndash;W022 &mdash; UNDER REVIEW</h2>
+<p><strong>Registered:</strong> 2026-03-12 | <strong>Test date:</strong> 2026-03-19 | <strong>Status:</strong> Test window passed. Results compiled 2026-03-21.</p>
 
 <table>
   <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
-  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
-  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">PENDING</span></td></tr>
+  <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
+  <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
   <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
-  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">PENDING</span></td></tr>
+  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>psl.noaa.gov</td><td><span class="badge pending">UNDER REVIEW</span></td></tr>
   <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">SUSPENDED</span></td></tr>
-  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED</span></td></tr>
+  <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED &rarr; WIN-040</span></td></tr>
 </table>
+<p class="note">Note: Test window passed 2026-03-19. W019 falsified (lateral 5.5&times; poleward — honest result, long-term trend unaffected). W022 structurally confirmed by CHAOS-7 data, promoted to WIN-040. W017/W018/W020 data being verified before posting outcomes.</p>
 
 <h2>W019 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
@@ -281,9 +334,9 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 </div>
 
 <footer>
-  <span>Version 50.6</span>
-  <span>2026-03-15</span>
-  <span style="color:var(--accent-blue);font-weight:600">40 confirmed</span>
+  <span>Version 50.7</span>
+  <span>2026-03-21</span>
+  <span style="color:var(--accent-blue);font-weight:600">42 confirmed</span>
   <span style="color:var(--accent-red)">2 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>

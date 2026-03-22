@@ -1,0 +1,71 @@
+{
+  "generated": "2026-03-22T05:33:25.688869",
+  "version": "V50.7",
+  "hashes": {
+    "PRED-R001": "a09836a129cea2621a04a61395bdbfbcd5ef3c20692ebd2a797043737b6c6a6c",
+    "PRED-R002": "2733c5d2a3259b7506f13a01d3325e17d41f42f32a6337acf314fb0a43bb84ff",
+    "PRED-R003": "37322b4b3b32f5844e791e91eb3021690b3027e5d970c966ec641a62c8319388",
+    "PRED-R004": "71af1389391e4d9351d777ac289d51eab188f903b8860c0be53fc4c34d3fc426",
+    "PRED-R005": "eb69aa79ed216cdb50e594c6979b1698fc761887705088103dbafa9c708089f9",
+    "PRED-R006": "6e00d4f105987c558b61f798843edfd0bdca4f14c60db751cc0ed162576454e4",
+    "WIN-042": "b69f1829cb218e1403ae7baeb3ba14b79d832d60ddaea5b1f4dccb8f3da61b73",
+    "WIN-043": "ff4713ca9a8d94f80d526f07718b5058cdc62fd0b016fbca73fc69fcbc83684a"
+  },
+  "full_data": {
+    "PRED-R001": {
+      "desc": "SAA separation >=57 deg by 2030",
+      "formula": "sep(t)=30.8*exp(0.0208*(year-2000))",
+      "threshold": "57 degrees",
+      "test_date": "2030",
+      "registered": "2026-03-21"
+    },
+    "PRED-R002": {
+      "desc": "SAA African cell <=21750 nT by 2028",
+      "formula": "21880-(3*75)=21655",
+      "threshold": "21750 nT",
+      "test_date": "2028",
+      "registered": "2026-03-21"
+    },
+    "PRED-R003": {
+      "desc": "NMP reaches 141-146E by 2031",
+      "formula": "139.3+(6*0.48)=142.2",
+      "threshold": "141-146E longitude",
+      "test_date": "2031",
+      "registered": "2026-03-21"
+    },
+    "PRED-R004": {
+      "desc": "NMP longitudinal ratio >=2.0x through 2028",
+      "formula": "abs(lon_rate/lat_rate)>=2.0",
+      "threshold": "2.0x minimum",
+      "test_date": "2028",
+      "registered": "2026-03-21"
+    },
+    "PRED-R005": {
+      "desc": "Aug 12 2026 eclipse SR shift -0.005 to -0.015 Hz",
+      "formula": "cavity_height_perturbation -> SR_shift",
+      "threshold": ">0.004 Hz shift",
+      "test_date": "2026-08-12",
+      "registered": "2026-03-21"
+    },
+    "PRED-R006": {
+      "desc": "G3+ storms elevate SR +0.008 to +0.022 Hz",
+      "formula": "dome_compression -> cavity_height_decrease",
+      "threshold": ">0.008 Hz per G3+ event",
+      "test_date": "ongoing",
+      "registered": "2026-03-21"
+    },
+    "WIN-042": {
+      "desc": "Field decay confirmed: Tsumeb 77 nT/yr, 2.8x threshold",
+      "basis": "PRED-012 promoted",
+      "data": "INTERMAGNET 2024-2025",
+      "registered": "2026-03-21"
+    },
+    "WIN-043": {
+      "desc": "NMP longitudinal dominance 2.26x confirmed",
+      "data": "NOAA NP.xy 2020-2025",
+      "lat_rate": "-16.4 km/yr",
+      "lon_rate": "-37.1 km/yr",
+      "registered": "2026-03-21"
+    }
+  }
+}
