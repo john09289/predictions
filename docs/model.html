@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">46</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">50</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="coordinates.html">Coordinates</a>
   <a href="model.html" class="active">Model</a>
@@ -268,6 +268,22 @@ PRED-012 promoted to WIN-042 (2026-03-21)</pre>
 <p><strong>Status:</strong> OPEN &mdash; WIN-010 and WIN-025 removed from confirmed wins. Eclipse predictions E001&ndash;E009 suspended. Registered 2026-03-15.</p>
 </div>
 
+<div class="open-problem">
+<h3>OPEN-011 &mdash; Southern Hemisphere Geomagnetic Field (Two-Pole Problem)</h3>
+<p><strong>Observation:</strong> Geographic South Pole total field intensity = ~54,000 nT (WMM2025).</p>
+<p><strong>ECM single-pole prediction:</strong> B(r_S) = 60,000 &times; exp(&minus;20,016/8619) = <strong>5,883 nT</strong>.</p>
+<p><strong>Error: &minus;89%.</strong> This is the largest quantitative discrepancy in the ECM framework.</p>
+<p><strong>Root cause:</strong> The ECM B(r) formula models a single field source at the geographic North Pole. Earth&rsquo;s geomagnetic field has a strong south polar anomaly because the geomagnetic south pole is located near the geographic South Pole, producing its own strong local field (~54,000 nT). The single-pole exponential cannot account for this.</p>
+<p><strong>Development needed:</strong> A two-pole aetheric field formulation:</p>
+<pre style="background:rgba(0,0,0,0.15);padding:10px;border-radius:4px;font-size:0.9em">B(r_N, r_S) = A &times; exp(&minus;r_N / &lambda;_1) + C &times; exp(&minus;r_S / &lambda;_2)
+
+where r_N = distance from geomagnetic north pole
+      r_S = distance from geomagnetic south pole
+      &lambda;_1, &lambda;_2 = scale lengths (may or may not equal 8619 km)</pre>
+<p><strong>Key question:</strong> If best-fit &lambda;_1 = &lambda;_2 = 8619 km, this would confirm the dome height function governs both poles and be a major new confirmation. If different values are required, it reveals the limits of the current single-scale-length model.</p>
+<p><strong>Status:</strong> OPEN &mdash; Identified in comprehensive backtest 2026-03-23. Two-pole fitting script in development.</p>
+</div>
+
 <!-- ===== FALSIFIED ===== -->
 <h2>Falsified Count</h2>
 <div class="param-box">
@@ -315,9 +331,9 @@ PRED-012 promoted to WIN-042 (2026-03-21)</pre>
 </table>
 
 <footer>
-  <span>Version 50.8</span>
+  <span>Version 50.9</span>
   <span>2026-03-23</span>
-  <span style="color:var(--accent-blue);font-weight:600">46 confirmed</span>
+  <span style="color:var(--accent-blue);font-weight:600">50 confirmed</span>
   <span style="color:var(--accent-red)">2 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
