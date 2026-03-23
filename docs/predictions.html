@@ -560,14 +560,40 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 
 <h1>New Long-Term Predictions &mdash; Registered 2026-03-23</h1>
 
-<div class="prediction pending">
-<h3>PRED-MOON-001 &mdash; Aetheric Extinction &mdash; Moon Sets Above Geometric Horizon <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-23 | <strong>Test:</strong> Any clear night with moonset observable</p>
-<p><strong>Background:</strong> V12 geometry cannot explain moonrise/set geometrically (OPEN-007). Stage 1 analysis selected Mechanism 3: aetheric optical extinction gradient. Moon dims and extinguishes before reaching geometric horizon because sec(&theta;) optical depth in aetheric medium increases toward horizon.</p>
-<p><strong>Dome prediction:</strong> Moon disappears at 0.5&deg;&ndash;2.0&deg; above flat geometric horizon at Chapel Hill (35.9&deg;N). At equatorial latitudes, extinction elevation 0.1&deg;&ndash;0.5&deg;. Higher-latitude observers see moon &ldquo;set&rdquo; at higher apparent elevation than equatorial observers.</p>
-<p><strong>Globe prediction:</strong> Moon sets at exactly 0&deg; (geometric horizon) + atmospheric refraction (~0.57&deg;). Same latitude-independent value at all locations.</p>
-<p><strong>Method:</strong> Photograph moonset sequence. Compare apparent disappearance elevation to known horizon geometry from same location.</p>
-<p><strong>Falsification:</strong> Moon consistently reaches geometric horizon (0&deg; + standard refraction) before disappearing at Chapel Hill.</p>
+<div class="prediction pending" id="pred-moon-001">
+<h3>PRED-MOON-001 &mdash; Aetheric Extinction &mdash; Moon Sets Above Geometric Horizon (Latitude-Dependent) <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-23 | <strong>Stage 2 numbers derived:</strong> 2026-03-23</p>
+
+<p><strong>Background (OPEN-007 Stage 2):</strong> V12 geometry cannot explain moonrise/set geometrically. Stage 1 identified aetheric optical extinction as the mechanism. Stage 2 derives specific numbers from ECM parameters already locked.</p>
+
+<p><strong>Derivation:</strong></p>
+<ul>
+  <li>&tau;&#8320; (vertical optical depth) = 0.602 &mdash; derived from Schumann 26% damping (WIN-002): exp(&minus;&tau;/2) = 0.74 &rarr; &tau; = 0.602</li>
+  <li>Moon extinction threshold &tau;(&theta;) = &tau;&#8320; &times; sec(&theta;) = 17.2 (moon mag &minus;12.7 &rarr; below naked eye at mag +6)</li>
+  <li>Extinction angle: sec(&theta;) = 17.2 / &tau;&#8320; = 28.6 &rarr; &theta; = 88.0&deg; &rarr; elevation = 2.0&deg; at Chapel Hill</li>
+  <li>Latitude dependence: &tau;&#8320;(r) = 0.602 &times; exp(&minus;r/&lambda;_g) / exp(&minus;r_CH/&lambda;_g) &mdash; denser aether near pole</li>
+</ul>
+
+<p><strong>Dome predictions by city:</strong></p>
+<table>
+  <tr><th>City</th><th>Polaris&deg;</th><th>r (km)</th><th>Moon extinction elevation</th><th>Globe prediction</th></tr>
+  <tr><td>Reykjavik</td><td>64.1&deg;</td><td>2,306</td><td><strong>3.3&deg;</strong></td><td>0.57&deg;</td></tr>
+  <tr><td>London</td><td>51.5&deg;</td><td>3,778</td><td><strong>2.75&deg;</strong></td><td>0.57&deg;</td></tr>
+  <tr><td>Chapel Hill</td><td>36.2&deg;</td><td>6,495</td><td><strong>2.01&deg;</strong></td><td>0.57&deg;</td></tr>
+  <tr><td>Cairo</td><td>30.1&deg;</td><td>8,194</td><td><strong>1.65&deg;</strong></td><td>0.57&deg;</td></tr>
+  <tr><td>Lagos</td><td>6.5&deg;</td><td>15,800</td><td><strong>0.68&deg;</strong></td><td>0.57&deg;</td></tr>
+  <tr><td>Singapore</td><td>1.4&deg;</td><td>16,800</td><td><strong>0.61&deg;</strong></td><td>0.57&deg;</td></tr>
+</table>
+
+<p><strong>Why this discriminates:</strong> Globe predicts 0.57&deg; (atmospheric refraction only) at ALL latitudes &mdash; a flat line. Dome predicts a 5&times; gradient from Singapore (0.61&deg;) to Reykjavik (3.3&deg;). The difference at London alone (2.75&deg; vs 0.57&deg;) is measurable with a calibrated inclinometer or careful photography.</p>
+
+<p><strong>Dome prediction summary:</strong> Moon disappears at 1.5&ndash;2.5&deg; elevation at Chapel Hill (35.9&deg;N). At Reykjavik (64&deg;N), moon should visibly set well above the geometric horizon. At Singapore (1.4&deg;N), nearly matches globe.</p>
+
+<p><strong>Globe prediction:</strong> Moon sets at 0.57&deg; (atmospheric refraction) at ALL latitudes. No latitude gradient.</p>
+
+<p><strong>Method:</strong> Photograph moonset sequence from flat horizon. Measure apparent disappearance elevation against known horizon geometry. A $30 inclinometer or high-resolution photo + trigonometry is sufficient.</p>
+
+<p><strong>Falsification:</strong> Moon sets at 0.57&deg; &plusmn; 0.3&deg; at Chapel Hill (globe value) &mdash; no latitude gradient observed across 3+ cities.</p>
 </div>
 
 <div class="prediction pending">
