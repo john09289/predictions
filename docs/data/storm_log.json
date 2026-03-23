@@ -56,16 +56,16 @@
   },
   {
     "date": "2026-03-23",
-    "kp_peak": "3\u20135",
-    "storm_class": "G1 isolated",
-    "phase": "Recovery",
+    "kp_peak": 6.33,
+    "storm_class": "G2",
+    "phase": "Active",
     "dst": null,
     "sw_speed": "~600",
     "sr_freq": null,
-    "sr_amp_ratio": null,
-    "tomsk_status": "Unknown",
-    "sr_suppressed": "PENDING",
-    "notes": "HSS effects continuing. Isolated G1 expected. Kp 3\u20135 forecast. Source: EarthSky/NOAA",
+    "sr_amp_ratio": "0.077 (auto-pixel Tomsk \u2014 CANDIDATE suppress)",
+    "tomsk_status": "Suppressed (auto-flagged \u2014 needs human confirm)",
+    "sr_suppressed": "CANDIDATE",
+    "notes": "Kp 6.33 peak per NOAA. Tomsk amplitude_index=0.077 auto-flagged as suppressed by pipeline. Check HeartMath to confirm. Source: NOAA SWPC + Tomsk pixel analysis.",
     "eval": "NEEDS_REVIEW"
   }
 ]

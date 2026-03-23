@@ -76,19 +76,6 @@ def aao_color(val):
 
 # ── TABLE ROW BUILDERS ──
 
-def _td(val, css_class="", bold=False):
-    """Render a table cell. Returns PENDING style for None/empty/PENDING."""
-    if val is None or str(val).strip() == "":
-        return '<td class="pending-cell">PENDING</td>'
-    s = str(val)
-    if s.upper() == "PENDING":
-        return '<td class="pending-cell">PENDING</td>'
-    tag = "strong" if bold else "span"
-    inner = f"<{tag}>{s}</{tag}>" if bold else s
-    if css_class:
-        return f'<td class="{css_class}">{inner}</td>'
-    return f"<td>{inner}</td>"
-
 
 def dw001_rows():
     rows = []
@@ -135,6 +122,8 @@ def dw001_rows():
             supp_td = '<td class="suppressed">&#10003; YES</td>'
         elif suppressed in ("N/A", "NA"):
             supp_td = '<td class="normal">N/A</td>'
+        elif suppressed == "CANDIDATE":
+            supp_td = '<td class="pending-tag" style="font-style:italic;">&#9888; CANDIDATE &mdash; verify HeartMath</td>'
         elif suppressed == "PENDING":
             supp_td = '<td class="pending-cell">&#10067; PENDING</td>'
         else:

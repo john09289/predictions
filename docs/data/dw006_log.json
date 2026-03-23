@@ -28,5 +28,15 @@
     "confirmed": "PENDING",
     "note": "",
     "source": "NOAA confirmed. HeartMath GCI"
+  },
+  {
+    "date": "2026-03-23",
+    "storm_class": "G2",
+    "kp_peak": 6.33,
+    "phase_checked": "Active (Kp 6.33 peak)",
+    "sr_suppression_pct": ">92% (Tomsk amp_index=0.077)",
+    "confirmed": "CANDIDATE",
+    "note": "Auto-flagged by pipeline",
+    "source": "Tomsk sra.jpg pixel analysis (amplitude_index=0.077 < 0.70 threshold). Verify at HeartMath GCI."
   }
 ]

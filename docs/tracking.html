@@ -87,7 +87,7 @@
     <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">5</span></div>
     <div class="stat"><span class="stat-label">Storm days (G1+)</span><span class="stat-value">4</span></div>
     <div class="stat"><span class="stat-label">SR suppression confirmed</span><span class="stat-value">1 (2026-03-20)</span></div>
-    <div class="stat"><span class="stat-label">SR pending check</span><span class="stat-value">3 days</span></div>
+    <div class="stat"><span class="stat-label">SR pending check</span><span class="stat-value">2 days</span></div>
     <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;75% G1+ &rarr; suppress</span></div>
   </div>
   <table class="log-table">
@@ -153,16 +153,16 @@
       </tr>
       <tr>
         <td>2026-03-23</td>
-        <td>3–5</td>
-        <td class="">G1 isolated</td>
-        <td>Recovery</td>
+        <td>6.33</td>
+        <td class="">G2</td>
+        <td>Active</td>
         <td>—</td>
         <td>~600</td>
         <td class="unknown-cell">&mdash;</td>
-        <td class="pending-cell">PENDING</td>
-        <td class="unknown-cell">Unknown</td>
-        <td class="pending-cell">&#10067; PENDING</td>
-        <td>HSS effects continuing. Isolated G1 expected. Kp 3–5 forecast. Source: EarthSky/NOAA</td>
+        <td class="suppressed">0.077 (auto-pixel Tomsk — CANDIDATE suppress)</td>
+        <td class="normal">Suppressed (auto-flagged — needs human confirm)</td>
+        <td class="pending-tag" style="font-style:italic;">&#9888; CANDIDATE &mdash; verify HeartMath</td>
+        <td>Kp 6.33 peak per NOAA. Tomsk amplitude_index=0.077 auto-flagged as suppressed by pipeline. Check HeartMath to confirm. Source: NOAA SWPC + Tomsk pixel analysis.</td>
       </tr>
       <tr class="note-row">
         <td colspan="11">Add row daily: date | kp_peak | storm_class | phase (initial/main/recovery/quiet) | Dst | SW_speed | SR_freq | SR_amp_ratio (1.0=baseline) | Tomsk_status | suppressed (Y/N/N/A) | notes + source</td>
@@ -201,16 +201,6 @@
         <td>&mdash;</td>
         <td style="color:var(--accent-green);font-weight:600;">2.26 (historical)&times;</td>
         <td>2.26× (WIN-043)</td>
-        <td class="normal">On track</td>
-      </tr>
-      <tr>
-        <td>2026-03</td>
-        <td>85.778&deg;N</td>
-        <td>138.057&deg;E</td>
-        <td>-0.18</td>
-        <td>-3.888</td>
-        <td style="color:var(--accent-green);font-weight:600;">21.6&times;</td>
-        <td>—</td>
         <td class="normal">On track</td>
       </tr>
       <tr class="note-row">
@@ -316,7 +306,7 @@
     <span class="cadence-label">Per G1+ storm event</span>
   </div>
   <div class="stat-row">
-    <div class="stat"><span class="stat-label">Storms logged</span><span class="stat-value">3</span></div>
+    <div class="stat"><span class="stat-label">Storms logged</span><span class="stat-value">4</span></div>
     <div class="stat"><span class="stat-label">Suppression confirmed</span><span class="stat-value">1</span></div>
     <div class="stat"><span class="stat-label">Pending check</span><span class="stat-value">2</span></div>
     <div class="stat"><span class="stat-label">Confirmed rate</span><span class="stat-value">100% (of checked)</span></div>
@@ -358,6 +348,15 @@
         <td class="pending-cell">PENDING</td>
         <td class="pending-cell">&#10067; PRIORITY CHECK</td>
         <td>NOAA confirmed. HeartMath GCI</td>
+      </tr>
+      <tr>
+        <td>2026-03-23</td>
+        <td class="">G2</td>
+        <td>6.33</td>
+        <td>Active (Kp 6.33 peak)</td>
+        <td class="suppressed">>92% (Tomsk amp_index=0.077)</td>
+        <td>CANDIDATE</td>
+        <td>Tomsk sra.jpg pixel analysis (amplitude_index=0.077 < 0.70 threshold). Verify at HeartMath GCI.</td>
       </tr>
       <tr class="note-row">
         <td colspan="7">Add row per G1+ event: date | class | kp_peak | phase_checked | suppression_pct | confirmed (Y/N) | source</td>
