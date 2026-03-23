@@ -7,29 +7,30 @@
   <link rel="stylesheet" href="style.css">
   <script src="analytics.js"></script>
   <style>
-    .tracking-section { margin: 2rem 0; border: 1px solid #2a2a2a; border-radius: 8px; overflow: hidden; }
-    .tracking-header { background: #1a1a2e; padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
-    .tracking-header h3 { margin: 0; font-size: 1.05rem; }
-    .cadence-label { font-size: 0.72rem; background: #0f3460; padding: 3px 9px; border-radius: 12px; white-space: nowrap; }
-    .stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0.7rem 1.5rem; background: #111; border-bottom: 1px solid #1a1a1a; font-size: 0.82rem; }
+    .tracking-section { margin: 2rem 0; border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
+    .tracking-header { background: linear-gradient(135deg, rgba(37,99,235,0.07), rgba(14,165,233,0.05)); padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid var(--border-light); }
+    .tracking-header h3 { margin: 0; font-size: 1rem; font-family: var(--font-body); font-weight: 600; color: var(--text-heading); }
+    .cadence-label { font-size: 0.7rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky)); color: #fff; padding: 3px 10px; border-radius: 10px; white-space: nowrap; font-weight: 600; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0.7rem 1.5rem; background: var(--bg-code); border-bottom: 1px solid var(--border-light); font-size: 0.82rem; }
     .stat { display: flex; flex-direction: column; gap: 2px; }
-    .stat-label { color: #555; font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .stat-value { font-weight: 600; color: #ddd; }
+    .stat-label { color: var(--text-tertiary); font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.05em; }
+    .stat-value { font-weight: 600; color: var(--text-primary); }
     .log-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; overflow-x: auto; display: block; }
-    .log-table th { background: #0d0d0d; padding: 0.45rem 0.7rem; text-align: left; color: #666; font-weight: 500; border-bottom: 1px solid #222; white-space: nowrap; }
-    .log-table td { padding: 0.45rem 0.7rem; border-bottom: 1px solid #181818; vertical-align: top; }
+    .log-table th { background: var(--bg-code); padding: 0.45rem 0.75rem; text-align: left; color: var(--text-secondary); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border-medium); white-space: nowrap; }
+    .log-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-primary); }
     .log-table tr:last-child td { border-bottom: none; }
-    .log-table tbody tr:hover td { background: #0f0f0f; }
-    .suppressed { color: #e74c3c; font-weight: 600; }
-    .normal { color: #2ecc71; }
-    .pending-cell { color: #888; font-style: italic; }
-    .unknown-cell { color: #555; }
-    .add-footer { background: #080810; padding: 0.6rem 1.5rem; font-size: 0.75rem; color: #444; border-top: 1px solid #1a1a1a; }
-    .immediate-banner { background: #1a0a00; border-left: 3px solid #e67e22; padding: 0.7rem 1.5rem; font-size: 0.85rem; color: #e67e22; }
-    .section-intro { color: #888; font-size: 0.85rem; margin: 0; padding: 0.75rem 1.5rem; border-bottom: 1px solid #1a1a1a; }
-    .win-tag { color: #2ecc71; font-size: 0.7rem; font-weight: 700; }
-    .pending-tag { color: #e67e22; font-size: 0.7rem; }
-    .note-row td { background: #0a0a12; color: #556; font-size: 0.75rem; font-style: italic; }
+    .log-table tbody tr:hover td { background: var(--bg-card-hover); }
+    .suppressed { color: var(--accent-red); font-weight: 600; }
+    .normal { color: var(--accent-green); font-weight: 500; }
+    .pending-cell { color: var(--text-tertiary); font-style: italic; }
+    .unknown-cell { color: var(--text-tertiary); }
+    .add-footer { background: var(--bg-code); padding: 0.6rem 1.5rem; font-size: 0.75rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); }
+    .immediate-banner { background: #fff8f0; border-left: 3px solid var(--accent-gold-light); padding: 0.75rem 1.5rem; font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
+    .immediate-banner a { color: var(--accent-gold); }
+    .section-intro { color: var(--text-secondary); font-size: 0.85rem; margin: 0; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border-light); }
+    .win-tag { color: var(--accent-green); font-size: 0.7rem; font-weight: 700; }
+    .pending-tag { color: var(--accent-gold); font-size: 0.7rem; }
+    .note-row td { background: var(--bg-code); color: var(--text-tertiary); font-size: 0.75rem; font-style: italic; }
   </style>
 </head>
 <body>
@@ -46,9 +47,9 @@
 </nav>
 
 <h1>ECM Daily &amp; Weekly Tracking Logs</h1>
-<p style="color:#888;margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
+<p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
-<div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:#111;border-radius:6px;">
+<div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
   <span><strong>Model:</strong> V50.9</span>
   <span><strong>Confirmed:</strong> 53</span>
   <span><strong>Falsified:</strong> 4</span>
@@ -61,7 +62,7 @@
 <div class="immediate-banner">
   &#9889; <strong>IMMEDIATE ACTION:</strong> Check HeartMath spectrogram for March 22 (G3 storm 0900&ndash;1200 UTC).
   SR suppressed = PRED-SR-SUPPRESS confirmed (2nd event). Not suppressed = update DW-006 and revise model.
-  &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/" style="color:#e67e22;">HeartMath GCI March 22</a>
+  &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI March 22</a>
   &nbsp;|&nbsp; Also check March 23 today (G1 isolated, Kp 3&ndash;5).
 </div>
 
@@ -419,16 +420,16 @@
 <!-- ═══════════════════════════════════════════════════════════ -->
 <!-- HOW TO USE -->
 <!-- ═══════════════════════════════════════════════════════════ -->
-<section style="margin-top:2.5rem;padding:1.5rem;background:#0d0d1a;border-radius:8px;border:1px solid #1a1a2e;">
-  <h2 style="margin-top:0;font-size:1.1rem;">How to Use These Logs</h2>
-  <ol style="color:#aaa;font-size:0.85rem;line-height:1.8;">
+<section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-code);border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
+  <h2 style="margin-top:0;font-size:1.05rem;font-family:var(--font-body);font-weight:600;">How to Use These Logs</h2>
+  <ol style="color:var(--text-secondary);font-size:0.85rem;line-height:1.8;">
     <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
     <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
     <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
     <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
     <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
   </ol>
-  <p style="color:#666;font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
+  <p style="color:var(--text-tertiary);font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
 </section>
 
 <footer>

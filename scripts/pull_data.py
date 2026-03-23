@@ -86,11 +86,17 @@ def fetch_nmp():
             parts = line.split()
             if len(parts) >= 3:
                 try:
-                    entries.append({
-                        "year": float(parts[0]),
-                        "lat": float(parts[1]),
-                        "lon": float(parts[2]),
-                    })
+                    # NP.xy format: year  lat  lon
+                    year_val = float(parts[0])
+                    lat_val  = float(parts[1])
+                    lon_val  = float(parts[2])
+                    # Sanity check: lat 80-90, lon 0-360, year 1900-2200
+                    if 80 <= lat_val <= 90 and 0 <= lon_val <= 360 and 1900 <= year_val <= 2200:
+                        entries.append({
+                            "year": year_val,
+                            "lat": lat_val,
+                            "lon": lon_val,
+                        })
                 except Exception:
                     pass
 
@@ -127,41 +133,55 @@ def fetch_nmp():
 
 
 def fetch_aao():
-    """Pull latest AAO index from CPC/NOAA."""
-    try:
-        url = "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml"
-        r = requests.get(url, timeout=15)
-        soup = BeautifulSoup(r.text, "lxml")
+    """Pull latest AAO index — tries raw page first, HTML fallback."""
 
-        pre = soup.find("pre")
-        if pre:
-            text = pre.get_text()
-            lines = [l for l in text.strip().split("\n") if l.strip()]
-
-            recent_values = []
-            for line in lines[-10:]:
-                parts = line.split()
-                if len(parts) >= 4:
-                    try:
-                        val = float(parts[-1])
+    def _parse_aao_text(text):
+        """Extract last 7+ float values in the range (-10, 10) from raw text."""
+        recent_values = []
+        for line in text.strip().split("\n"):
+            line = line.strip()
+            if not line or line.startswith("#") or line.lower().startswith("year"):
+                continue
+            parts = line.split()
+            for part in reversed(parts):
+                try:
+                    val = float(part)
+                    if -10 < val < 10:
                         recent_values.append(val)
-                    except Exception:
-                        pass
+                        break
+                except Exception:
+                    continue
+        return recent_values
 
-            if recent_values:
-                weekly_mean = sum(recent_values[-7:]) / len(recent_values[-7:])
-                latest = recent_values[-1]
+    # Try 1: primary URL (HTML page, parse raw text)
+    for url in [
+        "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml",
+        "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/aao.shtml",
+    ]:
+        try:
+            r = requests.get(url, timeout=15)
+            recent_values = _parse_aao_text(r.text)
+            if len(recent_values) >= 7:
+                last7 = recent_values[-7:]
                 return {
-                    "latest": round(latest, 3),
-                    "weekly_mean": round(weekly_mean, 3),
-                    "days_positive_7d": sum(1 for v in recent_values[-7:] if v > 0),
+                    "latest": round(recent_values[-1], 3),
+                    "weekly_mean": round(sum(last7) / len(last7), 3),
+                    "days_positive_7d": sum(1 for v in last7 if v > 0),
                     "dome_target": ">+0.3sigma rolling",
                     "fetched": NOW_UTC,
-                    "source": "CPC/NOAA AAO",
+                    "source": f"CPC/NOAA AAO ({url.split('/')[-1]})",
                 }
-    except Exception as e:
-        print(f"AAO fetch failed: {e}")
-    return {"latest": "ERROR", "weekly_mean": "ERROR", "fetched": NOW_UTC}
+            print(f"AAO: insufficient values from {url} ({len(recent_values)} found)")
+        except Exception as e:
+            print(f"AAO attempt failed ({url}): {e}")
+
+    return {
+        "latest": "UNAVAILABLE",
+        "weekly_mean": "UNAVAILABLE",
+        "days_positive_7d": "UNAVAILABLE",
+        "fetched": NOW_UTC,
+        "source": "CPC/NOAA — all attempts failed",
+    }
 
 
 def fetch_noaa_alerts():
