@@ -1,0 +1,71 @@
+{
+  "updated": "2026-03-23 21:49 UTC",
+  "date": "2026-03-23",
+  "kp": {
+    "kp_max_24h": 6.33,
+    "kp_current": 4.33,
+    "storm_class": "G2",
+    "is_storm": true,
+    "recent_values": [
+      6.33,
+      4.67,
+      3.67,
+      1.67,
+      2.67,
+      4.67,
+      5.0,
+      4.33
+    ],
+    "source": "NOAA SWPC",
+    "fetched": "2026-03-23 21:49 UTC"
+  },
+  "nmp": {
+    "lat": 85.778,
+    "lon": 2025.0,
+    "year": 138.057,
+    "delta_lat": -0.18,
+    "delta_lon": 1.0,
+    "ratio": 5.56,
+    "win043_target": ">=2.0x",
+    "ratio_ok": true,
+    "source": "NOAA NGDC NP.xy",
+    "fetched": "2026-03-23 21:49 UTC"
+  },
+  "aao": {
+    "latest": "ERROR",
+    "weekly_mean": "ERROR",
+    "fetched": "2026-03-23 21:49 UTC"
+  },
+  "alerts": {
+    "recent_storm_alerts": [
+      {
+        "time": "2026-03-23 17:52:12.777",
+        "summary": "Space Weather Message Code: ALTK05\r Serial Number: 1994\r Issue Time: 2026 Mar 23 1752 UTC\r \r ALERT: Geomagnetic K-index of 5\r  Threshold Reached: 2026 Mar 23 1750 UTC\r Synoptic Period: 1500-1800 UTC\r "
+      },
+      {
+        "time": "2026-03-23 15:00:56.463",
+        "summary": "Space Weather Message Code: ALTK05\r Serial Number: 1993\r Issue Time: 2026 Mar 23 1500 UTC\r \r ALERT: Geomagnetic K-index of 5\r  Threshold Reached: 2026 Mar 23 1459 UTC\r Synoptic Period: 1200-1500 UTC\r "
+      },
+      {
+        "time": "2026-03-23 14:41:41.290",
+        "summary": "Space Weather Message Code: WARK05\r Serial Number: 2214\r Issue Time: 2026 Mar 23 1441 UTC\r \r WARNING: Geomagnetic K-index of 5 expected\r Valid From: 2026 Mar 23 1440 UTC\r Valid To: 2026 Mar 23 2359 UT"
+      },
+      {
+        "time": "2026-03-23 01:07:46.737",
+        "summary": "Space Weather Message Code: ALTK05\r Serial Number: 1992\r Issue Time: 2026 Mar 23 0107 UTC\r \r ALERT: Geomagnetic K-index of 5\r  Threshold Reached: 2026 Mar 23 0105 UTC\r Synoptic Period: 0000-0300 UTC\r "
+      },
+      {
+        "time": "2026-03-22 23:39:29.363",
+        "summary": "Space Weather Message Code: ALTK05\r Serial Number: 1991\r Issue Time: 2026 Mar 22 2339 UTC\r \r ALERT: Geomagnetic K-index of 5\r  Threshold Reached: 2026 Mar 22 2330 UTC\r Synoptic Period: 2100-2400 UTC\r "
+      }
+    ],
+    "alert_count_48h": 11,
+    "fetched": "2026-03-23 21:49 UTC"
+  },
+  "schumann": {
+    "tomsk_live": true,
+    "status": "Live \u2014 check manually at sos70.ru/provider.php?file=sra.jpg",
+    "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
+    "fetched": "2026-03-23 21:49 UTC"
+  }
+}
