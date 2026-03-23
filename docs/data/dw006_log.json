@@ -1,0 +1,32 @@
+[
+  {
+    "date": "2026-03-20",
+    "storm_class": "G4",
+    "kp_peak": 8.0,
+    "phase_checked": "Main phase",
+    "sr_suppression_pct": ">30%",
+    "confirmed": "YES",
+    "note": "W027",
+    "source": "disclosurenews.it Schumann monitoring"
+  },
+  {
+    "date": "2026-03-21",
+    "storm_class": "G1\u2013G3",
+    "kp_peak": 7,
+    "phase_checked": "Recovery",
+    "sr_suppression_pct": null,
+    "confirmed": "PENDING",
+    "note": "",
+    "source": "HeartMath GCI"
+  },
+  {
+    "date": "2026-03-22",
+    "storm_class": "G3",
+    "kp_peak": "~7",
+    "phase_checked": "Main phase (0900\u20131200 UTC)",
+    "sr_suppression_pct": null,
+    "confirmed": "PENDING",
+    "note": "",
+    "source": "NOAA confirmed. HeartMath GCI"
+  }
+]

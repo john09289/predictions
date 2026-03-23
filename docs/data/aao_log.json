@@ -1,0 +1,10 @@
+[
+  {
+    "date": "2026-03-19",
+    "latest": null,
+    "weekly_mean": 0.78,
+    "days_positive_7d": 8,
+    "notes": "W020 test window. Below \u22653% falsification threshold but positive bias noted.",
+    "fetched": "manual"
+  }
+]

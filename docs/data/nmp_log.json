@@ -1,0 +1,14 @@
+[
+  {
+    "month": "2026-02",
+    "lat": 85.778,
+    "lon": 138.057,
+    "delta_lat": null,
+    "delta_lon": null,
+    "ratio": "2.26 (historical)",
+    "rolling_4mo": "2.26\u00d7 (WIN-043)",
+    "vs_pred": "On track",
+    "notes": "WIN-043 baseline. Historical drift ratio from NOAA NP.xy dataset.",
+    "fetched": "manual"
+  }
+]

@@ -1,245 +1,59 @@
 #!/usr/bin/env python3
 """
-ECM Dome Model — Automated Data Pipeline
+ECM Dome Model — Pipeline v2 Orchestrator
 Runs every 6 hours via GitHub Actions.
-Pulls live geomagnetic and SR data, updates tracking.html.
+Fetches live data, updates persistent logs, triggers HTML rebuild.
 """
 
-import requests
 import json
-import re
 import os
-from datetime import datetime, timezone, timedelta
-from bs4 import BeautifulSoup
+import subprocess
+from datetime import datetime, timezone
 
-# ── CONFIG ──
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-TRACKING_FILE = os.path.join(REPO_ROOT, "docs", "tracking.html")
 DATA_DIR = os.path.join(REPO_ROOT, "docs", "data")
-DATA_FILE = os.path.join(DATA_DIR, "live_data.json")
-TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
-NOW_UTC = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+SCRIPTS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 os.makedirs(DATA_DIR, exist_ok=True)
 
-print(f"ECM Pipeline running at {NOW_UTC}")
+NOW_UTC = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
+TODAY = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+print(f"ECM Pipeline v2 running at {NOW_UTC}")
 
 
-# ═══════════════════════════════════════════════════════════════
-# DATA FETCHERS
-# ═══════════════════════════════════════════════════════════════
+# ── HELPERS ──
 
-def fetch_kp_today():
-    """Pull current Kp from NOAA SWPC JSON endpoint."""
-    try:
-        url = "https://services.swpc.noaa.gov/products/noaa-planetary-k-index.json"
-        r = requests.get(url, timeout=15)
-        data = r.json()
-        # data[0] = header, rest = [time, kp, observed/estimated, ...]
-        # Get last 8 entries (past 24h)
-        recent = data[-8:]
-        kp_values = []
-        for row in recent:
-            try:
-                kp_values.append(float(row[1]))
-            except Exception:
-                pass
-        kp_max = max(kp_values) if kp_values else 0
-        kp_current = kp_values[-1] if kp_values else 0
-
-        if kp_max >= 8:
-            storm_class = "G4"
-        elif kp_max >= 7:
-            storm_class = "G3"
-        elif kp_max >= 6:
-            storm_class = "G2"
-        elif kp_max >= 5:
-            storm_class = "G1"
-        else:
-            storm_class = "G0 (quiet)"
-
-        return {
-            "kp_max_24h": kp_max,
-            "kp_current": kp_current,
-            "storm_class": storm_class,
-            "is_storm": kp_max >= 5,
-            "recent_values": kp_values,
-            "source": "NOAA SWPC",
-            "fetched": NOW_UTC,
-        }
-    except Exception as e:
-        print(f"Kp fetch failed: {e}")
-        return {"kp_max_24h": "ERROR", "storm_class": "UNKNOWN", "is_storm": False, "fetched": NOW_UTC}
-
-
-def fetch_nmp():
-    """Pull latest NMP position from NOAA NP.xy."""
-    try:
-        url = "https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy"
-        r = requests.get(url, timeout=15)
-        lines = r.text.strip().split("\n")
-
-        data_lines = [l for l in lines if l.strip() and not l.startswith("#")]
-
-        entries = []
-        for line in data_lines[-5:]:
-            parts = line.split()
-            if len(parts) >= 3:
-                try:
-                    # NP.xy format: year  lat  lon
-                    year_val = float(parts[0])
-                    lat_val  = float(parts[1])
-                    lon_val  = float(parts[2])
-                    # Sanity check: lat 80-90, lon 0-360, year 1900-2200
-                    if 80 <= lat_val <= 90 and 0 <= lon_val <= 360 and 1900 <= year_val <= 2200:
-                        entries.append({
-                            "year": year_val,
-                            "lat": lat_val,
-                            "lon": lon_val,
-                        })
-                except Exception:
-                    pass
-
-        if len(entries) >= 2:
-            current = entries[-1]
-            prev = entries[-2]
-            delta_lat = current["lat"] - prev["lat"]
-            delta_lon = current["lon"] - prev["lon"]
-            ratio = abs(delta_lon) / abs(delta_lat) if abs(delta_lat) > 0.001 else 99.9
-
-            return {
-                "lat": current["lat"],
-                "lon": current["lon"],
-                "year": current["year"],
-                "delta_lat": round(delta_lat, 4),
-                "delta_lon": round(delta_lon, 4),
-                "ratio": round(ratio, 2),
-                "win043_target": ">=2.0x",
-                "ratio_ok": ratio >= 2.0,
-                "source": "NOAA NGDC NP.xy",
-                "fetched": NOW_UTC,
-            }
-        elif len(entries) == 1:
-            return {
-                "lat": entries[0]["lat"],
-                "lon": entries[0]["lon"],
-                "year": entries[0]["year"],
-                "ratio": None,
-                "fetched": NOW_UTC,
-            }
-    except Exception as e:
-        print(f"NMP fetch failed: {e}")
-    return {"lat": "ERROR", "lon": "ERROR", "ratio": "ERROR", "fetched": NOW_UTC}
-
-
-def fetch_aao():
-    """Pull latest AAO index — tries raw page first, HTML fallback."""
-
-    def _parse_aao_text(text):
-        """Extract last 7+ float values in the range (-10, 10) from raw text."""
-        recent_values = []
-        for line in text.strip().split("\n"):
-            line = line.strip()
-            if not line or line.startswith("#") or line.lower().startswith("year"):
-                continue
-            parts = line.split()
-            for part in reversed(parts):
-                try:
-                    val = float(part)
-                    if -10 < val < 10:
-                        recent_values.append(val)
-                        break
-                except Exception:
-                    continue
-        return recent_values
-
-    # Try 1: primary URL (HTML page, parse raw text)
-    for url in [
-        "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml",
-        "https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/aao.shtml",
-    ]:
+def load_json(filename, default):
+    path = os.path.join(DATA_DIR, filename)
+    if os.path.exists(path):
         try:
-            r = requests.get(url, timeout=15)
-            recent_values = _parse_aao_text(r.text)
-            if len(recent_values) >= 7:
-                last7 = recent_values[-7:]
-                return {
-                    "latest": round(recent_values[-1], 3),
-                    "weekly_mean": round(sum(last7) / len(last7), 3),
-                    "days_positive_7d": sum(1 for v in last7 if v > 0),
-                    "dome_target": ">+0.3sigma rolling",
-                    "fetched": NOW_UTC,
-                    "source": f"CPC/NOAA AAO ({url.split('/')[-1]})",
-                }
-            print(f"AAO: insufficient values from {url} ({len(recent_values)} found)")
+            with open(path) as f:
+                return json.load(f)
         except Exception as e:
-            print(f"AAO attempt failed ({url}): {e}")
-
-    return {
-        "latest": "UNAVAILABLE",
-        "weekly_mean": "UNAVAILABLE",
-        "days_positive_7d": "UNAVAILABLE",
-        "fetched": NOW_UTC,
-        "source": "CPC/NOAA — all attempts failed",
-    }
+            print(f"  Warning: could not load {filename}: {e}")
+    return default
 
 
-def fetch_noaa_alerts():
-    """Pull NOAA space weather alerts for storm detection."""
-    try:
-        url = "https://services.swpc.noaa.gov/products/alerts.json"
-        r = requests.get(url, timeout=15)
-        alerts = r.json()
-
-        storm_alerts = []
-        for alert in alerts[:20]:
-            msg = alert.get("message", "")
-            issue_time = alert.get("issue_datetime", "")
-
-            if any(kw in msg for kw in ["Geomagnetic Storm", "G1", "G2", "G3", "G4", "G5"]):
-                storm_alerts.append({
-                    "time": issue_time,
-                    "summary": msg[:200].replace("\n", " "),
-                })
-
-        return {
-            "recent_storm_alerts": storm_alerts[:5],
-            "alert_count_48h": len(storm_alerts),
-            "fetched": NOW_UTC,
-        }
-    except Exception as e:
-        print(f"Alert fetch failed: {e}")
-    return {"recent_storm_alerts": [], "alert_count_48h": 0, "fetched": NOW_UTC}
+def save_json(filename, data):
+    path = os.path.join(DATA_DIR, filename)
+    with open(path, "w") as f:
+        json.dump(data, f, indent=2)
+    print(f"  Saved {filename}")
 
 
-def check_schumann_status():
-    """Check sos70.ru for Schumann status via HTTP head request."""
-    try:
-        url = "https://sos70.ru/provider.php?file=sra.jpg"
-        r = requests.head(url, timeout=10)
-        if r.status_code == 200:
-            return {
-                "tomsk_live": True,
-                "status": "Live — check manually at sos70.ru/provider.php?file=sra.jpg",
-                "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-                "fetched": NOW_UTC,
-            }
-    except Exception:
-        pass
-    return {
-        "tomsk_live": False,
-        "status": "Tomsk unreachable — use HeartMath backup",
-        "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-        "fetched": NOW_UTC,
-    }
+# ── FETCH ALL DATA ──
 
-
-# ═══════════════════════════════════════════════════════════════
-# PULL ALL DATA
-# ═══════════════════════════════════════════════════════════════
+# Import fetchers from same directory
+import sys
+sys.path.insert(0, SCRIPTS_DIR)
+from fetchers import (
+    fetch_kp, fetch_nmp, fetch_aao,
+    fetch_noaa_alerts, fetch_sr_image, evaluate_predictions,
+)
 
 print("Fetching Kp index...")
-kp = fetch_kp_today()
+kp = fetch_kp()
 print(f"  Kp max 24h: {kp['kp_max_24h']} ({kp['storm_class']})")
 
 print("Fetching NMP position...")
@@ -252,13 +66,15 @@ print(f"  AAO latest: {aao.get('latest')}σ, 7d mean: {aao.get('weekly_mean')}σ
 
 print("Fetching NOAA alerts...")
 alerts = fetch_noaa_alerts()
-print(f"  Storm alerts (48h): {alerts['alert_count_48h']}")
+print(f"  Storm alerts 48h: {alerts['alert_count_48h']}")
 
-print("Checking Schumann status...")
-sr = check_schumann_status()
-print(f"  Tomsk live: {sr['tomsk_live']}")
+print("Fetching SR image (Tomsk)...")
+sr = fetch_sr_image()
+print(f"  Tomsk live: {sr['tomsk_live']}, amplitude_index: {sr.get('amplitude_index')}, status: {sr.get('status')}")
 
-# Save JSON
+
+# ── WRITE live_data.json ──
+
 live_data = {
     "updated": NOW_UTC,
     "date": TODAY,
@@ -268,144 +84,96 @@ live_data = {
     "alerts": alerts,
     "schumann": sr,
 }
-
-with open(DATA_FILE, "w") as f:
-    json.dump(live_data, f, indent=2)
-print(f"Saved {DATA_FILE}")
+save_json("live_data.json", live_data)
 
 
-# ═══════════════════════════════════════════════════════════════
-# GENERATE STATUS BAR HTML
-# ═══════════════════════════════════════════════════════════════
+# ── UPDATE PERSISTENT LOGS ──
 
-def kp_color(kp_val):
-    try:
-        k = float(kp_val)
-        if k >= 7: return "#e74c3c"
-        if k >= 5: return "#e67e22"
-        if k >= 3: return "#f1c40f"
-        return "#2ecc71"
-    except Exception:
-        return "#888"
+# NMP log — append once per calendar month if data is newer than last entry
+nmp_log = load_json("nmp_log.json", [])
+if nmp.get("lat") and nmp.get("year"):
+    # Use today's UTC calendar month as the key (not the NP.xy year which may lag)
+    month_key = datetime.now(timezone.utc).strftime("%Y-%m")
+    last_month = nmp_log[-1].get("month") if nmp_log else None
+    # Only append if this month is strictly after the last logged month
+    if last_month is None or month_key > last_month:
+        nmp_log.append({
+            "month": month_key,
+            "lat": nmp.get("lat"),
+            "lon": nmp.get("lon"),
+            "delta_lat": nmp.get("delta_lat"),
+            "delta_lon": nmp.get("delta_lon"),
+            "ratio": nmp.get("ratio"),
+            "fetched": NOW_UTC,
+        })
+        save_json("nmp_log.json", nmp_log)
 
-
-def ratio_color(ratio):
-    try:
-        r = float(ratio)
-        if r >= 2.0: return "#2ecc71"
-        if r >= 1.5: return "#f1c40f"
-        return "#e74c3c"
-    except Exception:
-        return "#888"
-
-
-storm_active = kp.get("is_storm", False)
-storm_banner = ""
-if storm_active:
-    storm_banner = (
-        f'\n<div style="background:#1a0000;border-left:4px solid #e74c3c;'
-        f'padding:0.75rem 1.5rem;margin-bottom:1rem;font-size:0.85rem;color:#e74c3c;">'
-        f'&#9889; <strong>ACTIVE STORM: {kp["storm_class"]} (Kp {kp["kp_max_24h"]})</strong>'
-        f' &mdash; Check HeartMath for SR suppression. Log to DW-001 and DW-006.'
-        f' This is a PRED-SR-SUPPRESS test event.'
-        f' &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/"'
-        f' style="color:#e74c3c;">HeartMath GCI</a></div>'
-    )
-
-nmp_lat = nmp.get("lat", "?")
-nmp_lon = nmp.get("lon", "?")
-nmp_ratio = nmp.get("ratio", "?")
-aao_mean = aao.get("weekly_mean", "?")
-aao_color = "#2ecc71" if isinstance(aao_mean, float) and aao_mean > 0.3 else "#888"
-tomsk_color = "#2ecc71" if sr["tomsk_live"] else "#e74c3c"
-tomsk_label = "Live" if sr["tomsk_live"] else "Down"
-alert_color = "#e74c3c" if alerts["alert_count_48h"] > 0 else "#2ecc71"
-
-status_bar_html = (
-    f'<div id="live-status" style="display:flex;flex-wrap:wrap;gap:1rem;'
-    f'padding:0.75rem 1rem;background:#0d0d1a;border:1px solid #1a1a2e;'
-    f'border-radius:6px;margin-bottom:1.5rem;font-size:0.82rem;">'
-    f'<span style="color:#555;align-self:center;">&#x1F504; Auto-updated {NOW_UTC}</span>'
-    f'<span style="background:#111;padding:3px 10px;border-radius:4px;">'
-    f'Kp: <strong style="color:{kp_color(kp["kp_max_24h"])};">{kp["kp_max_24h"]} ({kp["storm_class"]})</strong>'
-    f'</span>'
-    f'<span style="background:#111;padding:3px 10px;border-radius:4px;">'
-    f'NMP: <strong>{nmp_lat}&deg;N, {nmp_lon}&deg;E</strong>'
-    f'&nbsp;ratio: <strong style="color:{ratio_color(nmp_ratio)};">{nmp_ratio}&times;</strong>'
-    f'</span>'
-    f'<span style="background:#111;padding:3px 10px;border-radius:4px;">'
-    f'AAO: <strong style="color:{aao_color};">{aao_mean}&sigma; (7d)</strong>'
-    f'</span>'
-    f'<span style="background:#111;padding:3px 10px;border-radius:4px;">'
-    f'Tomsk: <strong style="color:{tomsk_color};">{tomsk_label}</strong>'
-    f'</span>'
-    f'<span style="background:#111;padding:3px 10px;border-radius:4px;">'
-    f'Alerts 48h: <strong style="color:{alert_color};">{alerts["alert_count_48h"]}</strong>'
-    f'</span>'
-    f'</div>'
-    f'{storm_banner}'
-)
+# AAO log — append once per day if new data available
+aao_log = load_json("aao_log.json", [])
+if aao.get("weekly_mean") is not None:
+    last_date = aao_log[-1].get("date") if aao_log else None
+    if TODAY != last_date:
+        aao_log.append({
+            "date": TODAY,
+            "latest": aao.get("latest"),
+            "weekly_mean": aao.get("weekly_mean"),
+            "days_positive_7d": aao.get("days_positive_7d"),
+            "fetched": NOW_UTC,
+        })
+        aao_log = aao_log[-90:]  # rolling 90-day window
+        save_json("aao_log.json", aao_log)
 
 
-# ═══════════════════════════════════════════════════════════════
-# INJECT INTO tracking.html
-# ═══════════════════════════════════════════════════════════════
+# ── STORM LOG — auto-append if G1+ and not already logged today ──
 
-with open(TRACKING_FILE, "r", encoding="utf-8") as f:
-    html = f.read()
+storm_log = load_json("storm_log.json", [])
+if kp.get("is_storm"):
+    last_storm_date = storm_log[-1].get("date") if storm_log else None
+    if TODAY != last_storm_date:
+        storm_log.append({
+            "date": TODAY,
+            "kp_peak": kp["kp_max_24h"],
+            "storm_class": kp["storm_class"],
+            "phase": "auto-logged",
+            "dst": None,
+            "sw_speed": None,
+            "sr_freq": None,
+            "sr_amp_ratio": sr.get("amplitude_index"),
+            "tomsk_status": sr.get("status"),
+            "sr_suppressed": "YES" if sr.get("suppression_flag") else "PENDING",
+            "notes": (
+                f"Auto-logged by pipeline. "
+                f"Amp index: {sr.get('amplitude_index')}. "
+                f"SR status: {sr.get('status')}. Manual review required."
+            ),
+            "eval": "NEEDS_REVIEW",
+        })
+        save_json("storm_log.json", storm_log)
 
-STATUS_MARKER = '<div id="live-status"'
 
-if STATUS_MARKER in html:
-    # Replace existing block: find it and replace up to its closing </div>
-    start = html.index(STATUS_MARKER)
-    depth = 0
-    found_end = start
-    for i in range(start, len(html) - 5):
-        if html[i:i+4] == "<div":
-            depth += 1
-        elif html[i:i+6] == "</div>":
-            depth -= 1
-            if depth == 0:
-                found_end = i + 6
-                break
-    # Also consume an immediately following storm banner div if present
-    tail = html[found_end:]
-    storm_div = '<div style="background:#1a0000'
-    if tail.lstrip().startswith(storm_div):
-        # consume the storm banner too
-        offset = html.index(storm_div, found_end)
-        depth = 0
-        for i in range(offset, len(html) - 5):
-            if html[i:i+4] == "<div":
-                depth += 1
-            elif html[i:i+6] == "</div>":
-                depth -= 1
-                if depth == 0:
-                    found_end = i + 6
-                    break
-    html = html[:start] + status_bar_html + html[found_end:]
+# ── PREDICTION EVALUATOR ──
+
+flags = evaluate_predictions(live_data, storm_log)
+if flags:
+    print(f"Prediction flags ({len(flags)}):")
+    for flag in flags:
+        marker = "!!" if flag.get("requires_human") else "--"
+        print(f"  [{flag['pred']}] {flag['status']}: {flag['detail']} {marker}")
 else:
-    # Inject after the model stats bar (the div that contains "Last updated:")
-    inject_marker = "Last updated:</strong>"
-    if inject_marker in html:
-        pos = html.index(inject_marker)
-        end_pos = html.index("</div>", pos) + 6
-        html = html[:end_pos] + "\n" + status_bar_html + html[end_pos:]
-    else:
-        # Fallback: inject right after <h1>
-        h1_end = html.index("</h1>") + 5
-        html = html[:h1_end] + "\n" + status_bar_html + html[h1_end:]
+    print("Prediction evaluator: no flags this run.")
 
-# Update the "Last updated" date stamp in the stats bar
-html = re.sub(
-    r'(<strong>Last updated:</strong>)[^<]*',
-    rf'\g<1> {TODAY}',
-    html,
+
+# ── REBUILD tracking.html ──
+
+print("Rebuilding tracking.html...")
+result = subprocess.run(
+    [sys.executable, os.path.join(SCRIPTS_DIR, "build_tracking.py")],
+    capture_output=True, text=True, cwd=REPO_ROOT,
 )
+if result.stdout:
+    print(f"  {result.stdout.strip()}")
+if result.returncode != 0:
+    print(f"  build_tracking.py error:\n{result.stderr}")
+    raise SystemExit(1)
 
-with open(TRACKING_FILE, "w", encoding="utf-8") as f:
-    f.write(html)
-
-print(f"Updated {TRACKING_FILE}")
-print("Pipeline complete.")
+print("Pipeline v2 complete.")

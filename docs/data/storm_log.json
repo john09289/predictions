@@ -1,0 +1,71 @@
+[
+  {
+    "date": "2026-03-19",
+    "kp_peak": "0\u20133",
+    "storm_class": "G0 (quiet)",
+    "phase": "\u2014",
+    "dst": "-8 to -15",
+    "sw_speed": "~700",
+    "sr_freq": "7.83",
+    "sr_amp_ratio": "1.00 (baseline)",
+    "tomsk_status": "Normal",
+    "sr_suppressed": "N/A",
+    "notes": "Pre-storm quiet day. Coronal hole approaching geoeffective position."
+  },
+  {
+    "date": "2026-03-20",
+    "kp_peak": "7\u20138",
+    "storm_class": "G3/G4",
+    "phase": "Main phase",
+    "dst": "<\u2212100",
+    "sw_speed": "~700",
+    "sr_freq": null,
+    "sr_amp_ratio": "<0.70 (suppressed)",
+    "tomsk_status": "Saturated/unknown",
+    "sr_suppressed": "YES",
+    "notes": "W027 event. G4 confirmed. SR total calm during storm peak. Source: disclosurenews.it",
+    "eval": "CONFIRMED"
+  },
+  {
+    "date": "2026-03-21",
+    "kp_peak": "3\u20137",
+    "storm_class": "G1\u2013G3",
+    "phase": "Recovery",
+    "dst": "-50 to -80",
+    "sw_speed": "~600",
+    "sr_freq": null,
+    "sr_amp_ratio": null,
+    "tomsk_status": "Unknown",
+    "sr_suppressed": "PENDING",
+    "notes": "Multiple CME + coronal hole stream. Aurora visible Yellowknife 10:32 UTC. Source: EarthSky",
+    "eval": "NEEDS_REVIEW"
+  },
+  {
+    "date": "2026-03-22",
+    "kp_peak": "~7",
+    "storm_class": "G3",
+    "phase": "Main\u2192recovery",
+    "dst": null,
+    "sw_speed": "~600",
+    "sr_freq": null,
+    "sr_amp_ratio": null,
+    "tomsk_status": "Unknown",
+    "sr_suppressed": "PENDING",
+    "notes": "G3 confirmed 0900\u20131200 UTC per NOAA. First post-revision PRED-SR-SUPPRESS test.",
+    "eval": "NEEDS_REVIEW"
+  },
+  {
+    "date": "2026-03-23",
+    "kp_peak": "3\u20135",
+    "storm_class": "G1 isolated",
+    "phase": "Recovery",
+    "dst": null,
+    "sw_speed": "~600",
+    "sr_freq": null,
+    "sr_amp_ratio": null,
+    "tomsk_status": "Unknown",
+    "sr_suppressed": "PENDING",
+    "notes": "HSS effects continuing. Isolated G1 expected. Kp 3\u20135 forecast. Source: EarthSky/NOAA",
+    "eval": "NEEDS_REVIEW"
+  }
+]

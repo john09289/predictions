@@ -1,0 +1,20 @@
+[
+  {
+    "storm_date": "2026-03-20",
+    "dst_min": "<\u2212100 (est.)",
+    "recovery_time": null,
+    "storm_class": "G4",
+    "saa_month_after": "Check April INTERMAGNET",
+    "ecm_coupling": null,
+    "source": "NOAA/EarthSky confirmed G4. Exact Dst: Kyoto WDC"
+  },
+  {
+    "storm_date": "2026-03-22",
+    "dst_min": null,
+    "recovery_time": null,
+    "storm_class": "G3",
+    "saa_month_after": "Check April INTERMAGNET",
+    "ecm_coupling": null,
+    "source": "Kyoto WDC"
+  }
+]
