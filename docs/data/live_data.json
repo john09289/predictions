@@ -1,23 +1,23 @@
 {
-  "updated": "2026-03-28 12:29 UTC",
+  "updated": "2026-03-28 18:24 UTC",
   "date": "2026-03-28",
   "kp": {
     "kp_max_24h": 3.33,
-    "kp_current": 2.67,
+    "kp_current": 1.67,
     "storm_class": "G0 (quiet)",
     "is_storm": false,
     "recent_values": [
-      1.33,
-      2.0,
       1.67,
       2.33,
       3.33,
       2.0,
       2.67,
-      2.67
+      2.67,
+      1.67,
+      1.67
     ],
     "source": "NOAA SWPC",
-    "fetched": "2026-03-28 12:29 UTC"
+    "fetched": "2026-03-28 18:24 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -28,17 +28,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-03-28 12:29 UTC"
+    "fetched": "2026-03-28 18:24 UTC"
   },
   "aao": {
     "latest": 0.489,
     "weekly_mean": -0.387,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-03-28 12:29 UTC"
+    "fetched": "2026-03-28 18:24 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-03-28 16:32:11.980",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1103  Issue Time: 2026 Mar 28 1632 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Mar 29:  None (Bel"
+      },
       {
         "time": "2026-03-25 15:58:47.967",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1102  Issue Time: 2026 Mar 25 1558 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Mar 26:  G1 (Minor"
@@ -50,22 +54,18 @@
       {
         "time": "2026-03-25 08:05:39.830",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2217  Issue Time: 2026 Mar 25 0805 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Mar 25 0805 UTC  Valid To: 2026 Mar 25 1200 UT"
-      },
-      {
-        "time": "2026-03-23 17:52:12.777",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 1994  Issue Time: 2026 Mar 23 1752 UTC    ALERT: Geomagnetic K-index of 5   Threshold Reached: 2026 Mar 23 1750 UTC  Synoptic Period: 1500-1800 UTC  "
       }
     ],
     "alert_count_48h": 4,
-    "fetched": "2026-03-28 12:29 UTC"
+    "fetched": "2026-03-28 18:24 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.092,
+    "amplitude_index": 0.074,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-03-28 12:29 UTC",
+    "fetched": "2026-03-28 18:24 UTC",
     "pixel_count": 67728
   }
 }
