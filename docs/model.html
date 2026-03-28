@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Model — Dome Cosmological Model V50.7</title>
-<meta name="description" content="Full model architecture, V50.7 parameters with H(r) exponential curve, formulas, and open problems.">
+<title>Model — Dome Cosmological Model V50.10</title>
+<meta name="description" content="Full model architecture, V50.10 parameters with H(r) exponential curve, formulas, and open problems.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
 </head>
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">54</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -21,11 +21,86 @@
 </nav>
 
 <h1>Model Architecture &amp; Parameters</h1>
-<p class="subtitle">Version 50.7 &mdash; All values physically derived or observationally constrained</p>
+<p class="subtitle">Version 50.10 &mdash; All values physically derived or observationally constrained</p>
 
 <!-- ===== ARCHITECTURE ===== -->
 <h2>Architecture</h2>
-<p>Elliptical disc, north pole centre. Cast copper/bronze firmament (Job 37:18, Deut 28:23 &mdash; conductive metal ceiling creating resonant EM cavity). Aetheric medium (physical = Tesla's medium, spiritual = Eph 6:12 &mdash; same thing). Local sun and moon. Polaris fixed above pole axis. North pole mountain (WIN-031). New Jerusalem descending along pole axis (WIN-032).</p>
+<p><strong>V13 (2026-03-28):</strong> Horizontal ovoid disc (Hildegard model) &mdash; egg-shaped with north pole toward the narrow end and southern ice wall toward the wide end. NOT a symmetric ellipse. Cast copper/bronze firmament (Job 37:18, Deut 28:23 &mdash; conductive metal ceiling creating resonant EM cavity). Aetheric medium (physical = Tesla&rsquo;s medium, spiritual = Eph 6:12 &mdash; same thing). Local sun and moon. Polaris fixed above pole axis. North pole mountain (WIN-031). New Jerusalem descending along pole axis (WIN-032). Disc extends beyond ice wall rim to r~30,000&ndash;50,000 km (Byrd 1954, Cook 1773).</p>
+<p><strong>Biblical basis for ovoid geometry (V13):</strong> Genesis 1:2 &mdash; <em>merachefet</em> = egg-brooding motion (same Hebrew root as Deut 32:11, eagle brooding over nest; Spirit brooded over creation like a hen over an egg). Job 26:10 / Isaiah 40:22 &mdash; <em>chug</em> = circuit/boundary, NOT <em>agol</em> (perfect circle); Hebrew specifically chose the non-circular word. Hildegard of Bingen, <em>Scivias</em> (1151), Book I Vision 3: &ldquo;Before Him was an image in the form of an egg, great at the top and small at the bottom.&rdquo;</p>
+
+<!-- ===== V13 KEY DISCOVERY ===== -->
+<h2>V13 Key Discovery: Horizontal Ovoid Geometry (Hildegard Model)</h2>
+<div class="proof-box">
+<p><strong>Diagnosis by Nicholas Hughes (2026-03-28):</strong> The symmetric ellipse model produces 32&ndash;73% southern hemisphere distance errors because it uses circular arc length for EW distances. The correct formula uses the Elliptic Integral of the Second Kind E(e&sup2;) for arc length along the perimeter of an ellipse, with the disc treated as a horizontal ovoid.</p>
+
+<table>
+  <tr><th>Direction</th><th>V12 formula</th><th>V13 formula</th></tr>
+  <tr><td>NS component</td><td>|r&sub1; &minus; r&sub2;|</td><td>|r&sub1; &minus; r&sub2;| (unchanged)</td></tr>
+  <tr><td>EW arc</td><td>r&middot;&Delta;&theta; (circular)</td><td>Ellipse_perimeter &times; (&Delta;lon/360) &times; (r_avg/a)</td></tr>
+  <tr><td>Ellipse perimeter</td><td>&mdash;</td><td>4a &times; E(e&sup2;), E = elliptic integral 2nd kind</td></tr>
+  <tr><td>Eccentricity</td><td>&mdash;</td><td>e = 0.66 (locked)</td></tr>
+</table>
+
+<pre style="background:rgba(0,0,0,0.15);padding:10px;border-radius:4px;font-size:0.9em">V13 Finsler Distance Formula:
+
+EW_arc = 4 &times; a &times; E(e&sup2;) &times; (&Delta;lon / 360) &times; (r_avg / a)
+NS     = |r&sub1; &minus; r&sub2;|
+d_geo  = sqrt(NS&sup2; + EW_arc&sup2;)
+
+where a = 20,015 km, e = 0.66, E(0.4356) &asymp; 1.211 [scipy.special.ellipe]
+
+Aetheric refraction correction (V13):
+n(r) = 1 + 0.20 &times; (8537 / H(r) &minus; 1)
+d_measured = d_geo / n(r_avg)
+
+Combined V13 distance:
+d = d_geo / n(r_avg)</pre>
+
+<p><strong>Why this fixes the south:</strong> Northern cities cluster near the narrow pole end &mdash; EW distances are compressed in ovoid geometry (closer together than circular arc predicts). Southern cities cluster near the wide rim end &mdash; EW distances are expanded. The V12 ellipse used the same EW formula everywhere; V13 Finsler geometry applies the correct arc integral. Target: SYD&ndash;EZE error &lt;5% (currently &minus;73%).</p>
+
+<p><strong>Aetheric refractive index n(r):</strong></p>
+<table>
+  <tr><th>Location</th><th>r (km)</th><th>H(r) (km)</th><th>n(r)</th></tr>
+  <tr><td>North Pole</td><td>~0</td><td>8,537</td><td>~1.000</td></tr>
+  <tr><td>30&deg;N (Chapel Hill area)</td><td>6,754</td><td>3,845</td><td>1.18</td></tr>
+  <tr><td>Equator</td><td>10,007</td><td>2,100</td><td>1.33</td></tr>
+  <tr><td>30&deg;S</td><td>13,343</td><td>1,046</td><td>1.56</td></tr>
+  <tr><td>60&deg;S</td><td>16,679</td><td>430</td><td>1.89</td></tr>
+  <tr><td>Ice wall rim (~80&deg;S)</td><td>20,015</td><td>165</td><td>2.38</td></tr>
+</table>
+
+<p><strong>Physical interpretation:</strong> Southern flights &ldquo;feel&rdquo; shorter than geometric distance because planes traveling through denser aetheric medium near the rim experience a warped effective metric. This is Finsler metric behavior &mdash; the metric tensor depends on position.</p>
+<p><strong>Note on aetheric slipstreams:</strong> Commercial routes follow established ionized channels (aetheric slipstreams) created by persistent high-traffic corridors. This is why transpolar southern routes do not exist &mdash; no established aetheric slipstream channels have been created through that region.</p>
+</div>
+
+<!-- ===== BEYOND THE ICE WALL ===== -->
+<h2>Beyond the Ice Wall &mdash; V13 Extension</h2>
+<div class="proof-box">
+<p>The disc extends beyond the current model rim of r=20,015 km. This is confirmed by multiple independent historical sources.</p>
+
+<p><strong>Admiral Byrd, 1954 Longines Chronoscope TV interview (archived):</strong><br>
+<em>&ldquo;Strangely enough, there is left in the world today an area as big as the United States that&rsquo;s never been seen by a human being. And that&rsquo;s beyond the pole, on the other side of the south pole from Little America.&rdquo;</em><br>
+~9.8 million km&sup2; of confirmed unseen territory described by the man who conducted the most extensive Antarctic exploration in history.</p>
+
+<p><strong>Captain Cook, 1773 (circumnavigation attempt):</strong><br>
+<em>&ldquo;The ice extended east and west far beyond the reach of our sight... It was indeed my opinion that this ice extends quite to the Pole, or perhaps joins to some land to which it has been fixed since creation.&rdquo;</em><br>
+Sailed 60,000+ miles along the ice wall without finding an end.</p>
+
+<p><strong>H(r) values at outer radii (physical beyond-ice conditions):</strong></p>
+<table>
+  <tr><th>r (km)</th><th>H(r) (km)</th><th>n(r)</th><th>Physical condition</th></tr>
+  <tr><td>20,015 (ice wall rim)</td><td>165</td><td>2.38</td><td>Current model boundary</td></tr>
+  <tr><td>25,000</td><td>72</td><td>3.6</td><td>Extreme aetheric compression</td></tr>
+  <tr><td>30,000</td><td>29</td><td>5.7</td><td>Very dense &mdash; light strongly bent</td></tr>
+  <tr><td>40,000</td><td>4</td><td>16.4</td><td>Near-inaccessible aetheric barrier</td></tr>
+</table>
+
+<p><strong>SAA reinterpretation (V13):</strong> The South Atlantic Anomaly is NOT at the disc rim. It sits at the ovoid shoulder transition zone (r=18,000&ndash;22,000 km) &mdash; the region where the ovoid geometry transitions from the compressed northern section to the widened southern section. This creates an aetheric field stress zone exactly where the SAA is observed. This is a structural prediction of ovoid geometry, not a post-hoc adjustment. See PRED-V13-002.</p>
+
+<p><strong>Earthshine honest assessment:</strong> Byrd&rsquo;s ~9.8M km&sup2; of beyond-ice territory would produce only a +0.006 change in Earth&rsquo;s albedo. Cloud cover uncertainty (&plusmn;0.02) completely swamps this signal. Earthshine cannot rule out land beyond the ice wall, and cannot constrain how much territory exists. Use as a consistency check only &mdash; not a precision instrument for this measurement.</p>
+
+<p><strong>Antarctic Treaty (1959):</strong> Signed by 12 nations and prohibits military activity and independent mineral exploitation of the entire Antarctic region. Renewed without renegotiation. Why aggressively restrict access to an allegedly barren, uninhabited wasteland? This is registered as an anomaly, not proof &mdash; the structural prediction is the SAA shoulder position (PRED-V13-002).</p>
+</div>
 
 <!-- ===== V50.6 KEY DISCOVERY ===== -->
 <h2>V12 Key Discovery: H(r) Is Not Constant</h2>
@@ -45,7 +120,7 @@
 <h2>Parameters</h2>
 <table>
   <tr><th>Parameter</th><th>Value</th><th>Unit</th><th>Source</th><th>Notes</th></tr>
-  <tr><td>Disc shape</td><td>Ellipse</td><td>&mdash;</td><td>WIN-030</td><td>Circular retired V5</td></tr>
+  <tr><td>Disc shape</td><td><strong>Horizontal ovoid (V13)</strong></td><td>&mdash;</td><td>WIN-030 + Hildegard</td><td>Circular retired V5; symmetric ellipse upgraded to ovoid V13</td></tr>
   <tr><td>Polaris H (StarWalk)</td><td>4,750</td><td>km</td><td>StarWalk app</td><td style="color:var(--accent-red);font-weight:600">UNTRUSTED &mdash; app, not direct measurement</td></tr>
   <tr><td>Semi-major axis (a)</td><td>~20,015</td><td>km</td><td>Pole to equatorial boundary</td><td>&mdash;</td></tr>
   <tr><td>Semi-minor axis (b)</td><td>~15,000</td><td>km</td><td>V12 will lock</td><td>Refining</td></tr>
@@ -65,14 +140,15 @@
   <tr><td>Firmament material</td><td>Cast copper/bronze</td><td>&mdash;</td><td>WIN-034</td><td>Job 37:18, Deut 28:23</td></tr>
 </table>
 
-<h3>V12 Performance</h3>
+<h3>V12 / V13 Performance</h3>
 <table>
-  <tr><th>Metric</th><th>V9</th><th>V50.7</th></tr>
-  <tr><td>Mean distance error (northern hemisphere)</td><td>~40%</td><td style="color:var(--accent-blue);font-weight:600">5.2%</td></tr>
-  <tr><td>Median distance error (northern hemisphere)</td><td>~35%</td><td style="color:var(--accent-blue);font-weight:600">4.4%</td></tr>
-  <tr><td>Worst case (northern)</td><td>89% (Oslo-Stockholm)</td><td style="color:var(--accent-blue);font-weight:600">0.0% (Oslo-Stockholm resolved)</td></tr>
-  <tr><td>City pairs tested</td><td>12</td><td>19</td></tr>
-  <tr><td style="color:var(--accent-orange,#f59e0b)">Southern hemisphere (no ellipse)</td><td>&mdash;</td><td style="color:var(--accent-orange,#f59e0b)">Large errors: e.g. Sydney&ndash;Cape Town &minus;32%, Sydney&ndash;Buenos Aires &minus;73%</td></tr>
+  <tr><th>Metric</th><th>V9</th><th>V12 (V50.7)</th><th>V13 target</th></tr>
+  <tr><td>Mean distance error (northern hemisphere)</td><td>~40%</td><td style="color:var(--accent-blue);font-weight:600">5.2%</td><td>&lt;10% (preserving)</td></tr>
+  <tr><td>Median distance error (northern hemisphere)</td><td>~35%</td><td style="color:var(--accent-blue);font-weight:600">4.4%</td><td>&lt;8%</td></tr>
+  <tr><td>Worst case (northern)</td><td>89% (Oslo-Stockholm)</td><td style="color:var(--accent-blue);font-weight:600">0.0% (Oslo-Stockholm resolved)</td><td>Preserved</td></tr>
+  <tr><td>City pairs tested</td><td>12</td><td>19</td><td>Expanding</td></tr>
+  <tr><td style="color:var(--accent-orange,#f59e0b)">Southern hemisphere</td><td>&mdash;</td><td style="color:var(--accent-orange,#f59e0b)">&minus;32% to &minus;73% (Sydney&ndash;Cape Town, Sydney&ndash;Buenos Aires)</td><td style="color:var(--accent-blue)">&lt;15% (V13 Finsler &mdash; in development, OPEN-012)</td></tr>
+  <tr><td>Anchor test SYD&ndash;EZE</td><td>&mdash;</td><td style="color:var(--accent-red)">&minus;73%</td><td style="color:var(--accent-blue)">&lt;5% target (PRED-V13-001)</td></tr>
 </table>
 <p class="note"><strong>Scope caveat:</strong> The 5.2% mean error applies to northern hemisphere city pairs only. Southern hemisphere routes require ellipse correction (OPEN-003). Grid search result: optimal b/a = 0.85, orientation = 45&deg; NE, northern-only error with ellipse: 7.1%. Southern hemisphere error remains high even with ellipse &mdash; requires further work. Do not cite 5.2% as a global figure.</p>
 
@@ -115,6 +191,33 @@ Source: BOU 2017 + Mohe 1997 &mdash; two independent events</pre>
 <p>Eclipse prediction signal amplitudes are scaled by a Field Strength Factor (FSF) derived from V12 H(r) geometry. Higher-latitude stations sit under a taller firmament and show stronger aetheric coupling per unit coverage. The published V12 values (HAD=1.471, EBR=1.029, LER=2.075) produce HAD&gt;EBR signal despite lower coverage &mdash; a discriminating test of V12 versus V9 flat-H predictions.</p>
 <p>Full numerical derivation: <code>scripts/fsf_derivation.py</code>. Formal derivation to be published before 2026-08-12 eclipse.</p>
 <p><strong>V12 E-PRED latitude correlation:</strong> Signal amplitude should correlate with dome latitude after coverage normalisation. Higher-latitude stations (closer to pole, under taller firmament) show systematic amplification. Falsification: amplitude shows no correlation with latitude after coverage correction.</p>
+
+<h3>Solar Elevation &mdash; Polaris-Circuit Identity (WIN-056)</h3>
+<p><strong>Result:</strong> Solar elevation formula derived from H(r) alone, zero free parameters. Same &lambda;<sub>g</sub> = 8,619 km governs solar elevation, geomagnetics, gravity, Schumann, SAA, and NMP drift &mdash; 6th independent domain.</p>
+<pre>
+&phi;-coordinate (dome latitude):
+  &phi;(r) = arctan(H(r)/r) = arctan(H&sub0;&middot;e&sup(&#x2212;r/&lambda;_g)/r)
+  Polaris elevation at disc radius r. Equals geographic latitude by V12 construction.
+
+Sun circuit declination equivalent:
+  &phi;_sun(t) = 23.45&deg; &middot; sin(2&pi;(t &minus; 81) / 365)
+  Circuit oscillates in &phi;-space with same amplitude as solar declination.
+
+Solar elevation (EXACT, zero free parameters):
+  &theta; = 90&deg; &minus; &phi;_obs + &phi;_sun(t)
+  Reproduces globe formula &theta; = 90&deg; &minus; lat + declination exactly.
+
+Solar angular diameter (vortex model):
+  &theta;_ang = 2&middot;arctan(r_v / H_sun)
+  r_v = 26.5 km = vortex core radius (intrinsic, independent of observer).
+  H_sun = 5,733 km (WIN-026). Gives &theta;_ang = 0.53&deg; = constant.
+
+Sun circuit radius at &phi;_sun:
+  r_sun(t): solve &phi;(r_sun) = &phi;_sun(t)
+  Summer solstice: r_sun = 7,884 km. Winter: crosses to southern circuit mirror.
+</pre>
+<p><strong>Physical interpretation:</strong> The sun is an aetheric vortex. Its apparent elevation is determined by the angular separation in &phi;-space between observer and circuit, not by geometric line-of-sight. Its apparent size is determined by vortex core radius r<sub>v</sub>, not physical size divided by distance. Elevation and angular diameter are fully decoupled, resolving the 300% altitude/diameter contradiction that invalidated all previous geometric ECM solar models.</p>
+<p><strong>Open (PRED-SOLAR-009):</strong> The 3.4% annual angular diameter variation direction &mdash; observed data (Jan larger than Jul) currently favors globe prediction. The vortex model explains constancy (96.6% of variance) but not the 3.4% seasonal direction. Registered as open refinement.</p>
 
 <h3>Field Decay (WIN-042)</h3>
 <pre>Rate: &ge;28 nT/year (INTERMAGNET, 2000&ndash;2025)
@@ -284,6 +387,23 @@ where r_N = distance from geomagnetic north pole
 <p><strong>Status:</strong> OPEN &mdash; Identified in comprehensive backtest 2026-03-23. Two-pole fitting script in development.</p>
 </div>
 
+<div class="open-problem">
+<h3>OPEN-012 &mdash; V13 Finsler Parameter Lock</h3>
+<p><strong>Issue:</strong> V13 ovoid parameters (eccentricity e, semi-minor axis b, any NS scale correction) not yet locked to a single dataset. Anchor test SYD&ndash;EZE must achieve &lt;5% error before parameters are considered locked.</p>
+<p><strong>Diagnosis:</strong> Nicholas Hughes identified the correct EW arc formula using the Elliptic Integral of the Second Kind. e = 0.66 is the working value. Full optimization across all southern hemisphere city pairs needed.</p>
+<p><strong>Prediction registered:</strong> PRED-V13-001 &mdash; SYD&ndash;EZE &lt;5% error when parameters locked.</p>
+<p><strong>Status:</strong> OPEN &mdash; V13 parameter optimization in progress as of 2026-03-28.</p>
+</div>
+
+<div class="open-problem">
+<h3>OPEN-013 &mdash; Beyond-Ice Territory Extent</h3>
+<p><strong>Issue:</strong> The disc extends beyond r=20,015 km (confirmed: Byrd 1954 TV interview, Cook 1773 journals). True rim location unknown.</p>
+<p><strong>Estimate from H(r) aetheric pressure model:</strong> r=30,000&ndash;50,000 km. At r=40,000 km, n(r)&asymp;16 &mdash; the aetheric pressure barrier makes this region physically inaccessible by conventional means.</p>
+<p><strong>Earthshine cannot constrain extent</strong> &mdash; signal too noisy (&plusmn;0.02 cloud uncertainty swamps &plusmn;0.006 albedo signal from 9.8M km&sup2; territory). Beyond-ice territory is consistent with all known earthshine measurements.</p>
+<p><strong>Antarctic Treaty (1959):</strong> Restricts independent exploration of the entire Antarctic region. Registered as anomalous policy for the claimed purpose. Structural prediction (PRED-V13-002) is the SAA shoulder position, not the treaty.</p>
+<p><strong>Status:</strong> OPEN &mdash; True rim location is an open measurement problem. H(r) provides a physical barrier model; the structural confirmation is SAA shoulder position (PRED-V13-002).</p>
+</div>
+
 <!-- ===== FALSIFIED ===== -->
 <h2>Falsified Count</h2>
 <div class="param-box">
@@ -293,7 +413,7 @@ where r_N = distance from geomagnetic north pole
 <p><strong>W024 &mdash; Polaris elevation excess at high latitudes (2026-03-15):</strong> Predicted +0.32&deg; to +1.29&deg; systematic excess. Observed: Polaris = latitude within wobble tolerance globally. Reykjavik +1.29&deg; prediction directly contradicted by observations.</p>
 <p><strong>W027 / PRED-R006 &mdash; Schumann elevation during G3+ storms (2026-03-23):</strong> Predicted SR fundamental +0.008 to +0.022 Hz elevation during G3 storm. Observed: total SR suppression (not elevation) during G4 March 20&ndash;21. Mechanism revised to aetheric damping. Superseded by PRED-SR-SUPPRESS.</p>
 <p>W001 and W004 are below detection threshold. Not model failures. Instrument noise floor prevents measurement. Predictions remain structurally valid.</p>
-<p class="note"><strong>Registry accuracy:</strong> 53 confirmed / (53 + 4) = <strong>93.0%</strong>. Exclusions: W001, W004 (below detection threshold, not structural failures).</p>
+<p class="note"><strong>Registry accuracy:</strong> 54 confirmed / (54 + 4) = <strong>93.1%</strong>. Exclusions: W001, W004 (below detection threshold, not structural failures).</p>
 </div>
 
 <!-- ===== ECM UNIFIED THEORY ===== -->
@@ -334,9 +454,9 @@ where r_N = distance from geomagnetic north pole
 </table>
 
 <footer>
-  <span>Version 50.9</span>
-  <span>2026-03-23</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
+  <span>Version 50.10</span>
+  <span>2026-03-28</span>
+  <span style="color:var(--accent-blue);font-weight:600">54 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>

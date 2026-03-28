@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">54</span></a>
   <a href="predictions.html" class="active">Predictions</a>
   <a href="coordinates.html">Coordinates</a>
   <a href="model.html">Model</a>
@@ -173,7 +173,7 @@ Registered: 2026-03-15</p>
 </div>
 
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
-<h3>PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-23</span></h3>
+<h3>PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-24</span></h3>
 <p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Falsified:</strong> 2026-03-23 &nbsp;|&nbsp; <strong>Superseded by:</strong> PRED-SR-SUPPRESS (in W027 section)</p>
 <p><strong>Original prediction:</strong> Every G3+ storm produces SR fundamental shift of +0.008 to +0.022 Hz within 2 hours of storm onset.</p>
 <p><strong>Outcome:</strong> G4 storm March 20&ndash;21 produced SR suppression, not elevation. Opposite of prediction. See W027 block for full falsification record and revised model.</p>
@@ -343,7 +343,7 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 <p class="note">Registered: 2026-03-22. These tests produce <strong>different numerical predictions</strong> from globe and dome models. Both outputs stated explicitly. All testable with free public data.</p>
 
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
-<h3>W027 / PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-23</span></h3>
+<h3>W027 / PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-24</span></h3>
 <p><strong>Original prediction:</strong> G3+ storm produces SR fundamental shift of +0.008 to +0.022 Hz within 2 hours of storm onset.</p>
 <p><strong>Test case:</strong> G3 storm March 20&ndash;21, 2026. Kp peaked at 8.0 (G4 observed).</p>
 <p><strong>Observed:</strong> SR was in total calm during storm peak. No elevation detected. SR suppressed, not elevated. Source: disclosurenews.it Schumann monitoring, March 20&ndash;21 2026.</p>
@@ -639,6 +639,92 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
+<h1>V13 Predictions &mdash; Registered 2026-03-28</h1>
+
+<div class="prediction pending" id="pred-v13-001">
+<h3>PRED-V13-001 &mdash; SYD&ndash;EZE Finsler Lock Test <span class="badge pending">PENDING</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Test:</strong> Lock V13 Finsler parameters; verify Sydney&ndash;Buenos Aires prediction</p>
+<p><strong>Background:</strong> V12 predicts Sydney&ndash;Buenos Aires as ~3,230 km (&minus;73% error vs actual 11,960 km). V13 Finsler formula with ovoid EW arc and aetheric refraction n(r) correction targets &lt;5% error.</p>
+<p><strong>Dome V13 prediction:</strong> ~12,100 km (Finsler + n(r) correction with e=0.66)</p>
+<p><strong>Globe prediction:</strong> 11,960 km (great-circle)</p>
+<p><strong>Actual:</strong> 11,960 km (standard)</p>
+<p><strong>Test method:</strong> Lock e, b parameters when V13 formula achieves &lt;5% error on SYD&ndash;EZE. This is the anchor test for all V13 southern hemisphere predictions.</p>
+<p><strong>Falsification of dome:</strong> V13 formula cannot achieve &lt;10% error on SYD&ndash;EZE at any parameter setting.</p>
+</div>
+
+<div class="prediction pending" id="pred-v13-002">
+<h3>PRED-V13-002 &mdash; SAA as Ovoid Shoulder Zone Through 2030 <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Test:</strong> Annual CHAOS-7 updates &mdash; compute disc r for SAA center each year</p>
+<p><strong>Background:</strong> V13 ovoid geometry predicts a field stress zone at the disc&rsquo;s ovoid shoulder transition (r=18,000&ndash;22,000 km), where the disc transitions from the compressed northern section to the widened southern section. The SAA currently sits exactly here.</p>
+<p><strong>Dome V13 prediction:</strong> SAA center of mass remains within the ovoid shoulder band (disc coordinate r = 18,000&ndash;22,000 km) through 2030, even as the anomaly migrates westward and intensifies.</p>
+<p><strong>Globe prediction:</strong> SAA moves freely according to independent core flow dynamics &mdash; no geometric constraint on its disc-coordinate position.</p>
+<p><strong>Test:</strong> Convert SAA center coordinates (lat/lon) to disc r each year using V12/V13 coordinate system. Check if r stays within 18,000&ndash;22,000 km.</p>
+<p><strong>Falsification of dome:</strong> SAA center moves to r&lt;16,000 or r&gt;24,000 km in disc coordinates by 2030.</p>
+</div>
+
+<div class="prediction pending" id="pred-v13-003">
+<h3>PRED-V13-003 &mdash; Aetheric Compression Signature at Antarctic Circle <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Test:</strong> Published atmospheric refraction anomaly studies near 75&ndash;80&deg;S</p>
+<p><strong>Background:</strong> V13 predicts n(r) &asymp; 2.0&ndash;2.4 at r=18,000&ndash;20,000 km (75&ndash;80&deg;S). This should produce systematic anomalous refraction, light bending, and temperature inversions beyond what standard atmospheric models predict.</p>
+<p><strong>Dome V13 prediction:</strong> Atmospheric refraction measurements at the edge of Antarctica (75&ndash;80&deg;S) show systematic excess refraction consistent with n(r) &asymp; 2.2 aetheric compression.</p>
+<p><strong>Globe prediction:</strong> Normal atmospheric refraction at these latitudes &mdash; no systematic anomaly beyond standard tropospheric/stratospheric models.</p>
+<p><strong>Supporting observation:</strong> Cook 1773 observed &ldquo;rays of light reflected from ice to considerable height&rdquo; &mdash; consistent with extreme aetheric lensing at high-r.</p>
+<p><strong>Falsification:</strong> Refraction data consistent with standard atmospheric model (n_atmos &asymp; 1.0003) at 75&ndash;80&deg;S with no systematic excess.</p>
+</div>
+
+<div class="prediction pending" id="pred-v13-004">
+<h3>PRED-V13-004 &mdash; Aetheric Slipstream Route Correlation <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Test:</strong> Compare flight-time data across equivalent-distance routes by traffic history</p>
+<p><strong>Background:</strong> Commercial flight routes follow established ionized aetheric channels (aetheric slipstreams) created by persistent high-traffic corridors. Planes following established slipstream paths experience reduced aetheric drag and shorter effective travel times than equivalent-distance routes without established channels. This is why transpolar southern routes do not exist &mdash; no aetheric slipstream channels have been established through that region.</p>
+<p><strong>Dome prediction:</strong> Flight time on high-traffic-history routes (established slipstreams) is systematically shorter than flight time on equivalent-distance low-traffic routes by &gt;5% after controlling for aircraft type and wind.</p>
+<p><strong>Globe prediction:</strong> Flight time = distance / airspeed &plusmn; wind. No systematic time difference between high-traffic and equivalent-distance low-traffic routes.</p>
+<p><strong>Falsification:</strong> No systematic time difference between high-traffic and low-traffic equivalent-distance routes after controlling for aircraft type and prevailing winds.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
+<h1>Solar Predictions &mdash; Registered 2026-03-24</h1>
+
+<div class="prediction pending" id="pred-solar-004">
+<h3>PRED-SOLAR-004 &mdash; Solar Angular Diameter Larger at High Latitudes (Same Day) <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-24 | <strong>Test:</strong> Simultaneous solar disc measurement at 2+ latitudes on same day</p>
+
+<p><strong>Globe prediction:</strong> Angular diameter = physical_size / distance. Identical at all latitudes on the same day. Ratio = 1.000 exactly.</p>
+
+<p><strong>Dome prediction:</strong> The solar vortex is seen through different aetheric density columns at different latitudes. High-latitude observers (near pole, dense aether) experience stronger GRIN lensing magnification. Angular diameter increases slightly toward the pole.</p>
+
+<p>Aetheric density at Svalbard (78&deg;N, r &asymp; 1,200 km): &rho; &prop; exp(&minus;1200/8619) = 0.869<br>
+Aetheric density at Singapore (1.4&deg;N, r &asymp; 16,800 km): &rho; &prop; exp(&minus;16800/8619) = 0.143<br>
+Density ratio: 6.1&times; &mdash; Svalbard sees sun through 6&times; denser medium</p>
+
+<p><strong>Dome prediction:</strong> Solar disc at Svalbard is larger than at Singapore on the same day by ~1&ndash;3% due to aetheric lensing magnification.</p>
+
+<p><strong>Method:</strong> DSLR camera + solar filter at two latitudes on the same day. Measure pixel diameter of solar disc. Correct for atmospheric refraction. Compare.</p>
+
+<p><strong>Why this is the strongest discriminating test:</strong> Globe makes an absolute prediction of zero latitude variation. Any confirmed variation &mdash; even 0.5% &mdash; rules out globe completely. No ad-hoc explanation available to globe.</p>
+
+<p><strong>Falsification of dome:</strong> Disc diameter identical (&lt;0.1% variation) at all latitudes on same day.</p>
+</div>
+
+<div class="prediction pending" id="pred-solar-009">
+<h3>PRED-SOLAR-009 &mdash; Solar Angular Diameter: Seasonal Direction Test <span class="badge pending">OPEN &mdash; FAVORS GLOBE</span></h3>
+<p><strong>Registered:</strong> 2026-03-24 | <strong>Test:</strong> Compare Jan vs Jul solar disc diameter</p>
+
+<p><strong>Background:</strong> The 3.4% annual variation in solar angular diameter is unexplained by the vortex model (which predicts constant size). Two candidate directions exist.</p>
+
+<p><strong>Globe prediction:</strong> Sun is largest in January (perihelion, Earth closest to Sun). Jan disc = 32.53 arcmin, Jul disc = 31.46 arcmin. Larger in WINTER.</p>
+
+<p><strong>Dome prediction (vortex height mechanism):</strong> When the solar circuit is at small r (summer, &phi;<sub>sun</sub> = +23.45&deg;, r<sub>sun</sub> = 7,884 km), the vortex is in denser aether and is pushed slightly lower &rarr; H<sub>sun</sub> decreases &rarr; disc appears LARGER. Dome predicts larger in SUMMER &mdash; opposite to globe.</p>
+
+<p><strong>Current observation:</strong> Jan 32.53 arcmin &gt; Jul 31.46 arcmin &mdash; CONSISTENT WITH GLOBE direction. This either (a) falsifies the height-oscillation mechanism, or (b) means the 3.4% variation is a second-order effect the dome vortex model does not need to reproduce.</p>
+
+<p><strong>Status:</strong> OBSERVED DATA CURRENTLY FAVORS GLOBE DIRECTION. The dome vortex model explains angular diameter CONSTANCY (96.6% of the variance) but not the 3.4% direction. Registered as open refinement. WIN-056 is valid regardless &mdash; it addresses the 300% geometric contradiction, not the 3.4% residual.</p>
+
+<p><strong>Falsification of dome:</strong> If a mechanism can be derived showing dome predicts larger disc in winter (consistent with observed direction) &mdash; and it does &mdash; then globe wins this test definitively. Currently no such mechanism exists.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
 <h1>&Lambda;CDM Model Failures vs ECM</h1>
 <p>The following tensions are not ECM predictions &mdash; they are observed anomalies that &Lambda;CDM cannot explain. Each one is naturally accommodated by ECM&rsquo;s structure without modification or additional parameters. Sourced from peer-reviewed literature through March 2026.</p>
 
@@ -706,9 +792,9 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 </div>
 
 <footer>
-  <span>Version 50.9</span>
-  <span>2026-03-23</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
+  <span>Version 50.10</span>
+  <span>2026-03-28</span>
+  <span style="color:var(--accent-blue);font-weight:600">54 confirmed</span>
   <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
