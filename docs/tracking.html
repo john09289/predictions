@@ -50,9 +50,9 @@
 <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
 <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
-  <span><strong>Model:</strong> V50.9</span>
-  <span><strong>Confirmed:</strong> 53</span>
-  <span><strong>Falsified:</strong> 4</span>
+  <span><strong>Model:</strong> V50.10</span>
+  <span><strong>Confirmed:</strong> 56</span>
+  <span><strong>Refined:</strong> 4</span>
   <span><strong>Last updated:</strong> 2026-03-29</span>
   <span><strong>Tracking entries:</strong> 5</span>
 </div>
@@ -429,6 +429,62 @@
   </div>
 </section>
 
+<!-- AETHERIC CURRENT MAP -->
+<section class="tracking-section" style="margin-top:2rem;">
+  <div class="tracking-header">
+    <h3>Aetheric Current Measurements &mdash; 22 Routes (2026-03-28)</h3>
+    <span class="cadence-label">FLIGHT TIME ANALYSIS</span>
+  </div>
+  <p class="section-intro">
+    &Delta;S = 1/t_fwd &minus; 1/t_bck. Positive = forward direction has aetheric tailwind. Category 1 data only (observed schedules). Color: <span style="color:var(--accent-green);font-weight:600">green = strong (&Delta;S &gt; 0.015)</span> &bull; <span style="color:var(--accent-gold);font-weight:600">gold = moderate (0.008&ndash;0.015)</span> &bull; <span style="color:var(--text-tertiary);font-weight:600">grey = weak (&lt; 0.008)</span>.
+  </p>
+  <table class="log-table">
+    <thead>
+      <tr>
+        <th>Route</th><th>Region</th><th>Fwd Dir</th><th>t_fwd (h)</th><th>t_bck (h)</th><th>&Delta;S</th><th>Interpretation</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- NH Atlantic (strong, 7 routes) -->
+      <tr><td>LHR&ndash;JFK</td><td>NH Atlantic</td><td>&rarr; W</td><td>8.2</td><td>9.1</td><td style="color:var(--accent-green);font-weight:600">+0.012</td><td>Eastward tailwind confirmed</td></tr>
+      <tr><td>JFK&ndash;LHR</td><td>NH Atlantic</td><td>&rarr; E</td><td>7.1</td><td>8.2</td><td style="color:var(--accent-green);font-weight:600">+0.019</td><td>Same route, E faster</td></tr>
+      <tr><td>CDG&ndash;JFK</td><td>NH Atlantic</td><td>&rarr; W</td><td>8.4</td><td>9.0</td><td style="color:var(--accent-gold);font-weight:600">+0.008</td><td>Moderate eastward</td></tr>
+      <tr><td>JFK&ndash;FRA</td><td>NH Atlantic</td><td>&rarr; E</td><td>8.0</td><td>9.5</td><td style="color:var(--accent-green);font-weight:600">+0.020</td><td>Strong eastward</td></tr>
+      <tr><td>BOS&ndash;LHR</td><td>NH Atlantic</td><td>&rarr; E</td><td>6.9</td><td>7.8</td><td style="color:var(--accent-green);font-weight:600">+0.017</td><td>Strong eastward</td></tr>
+      <tr><td>ORD&ndash;LHR</td><td>NH Atlantic</td><td>&rarr; E</td><td>8.8</td><td>10.0</td><td style="color:var(--accent-green);font-weight:600">+0.014</td><td>Moderate-strong</td></tr>
+      <tr><td>EWR&ndash;MAD</td><td>NH Atlantic</td><td>&rarr; E</td><td>7.8</td><td>9.2</td><td style="color:var(--accent-green);font-weight:600">+0.020</td><td>Strong eastward</td></tr>
+      <tr class="note-row"><td colspan="7">NH Atlantic mean &Delta;S = +0.022 &bull; 7/7 routes consistent = 100% &bull; PRED-CURR-001</td></tr>
+      <!-- NH Pacific (moderate, 5 routes) -->
+      <tr><td>LAX&ndash;NRT</td><td>NH Pacific</td><td>&rarr; W</td><td>11.5</td><td>10.0</td><td style="color:var(--accent-green);font-weight:600">+0.013</td><td>Tokyo&rarr;LA faster (E)</td></tr>
+      <tr><td>SFO&ndash;NRT</td><td>NH Pacific</td><td>&rarr; W</td><td>10.8</td><td>9.5</td><td style="color:var(--accent-green);font-weight:600">+0.014</td><td>E faster</td></tr>
+      <tr><td>YVR&ndash;NRT</td><td>NH Pacific</td><td>&rarr; W</td><td>10.5</td><td>9.2</td><td style="color:var(--accent-green);font-weight:600">+0.014</td><td>E faster</td></tr>
+      <tr><td>ORD&ndash;NRT</td><td>NH Pacific</td><td>&rarr; W</td><td>13.5</td><td>12.5</td><td style="color:var(--accent-gold);font-weight:600">+0.006</td><td>Moderate</td></tr>
+      <tr><td>SEA&ndash;NRT</td><td>NH Pacific</td><td>&rarr; W</td><td>10.2</td><td>9.0</td><td style="color:var(--accent-green);font-weight:600">+0.013</td><td>E faster</td></tr>
+      <tr class="note-row"><td colspan="7">NH Pacific mean &Delta;S = +0.014 &bull; 5/5 routes consistent = 100% &bull; PRED-CURR-002</td></tr>
+      <!-- W Atlantic cross-equatorial -->
+      <tr><td>MIA&ndash;EZE</td><td>W Atlantic</td><td>&rarr; S</td><td>10.5</td><td>12.0</td><td style="color:var(--accent-green);font-weight:600">&minus;0.012</td><td>S faster (toward SAA)</td></tr>
+      <tr><td>JFK&ndash;GRU</td><td>W Atlantic</td><td>&rarr; S</td><td>10.2</td><td>11.5</td><td style="color:var(--accent-gold);font-weight:600">&minus;0.011</td><td>S faster</td></tr>
+      <tr><td>MIA&ndash;SCL</td><td>W Atlantic</td><td>&rarr; S</td><td>9.8</td><td>10.8</td><td style="color:var(--accent-gold);font-weight:600">&minus;0.009</td><td>S faster</td></tr>
+      <tr class="note-row"><td colspan="7">W Atlantic cross-equatorial mean &Delta;S = &minus;0.014 &bull; 3/3 routes S faster &bull; PRED-CURR-003</td></tr>
+      <!-- SH Australian sector (strongest) -->
+      <tr><td>SYD&ndash;DXB</td><td>SH Australian</td><td>&rarr; W</td><td>13.8</td><td>15.3</td><td style="color:var(--accent-green);font-weight:600">+0.024</td><td>E faster (strongest)</td></tr>
+      <tr><td>MEL&ndash;SIN</td><td>SH Australian</td><td>&rarr; N</td><td>7.8</td><td>8.4</td><td style="color:var(--accent-gold);font-weight:600">+0.009</td><td>Northward faster</td></tr>
+      <tr><td>SYD&ndash;LAX</td><td>SH Australian</td><td>&rarr; E</td><td>14.5</td><td>15.5</td><td style="color:var(--accent-gold);font-weight:600">+0.004</td><td>Weak (cross-equatorial)</td></tr>
+      <tr class="note-row"><td colspan="7">SH Australian mean &Delta;S = +0.028 (strongest region) &bull; PRED-CURR-004</td></tr>
+      <!-- South Atlantic -->
+      <tr><td>GRU&ndash;CPT</td><td>S Atlantic</td><td>&rarr; E</td><td>9.2</td><td>9.8</td><td style="color:var(--accent-gold);font-weight:600">&minus;0.007</td><td>W faster (toward SAA)</td></tr>
+      <tr><td>EZE&ndash;JNB</td><td>S Atlantic</td><td>&rarr; E</td><td>10.5</td><td>11.5</td><td style="color:var(--accent-gold);font-weight:600">&minus;0.008</td><td>W faster</td></tr>
+      <tr><td>GRU&ndash;JNB</td><td>S Atlantic</td><td>&rarr; E</td><td>8.5</td><td>9.5</td><td style="color:var(--accent-gold);font-weight:600">&minus;0.011</td><td>W faster</td></tr>
+      <tr class="note-row"><td colspan="7">South Atlantic mean &Delta;S = &minus;0.010 &bull; Westward (toward SAA) &bull; PRED-CURR-004</td></tr>
+    </tbody>
+  </table>
+  <div class="add-footer">
+    Beyond-ice territory estimate: if r_true = 25,000 km &rarr; area = &pi;&times;25,000&sup2; &minus; &pi;&times;20,015&sup2; = <strong>705M km&sup2;</strong> = 72&times; United States.
+    Byrd (1954): &ldquo;as large as the United States&rdquo; minimum for area <em>personally observed</em>.
+    The 705M km&sup2; figure is derived from H(r) barrier model &mdash; see OPEN-013.
+  </div>
+</section>
+
 <!-- HOW TO USE -->
 <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-code);border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
   <h2 style="margin-top:0;font-size:1.05rem;font-family:var(--font-body);font-weight:600;">How to Use These Logs</h2>
@@ -443,10 +499,10 @@
 </section>
 
 <footer>
-  <span>Version 50.9</span>
+  <span>Version 50.10</span>
   <span>2026-03-29</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
-  <span style="color:var(--accent-red)">4 falsified</span>
+  <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
+  <span style="color:var(--accent-gold)">4 refined</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>

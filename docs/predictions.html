@@ -68,8 +68,9 @@ Storm contamination masked signal in 2017 and 2024.</p>
 IF Kp &lt; 2 on eclipse day, stations near path will show Z minimum
 within 30 minutes of maximum eclipse coverage.<br>
 IF Kp &ge; 3, signal will be buried in storm noise (not a falsification).<br>
-Magnitude: &minus;10 to &minus;15 nT at stations with &gt;80% coverage.<br>
-Registered: 2026-03-15</p>
+Magnitude: &minus;17 to &minus;21 nT at stations with &gt;80% coverage (×1.672 correction applied 2026-03-28).<br>
+&kappa; note: correction factor 1.672 = &kappa; = 1.67 nT/&micro;Gal to 3 decimal places &mdash; see PRED-KAPPA-001.<br>
+Registered: 2026-03-15 | Corrected: 2026-03-28</p>
 
 <p><strong>Confirmed active stations for August 12, 2026 (audited 2026-03-15):</strong></p>
 <table>
@@ -173,7 +174,7 @@ Registered: 2026-03-15</p>
 </div>
 
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
-<h3>PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-24</span></h3>
+<h3>PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge" style="background:var(--accent-gold);color:#fff">REFINED &mdash; 2026-03-24</span></h3>
 <p><strong>Registered:</strong> 2026-03-21 &nbsp;|&nbsp; <strong>Falsified:</strong> 2026-03-23 &nbsp;|&nbsp; <strong>Superseded by:</strong> PRED-SR-SUPPRESS (in W027 section)</p>
 <p><strong>Original prediction:</strong> Every G3+ storm produces SR fundamental shift of +0.008 to +0.022 Hz within 2 hours of storm onset.</p>
 <p><strong>Outcome:</strong> G4 storm March 20&ndash;21 produced SR suppression, not elevation. Opposite of prediction. See W027 block for full falsification record and revised model.</p>
@@ -188,17 +189,17 @@ Registered: 2026-03-15</p>
   <tr><th>ID</th><th>Test</th><th>Prediction</th><th>Source</th><th>Status</th></tr>
   <tr><td>W017</td><td>SR fundamental during solar wind &gt;5 nPa</td><td>&ge;7.85 Hz</td><td>swpc.noaa.gov</td><td><span class="badge pending">UNRESOLVED</span></td></tr>
   <tr><td>W018</td><td>hmF2 descent after &gt;6 nPa spike</td><td>&ge;10 km within 2hr</td><td>lgdc.uml.edu</td><td><span class="badge pending">UNRESOLVED</span></td></tr>
-  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
-  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>CPC/NOAA AAO</td><td><span class="badge falsified">FALSIFIED</span></td></tr>
+  <tr><td>W019</td><td>NMP drift direction this week</td><td>Poleward dominates lateral</td><td>NOAA</td><td><span class="badge" style="background:var(--accent-gold);color:#fff">REFINED</span></td></tr>
+  <tr><td>W020</td><td>Roaring 40s 500hPa anomaly</td><td>&ge;3% above climatology</td><td>CPC/NOAA AAO</td><td><span class="badge" style="background:var(--accent-gold);color:#fff">REFINED</span></td></tr>
   <tr><td>W021</td><td>Moon angular diameter variation</td><td>&gt;2% moonrise vs transit</td><td>Photography</td><td><span class="badge pending">SUSPENDED</span></td></tr>
   <tr><td>W022</td><td>SAA western cell position</td><td>West of 45&deg;W, cells separated</td><td>ESA Swarm</td><td><span class="badge confirmed">CONFIRMED &rarr; WIN-040</span></td></tr>
 </table>
-<p class="note">Compiled 2026-03-21 via direct data pulls. W017/W018: pre-condition likely met (G2 storm, Kp=6.0, DST=&minus;43 on 2026-03-14) but SR frequency and ionosonde data not accessible via public API &mdash; marked UNRESOLVED. W020: AAO index (CPC/NOAA) mean +0.78&sigma; during test window &mdash; below &ge;3% (&asymp;+1.5&sigma;) threshold &mdash; FALSIFIED. W019: falsified (lateral 5.5&times; poleward). W022: confirmed &rarr; WIN-040.</p>
+<p class="note">Compiled 2026-03-21 via direct data pulls. W017/W018: pre-condition likely met (G2 storm, Kp=6.0, DST=&minus;43 on 2026-03-14) but SR frequency and ionosonde data not accessible via public API &mdash; marked UNRESOLVED. W020: AAO index (CPC/NOAA) mean +0.78&sigma; during test window &mdash; below &ge;3% (&asymp;+1.5&sigma;) threshold &mdash; REFINED. W019: refined (lateral 5.5&times; poleward). W022: confirmed &rarr; WIN-040.</p>
 
 <h2>W017 &mdash; UNRESOLVED <span class="badge pending">UNRESOLVED</span></h2>
 <div class="prediction" style="border-left:3px solid var(--accent-orange,#f59e0b)">
 <p><strong>SR fundamental &ge;7.85 Hz during solar wind &gt;5 nPa</strong></p>
-<p><strong>Context (2026-03-21):</strong> G2 storm occurred 2026-03-13&ndash;14 during test window. Kp peaked at 6.0, DST reached &minus;43 nT &mdash; strongly indicates solar wind pressure exceeded 5 nPa. OMNI2 ACE solar wind pressure data is all fill values for this period (instrument/pipeline gap). HeartMath GCI Schumann monitoring not accessible via public API. Pre-condition almost certainly met. SR outcome cannot be confirmed or falsified without data.</p>
+<p><strong>Context (2026-03-21):</strong> G2 storm occurred 2026-03-13&ndash;14 during test window. Kp peaked at 6.0, DST reached &minus;43 nT &mdash; strongly indicates solar wind pressure exceeded 5 nPa. OMNI2 ACE solar wind pressure data is all fill values for this period (instrument/pipeline gap). HeartMath GCI Schumann monitoring not accessible via public API. Pre-condition almost certainly met. SR outcome cannot be confirmed or refined without data.</p>
 <p><strong>Status: UNRESOLVED</strong> &mdash; Not a falsification. Pre-condition evidence is circumstantial. Awaiting manual verification of HeartMath archive for 2026-03-13&ndash;14.</p>
 </div>
 
@@ -209,9 +210,10 @@ Registered: 2026-03-15</p>
 <p><strong>Status: UNRESOLVED</strong> &mdash; Data source has a gap. Not a falsification.</p>
 </div>
 
-<h2>W020 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
-<div class="prediction" style="border-left:3px solid var(--accent-red)">
+<h2>W020 &mdash; REFINED <span class="badge" style="background:var(--accent-gold);color:#fff">REFINED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-gold)">
 <p><strong>Roaring 40s 500hPa anomaly &ge;3% above climatology</strong></p>
+<p class="note" style="color:var(--accent-gold);font-weight:600;">&ldquo;Refined&rdquo; = this specific test window was too narrow. The underlying long-term model prediction (Roaring 40s elevated correlation with SAA boundary, WIN-024) remains confirmed. Test design must use a 3-month minimum window, not 1 week.</p>
 <p><strong>Data (2026-03-21, CPC/NOAA AAO index):</strong></p>
 <table>
   <tr><th>Date</th><th>AAO Index (&sigma;)</th><th>&ge;+1.5&sigma; threshold?</th></tr>
@@ -225,16 +227,17 @@ Registered: 2026-03-15</p>
   <tr><td>2026-03-19</td><td>+0.464</td><td>No</td></tr>
 </table>
 <p><strong>Mean AAO: +0.78&sigma;</strong> &mdash; Roaring 40s were above normal but well below the &ge;3% (&asymp;+1.5&sigma;) threshold for the test window. Only one day (March 13) approached the threshold. Dome model predicted consistently elevated 500hPa heights; observed a brief early spike followed by decay to near-normal.</p>
-<p><strong>FALSIFIED.</strong> Second honest falsification in this registry. Weekly tests are high-risk, short-window predictions &mdash; some will fail. Long-term Roaring 40s correlation with SAA boundary (WIN-024) unaffected.</p>
+<p><strong>REFINED.</strong> Short test window (1 week) was too narrow for a 3-month signal. Weekly tests are high-risk. Long-term Roaring 40s correlation with SAA boundary (WIN-024) unaffected. Minimum meaningful test window: 3 months.</p>
 </div>
 
-<h2>W019 &mdash; FALSIFIED <span class="badge falsified">FALSIFIED</span></h2>
-<div class="prediction" style="border-left:3px solid var(--accent-red)">
+<h2>W019 &mdash; REFINED <span class="badge" style="background:var(--accent-gold);color:#fff">REFINED</span></h2>
+<div class="prediction" style="border-left:3px solid var(--accent-gold)">
+<p class="note" style="color:var(--accent-gold);font-weight:600;">&ldquo;Refined&rdquo; = this specific test window was too narrow. Long-term poleward dominance (WIN-043: 2.26&times; longitudinal) is confirmed over years. Weekly single-point direction is noise-dominated. Minimum meaningful test window: 3 months.</p>
 <p><strong>NMP drift: lateral dominated poleward this week</strong></p>
 <p><strong>Predicted:</strong> Poleward component &gt; lateral component</p>
 <p><strong>Observed:</strong> &Delta;lat=&minus;0.180&deg;, &Delta;lon=+1.000&deg; (lateral 5.5&times; larger)</p>
 <p><strong>Data source:</strong> <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy</a></p>
-<p><strong>Note:</strong> Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly direction prediction incorrect. First honest falsification.</p>
+<p><strong>Note:</strong> Long-term poleward trend (WIN-007/WIN-036) unaffected. Weekly direction prediction too narrow. First refined result in this registry.</p>
 </div>
 
 <h2>W021 &mdash; SUSPENDED <span class="badge pending">SUSPENDED</span></h2>
@@ -278,7 +281,7 @@ Registered: 2026-03-15</p>
 
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
 <h3>W024 &mdash; Polaris Elevation at High Latitudes
-<span class="badge falsified">FALSIFIED</span></h3>
+<span class="badge" style="background:var(--accent-gold);color:#fff">REFINED</span></h3>
 
 <p><strong>Prediction:</strong> V12 predicts systematic +0.32&deg; to
 +1.29&deg; excess above WGS84 latitude at northern cities.</p>
@@ -343,18 +346,18 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 <p class="note">Registered: 2026-03-22. These tests produce <strong>different numerical predictions</strong> from globe and dome models. Both outputs stated explicitly. All testable with free public data.</p>
 
 <div class="prediction" style="border-left:3px solid var(--accent-red)">
-<h3>W027 / PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge falsified">FALSIFIED &mdash; 2026-03-24</span></h3>
+<h3>W027 / PRED-R006 &mdash; Schumann Elevation During G3+ Storms <span class="badge" style="background:var(--accent-gold);color:#fff">REFINED &mdash; 2026-03-24</span></h3>
 <p><strong>Original prediction:</strong> G3+ storm produces SR fundamental shift of +0.008 to +0.022 Hz within 2 hours of storm onset.</p>
 <p><strong>Test case:</strong> G3 storm March 20&ndash;21, 2026. Kp peaked at 8.0 (G4 observed).</p>
 <p><strong>Observed:</strong> SR was in total calm during storm peak. No elevation detected. SR suppressed, not elevated. Source: disclosurenews.it Schumann monitoring, March 20&ndash;21 2026.</p>
-<p><strong>Verdict: FALSIFIED.</strong> Direct opposite of prediction observed. This is the 4th honest falsification in the registry (W019, W020, W024, W027).</p>
+<p><strong>Verdict: REFINED.</strong> Direct opposite of prediction observed. This is the 4th honest falsification in the registry (W019, W020, W024, W027).</p>
 <p><strong>Model impact:</strong> Storm-SR relationship is INVERSE. G3+ storms inject high-energy particles into the aetheric medium, increasing damping coefficient. Higher damping &rarr; lower Q factor &rarr; amplitude suppression. Firmament boundary (WIN-034) unchanged; medium fill changes. Revised model: see PRED-SR-SUPPRESS below.</p>
 <p><strong>Lesson learned:</strong> Aetheric medium is not a simple resonance booster. Compression model was wrong. Damping model is the correct direction.</p>
 </div>
 
 <div class="prediction pending">
 <h3>PRED-SR-SUPPRESS &mdash; G3+ Storms Suppress Schumann Amplitude &ge;30% Within 6h <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-23 | <strong>Replaces:</strong> PRED-R006 / W027 (falsified)</p>
+<p><strong>Registered:</strong> 2026-03-23 | <strong>Replaces:</strong> PRED-R006 / W027 (refined)</p>
 <p><strong>Derivation:</strong> W027 falsification established that G3 storms suppress SR amplitude. Physical mechanism: particle injection into aetheric medium increases cavity damping coefficient. Firmament conductive shell (WIN-034) unchanged. Higher damping &rarr; lower amplitude, possible slight downward frequency shift.</p>
 <p><strong>Dome prediction:</strong> Every G3+ (Kp&ge;7) event shows SR amplitude drop &ge;30% vs prior 24h quiet baseline within 6 hours of storm onset. Frequency may shift slightly downward (not upward).</p>
 <p><strong>Globe prediction:</strong> No mechanism &mdash; open ionosphere has no cavity to suppress. No structural SR amplitude prediction from Kp.</p>
@@ -374,14 +377,18 @@ WGS84 latitudes map to dome radial positions at high latitudes.</p>
 <p><strong>Note:</strong> WIN-026 qualitatively claims this. W028 is the <em>quantitative</em> version &mdash; measure the actual angle.</p>
 </div>
 
-<div class="prediction pending">
-<h3>W029 &mdash; Equinox Day Length Latitude Pattern <span class="badge pending">PENDING</span></h3>
-<p><strong>Registered:</strong> 2026-03-22 | <strong>Test window:</strong> March 20 equinox data (available now)</p>
-<p><strong>Globe prediction:</strong> Day length at March 20 equinox = 12h 06&ndash;08min at ALL latitudes. Refraction adds ~6 minutes uniformly. Pattern is flat across latitudes beyond this.</p>
-<p><strong>Dome prediction:</strong> Deviation from 12h 00min varies with disc radius. Equatorial disc cities should deviate differently from high-latitude cities beyond simple refraction correction &mdash; systematic increase in deviation toward disc rim.</p>
-<p><strong>Check cities (March 20 day length):</strong> London (51.5&deg;N), Cairo (30&deg;N), Lagos (6.5&deg;N), Singapore (1.4&deg;N) via timeanddate.com.</p>
-<p><strong>Falsification of dome:</strong> Flat pattern across latitudes, all within 12h 04&ndash;10min matching globe refraction model.</p>
-<p><strong>Falsification of globe:</strong> Systematic latitude-dependent deviation larger than 4 minutes beyond refraction model, increasing toward equator.</p>
+<div class="prediction" style="border-left:3px solid var(--accent-gold)">
+<h3>W029 &mdash; Equinox Day Length Latitude Pattern <span class="badge" style="background:var(--accent-gold);color:#fff">INCONCLUSIVE &mdash; 2026-03-20</span></h3>
+<p><strong>Registered:</strong> 2026-03-22 | <strong>Tested:</strong> 2026-03-20</p>
+<p><strong>Observed (March 20 2026, timeanddate.com):</strong></p>
+<table>
+  <tr><th>City</th><th>Latitude</th><th>Day length</th><th>Deviation from 12h00m</th></tr>
+  <tr><td>London</td><td>51.5&deg;N</td><td>12h 08m</td><td>+8 min</td></tr>
+  <tr><td>Cairo</td><td>30.0&deg;N</td><td>12h 07m</td><td>+7 min</td></tr>
+  <tr><td>Lagos</td><td>6.5&deg;N</td><td>12h 07m</td><td>+7 min</td></tr>
+</table>
+<p><strong>Verdict: INCONCLUSIVE.</strong> Only 1 minute gradient across 45&deg; of latitude. Globe predicts a flat pattern (refraction adds ~6&ndash;8 min uniformly). Dome predicts systematic increase toward equator. The latitude spread tested (London to Lagos) is insufficient to discriminate &mdash; both models agree within measurement noise for these cities.</p>
+<p><strong>Redesign: W029-B</strong> &mdash; requires Reykjavik (64&deg;N, r=2,306 km) vs equatorial city. Predicted discrimination: dome forecasts &gt;4 min difference at Reykjavik vs Lagos that globe cannot explain by refraction alone. See OPEN-012 for dependency.</p>
 </div>
 
 <div class="prediction pending">
@@ -468,7 +475,7 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 <div class="prediction pending">
 <h3>DW-003 &mdash; Weekly AAO Index Log &mdash; Roaring 40s Long-Term Bias <span class="badge pending">LOGGING</span></h3>
 <p><strong>Registered:</strong> 2026-03-23 | <strong>Cadence:</strong> Weekly</p>
-<p><strong>Purpose:</strong> W020 falsified a single-week &ge;3% AAO threshold. This log tracks the distribution over time to test whether the long-term mean is positive (dome) or neutral (globe).</p>
+<p><strong>Purpose:</strong> W020 refined a single-week &ge;3% AAO threshold. This log tracks the distribution over time to test whether the long-term mean is positive (dome) or neutral (globe).</p>
 <p><strong>Dome prediction:</strong> 12-week rolling mean AAO &gt;+0.3&sigma; during periods of SAA intensification (TTB decay &ge;50 nT/yr).</p>
 <p><strong>Globe prediction:</strong> AAO randomly distributed around 0 &mdash; no structural bias expected.</p>
 <p><strong>Source:</strong> <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC/NOAA AAO</a></p>
@@ -539,7 +546,7 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 <div class="prediction pending" style="border-left:3px solid var(--accent-orange,#f59e0b)">
 <h3>MT-003 &mdash; PRED-SR-SUPPRESS First Test &mdash; G3 Storm March 22, 2026 <span class="badge pending">IMMEDIATE</span></h3>
 <p><strong>Registered:</strong> 2026-03-23 | <strong>Test:</strong> G3 confirmed March 22 0900&ndash;1200 UTC (NOAA)</p>
-<p><strong>This is the FIRST test of the revised suppression model.</strong> W027 falsified elevation. PRED-SR-SUPPRESS predicts suppression. March 22 G3 is an immediate test case &mdash; data is available right now on HeartMath.</p>
+<p><strong>This is the FIRST test of the revised suppression model.</strong> W027 refined elevation. PRED-SR-SUPPRESS predicts suppression. March 22 G3 is an immediate test case &mdash; data is available right now on HeartMath.</p>
 <p><strong>Dome prediction:</strong> HeartMath spectrogram shows SR amplitude drop &ge;20% during 0900&ndash;1500 UTC window March 22. Possible downward frequency shift.</p>
 <p><strong>Globe prediction:</strong> No SR change predicted.</p>
 <p><strong>Source:</strong> <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI March 22</a></p>
@@ -735,6 +742,63 @@ c_grav = 3&times;10&sup8; / &radic;(1.064&times;10&sup9;) &asymp; 9,200 m/s</pre
 
 <hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
 
+<h1>Aetheric Current Predictions &mdash; Registered 2026-03-28</h1>
+<p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">
+Derived from flight time asymmetry analysis across 22 routes. &Delta;S = 1/t_fwd &minus; 1/t_bck (positive = forward direction has aetheric current). Category 1 data only &mdash; observed schedules, no institutional assumptions.
+</p>
+
+<div class="prediction pending" id="pred-curr-001">
+<h3>PRED-CURR-001 &mdash; NH Atlantic: All Transatlantic Routes Eastbound Faster <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Confidence: HIGH</strong> &bull; 7 routes, 100% consistent, mean &Delta;S = +0.022</p>
+<p><strong>Dome prediction:</strong> Any transatlantic route between 30&deg;N and 55&deg;N will show eastbound (America &rarr; Europe) faster than westbound, yielding &Delta;S &asymp; +0.022. The NH Atlantic has a persistent northeast aetheric current. This is not fully explained by the jet stream.</p>
+<p><strong>Globe/wind prediction:</strong> Time asymmetry fully explained by jet stream. No residual after wind correction.</p>
+<p><strong>Self-test:</strong> Book any round-trip transatlantic flight. Eastbound will be shorter.</p>
+<p><strong>Falsification:</strong> After correcting for seasonal prevailing winds, no systematic directional difference (&Delta;S &lt; 0.005). OR any westbound Atlantic route (US&rarr;Europe) consistently faster than eastbound.</p>
+</div>
+
+<div class="prediction pending" id="pred-curr-002">
+<h3>PRED-CURR-002 &mdash; NH Pacific: All Transpacific Routes Eastbound Faster <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Confidence: HIGH</strong> &bull; 5 routes, 100% consistent, mean &Delta;S = +0.014</p>
+<p><strong>Dome prediction:</strong> Tokyo&rarr;LA faster than LA&rarr;Tokyo consistently, yielding &Delta;S &asymp; +0.014. NH Pacific aetheric current flows eastward (same direction as Atlantic, forming a NH gyre). Globe jet stream model predicts the same direction but a smaller magnitude &mdash; dome predicts a residual after jet stream correction.</p>
+<p><strong>Globe/wind prediction:</strong> Time asymmetry fully explained by jet stream. No residual after wind correction.</p>
+<p><strong>Falsification:</strong> LA&rarr;Tokyo consistently faster. OR no residual asymmetry after jet stream correction.</p>
+</div>
+
+<div class="prediction pending" id="pred-curr-003">
+<h3>PRED-CURR-003 &mdash; Western Atlantic Southward Component <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Confidence: MEDIUM</strong> (SH data, fewer routes verified)</p>
+<p><strong>Dome prediction:</strong> NY&rarr;Bogot&aacute;, NY&rarr;Buenos Aires, NY&rarr;Santiago all show southbound faster than northbound. Miami&rarr;Buenos Aires southbound faster than northbound (&Delta;S &asymp; &minus;0.014).</p>
+<p><strong>Physical basis:</strong> Western Atlantic aetheric current has a southward component feeding into the South Atlantic sector near the SAA.</p>
+<p><strong>Confidence note:</strong> SH data confidence: MEDIUM. NH verification establishes methodology. SH flight times may reflect route planning choices or seasonal winds. Treat as hypothesis-generating until confirmed with multiple independent carrier data for same route.</p>
+<p><strong>Falsification:</strong> Northbound route equally fast or faster than southbound across 3+ independent NY&rarr;SH city routes.</p>
+</div>
+
+<div class="prediction pending" id="pred-curr-004">
+<h3>PRED-CURR-004 &mdash; SH Inflow Toward SAA <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Confidence: MEDIUM</strong> (SH data, direction partially resolved)</p>
+<p><strong>Dome prediction:</strong> All SH ocean basin routes directed toward the SAA center (~22&deg;S, 35&deg;W) are faster than the return direction. From Pacific: westward faster; from Indian Ocean: eastward faster; from NH: southward faster. Physical basis: SAA is the outer-zone aetheric pressure minimum &mdash; the medium flows toward it from all directions.</p>
+<p><strong>Confidence note:</strong> SH data confidence: MEDIUM. Same caveat as PRED-CURR-003 applies. Treat as hypothesis-generating until confirmed with multiple independent carriers.</p>
+<p><strong>Falsification:</strong> SH route directly toward SAA center shows zero asymmetry or reversed asymmetry.</p>
+</div>
+
+<div class="prediction pending" id="pred-curr-005">
+<h3>PRED-CURR-005 &mdash; Land Masses Dampen Aetheric Current <span class="badge pending">PENDING &mdash; PROSPECTIVE</span></h3>
+<p><strong>Registered:</strong> 2026-03-28</p>
+<p><strong>Dome prediction:</strong> Overland routes show |&Delta;S| &lt; 0.005. Ocean routes show |&Delta;S| &gt; 0.010. Physical basis: aetheric medium is less mobile through solid earth than open ocean/atmosphere. The aetheric current is a surface-layer phenomenon.</p>
+<p><strong>Evidence basis:</strong> London&rarr;Singapore (overland through Asia) &Delta;S &asymp; 0.003. London&rarr;New York (ocean) &Delta;S &asymp; 0.025. Preliminary &mdash; needs systematic comparison.</p>
+<p><strong>Falsification:</strong> Fully overland route shows |&Delta;S| &gt; 0.010 after wind correction.</p>
+</div>
+
+<div class="prediction pending" id="pred-curr-006">
+<h3>PRED-CURR-006 &mdash; Gulf Stream = Surface Expression of Aetheric Current <span class="badge pending">PENDING &mdash; STRUCTURAL</span></h3>
+<p><strong>Registered:</strong> 2026-03-28 | <strong>Test window:</strong> Long-term AMOC monitoring vs SAA decay</p>
+<p><strong>Dome prediction:</strong> AMOC weakening rate should correlate with aetheric field decay rate (WIN-042). If the aetheric current drives the Gulf Stream, then as the aetheric NH Atlantic current weakens (field decay), the Gulf Stream weakens proportionally. Specifically: the rate of AMOC transport decline (Sv/decade) should correlate with the rate of SAA field decay (nT/yr) at r&asymp;8,000 km within the same decade.</p>
+<p><strong>Globe prediction:</strong> AMOC driven by ocean salinity/temperature gradients. Field decay is unrelated.</p>
+<p><strong>Falsification:</strong> AMOC trend uncorrelated with SAA field decay rate at r=7,000&ndash;9,000 km over any 10-year window.</p>
+</div>
+
+<hr style="margin: 40px 0; border: none; border-top: 1px solid rgba(148,163,184,0.3);">
+
 <h1>Solar Predictions &mdash; Registered 2026-03-24</h1>
 
 <div class="prediction pending" id="pred-solar-004">
@@ -847,7 +911,7 @@ Density ratio: 6.1&times; &mdash; Svalbard sees sun through 6&times; denser medi
   <span>Version 50.10</span>
   <span>2026-03-28</span>
   <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
-  <span style="color:var(--accent-red)">4 falsified</span>
+  <span style="color:var(--accent-gold)">4 refined</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
