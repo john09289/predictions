@@ -390,49 +390,6 @@
   </div>
 </div>
 
-<!-- ===== SECTION 6: AETHERIC CURRENT MAP ===== -->
-<div class="section-block">
-  <h2>Aetheric Current Map</h2>
-  <p style="color:var(--text-secondary);font-size:0.9rem;margin-bottom:1rem;">
-    The aetheric medium is not static &mdash; it flows. By comparing eastbound vs westbound flight schedules on the same routes, we can map the current direction at each location. This is Category 1 data: observed schedules, no institutional assumptions.
-  </p>
-
-  <div class="map-section" style="text-align:center;">
-    <!--
-      Homepage map render.
-
-      IMPORTANT:
-      - This is no longer hand-drawn inline SVG.
-      - Source generator: scripts/generate_v13_warped_map.py
-      - Output image: docs/assets/homepage-warped-map.png
-
-      Why this was changed:
-      - The old inline SVG had drifted into illustrative blobs and was no longer
-        staying faithful to the published V13 coordinate table.
-      - The generator now starts from real country outlines and warps them into
-        the homepage ovoid using control points from docs/coordinates.html.
-      - Future map refinements should happen in the generator script, then the
-        PNG should be regenerated, rather than manually editing homepage shapes.
-    -->
-    <img
-      src="assets/homepage-warped-map.png?v=20260330b"
-      alt="Top-down ECM homepage map with real country outlines warped by V13 city anchors, ice wall boundary, and aetheric current arrows"
-      style="width:min(100%,700px);height:auto;display:block;margin:0 auto;border-radius:12px;"
-    >
-  </div>
-
-  <p style="font-size:0.78rem;color:var(--text-tertiary);text-align:center;margin-top:0.5rem;">
-    Rendered from real country outlines, then warped by V13 city anchors from <code>coordinates.html</code>. NH positions derived from Polaris angle (Category 1). SH positions estimated pending Category 1 ground triangulation (OPEN-016).
-  </p>
-
-  <div style="background:rgba(37,99,235,0.04);border:1px solid rgba(37,99,235,0.15);border-radius:var(--radius-sm);padding:1rem;margin-top:1rem;font-size:0.85rem;">
-    <strong>PRED-CURR-001 (Testable Now):</strong> Book any round-trip transatlantic flight between 30&deg;N and 55&deg;N.
-    Eastbound (USA &rarr; Europe) will be faster. Not because of jet stream &mdash; that only partially explains the asymmetry.
-    The dome predicts a persistent aetheric current that adds to prevailing winds.
-    This prediction has held across every one of 9 independent transatlantic routes tested.
-  </div>
-</div>
-
 <!-- ===== SECTION 7: SCRIPTURE ===== -->
 <div class="section-block">
   <h2>Scripture and Measurement Agree</h2>
