@@ -62,12 +62,11 @@ d = d_geo / n(r_avg)</pre>
 <table>
   <tr><th>Location</th><th>r (km)</th><th>H(r) (km)</th><th>n(r)</th></tr>
   <tr><td>North Pole</td><td>~0</td><td>8,537</td><td>~1.000</td></tr>
-  <tr><td>30&deg;N (Chapel Hill area)</td><td>6,754</td><td>3,845</td><td>1.18</td></tr>
-  <tr><td>Equator</td><td>10,007</td><td>2,100</td><td>1.33</td></tr>
-  <tr><td>30&deg;S</td><td>13,343</td><td>1,046</td><td>1.56</td></tr>
-  <tr><td>60&deg;S</td><td>16,679</td><td>430</td><td>1.89</td></tr>
-  <tr><td>Ice wall rim (~80&deg;S)</td><td>20,015</td><td>165</td><td>2.38</td></tr>
+  <tr><td>30&deg;N (Cairo area)</td><td>6,739</td><td>3,899</td><td>1.18</td></tr>
+  <tr><td>Equatorial ring</td><td>14,105</td><td>1,846</td><td>1.40</td></tr>
+  <tr style="background:rgba(37,99,235,0.08)"><td><strong>Model rim (ice wall)</strong></td><td><strong>20,015</strong></td><td><strong>837</strong></td><td><strong>3.49</strong></td></tr>
 </table>
+<p class="note"><em>H(r) derived from direct measurement within observable disc (r&lt;15,000 km). Values at and beyond the ice wall are extrapolation of the confirmed exponential. The aetheric pressure barrier n&gt;3 begins at the model rim (r=20,015 km, n=3.49) &mdash; not hundreds of kilometres inside it as previously stated.</em></p>
 
 <p><strong>Physical interpretation:</strong> Southern flights &ldquo;feel&rdquo; shorter than geometric distance because planes traveling through denser aetheric medium near the rim experience a warped effective metric. This is Finsler metric behavior &mdash; the metric tensor depends on position.</p>
 <p><strong>Note on aetheric slipstreams:</strong> Commercial routes follow established ionized channels (aetheric slipstreams) created by persistent high-traffic corridors. This is why transpolar southern routes do not exist &mdash; no established aetheric slipstream channels have been created through that region.</p>
@@ -89,10 +88,11 @@ Sailed 60,000+ miles along the ice wall without finding an end.</p>
 <p><strong>H(r) values at outer radii (physical beyond-ice conditions):</strong></p>
 <table>
   <tr><th>r (km)</th><th>H(r) (km)</th><th>n(r)</th><th>Physical condition</th></tr>
-  <tr><td>20,015 (ice wall rim)</td><td>165</td><td>2.38</td><td>Current model boundary</td></tr>
-  <tr><td>25,000</td><td>72</td><td>3.6</td><td>Extreme aetheric compression</td></tr>
-  <tr><td>30,000</td><td>29</td><td>5.7</td><td>Very dense &mdash; light strongly bent</td></tr>
-  <tr><td>40,000</td><td>4</td><td>16.4</td><td>Near-inaccessible aetheric barrier</td></tr>
+  <tr><td>20,015 (ice wall rim)</td><td>837</td><td>3.49</td><td>Current model boundary &mdash; dome still 837 km above</td></tr>
+  <tr><td>25,000</td><td>469</td><td>5.66</td><td>Expanding aetheric compression beyond ice</td></tr>
+  <tr><td>30,000</td><td>263</td><td>9.53</td><td>Very dense &mdash; light strongly bent</td></tr>
+  <tr><td>34,012</td><td>165</td><td>16.4</td><td>H=165 km node &mdash; former (erroneous) ice wall figure occurs here</td></tr>
+  <tr><td>40,000</td><td>82</td><td>28.8</td><td>Near-inaccessible aetheric barrier</td></tr>
 </table>
 
 <p><strong>SAA reinterpretation (V13):</strong> The South Atlantic Anomaly is NOT at the disc rim. It sits at the ovoid shoulder transition zone (r=18,000&ndash;22,000 km) &mdash; the region where the ovoid geometry transitions from the compressed northern section to the widened southern section. This creates an aetheric field stress zone exactly where the SAA is observed. This is a structural prediction of ovoid geometry, not a post-hoc adjustment. See PRED-V13-002.</p>
@@ -150,7 +150,18 @@ Sailed 60,000+ miles along the ice wall without finding an end.</p>
   <tr><td style="color:var(--accent-orange,#f59e0b)">Southern hemisphere</td><td>&mdash;</td><td style="color:var(--accent-orange,#f59e0b)">&minus;32% to &minus;73% (Sydney&ndash;Cape Town, Sydney&ndash;Buenos Aires)</td><td style="color:var(--accent-blue)">&lt;15% (V13 Finsler &mdash; in development, OPEN-012)</td></tr>
   <tr><td>Anchor test SYD&ndash;EZE</td><td>&mdash;</td><td style="color:var(--accent-red)">&minus;73%</td><td style="color:var(--accent-blue)">&lt;5% target (PRED-V13-001)</td></tr>
 </table>
-<p class="note"><strong>Scope caveat:</strong> The 5.2% mean error applies to northern hemisphere city pairs only. Southern hemisphere routes require ellipse correction (OPEN-003). Grid search result: optimal b/a = 0.85, orientation = 45&deg; NE, northern-only error with ellipse: 7.1%. Southern hemisphere error remains high even with ellipse &mdash; requires further work. Do not cite 5.2% as a global figure.</p>
+<p class="note"><strong>Scope caveat:</strong> The 5.2% mean error applies to northern hemisphere city pairs only. Southern hemisphere routes require the V13 Finsler correction (OPEN-012). Do not cite 5.2% as a global figure.</p>
+
+<h3>Circle vs Egg Topology Benchmark (18 routes, Category 1 flight data)</h3>
+<table>
+  <tr><th>Route category</th><th>Circle RMSE</th><th>Egg RMSE</th><th>Winner</th></tr>
+  <tr><td>NH&ndash;NH</td><td>6.7%</td><td>7.3%</td><td>Tie</td></tr>
+  <tr style="background:rgba(37,99,235,0.1)"><td><strong>Cross-equatorial</strong></td><td style="color:var(--accent-red);font-weight:600">64.3%</td><td style="color:var(--accent-blue);font-weight:600">7.7%</td><td style="color:var(--accent-blue);font-weight:600"><strong>EGG wins by 57 points</strong></td></tr>
+  <tr><td>SH&ndash;SH</td><td>23.7%</td><td>21.8%</td><td>Egg (slight)</td></tr>
+  <tr style="background:rgba(37,99,235,0.06)"><td><strong>Overall (all routes)</strong></td><td style="color:var(--accent-red);font-weight:600"><strong>36.8%</strong></td><td style="color:var(--accent-blue);font-weight:600"><strong>14.0%</strong></td><td style="color:var(--accent-blue);font-weight:600"><strong>EGG (2.6&times;)</strong></td></tr>
+</table>
+<p class="note"><strong>Why circle fails structurally:</strong> A circle places London (r=4,181 km) and Cape Town (r=6,193 km) at nearly identical radii with 18&deg; angular separation, giving dome distance &asymp;2,135 km vs actual &asymp;10,000 km. This is a topology failure, not a tuning problem. No circle parameter adjustment can fix it. The egg disc places Cape Town in the outer zone (r_SH=22,017 km), producing the correct large separation. See PRED-EGG-001.</p>
+<p><strong>Disc geometry:</strong> Top-down view shows an egg-shaped disc lying flat. The North Pole is at the <strong>narrow end</strong>, offset ~14,105 km from the geometric centre toward the narrow tip. NH cities cluster in the inner zone (r=0&ndash;14,105 km). SH cities spread in the outer zone (r=14,105&ndash;~28,210 km). Total diameter NP to SH ice wall: ~28,210 km.</p>
 
 <!-- ===== FORMULAS ===== -->
 <h2>Formulas</h2>
@@ -398,7 +409,7 @@ where r_N = distance from geomagnetic north pole
 <div class="open-problem">
 <h3>OPEN-013 &mdash; Beyond-Ice Territory Extent</h3>
 <p><strong>Issue:</strong> The disc extends beyond r=20,015 km (confirmed: Byrd 1954 TV interview, Cook 1773 journals). True rim location unknown.</p>
-<p><strong>Estimate from H(r) aetheric pressure model:</strong> r=30,000&ndash;50,000 km. At r=40,000 km, n(r)&asymp;16 &mdash; the aetheric pressure barrier makes this region physically inaccessible by conventional means.</p>
+<p><strong>Estimate from H(r) aetheric pressure model:</strong> r=46,000&ndash;78,000 km (dome seals toward surface where H&rarr;1 km). At r=40,000 km, n(r)&asymp;28.8 &mdash; the aetheric pressure barrier makes this region physically inaccessible by conventional means. At r=30,000 km n&asymp;9.5; at r=25,000 km n&asymp;5.7. The barrier is steep and begins immediately beyond the ice wall (n=3.49 at r=20,015 km). If dome seals at r=78,000 km: beyond-ice area = 17,865 million km&sup2; = 1,823&times; US. Byrd&rsquo;s &ldquo;as big as the United States&rdquo; is a minimum lower bound, not an estimate.</p>
 <p><strong>Earthshine cannot constrain extent</strong> &mdash; signal too noisy (&plusmn;0.02 cloud uncertainty swamps &plusmn;0.006 albedo signal from 9.8M km&sup2; territory). Beyond-ice territory is consistent with all known earthshine measurements.</p>
 <p><strong>Antarctic Treaty (1959):</strong> Restricts independent exploration of the entire Antarctic region. Registered as anomalous policy for the claimed purpose. Structural prediction (PRED-V13-002) is the SAA shoulder position, not the treaty.</p>
 <p><strong>Status:</strong> OPEN &mdash; True rim location is an open measurement problem. H(r) provides a physical barrier model; the structural confirmation is SAA shoulder position (PRED-V13-002).</p>
@@ -417,22 +428,37 @@ S_bck = d_dome / (t_bck &times; 880)
 <p><strong>Key methodological point:</strong> WGS84 is NOT the benchmark. d_dome is the geometric baseline. The residual between dome distance and Category 1 flight time measurement is the slipstream signal, not a model error. Only Category 1 measurements (flight time &times; airspeed, where airspeed is calibrated in still-air conditions) apply. Category 2 (WGS84-derived distances) are disqualified as circular.</p>
 </div>
 
-<h3>Aetheric Slipstream Map (2026-03-28)</h3>
+<h3>Aetheric Current Map (2026-03-29) &mdash; Single Global Eastward Rotation</h3>
+<p>35+ routes tested. Key finding: <strong>single global eastward rotation</strong> (not two cells). Earlier &ldquo;NH Pacific reversal&rdquo; was a sign-convention error &mdash; both Atlantic and Pacific show eastbound faster. Consistent with Tesla&rsquo;s rotating aetheric vortex model. See PRED-CURR-008.</p>
 <table>
   <tr><th>Region</th><th>&Delta;S</th><th>Direction</th><th>Routes</th><th>Status</th></tr>
-  <tr><td>NH Atlantic</td><td>+0.024</td><td>Eastward (Europe faster)</td><td>LHR&ndash;JFK, CDG&ndash;JFK</td><td>CONFIRMED (PRED-SLIP-001)</td></tr>
-  <tr><td>NH Pacific</td><td>&minus;0.013</td><td>Return eastward faster (Tokyo&rarr;LA)</td><td>NRT&ndash;LAX</td><td>Measured, direction needs confirm (PRED-SLIP-002)</td></tr>
-  <tr><td>Southern Ocean</td><td>&minus;0.013?</td><td>Westward? (BA&rarr;Syd faster)</td><td>EZE&ndash;SYD</td><td>OPEN-014 &mdash; direction unresolved</td></tr>
-  <tr><td>Equatorial belt</td><td>~0.000</td><td>Neutral</td><td>&mdash;</td><td>Consistent with zero</td></tr>
+  <tr><td>NH Atlantic</td><td>+0.022</td><td>Eastward (NE component)</td><td>LHR&ndash;JFK &times;9 (100%)</td><td>STRONG &mdash; PRED-CURR-001</td></tr>
+  <tr><td>NH Pacific</td><td>+0.014</td><td>Eastward (LA&rarr;Tokyo faster)</td><td>LAX&ndash;NRT &times;7 (100%)</td><td>MODERATE &mdash; PRED-CURR-002</td></tr>
+  <tr><td>Asian overland</td><td>+0.012</td><td>Eastward</td><td>3 routes &mdash; NOT dampened by land</td><td>MODERATE &mdash; see PRED-CURR-005-REV</td></tr>
+  <tr><td>W. Atlantic XEQ</td><td>+0.014</td><td>Southward component</td><td>3 routes</td><td>HIGH &mdash; PRED-CURR-003</td></tr>
+  <tr><td>SH Australian</td><td>+0.028</td><td>Eastward (strongest signal)</td><td>SYD&ndash;PER &times;3</td><td>MEDIUM &mdash; PRED-CURR-AUS-001</td></tr>
+  <tr><td>SH Atlantic</td><td>+0.012</td><td>Eastward (toward SAA)</td><td>3 routes</td><td>MEDIUM &mdash; PRED-CURR-004</td></tr>
+  <tr><td>Southern Ocean</td><td>TBD</td><td>OPEN-014</td><td>Perth&ndash;BA needed</td><td>OPEN &mdash; PRED-SLIP-003</td></tr>
 </table>
 
-<h3>Active Slipstream Predictions</h3>
+<h3>Active Slipstream / Current Predictions</h3>
 <table>
   <tr><th>ID</th><th>Prediction</th><th>Test</th><th>Status</th></tr>
-  <tr><td>PRED-SLIP-001</td><td>NH Atlantic eastbound always faster; persistent eastward current at +0.024</td><td>Average 20+ LHR&ndash;JFK flight pairs over 1 year</td><td>PENDING</td></tr>
-  <tr><td>PRED-SLIP-002</td><td>NH Pacific: LA&rarr;Tokyo slower than Tokyo&rarr;LA; &Delta;S &asymp; &minus;0.013</td><td>Average 20+ LAX&ndash;NRT flight pairs</td><td>PENDING (Vancouver&ndash;Tokyo needed)</td></tr>
-  <tr><td>PRED-SLIP-003</td><td>Southern Ocean asymmetry &gt;15% directional difference (outer zone amplification)</td><td>Perth&ndash;Buenos Aires both directions; Santiago&ndash;Cape Town</td><td>PENDING (OPEN-014)</td></tr>
-  <tr><td>PRED-SLIP-004</td><td>Atlantic/Pacific cell boundary at 40&deg;W&ndash;20&deg;W; slipstream reverses across boundary</td><td>NYC&ndash;Reykjavik vs LHR&ndash;Reykjavik &Delta;S comparison</td><td>PENDING</td></tr>
+  <tr><td>PRED-CURR-008</td><td>Single global eastward aetheric rotation; no NH/SH reversal; overland penetration confirms non-atmospheric origin</td><td>Perth&ndash;BA both directions; Santiago&ndash;CPT</td><td>PENDING (2026-03-29)</td></tr>
+  <tr><td>PRED-CURR-005-REV</td><td>Aetheric current penetrates land masses. Asian overland CA=0.008&ndash;0.022, comparable to ocean routes. High-elevation terrain (Tibetan Plateau, Andes) may amplify via aetheric venturi effect</td><td>Trans-Asian rail timing records (pre-GPS)</td><td>PENDING (2026-03-29)</td></tr>
+  <tr><td>PRED-SLIP-001</td><td>NH Atlantic: average 20+ LHR&ndash;JFK pairs; &Delta;S=+0.022 persists &ge;1 year</td><td>Annual FLIGHTRADAR24 sample</td><td>PENDING</td></tr>
+  <tr><td>PRED-SLIP-002</td><td>NH Pacific: LA&rarr;Tokyo faster; &Delta;S=+0.014 (revised from &minus;0.013)</td><td>20+ LAX&ndash;NRT flight pairs</td><td>PENDING (direction revised 2026-03-29)</td></tr>
+  <tr><td>PRED-SLIP-003</td><td>Southern Ocean asymmetry &gt;15% (outer zone amplification)</td><td>Perth&ndash;Buenos Aires both directions; Santiago&ndash;Cape Town</td><td>PENDING (OPEN-014)</td></tr>
+  <tr><td>PRED-CURR-AUS-001</td><td>Sydney&ndash;Perth CA=+0.028 persists as stable, reproducible eastward signal</td><td>6-month average of scheduled SYD&ndash;PER flight times</td><td>PENDING (2026-03-29)</td></tr>
+</table>
+
+<h3>Data Source Tier Hierarchy</h3>
+<table>
+  <tr><th>Tier</th><th>Source type</th><th>Use</th></tr>
+  <tr style="background:rgba(37,99,235,0.1)"><td><strong>Tier 1 (clean)</strong></td><td>Pre-GPS rail surveys, mechanical odometers, pre-1960 surveys, ship logs by speed</td><td>Primary anchors for distance calibration</td></tr>
+  <tr><td>Tier 2 (mostly clean)</td><td>Post-GPS rail from original construction records</td><td>Secondary anchors if provenance verified</td></tr>
+  <tr><td>Tier 3 (caution)</td><td>Modern road distances, coastal charts</td><td>Cross-check only</td></tr>
+  <tr style="background:rgba(239,68,68,0.08)"><td><strong style="color:var(--accent-red)">Tier 4 &mdash; REJECT</strong></td><td>GPS coordinates, WGS84, satellite-derived, Google Maps distances</td><td>Circular &mdash; assumes globe model</td></tr>
 </table>
 
 <h3>Open Problems</h3>
@@ -446,6 +472,19 @@ S_bck = d_dome / (t_bck &times; 880)
 <h4>OPEN-015 &mdash; Near-Equatorial Cities in Two-Zone Formula</h4>
 <p><strong>Issue:</strong> Singapore at lat 1.4&deg;N gives r_NH = 23,556 km &gt; r_eq = 14,105 km. This places Singapore in the outer zone despite being a NH city. The two-zone formula as derived applies to latitudes &gt;12&deg;N/S. Equatorial belt (&minus;12&deg; to +12&deg;) requires a V14 transition model.</p>
 <p><strong>Status:</strong> OPEN &mdash; deferred to V14.</p>
+</div>
+
+<div class="open-problem">
+<h4>OPEN-016 &mdash; SH City r Coordinate Verification</h4>
+<p><strong>Issue:</strong> SH city r values are currently derived from globe latitude via the H(r) formula &mdash; this is circular if the globe latitude is itself derived from WGS84. Triangulation from long-haul flight times is degenerate: routes hit the formula ceiling, near-same-longitude pairs are NS-degenerate, and equatorial cities fall under OPEN-015.</p>
+<p><strong>Primary anchors needed:</strong></p>
+<ul>
+  <li><strong>Indian Pacific rail Sydney&rarr;Perth:</strong> 4,352 km (surveyed 1912&ndash;1917, pre-GPS Tier 1). Ratio vs globe great-circle: 1.324&times;. Rail longer than road on this route (4,352 vs 3,934 km road) &mdash; anomalous, suggests actual ground distance exceeds globe prediction.</li>
+  <li><strong>Seoul&rarr;Sydney flight:</strong> ~10.5 h, good angular separation (&Delta;&theta;=24&deg;), best available flight anchor for NH/SH cross-zone triangulation.</li>
+  <li><strong>r_eq = 14,105 km</strong> itself needs Category 1 validation &mdash; currently inferred from the two-zone model fit.</li>
+</ul>
+<p><strong>MDS note:</strong> Multi-dimensional scaling from road distances shows Australian cities displaced ~590 km from globe positions. Darwin (12&deg;S) is the largest anomaly &mdash; near the equatorial band transition (OPEN-015).</p>
+<p><strong>Status:</strong> OPEN &mdash; methodology established; data collection (Indian Pacific + Seoul&ndash;Sydney) in progress. Registered 2026-03-29.</p>
 </div>
 
 <!-- ===== KAPPA COINCIDENCE ===== -->

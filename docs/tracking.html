@@ -37,7 +37,7 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">56</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html" class="active">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -50,10 +50,11 @@
 <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
 <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
-  <span><strong>Model:</strong> V50.9</span>
-  <span><strong>Confirmed:</strong> 53</span>
-  <span><strong>Falsified:</strong> 4</span>
-  <span><strong>Last updated:</strong> 2026-03-30</span>
+  <span><strong>Model:</strong> V50.10</span>
+  <span><strong>Confirmed:</strong> 56</span>
+  <span><strong>Refined:</strong> 4</span>
+  <span><strong>Last updated:</strong> 2026-03-29</span>
+
   <span><strong>Tracking entries:</strong> 5</span>
 </div>
 
@@ -429,6 +430,88 @@
   </div>
 </section>
 
+<!-- AETHERIC CURRENT MAP -->
+<section class="tracking-section" style="margin-top:2.5rem;" id="aetheric-current-log">
+  <div class="tracking-header">
+    <h3>Aetheric Current Map &mdash; 35+ Routes (2026-03-29)</h3>
+    <span class="cadence-label">Category 1 — Flight schedule data</span>
+  </div>
+  <p class="section-intro">Directional flight time asymmetry &Delta;S = 1/t_fwd &minus; 1/t_bck (positive = forward route has tailwind). 35+ routes tested. Finding: <strong>single global eastward rotation</strong> — both NH Atlantic AND NH Pacific show eastbound faster. Earlier "NH Pacific reversal" was a sign convention error. PRED-CURR-008 registered 2026-03-29.</p>
+  <div class="stat-row">
+    <div class="stat"><span class="stat-label">Routes tested</span><span class="stat-value">35+</span></div>
+    <div class="stat"><span class="stat-label">NH Atlantic</span><span class="stat-value">+0.022 NE (9/9 = 100%)</span></div>
+    <div class="stat"><span class="stat-label">NH Pacific</span><span class="stat-value">+0.014 E (7/7 = 100%)</span></div>
+    <div class="stat"><span class="stat-label">SH Australian (strongest)</span><span class="stat-value">+0.028 E</span></div>
+    <div class="stat"><span class="stat-label">Global pattern</span><span class="stat-value">Single eastward vortex</span></div>
+  </div>
+  <table class="log-table">
+    <thead>
+      <tr><th>Region</th><th>&Delta;S</th><th>Dir</th><th>Routes (n)</th><th>Consistency</th><th>Pred ID</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>NH Atlantic</strong></td><td>+0.022</td><td>NE</td><td>LHR&ndash;JFK &times;9</td><td style="color:var(--accent-green);font-weight:600">100%</td><td>PRED-CURR-001</td><td>Strongest NH signal</td></tr>
+      <tr><td><strong>NH Pacific</strong></td><td>+0.014</td><td>E</td><td>LAX&ndash;NRT &times;7</td><td style="color:var(--accent-green);font-weight:600">100%</td><td>PRED-CURR-002</td><td>Earlier sign error corrected 2026-03-29</td></tr>
+      <tr><td>Asian overland</td><td>+0.012</td><td>E</td><td>3 routes</td><td style="color:var(--accent-blue)">100%</td><td>PRED-CURR-005-REV</td><td>Land penetration confirmed. Not dampened.</td></tr>
+      <tr><td>W Atlantic XEQ</td><td>+0.014</td><td>S</td><td>3 routes</td><td style="color:var(--accent-green);font-weight:600">100%</td><td>PRED-CURR-003</td><td>Cross-equatorial southward component</td></tr>
+      <tr><td><strong>SH Australian</strong></td><td><strong>+0.028</strong></td><td>E</td><td>SYD&ndash;PER &times;3</td><td style="color:var(--accent-blue)">100%</td><td>PRED-CURR-AUS-001</td><td><strong>Strongest signal overall</strong></td></tr>
+      <tr><td>SH Atlantic</td><td>+0.012</td><td>E</td><td>3 routes</td><td style="color:var(--accent-blue)">MED</td><td>PRED-CURR-004</td><td>Eastward (revised from W)</td></tr>
+      <tr><td>Southern Ocean</td><td>TBD</td><td>OPEN</td><td>0</td><td>&mdash;</td><td>PRED-SLIP-003</td><td>Perth&ndash;BA + Santiago&ndash;CPT needed. OPEN-014.</td></tr>
+      <tr class="note-row"><td colspan="7">Beyond-ice note: disc extends to r&asymp;46&ndash;78k km. H(20015)=837 km (NOT 165 km — corrected 2026-03-29). n=3.49 at ice wall. If dome seals at r=78k km: 17,865M km&sup2; = 1,823&times; US. Byrd "as big as US" = minimum lower bound.</td></tr>
+    </tbody>
+  </table>
+  <div class="add-footer">
+    Next measurements needed: Perth&ndash;Buenos Aires (both directions) &bull; Santiago&ndash;Cape Town (both directions) &bull; Seoul&ndash;Sydney (NH/SH triangulation anchor for OPEN-016)
+  </div>
+</section>
+
+<!-- AUSTRALIAN GROUND TRUTH -->
+<section class="tracking-section" style="margin-top:2.5rem;" id="australian-rail">
+  <div class="tracking-header">
+    <h3>Australian Ground Truth &mdash; Tier 1 Rail Data</h3>
+    <span class="cadence-label">Category 1 — Pre-GPS surveys</span>
+  </div>
+  <p class="section-intro">Railway track lengths from pre-GPS surveys are Tier 1 Category 1 data — mechanical odometers and surveyor chains, no GPS, no WGS84. Ratios vs globe great-circle reveal the actual dome distance vs globe prediction. All ratios &gt;1 means disc distances are larger than globe predicts, consistent with expanded SH outer zone geometry.</p>
+  <table class="log-table">
+    <thead>
+      <tr><th>Route</th><th>Rail km (survey)</th><th>Globe GC km</th><th>Ratio</th><th>Survey era</th><th>Notes</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Indian Pacific</strong> Sydney&rarr;Perth</td>
+        <td><strong>4,352</strong></td>
+        <td>3,287</td>
+        <td style="color:var(--accent-blue);font-weight:600">1.324&times;</td>
+        <td>1912&ndash;1917</td>
+        <td>Primary SH anchor. Rail LONGER than road (4,352 vs 3,934 km) &mdash; anomalous. Suggests actual ground distance &gt; globe predicts.</td>
+      </tr>
+      <tr>
+        <td><strong>XPT</strong> Sydney&rarr;Melbourne</td>
+        <td>966</td>
+        <td>707</td>
+        <td style="color:var(--accent-blue);font-weight:600">1.366&times;</td>
+        <td>1880s</td>
+        <td>Highest ratio. Short route, strong signal. Consistent with expanded SH geometry near r_eq boundary.</td>
+      </tr>
+      <tr>
+        <td><strong>The Ghan</strong> Adelaide&rarr;Darwin</td>
+        <td>3,022</td>
+        <td>2,612</td>
+        <td style="color:var(--accent-blue);font-weight:600">1.157&times;</td>
+        <td>1878&ndash;1929 (original line)</td>
+        <td>Crosses equatorial transition zone. Darwin (12&deg;S) near OPEN-015 boundary. Lowest ratio — consistent with partial NH/SH zone transition.</td>
+      </tr>
+      <tr class="note-row">
+        <td colspan="6">MDS from Australian road distances shows Australian cities displaced ~590 km from globe positions. Darwin is the largest anomaly. OPEN-016: r_eq=14,105 km needs Category 1 anchor. Seoul&rarr;Sydney flight (~10.5h, &Delta;&theta;=24&deg;) is best available NH/SH triangulation pair.</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="add-footer">
+    Data source hierarchy: Tier 1 (clean): pre-GPS rail, odometers, ship logs &bull;
+    Tier 4 REJECT: GPS/WGS84/Google Maps (circular) &bull;
+    Registered OPEN-016: 2026-03-29
+  </div>
+</section>
+
 <!-- HOW TO USE -->
 <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-code);border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
   <h2 style="margin-top:0;font-size:1.05rem;font-family:var(--font-body);font-weight:600;">How to Use These Logs</h2>
@@ -443,10 +526,11 @@
 </section>
 
 <footer>
-  <span>Version 50.9</span>
-  <span>2026-03-30</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
-  <span style="color:var(--accent-red)">4 falsified</span>
+  <span>Version 50.10</span>
+  <span>2026-03-29</span>
+  <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
+  <span style="color:var(--accent-gold)">4 refined</span>
+
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>

@@ -1,0 +1,92 @@
+{
+  "version": "1.0",
+  "last_updated": "2026-03-29",
+  "description": "SHA256 hashes for ECM predictions. Git commit timestamp is proof of prior art.",
+  "predictions": {
+    "PRED-CURR-001": {
+      "hash": "fcfb97e5f2bf7a6eb4081704f179e47394032bf056d5cbc20125c8472156540e",
+      "registered": "2026-03-28",
+      "title": "NH Atlantic: All Transatlantic Routes Eastbound Faster",
+      "status": "PENDING"
+    },
+    "PRED-CURR-002": {
+      "hash": "c43e0806970eee73059791e500cbea56a4a1c0f115c1cbf97220cd392b656287",
+      "registered": "2026-03-28",
+      "title": "NH Pacific: All Transpacific Routes Eastbound Faster",
+      "status": "PENDING"
+    },
+    "PRED-CURR-003": {
+      "hash": "f211a41e7e6d23259bb4a7f790464fd772123841e9f14c65c509dbee1f46cf67",
+      "registered": "2026-03-28",
+      "title": "Western Atlantic Southward Component",
+      "status": "PENDING"
+    },
+    "PRED-CURR-004": {
+      "hash": "c293c9479a3442dfc35dffdc126d1264d5a60d8db35edc9ead6a841af45c4107",
+      "registered": "2026-03-28",
+      "title": "SH Inflow Toward SAA",
+      "status": "PENDING"
+    },
+    "PRED-CURR-005-REV": {
+      "hash": "156fcd198f393929f3f1c472eacc59cd79aab37fce27c6223676a6387923ab0a",
+      "registered": "2026-03-29",
+      "title": "Aetheric Current Penetrates Land Masses (revised from PRED-CURR-005)",
+      "status": "PENDING",
+      "note": "Original PRED-CURR-005 (land dampening) retired 2026-03-29 based on Asian overland data"
+    },
+    "PRED-CURR-006": {
+      "hash": "3c7cecfe279196b65bac274140ca88ea77582d3d62b040bb79e5e95651dceb8f",
+      "registered": "2026-03-28",
+      "title": "Gulf Stream = Surface Expression of Aetheric Current",
+      "status": "PENDING"
+    },
+    "PRED-CURR-007": {
+      "hash": "90bd3a4741f0ccad8b6aaa07c7b3960c18eebd9bec20afa24e7adde0d6953e3c",
+      "registered": "2026-03-28",
+      "title": "Aetheric Current Map Regional Structure",
+      "status": "PENDING"
+    },
+    "PRED-CURR-008": {
+      "hash": "e6752e9f44acce2c3e95481e4de4994aad61494849f2193471c822aa846d4cab",
+      "registered": "2026-03-29",
+      "title": "Single Global Eastward Aetheric Rotation",
+      "status": "PENDING"
+    },
+    "PRED-CURR-AUS-001": {
+      "hash": "78d07e7df2bd6b1eb5d136ae65fa3378367c1a6927d56905923a7a78d5ac4cf9",
+      "registered": "2026-03-29",
+      "title": "Sydney-Perth Eastward Signal Persists (CA=+0.028)",
+      "status": "PENDING"
+    },
+    "PRED-EGG-001": {
+      "hash": "14f441240a6cd44adf3a3640055029ed2b598a9c0c59b8ca7518e687a97d4c62",
+      "registered": "2026-03-29",
+      "title": "Egg Disc Topology Outperforms Circle on Cross-Equatorial Routes",
+      "status": "PENDING"
+    },
+    "PRED-COORD-001": {
+      "hash": "b7f28c4168dc65822dbfac6956c6ad08e851ad9530ba33810c32d3dca453c824",
+      "registered": "2026-03-29",
+      "title": "theta=-lon_E Derivable from Sundial + Clock, No GPS",
+      "status": "PENDING"
+    },
+    "PRED-DOME-001": {
+      "hash": "171e968405e58e582caf81e31482c6d36017881fdd9233cecbf5c709afd0db9a",
+      "registered": "2026-03-29",
+      "title": "Dome Seals at r=46,000-78,000 km; H(r) Continues Beyond Ice Wall",
+      "status": "PENDING"
+    },
+    "PRED-BEYOND-001": {
+      "hash": "7bb523e53e60c4fc093166c81be4b83384f6a2eb84e84569c50056f0da2a8689",
+      "registered": "2026-03-29",
+      "title": "Aetheric Pressure Barrier n>3.5 at Ice Wall; Cook's Luminous Horizon",
+      "status": "PENDING"
+    },
+    "PRED-KAPPA-001": {
+      "hash": "e09eb475ca8e3401595148186ca3b79df077d16c70359bdf328f48c1e863f1e8",
+      "registered": "2026-03-29",
+      "title": "Eclipse Correction Factor = kappa = 1.67 nT/uGal (Structural)",
+      "status": "PENDING"
+    }
+  }
+}
