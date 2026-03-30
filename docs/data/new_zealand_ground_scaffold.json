@@ -1,0 +1,112 @@
+{
+  "version": "2026-03-30",
+  "region": "new_zealand",
+  "title": "New Zealand Rail-and-Ferry Scaffold",
+  "status": "provisional",
+  "method": "classical MDS on all-pairs shortest-path distances built from official KiwiRail corridor lengths plus the official Interislander route length",
+  "anti_circular_note": "The solve uses operator and infrastructure corridor lengths, not GPS/WGS84 coordinates. Geographic anchors are visualization-only.",
+  "frame_note": "Christchurch is the origin. Orientation is arbitrary; this is a relative inter-island solve, not a north-up map.",
+  "origin_city": "Christchurch",
+  "core_constraint_summary": {
+    "measured_count": 9,
+    "estimated_count": 0,
+    "measured_by_mode": {
+      "ferry": 1,
+      "rail": 8
+    },
+    "estimated_by_mode": {}
+  },
+  "eigenvalues": [
+    2640730.448,
+    373613.054,
+    5820.863,
+    0.0
+  ],
+  "cities": [
+    {
+      "city": "Auckland",
+      "x_rel_km": -1132.15,
+      "y_rel_km": 280.05
+    },
+    {
+      "city": "Wellington",
+      "x_rel_km": -444.83,
+      "y_rel_km": 110.03
+    },
+    {
+      "city": "Picton",
+      "x_rel_km": -348.5,
+      "y_rel_km": 86.2
+    },
+    {
+      "city": "Christchurch",
+      "x_rel_km": 0.0,
+      "y_rel_km": 0.0
+    },
+    {
+      "city": "Rolleston",
+      "x_rel_km": 7.46,
+      "y_rel_km": -53.91
+    },
+    {
+      "city": "Greymouth",
+      "x_rel_km": 56.23,
+      "y_rel_km": -406.16
+    },
+    {
+      "city": "Dunedin",
+      "x_rel_km": 376.59,
+      "y_rel_km": 156.72
+    },
+    {
+      "city": "Port Chalmers",
+      "x_rel_km": 385.44,
+      "y_rel_km": 156.53
+    },
+    {
+      "city": "Invercargill",
+      "x_rel_km": 597.65,
+      "y_rel_km": 248.03
+    },
+    {
+      "city": "Bluff",
+      "x_rel_km": 624.78,
+      "y_rel_km": 259.23
+    }
+  ],
+  "validation_edges": [
+    {
+      "a": "Christchurch",
+      "b": "Invercargill",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 601.11,
+      "scaffold_direct_km": 647.07,
+      "gap_km": -45.96,
+      "note": "Main South trunk from Christchurch Station (0.29) to Invercargill (601.40) used as a whole-corridor validation check.",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf"
+    },
+    {
+      "a": "Wellington",
+      "b": "Picton",
+      "mode": "ferry",
+      "tier": "tier1",
+      "observed_path_km": 92.0,
+      "scaffold_direct_km": 99.23,
+      "gap_km": -7.23,
+      "note": "Alternate official Interislander page that cites the crossing at roughly 92 km; kept as a discrepancy flag instead of silently blending values.",
+      "source_url": "https://www.interislander.co.nz/experience/kaitaki"
+    },
+    {
+      "a": "Christchurch",
+      "b": "Greymouth",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 223.0,
+      "scaffold_direct_km": 410.04,
+      "gap_km": -187.04,
+      "note": "Great Journeys NZ passenger route length for the TranzAlpine, kept as a separate validation figure against the infrastructure-derived west-branch geometry.",
+      "source_url": "https://www.greatjourneysnz.com/scenic-trains/tranzalpine-train/?pCode=Timing"
+    }
+  ]
+}

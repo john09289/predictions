@@ -5,6 +5,7 @@ import json
 import math
 import os
 import tempfile
+from collections import Counter
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -20,16 +21,19 @@ import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
+from matplotlib.lines import Line2D
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CONSTRAINTS_PATH = REPO_ROOT / "data" / "ground_coordinate_constraints.json"
-JSON_OUTPUT_PATH = REPO_ROOT / "docs" / "data" / "australia_ground_scaffold.json"
-CSV_OUTPUT_PATH = REPO_ROOT / "docs" / "data" / "australia_ground_scaffold.csv"
-PNG_OUTPUT_PATH = REPO_ROOT / "docs" / "assets" / "australia_ground_scaffold.png"
 
-for output_path in (JSON_OUTPUT_PATH, CSV_OUTPUT_PATH, PNG_OUTPUT_PATH):
-    output_path.parent.mkdir(parents=True, exist_ok=True)
+MODE_COLORS = {
+    "road": "#38bdf8",
+    "rail": "#34d399",
+    "ferry": "#c084fc",
+    "ship": "#22d3ee",
+}
+VALIDATION_COLOR = "#f59e0b"
 
 
 @dataclass(frozen=True)
@@ -42,10 +46,21 @@ class Constraint:
     estimated: bool
     solver_role: str
     note: str
+    source_type: str | None = None
+    source_url: str | None = None
 
 
 def load_constraints() -> dict:
     return json.loads(CONSTRAINTS_PATH.read_text())
+
+
+def region_output_paths(region: str) -> dict[str, Path]:
+    slug = region.lower()
+    return {
+        "json": REPO_ROOT / "docs" / "data" / f"{slug}_ground_scaffold.json",
+        "csv": REPO_ROOT / "docs" / "data" / f"{slug}_ground_scaffold.csv",
+        "png": REPO_ROOT / "docs" / "assets" / f"{slug}_ground_scaffold.png",
+    }
 
 
 def region_cities(payload: dict, region: str) -> list[str]:
@@ -68,35 +83,52 @@ def region_constraints(payload: dict, region: str) -> list[Constraint]:
                 estimated=bool(entry["estimated"]),
                 solver_role=entry["solver_role"],
                 note=entry["note"],
+                source_type=entry.get("source_type"),
+                source_url=entry.get("source_url"),
             )
         )
     return constraints
 
 
-def dense_distance_matrix(cities: list[str], constraints: list[Constraint]) -> np.ndarray:
-    # This scaffold intentionally mirrors the user's road-MDS method:
-    # use the dense Australia road matrix as the relative-geometry solve layer,
-    # while keeping rail values as validation-only upper-bound checks.
-    index = {city: idx for idx, city in enumerate(cities)}
-    distance_matrix = np.zeros((len(cities), len(cities)), dtype=float)
+def core_constraints(constraints: list[Constraint]) -> list[Constraint]:
+    return [constraint for constraint in constraints if constraint.solver_role == "core"]
 
-    for constraint in constraints:
-        if constraint.solver_role != "core":
-            continue
-        if constraint.mode != "road":
-            continue
+
+def validation_constraints(constraints: list[Constraint]) -> list[Constraint]:
+    return [constraint for constraint in constraints if constraint.solver_role == "validation"]
+
+
+def solve_distance_matrix(cities: list[str], constraints: list[Constraint]) -> np.ndarray:
+    # The regional scaffolds are solved from graph distances, not from globe
+    # coordinates. Australia happens to have a dense surface-distance matrix,
+    # while corridor regions like New Zealand are naturally sparse trunks with
+    # a few branches. Converting the core graph to all-pairs shortest-path
+    # distances lets both kinds of regions share one non-circular solver.
+    index = {city: idx for idx, city in enumerate(cities)}
+    n = len(cities)
+    matrix = np.full((n, n), np.inf, dtype=float)
+    np.fill_diagonal(matrix, 0.0)
+
+    for constraint in core_constraints(constraints):
         i = index[constraint.a]
         j = index[constraint.b]
-        distance_matrix[i, j] = constraint.distance_km
-        distance_matrix[j, i] = constraint.distance_km
+        matrix[i, j] = min(matrix[i, j], constraint.distance_km)
+        matrix[j, i] = min(matrix[j, i], constraint.distance_km)
 
-    if np.any(distance_matrix == 0.0) and len(cities) > 1:
-        missing = np.argwhere((distance_matrix == 0.0) & (~np.eye(len(cities), dtype=bool)))
-        if len(missing) > 0:
-            pairs = ", ".join(f"{cities[i]}-{cities[j]}" for i, j in missing[:6])
-            raise ValueError(f"Dense road matrix is incomplete; missing pairs include: {pairs}")
+    for k in range(n):
+        matrix = np.minimum(matrix, matrix[:, [k]] + matrix[[k], :])
 
-    return distance_matrix
+    if not np.all(np.isfinite(matrix)):
+        missing = np.argwhere(~np.isfinite(matrix))
+        unresolved = [
+            f"{cities[i]}-{cities[j]}"
+            for i, j in missing
+            if i < j
+        ]
+        preview = ", ".join(unresolved[:6]) if unresolved else "unknown pairs"
+        raise ValueError(f"Core graph is disconnected for region solve; unresolved pairs include: {preview}")
+
+    return matrix
 
 
 def classical_mds(distance_matrix: np.ndarray) -> tuple[np.ndarray, np.ndarray]:
@@ -116,19 +148,23 @@ def shift_to_origin(cities: list[str], coords: np.ndarray, origin_city: str) -> 
     return coords - origin
 
 
-def measured_counts(constraints: list[Constraint]) -> tuple[int, int]:
-    measured = sum(1 for item in constraints if item.solver_role == "core" and not item.estimated and item.mode == "road")
-    estimated = sum(1 for item in constraints if item.solver_role == "core" and item.estimated and item.mode == "road")
-    return measured, estimated
+def core_counts(constraints: list[Constraint]) -> dict:
+    measured = [item for item in core_constraints(constraints) if not item.estimated]
+    estimated = [item for item in core_constraints(constraints) if item.estimated]
+
+    return {
+        "measured_count": len(measured),
+        "estimated_count": len(estimated),
+        "measured_by_mode": dict(sorted(Counter(item.mode for item in measured).items())),
+        "estimated_by_mode": dict(sorted(Counter(item.mode for item in estimated).items())),
+    }
 
 
 def validation_rows(cities: list[str], coords: np.ndarray, constraints: list[Constraint]) -> list[dict]:
     index = {city: idx for idx, city in enumerate(cities)}
     rows = []
 
-    for constraint in constraints:
-        if constraint.solver_role != "validation":
-            continue
+    for constraint in validation_constraints(constraints):
         i = index[constraint.a]
         j = index[constraint.b]
         direct_km = float(np.linalg.norm(coords[i] - coords[j]))
@@ -138,10 +174,11 @@ def validation_rows(cities: list[str], coords: np.ndarray, constraints: list[Con
                 "b": constraint.b,
                 "mode": constraint.mode,
                 "tier": constraint.tier,
-                "observed_path_km": round(constraint.distance_km, 1),
-                "scaffold_direct_km": round(direct_km, 1),
-                "gap_km": round(constraint.distance_km - direct_km, 1),
+                "observed_path_km": round(constraint.distance_km, 2),
+                "scaffold_direct_km": round(direct_km, 2),
+                "gap_km": round(constraint.distance_km - direct_km, 2),
                 "note": constraint.note,
+                "source_url": constraint.source_url,
             }
         )
 
@@ -150,94 +187,123 @@ def validation_rows(cities: list[str], coords: np.ndarray, constraints: list[Con
 
 def write_json(
     payload: dict,
+    region: str,
     cities: list[str],
     coords: np.ndarray,
     eigenvalues: np.ndarray,
     constraints: list[Constraint],
+    output_path: Path,
 ) -> None:
-    measured, estimated = measured_counts(constraints)
-    rows = []
+    meta = payload["regions"][region]
+    city_rows = []
 
     for city, (x_value, y_value) in zip(cities, coords):
-        rows.append(
+        city_rows.append(
             {
                 "city": city,
-                "x_rel_km": round(float(x_value), 1),
-                "y_rel_km": round(float(y_value), 1),
+                "x_rel_km": round(float(x_value), 2),
+                "y_rel_km": round(float(y_value), 2),
             }
         )
 
     output = {
         "version": payload["version"],
-        "title": "Australia Ground Scaffold",
-        "status": "provisional",
-        "method": "classical MDS on the dense Australia road matrix from session working notes",
-        "anti_circular_note": "The solve itself does not consume GPS/WGS84 coordinates. Absolute SH theta/r remain unresolved under OPEN-016.",
-        "frame_note": payload["regions"]["australia"]["display_note"],
-        "core_road_constraints": {
-            "measured_count": measured,
-            "estimated_count": estimated,
-        },
+        "region": region,
+        "title": meta.get("title", f"{region.replace('_', ' ').title()} Ground Scaffold"),
+        "status": meta.get("status", "provisional"),
+        "method": meta.get("method_note", "classical MDS on all-pairs shortest-path distances built from core surface constraints"),
+        "anti_circular_note": meta.get(
+            "anti_circular_note",
+            "The solve itself does not consume GPS/WGS84 coordinates. Absolute inter-region theta/r locking remains separate work.",
+        ),
+        "frame_note": meta["display_note"],
+        "origin_city": meta["origin_city"],
+        "core_constraint_summary": core_counts(constraints),
         "eigenvalues": [round(float(value), 3) for value in eigenvalues[:4]],
-        "cities": rows,
+        "cities": city_rows,
         "validation_edges": validation_rows(cities, coords, constraints),
     }
-    JSON_OUTPUT_PATH.write_text(json.dumps(output, indent=2))
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    output_path.write_text(json.dumps(output, indent=2))
 
 
-def write_csv(cities: list[str], coords: np.ndarray) -> None:
-    with CSV_OUTPUT_PATH.open("w", newline="") as handle:
+def write_csv(cities: list[str], coords: np.ndarray, output_path: Path) -> None:
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", newline="") as handle:
         writer = csv.writer(handle)
         writer.writerow(["city", "x_rel_km", "y_rel_km"])
         for city, (x_value, y_value) in zip(cities, coords):
-            writer.writerow([city, round(float(x_value), 1), round(float(y_value), 1)])
+            writer.writerow([city, round(float(x_value), 2), round(float(y_value), 2)])
 
 
-def render_plot(cities: list[str], coords: np.ndarray, constraints: list[Constraint]) -> None:
-    fig, ax = plt.subplots(figsize=(7.2, 5.4), dpi=180)
+def edge_style(constraint: Constraint) -> tuple[str, float, tuple[int, int] | str]:
+    color = MODE_COLORS.get(constraint.mode, "#38bdf8")
+    alpha = 0.45 if constraint.estimated else 0.78
+    linestyle: tuple[int, int] | str = (0, (3, 3)) if constraint.estimated else "solid"
+    return color, alpha, linestyle
+
+
+def render_plot(region: str, payload: dict, cities: list[str], coords: np.ndarray, constraints: list[Constraint], output_path: Path) -> None:
+    meta = payload["regions"][region]
+    fig, ax = plt.subplots(figsize=(7.4, 5.6), dpi=180)
     fig.patch.set_facecolor("#071121")
     ax.set_facecolor("#071121")
 
     city_index = {city: idx for idx, city in enumerate(cities)}
+    legend_handles: list[Line2D] = []
+    seen_labels: set[str] = set()
 
-    for constraint in constraints:
-        if constraint.solver_role != "core" or constraint.mode != "road":
-            continue
+    for constraint in core_constraints(constraints):
         i = city_index[constraint.a]
         j = city_index[constraint.b]
         x_vals = [coords[i, 0], coords[j, 0]]
         y_vals = [coords[i, 1], coords[j, 1]]
-        color = "#94a3b8" if constraint.estimated else "#38bdf8"
-        alpha = 0.45 if constraint.estimated else 0.75
-        linestyle = (0, (3, 3)) if constraint.estimated else "solid"
-        ax.plot(x_vals, y_vals, color=color, alpha=alpha, linewidth=1.2, linestyle=linestyle, zorder=1)
+        color, alpha, linestyle = edge_style(constraint)
+        ax.plot(x_vals, y_vals, color=color, alpha=alpha, linewidth=1.35, linestyle=linestyle, zorder=1)
 
-    for constraint in constraints:
-        if constraint.solver_role != "validation":
-            continue
-        i = city_index[constraint.a]
-        j = city_index[constraint.b]
-        x_vals = [coords[i, 0], coords[j, 0]]
-        y_vals = [coords[i, 1], coords[j, 1]]
-        ax.plot(x_vals, y_vals, color="#f59e0b", alpha=0.55, linewidth=1.0, linestyle=(0, (6, 4)), zorder=1)
+        label = f"{constraint.mode} core edge"
+        if constraint.estimated:
+            label = f"estimated {constraint.mode} edge"
+        if label not in seen_labels:
+            legend_handles.append(Line2D([0], [0], color=color, linewidth=1.4, linestyle=linestyle, label=label))
+            seen_labels.add(label)
+
+    if validation_constraints(constraints):
+        for constraint in validation_constraints(constraints):
+            i = city_index[constraint.a]
+            j = city_index[constraint.b]
+            x_vals = [coords[i, 0], coords[j, 0]]
+            y_vals = [coords[i, 1], coords[j, 1]]
+            ax.plot(
+                x_vals,
+                y_vals,
+                color=VALIDATION_COLOR,
+                alpha=0.58,
+                linewidth=1.0,
+                linestyle=(0, (6, 4)),
+                zorder=1,
+            )
+        legend_handles.append(
+            Line2D([0], [0], color=VALIDATION_COLOR, linewidth=1.0, linestyle=(0, (6, 4)), label="validation edge")
+        )
 
     point_color = "#f8fafc"
     accent_color = "#60a5fa"
     ax.scatter(coords[:, 0], coords[:, 1], s=34, color=point_color, edgecolors=accent_color, linewidths=0.8, zorder=3)
 
     for city, (x_value, y_value) in zip(cities, coords):
-        ax.text(x_value + 65, y_value + 40, city, color="#e2e8f0", fontsize=8.5, zorder=4)
+        ax.text(x_value + 24, y_value + 18, city, color="#e2e8f0", fontsize=8.4, zorder=4)
 
-    ax.set_title("Australia Surface-Distance Scaffold (Provisional)", color="#e2e8f0", fontsize=13, pad=12)
+    ax.set_title(meta.get("title", f"{region.replace('_', ' ').title()} Ground Scaffold"), color="#e2e8f0", fontsize=13, pad=12)
     ax.text(
         0.5,
         1.01,
-        "Sydney is origin. Orientation is arbitrary; this is a relative solve, not a north-up map.",
+        meta["display_note"],
         transform=ax.transAxes,
         ha="center",
         va="bottom",
         color="#94a3b8",
-        fontsize=8.2,
+        fontsize=8.1,
     )
     ax.set_xlabel("relative x (km)", color="#94a3b8")
     ax.set_ylabel("relative y (km)", color="#94a3b8")
@@ -247,37 +313,52 @@ def render_plot(cities: list[str], coords: np.ndarray, constraints: list[Constra
     for spine in ax.spines.values():
         spine.set_color("#334155")
 
-    legend_handles = [
-        plt.Line2D([0], [0], color="#38bdf8", linewidth=1.6, label="measured road edge"),
-        plt.Line2D([0], [0], color="#94a3b8", linewidth=1.2, linestyle=(0, (3, 3)), label="estimated road cross-link"),
-        plt.Line2D([0], [0], color="#f59e0b", linewidth=1.0, linestyle=(0, (6, 4)), label="rail validation edge"),
-    ]
-    ax.legend(handles=legend_handles, loc="lower right", facecolor="#071121", edgecolor="#334155", labelcolor="#cbd5e1", fontsize=8)
+    if legend_handles:
+        ax.legend(
+            handles=legend_handles,
+            loc="lower right",
+            facecolor="#071121",
+            edgecolor="#334155",
+            labelcolor="#cbd5e1",
+            fontsize=8,
+        )
 
+    ax.set_aspect("equal", adjustable="box")
     fig.tight_layout()
-    fig.savefig(PNG_OUTPUT_PATH, bbox_inches="tight")
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fig.savefig(output_path, bbox_inches="tight")
     plt.close(fig)
+
+
+def build_region(payload: dict, region: str) -> None:
+    cities = region_cities(payload, region)
+    if not cities:
+        return
+
+    constraints = region_constraints(payload, region)
+    meta = payload["regions"][region]
+    distance_matrix = solve_distance_matrix(cities, constraints)
+    coords, eigenvalues = classical_mds(distance_matrix)
+    coords = shift_to_origin(cities, coords, origin_city=meta["origin_city"])
+
+    output_paths = region_output_paths(region)
+    write_json(payload, region, cities, coords, eigenvalues, constraints, output_paths["json"])
+    write_csv(cities, coords, output_paths["csv"])
+    render_plot(region, payload, cities, coords, constraints, output_paths["png"])
+
+    counts = core_counts(constraints)
+    print(f"{meta.get('title', region)} generated")
+    print(f"Core measured edges: {counts['measured_count']}")
+    print(f"Core estimated edges: {counts['estimated_count']}")
+    print(f"JSON: {output_paths['json']}")
+    print(f"CSV:  {output_paths['csv']}")
+    print(f"PNG:  {output_paths['png']}")
 
 
 def main() -> None:
     payload = load_constraints()
-    cities = region_cities(payload, "australia")
-    constraints = region_constraints(payload, "australia")
-    distance_matrix = dense_distance_matrix(cities, constraints)
-    coords, eigenvalues = classical_mds(distance_matrix)
-    coords = shift_to_origin(cities, coords, origin_city="Sydney")
-
-    write_json(payload, cities, coords, eigenvalues, constraints)
-    write_csv(cities, coords)
-    render_plot(cities, coords, constraints)
-
-    measured, estimated = measured_counts(constraints)
-    print("Australia scaffold generated")
-    print(f"Core measured road edges: {measured}")
-    print(f"Core estimated road edges: {estimated}")
-    print(f"JSON: {JSON_OUTPUT_PATH}")
-    print(f"CSV:  {CSV_OUTPUT_PATH}")
-    print(f"PNG:  {PNG_OUTPUT_PATH}")
+    for region in payload["regions"]:
+        build_region(payload, region)
 
 
 if __name__ == "__main__":

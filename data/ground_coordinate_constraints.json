@@ -5,12 +5,125 @@
     "This file is the non-destructive starting point for the post-V13 coordinate rebuild.",
     "The solve layer is kept separate from the legacy published tables in docs/coordinates.html.",
     "Tier 4 sources such as GPS, WGS84, and satellite-derived coordinates are not solver inputs here.",
-    "Some dense Australia road links are marked estimated=true. They stabilize the 2D scaffold but are not treated as Category 1 anchors."
+    "Some dense Australia road links are marked estimated=true. They stabilize the 2D scaffold but are not treated as Category 1 anchors.",
+    "Geographic lon/lat values under visualization blocks are for coastline warping only and do not feed the solver."
   ],
   "regions": {
     "australia": {
+      "title": "Australia Surface-Distance Scaffold",
+      "status": "provisional",
       "description": "Internal Australia scaffold from surface-distance constraints.",
-      "display_note": "Solver output is relative only. Sydney is the origin. Rotation and reflection remain arbitrary until OPEN-016 locks absolute SH theta/r."
+      "origin_city": "Sydney",
+      "method_note": "classical MDS on all-pairs shortest-path distances built from the dense Australia road matrix in session working notes",
+      "display_note": "Sydney is the origin. Orientation is arbitrary; this is a relative solve, not a north-up map.",
+      "anti_circular_note": "The solve itself does not use GPS/WGS84 coordinates. Absolute SH theta/r remain unresolved under OPEN-016.",
+      "visualization": {
+        "projection_center": {
+          "lon0": 134.0,
+          "lat0": -27.0
+        },
+        "coast_bbox": {
+          "lon_min": 111.0,
+          "lon_max": 155.5,
+          "lat_min": -45.5,
+          "lat_max": -10.0
+        },
+        "min_polygon_area": 0.5,
+        "anchor_lon_lat": {
+          "Sydney": [
+            151.2,
+            -33.9
+          ],
+          "Melbourne": [
+            145.0,
+            -37.8
+          ],
+          "Brisbane": [
+            153.0,
+            -27.5
+          ],
+          "Adelaide": [
+            138.6,
+            -34.9
+          ],
+          "Perth": [
+            115.9,
+            -31.9
+          ],
+          "Darwin": [
+            130.8,
+            -12.5
+          ],
+          "Cairns": [
+            145.8,
+            -16.9
+          ]
+        }
+      }
+    },
+    "new_zealand": {
+      "title": "New Zealand Rail-and-Ferry Scaffold",
+      "status": "provisional",
+      "description": "Inter-island New Zealand scaffold from official rail-infrastructure lengths and the official Cook Strait ferry route length.",
+      "origin_city": "Christchurch",
+      "method_note": "classical MDS on all-pairs shortest-path distances built from official KiwiRail corridor lengths plus the official Interislander route length",
+      "display_note": "Christchurch is the origin. Orientation is arbitrary; this is a relative inter-island solve, not a north-up map.",
+      "anti_circular_note": "The solve uses operator and infrastructure corridor lengths, not GPS/WGS84 coordinates. Geographic anchors are visualization-only.",
+      "visualization": {
+        "projection_center": {
+          "lon0": 172.5,
+          "lat0": -42.8
+        },
+        "coast_bbox": {
+          "lon_min": 165.0,
+          "lon_max": 179.9,
+          "lat_min": -47.9,
+          "lat_max": -34.0
+        },
+        "min_polygon_area": 0.02,
+        "anchor_lon_lat": {
+          "Auckland": [
+            174.7633,
+            -36.8485
+          ],
+          "Wellington": [
+            174.7772,
+            -41.2866
+          ],
+          "Picton": [
+            174.0050,
+            -41.2900
+          ],
+          "Christchurch": [
+            172.6362,
+            -43.5321
+          ],
+          "Rolleston": [
+            172.3790,
+            -43.5920
+          ],
+          "Greymouth": [
+            171.2077,
+            -42.4502
+          ],
+          "Dunedin": [
+            170.5028,
+            -45.8788
+          ],
+          "Port Chalmers": [
+            170.6260,
+            -45.8160
+          ],
+          "Invercargill": [
+            168.3538,
+            -46.4132
+          ],
+          "Bluff": [
+            168.3330,
+            -46.6000
+          ]
+        }
+      }
     }
   },
   "cities": [
@@ -48,6 +161,56 @@
       "city": "Cairns",
       "region": "australia",
       "role": "northeast_node"
+    },
+    {
+      "city": "Auckland",
+      "region": "new_zealand",
+      "role": "north_island_terminal"
+    },
+    {
+      "city": "Wellington",
+      "region": "new_zealand",
+      "role": "interisland_hub"
+    },
+    {
+      "city": "Picton",
+      "region": "new_zealand",
+      "role": "ferry_terminal"
+    },
+    {
+      "city": "Christchurch",
+      "region": "new_zealand",
+      "role": "origin_anchor"
+    },
+    {
+      "city": "Rolleston",
+      "region": "new_zealand",
+      "role": "west_branch_junction"
+    },
+    {
+      "city": "Greymouth",
+      "region": "new_zealand",
+      "role": "west_coast_terminal"
+    },
+    {
+      "city": "Dunedin",
+      "region": "new_zealand",
+      "role": "south_coast_node"
+    },
+    {
+      "city": "Port Chalmers",
+      "region": "new_zealand",
+      "role": "port_branch_node"
+    },
+    {
+      "city": "Invercargill",
+      "region": "new_zealand",
+      "role": "south_terminal"
+    },
+    {
+      "city": "Bluff",
+      "region": "new_zealand",
+      "role": "deep_south_port"
     }
   ],
   "constraints": [
@@ -326,6 +489,150 @@
       "solver_role": "validation",
       "source_type": "repo_and_session_notes",
       "note": "Ghan track length kept as repo-consistent validation value until corridor audit resolves operator discrepancies."
+    },
+    {
+      "a": "Auckland",
+      "b": "Wellington",
+      "distance_km": 684.98,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "North Island Main Trunk from Wellington to Maungawhau/Auckland per KiwiRail infrastructure meterages."
+    },
+    {
+      "a": "Wellington",
+      "b": "Picton",
+      "distance_km": 96.0,
+      "mode": "ferry",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_operator_page",
+      "source_url": "https://www.interislander.co.nz/our-story/about-the-interislander/",
+      "note": "Cook Strait ferry route length from the official Interislander route description."
+    },
+    {
+      "a": "Christchurch",
+      "b": "Picton",
+      "distance_km": 347.31,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Main North Line from Christchurch Station (0.29) to Picton (347.60), derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Christchurch",
+      "b": "Rolleston",
+      "distance_km": 32.33,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Main South Line from Christchurch Station (0.29) to Rolleston (32.62), derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Rolleston",
+      "b": "Greymouth",
+      "distance_km": 211.23,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Midland Line from Rolleston to Greymouth per official KiwiRail infrastructure meterages."
+    },
+    {
+      "a": "Christchurch",
+      "b": "Dunedin",
+      "distance_km": 378.32,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Main South Line from Christchurch Station (0.29) to Dunedin (378.61), derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Dunedin",
+      "b": "Port Chalmers",
+      "distance_km": 11.33,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Dunedin to Port Chalmers via Sawyers Bay junction and the Port Chalmers Branch, derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Dunedin",
+      "b": "Invercargill",
+      "distance_km": 222.79,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Main South Line from Dunedin (378.61) to Invercargill (601.40), derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Invercargill",
+      "b": "Bluff",
+      "distance_km": 27.34,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Bluff Branch from Invercargill to Bluff, derived from official KiwiRail meterages."
+    },
+    {
+      "a": "Christchurch",
+      "b": "Invercargill",
+      "distance_km": 601.11,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "official_rail_infrastructure_pdf",
+      "source_url": "https://shield.kiwirail.co.nz/content/latest/83615-Railway_Infrastructure_Information-pdf-en.pdf",
+      "note": "Main South trunk from Christchurch Station (0.29) to Invercargill (601.40) used as a whole-corridor validation check."
+    },
+    {
+      "a": "Wellington",
+      "b": "Picton",
+      "distance_km": 92.0,
+      "mode": "ferry",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "official_operator_page",
+      "source_url": "https://www.interislander.co.nz/experience/kaitaki",
+      "note": "Alternate official Interislander page that cites the crossing at roughly 92 km; kept as a discrepancy flag instead of silently blending values."
+    },
+    {
+      "a": "Christchurch",
+      "b": "Greymouth",
+      "distance_km": 223.0,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "official_operator_page",
+      "source_url": "https://www.greatjourneysnz.com/scenic-trains/tranzalpine-train/?pCode=Timing",
+      "note": "Great Journeys NZ passenger route length for the TranzAlpine, kept as a separate validation figure against the infrastructure-derived west-branch geometry."
     }
   ]
 }
