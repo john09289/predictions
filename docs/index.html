@@ -414,152 +414,352 @@
         <marker id="arrowE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4ade80"/></marker>
         <marker id="arrowE2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#22d3ee"/></marker>
         <marker id="arrowS" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/></marker>
+
         <linearGradient id="disc-fill" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stop-color="#1d4ed8" stop-opacity="0.24"/>
-          <stop offset="55%" stop-color="#0f2a5a" stop-opacity="0.22"/>
-          <stop offset="100%" stop-color="#081226" stop-opacity="0.28"/>
+          <stop offset="0%" stop-color="#123b82" stop-opacity="0.34"/>
+          <stop offset="55%" stop-color="#0d2348" stop-opacity="0.24"/>
+          <stop offset="100%" stop-color="#08101f" stop-opacity="0.32"/>
         </linearGradient>
+
         <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
           <line x1="0" y1="0" x2="0" y2="8" stroke="#374151" stroke-width="1.1" opacity="0.6"/>
         </pattern>
 
         <!--
-          Main top-down ovoid used as the clip region for distance rings.
-          Shape intent:
-          - narrow left / broader right
-          - NP lives inside the narrow side, not on the boundary
+          Land texture so continents read more like surface shapes from above.
+          This is intentionally subtle: a grain + contour overlay rather than photo texture.
+        -->
+        <pattern id="land-grain" width="18" height="18" patternUnits="userSpaceOnUse">
+          <path d="M0,8 C4,4 8,4 12,8 C14,10 16,10 18,8" fill="none" stroke="#f6c36a" stroke-width="0.7" opacity="0.18"/>
+          <circle cx="5" cy="5" r="1" fill="#f8d48d" opacity="0.16"/>
+          <circle cx="13" cy="12" r="1" fill="#f8d48d" opacity="0.14"/>
+        </pattern>
+
+        <!--
+          Main top-down ovoid.
+          We keep the horizontal-ovoid presentation used on the site, but now
+          place land using anchor cities taken from docs/coordinates.html.
+
+          Homepage transform used for anchor dots:
+          screen_x = 200 + (x + 1.8 * r) / 130
+          screen_y = 310 + y / 135
+
+          This means:
+          - the repo's current V13 table drives continent placement
+          - the homepage remains a visualization transform rather than a raw theorem plot
+          - NP stays inside the narrow side, not at the rim and not at page center
         -->
         <clipPath id="disc-clip">
-          <path d="M 172,310
+          <path d="M 170,310
                    C 176,228 214,156 286,126
-                   C 370,92 488,110 548,188
-                   C 603,259 602,365 548,438
-                   C 490,516 372,542 291,506
-                   C 220,474 178,398 172,310 Z"/>
+                   C 372,92 493,108 556,186
+                   C 611,255 610,369 556,440
+                   C 496,518 374,544 290,506
+                   C 218,474 178,398 170,310 Z"/>
         </clipPath>
       </defs>
 
-      <!-- Background panel -->
       <rect width="700" height="620" fill="#0f172a" rx="12"/>
 
-      <!-- Outer "beyond ice" zone follows the same horizontal-ovoid logic, just slightly expanded -->
-      <path d="M 156,310
-               C 160,220 203,142 284,108
-               C 380,70 514,92 581,178
-               C 641,256 639,371 581,450
-               C 516,536 384,566 288,524
-               C 209,489 161,407 156,310 Z"
+      <path d="M 154,310
+               C 160,220 202,142 284,108
+               C 380,70 518,90 590,176
+               C 651,252 650,372 589,452
+               C 519,539 384,567 286,525
+               C 206,490 160,408 154,310 Z"
             fill="url(#hatch)"
             stroke="#334155"
             stroke-width="1"
             stroke-dasharray="5,4"
             opacity="0.62"/>
 
-      <!-- Main disc -->
-      <path d="M 172,310
+      <path d="M 170,310
                C 176,228 214,156 286,126
-               C 370,92 488,110 548,188
-               C 603,259 602,365 548,438
-               C 490,516 372,542 291,506
-               C 220,474 178,398 172,310 Z"
+               C 372,92 493,108 556,186
+               C 611,255 610,369 556,440
+               C 496,518 374,544 290,506
+               C 218,474 178,398 170,310 Z"
             fill="url(#disc-fill)"
             stroke="#60a5fa"
             stroke-width="2.6"/>
 
-      <!--
-        Coordinate origin for the city/radius intuition on this drawing.
-        Important: this point is INSIDE the narrow side.
-        It is deliberately not placed at the boundary tip, and not placed at the canvas center.
-      -->
-      <circle cx="295" cy="310" r="7" fill="#4fc3f7"/>
-      <circle cx="295" cy="310" r="3" fill="#e0f2fe"/>
-      <text x="295" y="286" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#bae6fd" font-weight="700">North Pole</text>
-      <text x="295" y="299" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#7dd3fc" opacity="0.85">inside narrow side, not at tip</text>
+      <!-- NP marker -->
+      <circle cx="282" cy="310" r="7" fill="#4fc3f7"/>
+      <circle cx="282" cy="310" r="3" fill="#e0f2fe"/>
+      <text x="282" y="286" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#bae6fd" font-weight="700">North Pole</text>
+      <text x="282" y="299" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#7dd3fc" opacity="0.85">coordinate origin shown inside narrow side</text>
 
-      <!--
-        Faint radial-distance guides, clipped to the ovoid.
-        These are centered on the NP marker so the map reads as "r from pole"
-        without forcing a fake equatorial loop.
-      -->
+      <!-- radial cues, but no fake equator loop -->
       <g clip-path="url(#disc-clip)">
-        <circle cx="295" cy="310" r="78" fill="none" stroke="#1d4ed8" stroke-width="0.8" opacity="0.35"/>
-        <circle cx="295" cy="310" r="128" fill="none" stroke="#2563eb" stroke-width="0.9" stroke-dasharray="4,5" opacity="0.35"/>
-        <circle cx="295" cy="310" r="176" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.18"/>
+        <circle cx="282" cy="310" r="78" fill="none" stroke="#1d4ed8" stroke-width="0.8" opacity="0.34"/>
+        <circle cx="282" cy="310" r="128" fill="none" stroke="#2563eb" stroke-width="0.9" stroke-dasharray="4,5" opacity="0.34"/>
+        <circle cx="282" cy="310" r="176" fill="none" stroke="#38bdf8" stroke-width="1" opacity="0.16"/>
       </g>
-      <text x="352" y="237" font-family="sans-serif" font-size="7.5" fill="#60a5fa" opacity="0.65" font-style="italic">sun circuit zone</text>
+      <text x="348" y="237" font-family="sans-serif" font-size="7.5" fill="#60a5fa" opacity="0.65" font-style="italic">sun circuit zone</text>
 
-      <!--
-        Only a partial boundary cue.
-        This replaces the old full "equator ring" look, which implied a physical loop.
-      -->
-      <path d="M 400,188 A 168,168 0 0 1 458,430"
+      <!-- partial coordinate-boundary cue only -->
+      <path d="M 392,188 A 168,168 0 0 1 448,429"
             fill="none"
             stroke="#3b82f6"
             stroke-width="1"
             stroke-dasharray="4,5"
-            opacity="0.38"/>
-      <text x="470" y="311" font-family="sans-serif" font-size="7" fill="#60a5fa" opacity="0.55" font-style="italic">coord. boundary (model artifact)</text>
+            opacity="0.34"/>
+      <text x="460" y="308" font-family="sans-serif" font-size="7" fill="#60a5fa" opacity="0.56" font-style="italic">coord. boundary (model artifact)</text>
 
-      <!-- Beyond-ice labeling kept outside the wide side -->
-      <text x="612" y="264" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#6b7280" font-style="italic">Beyond-Ice</text>
-      <text x="612" y="276" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#6b7280" font-style="italic">Territory</text>
-      <text x="612" y="288" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#475569" font-style="italic">(Byrd 1954)</text>
+      <text x="620" y="264" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#6b7280" font-style="italic">Beyond-Ice</text>
+      <text x="620" y="276" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#6b7280" font-style="italic">Territory</text>
+      <text x="620" y="288" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#475569" font-style="italic">(Byrd 1954)</text>
 
-      <!-- NH land kept nearer the narrow / inner side -->
-      <path d="M 214,246 L 204,270 L 209,296 L 229,306 L 251,296 L 258,268 L 244,244 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="230" y="320" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">N.Am.</text>
+      <!--
+        Continents below are redrawn from actual city-anchor clusters instead of generic blobs.
+        Each landmass uses:
+        - a silhouette path
+        - a texture overlay with the same path
+        - anchor dots taken from the current coordinates page
+      -->
 
-      <path d="M 310,195 L 302,214 L 314,228 L 336,224 L 344,207 L 330,190 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="322" y="184" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Eur.</text>
+      <!-- North America: anchored by Anchorage, Chicago, New York, Denver, LA, Mexico City, Miami -->
+      <path d="M 200,300
+               C 196,282 205,261 220,244
+               C 237,226 257,220 274,226
+               C 294,233 307,251 307,271
+               C 307,287 299,301 292,316
+               C 287,328 289,344 298,359
+               C 303,369 300,383 288,392
+               C 274,402 255,402 242,391
+               C 227,378 223,361 225,344
+               C 227,330 221,318 210,312
+               C 204,309 201,305 200,300 Z"
+            fill="#b8742c"
+            opacity="0.82"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 200,300
+               C 196,282 205,261 220,244
+               C 237,226 257,220 274,226
+               C 294,233 307,251 307,271
+               C 307,287 299,301 292,316
+               C 287,328 289,344 298,359
+               C 303,369 300,383 288,392
+               C 274,402 255,402 242,391
+               C 227,378 223,361 225,344
+               C 227,330 221,318 210,312
+               C 204,309 201,305 200,300 Z"
+            fill="url(#land-grain)"
+            opacity="0.7"/>
 
-      <path d="M 382,202 L 372,227 L 382,256 L 410,264 L 434,248 L 430,217 L 404,199 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="404" y="191" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Asia</text>
+      <!-- Europe / western Eurasia core -->
+      <path d="M 244,286
+               C 247,270 258,257 277,248
+               C 299,238 327,239 347,249
+               C 361,256 368,269 367,282
+               C 366,294 355,304 340,311
+               C 321,320 301,321 282,315
+               C 261,309 247,299 244,286 Z"
+            fill="#c08137"
+            opacity="0.84"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 244,286
+               C 247,270 258,257 277,248
+               C 299,238 327,239 347,249
+               C 361,256 368,269 367,282
+               C 366,294 355,304 340,311
+               C 321,320 301,321 282,315
+               C 261,309 247,299 244,286 Z"
+            fill="url(#land-grain)"
+            opacity="0.72"/>
 
-      <!-- SH land pushed into the broader outer side -->
-      <path d="M 330,302 L 320,338 L 330,382 L 354,398 L 376,384 L 382,342 L 366,303 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="355" y="413" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Africa</text>
+      <!-- Asia / India / SE Asia chain -->
+      <path d="M 305,250
+               C 326,234 356,223 389,220
+               C 424,217 455,223 474,237
+               C 491,250 495,268 487,286
+               C 478,308 461,324 447,339
+               C 434,352 430,366 437,379
+               C 444,393 438,405 422,410
+               C 405,414 390,407 381,393
+               C 374,381 365,372 352,369
+               C 335,365 321,352 315,334
+               C 308,315 308,293 310,277
+               C 311,267 309,258 305,250 Z"
+            fill="#b36f28"
+            opacity="0.84"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 305,250
+               C 326,234 356,223 389,220
+               C 424,217 455,223 474,237
+               C 491,250 495,268 487,286
+               C 478,308 461,324 447,339
+               C 434,352 430,366 437,379
+               C 444,393 438,405 422,410
+               C 405,414 390,407 381,393
+               C 374,381 365,372 352,369
+               C 335,365 321,352 315,334
+               C 308,315 308,293 310,277
+               C 311,267 309,258 305,250 Z"
+            fill="url(#land-grain)"
+            opacity="0.7"/>
 
-      <path d="M 242,360 L 230,389 L 236,426 L 255,438 L 275,422 L 279,388 L 262,359 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="256" y="451" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">S.Am.</text>
+      <!-- South America -->
+      <path d="M 526,399
+               C 542,401 556,412 563,428
+               C 569,441 569,456 563,469
+               C 558,481 548,491 537,497
+               C 524,504 510,502 503,491
+               C 497,481 499,467 502,454
+               C 505,442 506,431 504,420
+               C 502,409 511,400 526,399 Z"
+            fill="#be7a31"
+            opacity="0.84"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 526,399
+               C 542,401 556,412 563,428
+               C 569,441 569,456 563,469
+               C 558,481 548,491 537,497
+               C 524,504 510,502 503,491
+               C 497,481 499,467 502,454
+               C 505,442 506,431 504,420
+               C 502,409 511,400 526,399 Z"
+            fill="url(#land-grain)"
+            opacity="0.7"/>
 
-      <path d="M 424,380 L 414,404 L 422,432 L 447,440 L 466,426 L 462,398 L 442,380 Z" fill="#92400e" opacity="0.72" stroke="#78350f" stroke-width="0.8"/>
-      <text x="444" y="454" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Aus.</text>
+      <!-- Southern Africa -->
+      <path d="M 574,221
+               C 590,217 609,223 622,238
+               C 632,250 635,266 630,281
+               C 625,294 615,304 602,308
+               C 589,312 576,308 567,297
+               C 557,285 554,270 558,255
+               C 562,240 567,227 574,221 Z"
+            fill="#b8742c"
+            opacity="0.84"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 574,221
+               C 590,217 609,223 622,238
+               C 632,250 635,266 630,281
+               C 625,294 615,304 602,308
+               C 589,312 576,308 567,297
+               C 557,285 554,270 558,255
+               C 562,240 567,227 574,221 Z"
+            fill="url(#land-grain)"
+            opacity="0.7"/>
+
+      <!-- Australia -->
+      <path d="M 330,192
+               C 344,178 367,168 389,168
+               C 410,168 428,176 436,191
+               C 444,205 441,222 429,232
+               C 415,244 394,248 374,246
+               C 354,244 337,235 329,221
+               C 324,211 324,201 330,192 Z"
+            fill="#c28239"
+            opacity="0.84"
+            stroke="#7c4b12"
+            stroke-width="1"/>
+      <path d="M 330,192
+               C 344,178 367,168 389,168
+               C 410,168 428,176 436,191
+               C 444,205 441,222 429,232
+               C 415,244 394,248 374,246
+               C 354,244 337,235 329,221
+               C 324,211 324,201 330,192 Z"
+            fill="url(#land-grain)"
+            opacity="0.7"/>
+
+      <!-- New Zealand anchor island -->
+      <path d="M 328,288
+               C 333,283 339,283 343,287
+               C 346,291 346,298 341,301
+               C 336,304 330,302 327,297
+               C 325,294 325,290 328,288 Z"
+            fill="#c28239"
+            opacity="0.8"
+            stroke="#7c4b12"
+            stroke-width="0.8"/>
+
+      <!-- Labels -->
+      <text x="249" y="408" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">N. America</text>
+      <text x="300" y="331" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">Europe</text>
+      <text x="398" y="425" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">Asia</text>
+      <text x="534" y="511" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">S. America</text>
+      <text x="598" y="321" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">S. Africa</text>
+      <text x="382" y="257" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f1c27b">Australia</text>
+
+      <!-- City anchors pulled from the current coordinate table -->
+      <g>
+        <circle cx="218.8" cy="319.7" r="2.2" fill="#93c5fd"/>
+        <circle cx="275.1" cy="349.2" r="2.2" fill="#93c5fd"/>
+        <circle cx="288.1" cy="349.3" r="2.2" fill="#93c5fd"/>
+        <circle cx="267.8" cy="350.9" r="2.2" fill="#93c5fd"/>
+        <circle cx="271.8" cy="355.9" r="2.2" fill="#93c5fd"/>
+        <circle cx="369.9" cy="408.5" r="2.2" fill="#93c5fd"/>
+
+        <circle cx="248.4" cy="316.4" r="2.1" fill="#93c5fd"/>
+        <circle cx="281.4" cy="310.1" r="2.1" fill="#93c5fd"/>
+        <circle cx="289.2" cy="308.8" r="2.1" fill="#93c5fd"/>
+        <circle cx="277.8" cy="303.7" r="2.1" fill="#93c5fd"/>
+        <circle cx="277.5" cy="300.2" r="2.1" fill="#93c5fd"/>
+        <circle cx="259.6" cy="303.5" r="2.1" fill="#93c5fd"/>
+        <circle cx="258.9" cy="306.2" r="2.1" fill="#93c5fd"/>
+        <circle cx="264.5" cy="295.4" r="2.1" fill="#93c5fd"/>
+
+        <circle cx="252.8" cy="278.2" r="2.1" fill="#93c5fd"/>
+        <circle cx="312.4" cy="290.4" r="2.1" fill="#93c5fd"/>
+        <circle cx="339.9" cy="272.5" r="2.1" fill="#93c5fd"/>
+        <circle cx="367.4" cy="278.6" r="2.1" fill="#93c5fd"/>
+        <circle cx="421.7" cy="212.8" r="2.1" fill="#93c5fd"/>
+        <circle cx="323.8" cy="231.8" r="2.1" fill="#93c5fd"/>
+        <circle cx="483.1" cy="140.6" r="2.1" fill="#93c5fd"/>
+
+        <circle cx="349.5" cy="234.4" r="2.2" fill="#67e8f9"/>
+        <circle cx="365.7" cy="216.7" r="2.2" fill="#67e8f9"/>
+        <circle cx="414.0" cy="174.1" r="2.2" fill="#67e8f9"/>
+        <circle cx="335.0" cy="295.1" r="2.2" fill="#67e8f9"/>
+
+        <circle cx="644.4" cy="260.8" r="2.2" fill="#67e8f9"/>
+        <circle cx="588.4" cy="244.5" r="2.2" fill="#67e8f9"/>
+        <circle cx="578.0" cy="443.6" r="2.2" fill="#67e8f9"/>
+        <circle cx="543.2" cy="455.9" r="2.2" fill="#67e8f9"/>
+      </g>
 
       <!-- Wide-side rim label -->
-      <text x="502" y="505" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#94a3b8">Antarctic Ice Wall</text>
-      <text x="502" y="518" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#64748b" font-style="italic">broad outer rim / SH side</text>
+      <text x="507" y="506" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#94a3b8">Antarctic Ice Wall</text>
+      <text x="507" y="519" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#64748b" font-style="italic">broad outer rim / SH side</text>
 
-      <!-- Current arrows repositioned to fit the new top-down geometry -->
-      <line x1="255" y1="255" x2="310" y2="227" stroke="#60a5fa" stroke-width="2.5" marker-end="url(#arrowNE)"/>
-      <line x1="262" y1="270" x2="315" y2="244" stroke="#60a5fa" stroke-width="1.6" marker-end="url(#arrowNE)" opacity="0.5"/>
-      <rect x="28" y="231" width="128" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#1e40af" stroke-width="0.8"/>
-      <text x="34" y="244" font-family="sans-serif" font-size="9" font-weight="700" fill="#60a5fa">NH ATLANTIC</text>
-      <text x="34" y="257" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.022 NE &bull; 9 routes</text>
+      <!-- Current arrows -->
+      <line x1="246" y1="331" x2="298" y2="304" stroke="#60a5fa" stroke-width="2.5" marker-end="url(#arrowNE)"/>
+      <line x1="255" y1="344" x2="305" y2="319" stroke="#60a5fa" stroke-width="1.6" marker-end="url(#arrowNE)" opacity="0.5"/>
+      <rect x="28" y="233" width="128" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#1e40af" stroke-width="0.8"/>
+      <text x="34" y="246" font-family="sans-serif" font-size="9" font-weight="700" fill="#60a5fa">NH ATLANTIC</text>
+      <text x="34" y="259" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.022 NE &bull; 9 routes</text>
 
-      <line x1="430" y1="240" x2="486" y2="240" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowE)"/>
-      <line x1="428" y1="255" x2="481" y2="255" stroke="#4ade80" stroke-width="1.6" marker-end="url(#arrowE)" opacity="0.5"/>
-      <rect x="518" y="230" width="120" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#166534" stroke-width="0.8"/>
-      <text x="524" y="243" font-family="sans-serif" font-size="9" font-weight="700" fill="#4ade80">NH PACIFIC</text>
-      <text x="524" y="255" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 E &bull; 7 routes</text>
+      <line x1="384" y1="250" x2="441" y2="250" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowE)"/>
+      <line x1="381" y1="266" x2="436" y2="266" stroke="#4ade80" stroke-width="1.6" marker-end="url(#arrowE)" opacity="0.5"/>
+      <rect x="518" y="229" width="120" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#166534" stroke-width="0.8"/>
+      <text x="524" y="242" font-family="sans-serif" font-size="9" font-weight="700" fill="#4ade80">NH PACIFIC</text>
+      <text x="524" y="254" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 E &bull; 7 routes</text>
 
-      <line x1="228" y1="342" x2="231" y2="388" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#arrowS)"/>
-      <rect x="28" y="357" width="108" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#5b21b6" stroke-width="0.8"/>
-      <text x="34" y="370" font-family="sans-serif" font-size="9" font-weight="700" fill="#a78bfa">W ATLANTIC</text>
-      <text x="34" y="382" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 S</text>
+      <line x1="512" y1="418" x2="516" y2="455" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#arrowS)"/>
+      <rect x="28" y="359" width="108" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#5b21b6" stroke-width="0.8"/>
+      <text x="34" y="372" font-family="sans-serif" font-size="9" font-weight="700" fill="#a78bfa">W ATLANTIC</text>
+      <text x="34" y="384" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 S</text>
 
-      <line x1="462" y1="408" x2="517" y2="408" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowE2)"/>
-      <line x1="460" y1="423" x2="512" y2="423" stroke="#22d3ee" stroke-width="1.8" marker-end="url(#arrowE2)" opacity="0.5"/>
+      <line x1="387" y1="191" x2="444" y2="191" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowE2)"/>
+      <line x1="385" y1="206" x2="439" y2="206" stroke="#22d3ee" stroke-width="1.8" marker-end="url(#arrowE2)" opacity="0.5"/>
       <rect x="520" y="398" width="140" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#0e7490" stroke-width="0.8"/>
       <text x="526" y="411" font-family="sans-serif" font-size="9" font-weight="700" fill="#22d3ee">SH AUSTRALIAN</text>
       <text x="526" y="423" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.028 E &bull; strongest</text>
 
-      <line x1="307" y1="430" x2="360" y2="430" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowE2)"/>
-      <rect x="28" y="418" width="112" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#0e7490" stroke-width="0.8"/>
-      <text x="34" y="431" font-family="sans-serif" font-size="9" font-weight="700" fill="#22d3ee">S ATLANTIC</text>
-      <text x="34" y="443" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.012 E</text>
+      <line x1="545" y1="430" x2="593" y2="430" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowE2)"/>
+      <rect x="28" y="420" width="112" height="32" rx="4" fill="#0f172a" fill-opacity="0.92" stroke="#0e7490" stroke-width="0.8"/>
+      <text x="34" y="433" font-family="sans-serif" font-size="9" font-weight="700" fill="#22d3ee">S ATLANTIC</text>
+      <text x="34" y="445" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.012 E</text>
 
-      <!-- Legend -->
-      <text x="350" y="607" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#60a5fa">Single Global Eastward Rotation &mdash; PRED-CURR-008 &mdash; 35+ routes</text>
+      <text x="350" y="607" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#60a5fa">Single Global Eastward Rotation &mdash; PRED-CURR-008 &mdash; city anchors from V13 coordinates</text>
     </svg>
   </div>
 
