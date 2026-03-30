@@ -14,6 +14,7 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.path import Path as MplPath
+from scipy.interpolate import CubicSpline
 from scipy.spatial import Delaunay
 from shapely.geometry import LineString, MultiLineString, MultiPolygon, Polygon
 
@@ -30,7 +31,7 @@ NP_Y = 310.0
 # The homepage keeps the site's established "horizontal ovoid" silhouette.
 # This is a display frame, not a new derivation. The control points below are
 # used only to shape the final rendered map on the homepage.
-MAIN_BOUNDARY = np.array(
+MAIN_BOUNDARY_CONTROL = np.array(
     [
         (170, 310),
         (176, 228),
@@ -52,6 +53,28 @@ MAIN_BOUNDARY = np.array(
     dtype=float,
 )
 
+BEYOND_BOUNDARY_CONTROL = np.array(
+    [
+        (154, 310),
+        (160, 220),
+        (202, 142),
+        (284, 108),
+        (380, 70),
+        (518, 90),
+        (590, 176),
+        (651, 252),
+        (650, 372),
+        (589, 452),
+        (519, 539),
+        (384, 567),
+        (286, 525),
+        (206, 490),
+        (160, 408),
+        (154, 310),
+    ],
+    dtype=float,
+)
+
 # The source map starts from a standard north-pole azimuthal-equidistant style
 # disc. We then warp that disc into the homepage ovoid with V13 city anchors.
 SOURCE_RADIUS = 252.0
@@ -69,6 +92,26 @@ LABEL_POINTS = [
     ("Asia", 96.0, 44.0, 14.0, 10.0),
     ("Australia", 136.0, -25.0, 22.0, 4.0),
 ]
+
+
+def smooth_closed_curve(control_points: np.ndarray, samples: int = 720) -> np.ndarray:
+    # The user correctly called out that the earlier boundary read like a hexagon.
+    # We keep the same control vertices, but draw and sample them as a periodic
+    # spline so the ice wall reads like a continuous ovoid instead of a faceted
+    # polygon.
+    base = np.asarray(control_points, dtype=float)
+    deltas = np.diff(base, axis=0)
+    distances = np.sqrt((deltas**2).sum(axis=1))
+    t = np.concatenate([[0.0], np.cumsum(distances)])
+    x_spline = CubicSpline(t, base[:, 0], bc_type="periodic")
+    y_spline = CubicSpline(t, base[:, 1], bc_type="periodic")
+    sample_t = np.linspace(0.0, t[-1], samples, endpoint=False)
+    curve = np.column_stack([x_spline(sample_t), y_spline(sample_t)])
+    return np.vstack([curve, curve[0]])
+
+
+MAIN_BOUNDARY = smooth_closed_curve(MAIN_BOUNDARY_CONTROL)
+BEYOND_BOUNDARY = smooth_closed_curve(BEYOND_BOUNDARY_CONTROL)
 
 
 @dataclass(frozen=True)
@@ -226,7 +269,9 @@ def display_scale(rotated_xy: np.ndarray) -> float:
         if r_km < 1e-9:
             continue
         theta = math.atan2(y_km, x_km)
-        scales.append(0.92 * boundary_radius(theta) / r_km)
+        # Extra inset keeps SH land, especially Australia, visually inside the
+        # rim instead of kissing the ice wall in the homepage render.
+        scales.append(0.82 * boundary_radius(theta) / r_km)
     return min(scales)
 
 
@@ -360,31 +405,9 @@ def draw_geom(ax, geom, warp: PiecewiseAffineWarp, facecolor: str, edgecolor: st
 def make_background(ax):
     ax.set_facecolor("#0f172a")
     ax.add_patch(mpatches.Rectangle((0, 0), 700, 620, facecolor="#0f172a", edgecolor="none"))
-
-    beyond_vertices = np.array(
-        [
-            (154, 310),
-            (160, 220),
-            (202, 142),
-            (284, 108),
-            (380, 70),
-            (518, 90),
-            (590, 176),
-            (651, 252),
-            (650, 372),
-            (589, 452),
-            (519, 539),
-            (384, 567),
-            (286, 525),
-            (206, 490),
-            (160, 408),
-            (154, 310),
-        ],
-        dtype=float,
-    )
     ax.add_patch(
         polygon_to_patch(
-            beyond_vertices,
+            BEYOND_BOUNDARY,
             facecolor="#162235",
             edgecolor="#334155",
             linewidth=1.0,
