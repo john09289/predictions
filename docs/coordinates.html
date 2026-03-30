@@ -112,8 +112,8 @@ Performance:
 <p class="note"><strong>OPEN-015:</strong> Near-equatorial cities (Singapore r&nbsp;=&nbsp;23,556&nbsp;km &gt; r_eq&nbsp;=&nbsp;14,105&nbsp;km) fall beyond the equatorial ring, which places them in the outer zone despite being NH cities. The two-zone formula as stated applies to latitudes &gt;12&deg;N/S. Equatorial belt treatment is a V14 problem.</p>
 
 <!-- ===== SOUTHERN HEMISPHERE TABLE ===== -->
-<h2>Southern Hemisphere City Coordinates (V13 Two-Zone)</h2>
-<p class="note">r_SH = 2 &times; 14,105 &minus; r_NH. &theta; = &minus;lon<sub>E</sub>. Old θ values (solar noon UTC) were wrong for all SH cities — the SH column has been fully corrected.</p>
+<h2>Southern Hemisphere City Coordinates (Legacy V13 Two-Zone)</h2>
+<p class="note">Legacy published SH table kept for audit continuity. r_SH = 2 &times; 14,105 &minus; r_NH. &theta; = &minus;lon<sub>E</sub>. Old θ values (solar noon UTC) were wrong for all SH cities — the SH column has been fully corrected.</p>
 <table>
   <tr><th>City</th><th>Lat &deg;S</th><th>Lon<sub>E</sub> &deg;</th><th>r_NH equiv (km)</th><th>r_SH (km)</th><th>&theta; &deg;</th><th>x (km)</th><th>y (km)</th></tr>
   <tr><td>Sydney</td><td>33.9</td><td>151.2</td><td>7,193</td><td>21,017</td><td>&minus;151.2</td><td>&minus;18,399</td><td>&minus;10,200</td></tr>
@@ -125,6 +125,32 @@ Performance:
   <tr><td>Buenos Aires</td><td>34.6</td><td>&minus;58.4</td><td>7,061</td><td>21,149</td><td>+58.4</td><td>11,074</td><td>18,040</td></tr>
   <tr><td>Santiago</td><td>33.5</td><td>&minus;70.7</td><td>7,275</td><td>20,935</td><td>+70.7</td><td>6,932</td><td>19,690</td></tr>
 </table>
+
+<!-- ===== PROVISIONAL AUSTRALIA SCAFFOLD ===== -->
+<h2>Provisional Australia Surface-Distance Scaffold</h2>
+<div class="warning-box" style="background:var(--bg-secondary);border-left:3px solid var(--accent-blue);padding:1rem;margin:1rem 0;">
+<p style="margin:0;"><strong>Non-destructive rebuild layer:</strong> The legacy V13 SH table above remains published, but Australia is now being rebuilt from surface-distance constraints instead of silently inheriting reflected globe latitude. This scaffold is the first step in that rebuild. It does <em>not</em> overwrite the legacy table yet.</p>
+</div>
+<p class="note"><strong>Anti-circular rule:</strong> The solve itself does not use GPS/WGS84 coordinates. The current scaffold comes from the Australia road matrix in session working notes (12 direct measured road links + 9 estimated road cross-links for stabilization). Rail values remain validation checks, not orientation inputs.</p>
+<p class="note"><strong>Frame note:</strong> Sydney is fixed at the origin. Rotation and reflection are arbitrary at this stage, so page-up is <em>not</em> geographic north. Absolute SH &theta;/r remain OPEN-016 work.</p>
+
+<div style="margin:1.25rem 0;text-align:center;">
+  <img src="assets/australia_ground_scaffold.png?v=20260330a" alt="Australia ground scaffold from surface-distance constraints" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
+</div>
+
+<table>
+  <tr><th>City</th><th>x<sub>rel</sub> (km)</th><th>y<sub>rel</sub> (km)</th><th>Status</th></tr>
+  <tr><td>Sydney</td><td>0.0</td><td>0.0</td><td>Origin anchor</td></tr>
+  <tr><td>Melbourne</td><td>489.8</td><td>&minus;259.0</td><td>Direct road node</td></tr>
+  <tr><td>Brisbane</td><td>&minus;736.1</td><td>&minus;775.1</td><td>Direct road node</td></tr>
+  <tr><td>Adelaide</td><td>1,056.9</td><td>&minus;968.2</td><td>Direct road node</td></tr>
+  <tr><td>Perth</td><td>3,488.8</td><td>&minus;1,641.6</td><td>Rail/road anchor pair</td></tr>
+  <tr><td>Darwin</td><td>318.1</td><td>&minus;3,939.8</td><td>Transition-zone anomaly</td></tr>
+  <tr><td>Cairns</td><td>&minus;1,582.9</td><td>&minus;2,118.8</td><td>Supplemented by estimated cross-links</td></tr>
+</table>
+
+<p class="note">Download raw scaffold artifacts: <a href="data/australia_ground_scaffold.json">JSON</a> &bull; <a href="data/australia_ground_scaffold.csv">CSV</a>. These files are meant to be machine-auditable so the next SH coordinate pass can build forward without rewriting the legacy V13 table by hand.</p>
+<p class="note"><strong>Current reading:</strong> The scaffold makes the Darwin instability explicit instead of hiding it inside the reflected-latitude table. That matches OPEN-015/OPEN-016: the outer-zone topology appears right, but specific SH coordinates are still being re-locked from ground truth.</p>
 
 <!-- ===== V13 PERFORMANCE ===== -->
 <h2>V13 Performance Summary</h2>
@@ -145,11 +171,12 @@ Performance:
   <tr><td>V9</td><td>Law of cosines, solar noon &theta;</td><td>~20%</td><td>~50%</td></tr>
   <tr><td>V12</td><td>H(r) exponential, &Delta;lon &times; 0.9941</td><td>5.2%</td><td>&mdash; (broken)</td></tr>
   <tr><td><strong>V13</strong></td><td>&theta;=&minus;lon<sub>E</sub>, two-zone topology, r_SH=2&times;r_eq&minus;r_NH</td><td>7.3%</td><td><strong>Cross-equatorial 6.2%</strong></td></tr>
+  <tr><td><strong>V13 + scaffold</strong></td><td>Australia surface-distance scaffold added alongside legacy SH table (provisional, 2026-03-30)</td><td>7.3%</td><td>SH re-lock in progress</td></tr>
 </table>
 
 <footer>
   <span>Version 50.10</span>
-  <span>2026-03-28</span>
+  <span>2026-03-30</span>
   <span style="color:var(--accent-blue);font-weight:600">56 confirmed</span>
   <span style="color:var(--accent-gold)">4 refined</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>

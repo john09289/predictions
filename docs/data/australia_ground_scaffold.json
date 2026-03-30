@@ -1,0 +1,97 @@
+{
+  "version": "2026-03-30",
+  "title": "Australia Ground Scaffold",
+  "status": "provisional",
+  "method": "classical MDS on the dense Australia road matrix from session working notes",
+  "anti_circular_note": "The solve itself does not consume GPS/WGS84 coordinates. Absolute SH theta/r remain unresolved under OPEN-016.",
+  "frame_note": "Solver output is relative only. Sydney is the origin. Rotation and reflection remain arbitrary until OPEN-016 locks absolute SH theta/r.",
+  "core_road_constraints": {
+    "measured_count": 12,
+    "estimated_count": 9
+  },
+  "eigenvalues": [
+    15361959.587,
+    10862837.691,
+    1275922.191,
+    875027.615
+  ],
+  "cities": [
+    {
+      "city": "Sydney",
+      "x_rel_km": 0.0,
+      "y_rel_km": 0.0
+    },
+    {
+      "city": "Melbourne",
+      "x_rel_km": 489.8,
+      "y_rel_km": -259.0
+    },
+    {
+      "city": "Brisbane",
+      "x_rel_km": -736.1,
+      "y_rel_km": -775.1
+    },
+    {
+      "city": "Adelaide",
+      "x_rel_km": 1056.9,
+      "y_rel_km": -968.2
+    },
+    {
+      "city": "Perth",
+      "x_rel_km": 3488.8,
+      "y_rel_km": -1641.6
+    },
+    {
+      "city": "Darwin",
+      "x_rel_km": 318.1,
+      "y_rel_km": -3939.8
+    },
+    {
+      "city": "Cairns",
+      "x_rel_km": -1582.9,
+      "y_rel_km": -2118.8
+    }
+  ],
+  "validation_edges": [
+    {
+      "a": "Sydney",
+      "b": "Melbourne",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 966.0,
+      "scaffold_direct_km": 554.1,
+      "gap_km": 411.9,
+      "note": "XPT rail track length used as a Category 1 upper-bound check."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Perth",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 2704.0,
+      "scaffold_direct_km": 2523.4,
+      "gap_km": 180.6,
+      "note": "Indian Pacific segment track length used as a Category 1 upper-bound check."
+    },
+    {
+      "a": "Sydney",
+      "b": "Perth",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 4352.0,
+      "scaffold_direct_km": 3855.7,
+      "gap_km": 496.3,
+      "note": "Indian Pacific full track length used as the primary rail cross-check."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Darwin",
+      "mode": "rail",
+      "tier": "tier1",
+      "observed_path_km": 3022.0,
+      "scaffold_direct_km": 3062.1,
+      "gap_km": -40.1,
+      "note": "Ghan track length kept as repo-consistent validation value until corridor audit resolves operator discrepancies."
+    }
+  ]
+}

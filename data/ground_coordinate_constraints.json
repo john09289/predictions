@@ -1,0 +1,331 @@
+{
+  "version": "2026-03-30",
+  "title": "Ground-Coordinate Constraints",
+  "notes": [
+    "This file is the non-destructive starting point for the post-V13 coordinate rebuild.",
+    "The solve layer is kept separate from the legacy published tables in docs/coordinates.html.",
+    "Tier 4 sources such as GPS, WGS84, and satellite-derived coordinates are not solver inputs here.",
+    "Some dense Australia road links are marked estimated=true. They stabilize the 2D scaffold but are not treated as Category 1 anchors."
+  ],
+  "regions": {
+    "australia": {
+      "description": "Internal Australia scaffold from surface-distance constraints.",
+      "display_note": "Solver output is relative only. Sydney is the origin. Rotation and reflection remain arbitrary until OPEN-016 locks absolute SH theta/r."
+    }
+  },
+  "cities": [
+    {
+      "city": "Sydney",
+      "region": "australia",
+      "role": "origin_anchor"
+    },
+    {
+      "city": "Melbourne",
+      "region": "australia",
+      "role": "core_node"
+    },
+    {
+      "city": "Brisbane",
+      "region": "australia",
+      "role": "core_node"
+    },
+    {
+      "city": "Adelaide",
+      "region": "australia",
+      "role": "core_node"
+    },
+    {
+      "city": "Perth",
+      "region": "australia",
+      "role": "core_node"
+    },
+    {
+      "city": "Darwin",
+      "region": "australia",
+      "role": "transition_node"
+    },
+    {
+      "city": "Cairns",
+      "region": "australia",
+      "role": "northeast_node"
+    }
+  ],
+  "constraints": [
+    {
+      "a": "Sydney",
+      "b": "Melbourne",
+      "distance_km": 878,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Hume Highway road distance from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Brisbane",
+      "distance_km": 924,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Pacific/New England road distance from session working notes."
+    },
+    {
+      "a": "Melbourne",
+      "b": "Adelaide",
+      "distance_km": 727,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Western Highway road distance from session working notes."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Perth",
+      "distance_km": 2700,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Nullarbor road distance from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Adelaide",
+      "distance_km": 1376,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Sturt Highway road distance from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Perth",
+      "distance_km": 3934,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Longest Australia road route from session working notes."
+    },
+    {
+      "a": "Melbourne",
+      "b": "Perth",
+      "distance_km": 3424,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Southern cross-continental road distance from session working notes."
+    },
+    {
+      "a": "Brisbane",
+      "b": "Cairns",
+      "distance_km": 1693,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Bruce Highway road distance from session working notes."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Darwin",
+      "distance_km": 3026,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Stuart Highway road distance from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Darwin",
+      "distance_km": 3936,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Road distance from session working notes."
+    },
+    {
+      "a": "Perth",
+      "b": "Darwin",
+      "distance_km": 4033,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Great Northern road distance from session working notes."
+    },
+    {
+      "a": "Melbourne",
+      "b": "Brisbane",
+      "distance_km": 1765,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": false,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Newell Highway road distance from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Cairns",
+      "distance_km": 2839,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Melbourne",
+      "b": "Darwin",
+      "distance_km": 3752,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Melbourne",
+      "b": "Cairns",
+      "distance_km": 2828,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Brisbane",
+      "b": "Adelaide",
+      "distance_km": 2045,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Brisbane",
+      "b": "Perth",
+      "distance_km": 4312,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Brisbane",
+      "b": "Darwin",
+      "distance_km": 3427,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Cairns",
+      "distance_km": 3032,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Perth",
+      "b": "Cairns",
+      "distance_km": 5107,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Darwin",
+      "b": "Cairns",
+      "distance_km": 2821,
+      "mode": "road",
+      "tier": "tier3",
+      "estimated": true,
+      "solver_role": "core",
+      "source_type": "session_notes",
+      "note": "Estimated road cross-link from session working notes."
+    },
+    {
+      "a": "Sydney",
+      "b": "Melbourne",
+      "distance_km": 966,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "repo_and_session_notes",
+      "note": "XPT rail track length used as a Category 1 upper-bound check."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Perth",
+      "distance_km": 2704,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "repo_and_session_notes",
+      "note": "Indian Pacific segment track length used as a Category 1 upper-bound check."
+    },
+    {
+      "a": "Sydney",
+      "b": "Perth",
+      "distance_km": 4352,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "repo_and_session_notes",
+      "source_url": "https://www.australia.com/ja-jp/trips-and-itineraries/sydney-and-surrounds/4-days-on-board-the-indian-pacific-train.html",
+      "note": "Indian Pacific full track length used as the primary rail cross-check."
+    },
+    {
+      "a": "Adelaide",
+      "b": "Darwin",
+      "distance_km": 3022,
+      "mode": "rail",
+      "tier": "tier1",
+      "estimated": false,
+      "solver_role": "validation",
+      "source_type": "repo_and_session_notes",
+      "note": "Ghan track length kept as repo-consistent validation value until corridor audit resolves operator discrepancies."
+    }
+  ]
+}
