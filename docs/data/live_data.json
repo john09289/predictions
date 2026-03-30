@@ -1,23 +1,23 @@
 {
-  "updated": "2026-03-30 07:14 UTC",
+  "updated": "2026-03-30 12:51 UTC",
   "date": "2026-03-30",
   "kp": {
     "kp_max_24h": 3.33,
-    "kp_current": 2.67,
+    "kp_current": 3.0,
     "storm_class": "G0 (quiet)",
     "is_storm": false,
     "recent_values": [
-      3.33,
-      2.33,
       2.67,
       3.33,
       1.0,
       2.0,
       2.67,
-      2.67
+      2.67,
+      3.33,
+      3.0
     ],
     "source": "NOAA SWPC",
-    "fetched": "2026-03-30 07:14 UTC"
+    "fetched": "2026-03-30 12:51 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -28,14 +28,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-03-30 07:14 UTC"
+    "fetched": "2026-03-30 12:51 UTC"
   },
   "aao": {
     "latest": 0.489,
     "weekly_mean": -0.387,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-03-30 07:14 UTC"
+    "fetched": "2026-03-30 12:51 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -46,26 +46,18 @@
       {
         "time": "2026-03-28 16:32:11.980",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1103  Issue Time: 2026 Mar 28 1632 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Mar 29:  None (Bel"
-      },
-      {
-        "time": "2026-03-25 15:58:47.967",
-        "summary": "Space Weather Message Code: WATA20  Serial Number: 1102  Issue Time: 2026 Mar 25 1558 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Mar 26:  G1 (Minor"
-      },
-      {
-        "time": "2026-03-25 08:26:18.870",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 1995  Issue Time: 2026 Mar 25 0826 UTC    ALERT: Geomagnetic K-index of 5   Threshold Reached: 2026 Mar 25 0826 UTC  Synoptic Period: 0600-0900 UTC  "
       }
     ],
-    "alert_count_48h": 4,
-    "fetched": "2026-03-30 07:14 UTC"
+    "alert_count_48h": 2,
+    "fetched": "2026-03-30 12:51 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.092,
+    "amplitude_index": 0.101,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-03-30 07:14 UTC",
+    "fetched": "2026-03-30 12:51 UTC",
     "pixel_count": 67728
   }
 }
