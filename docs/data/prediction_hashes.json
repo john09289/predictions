@@ -53,7 +53,7 @@
       "status": "PENDING"
     },
     "PRED-CURR-AUS-001": {
-      "hash": "78d07e7df2bd6b1eb5d136ae65fa3378367c1a6927d56905923a7a78d5ac4cf9",
+      "hash": "78d07e7df2bd6b1eb5d136ae65fa3378367c1a6927d56905933a7a78d5ac4cf9",
       "registered": "2026-03-29",
       "title": "Sydney-Perth Eastward Signal Persists (CA=+0.028)",
       "status": "PENDING"
@@ -87,6 +87,12 @@
       "registered": "2026-03-29",
       "title": "Eclipse Correction Factor = kappa = 1.67 nT/uGal (Structural)",
       "status": "PENDING"
+    },
+    "OPEN-016-PRED": {
+      "hash": "615d5c856104be842af0b52c030541732e901d7c25f2bd7d778083a6a7c83d6e",
+      "registered": "2026-03-29",
+      "title": "SH City r Values Will Differ From Globe-Derived Estimates (Category 1 triangulation pending)",
+      "status": "OPEN — methodology established, data collection in progress"
     }
   }
 }

@@ -398,115 +398,124 @@
   </p>
 
   <div class="map-section" style="text-align:center;">
-    <!-- Top-down egg disc: NP at narrow tip (top), ice wall at wide bottom -->
-    <svg viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg">
+    <!-- Top-down egg disc — dark background, NP at narrow tip, NO equatorial ring -->
+    <svg viewBox="0 0 700 620" xmlns="http://www.w3.org/2000/svg">
       <defs>
-        <marker id="arrowNE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/></marker>
-        <marker id="arrowE"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#16a34a"/></marker>
-        <marker id="arrowE2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#2563eb"/></marker>
-        <marker id="arrowS"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#7c3aed"/></marker>
-        <radialGradient id="egg-bg" cx="50%" cy="35%" r="65%">
-          <stop offset="0%" stop-color="#dbeafe" stop-opacity="0.7"/>
-          <stop offset="100%" stop-color="#f0f9ff" stop-opacity="0.3"/>
+        <marker id="arrowNE" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#60a5fa"/></marker>
+        <marker id="arrowE"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#4ade80"/></marker>
+        <marker id="arrowE2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#22d3ee"/></marker>
+        <marker id="arrowS"  markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="#a78bfa"/></marker>
+        <radialGradient id="egg-inner" cx="50%" cy="30%" r="70%">
+          <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.35"/>
+          <stop offset="100%" stop-color="#0c1445" stop-opacity="0.15"/>
         </radialGradient>
+        <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+          <line x1="0" y1="0" x2="0" y2="8" stroke="#374151" stroke-width="1.2" opacity="0.6"/>
+        </pattern>
       </defs>
 
-      <!-- EGG SHAPE: narrow at top (NP), wide at bottom (ice wall) -->
-      <!-- Two half-ellipses joined at y=270: top rx=145, bottom rx=285 -->
-      <path d="M 350,42 A 145,228 0 0,1 495,270 A 285,228 0 0,1 350,498 A 285,228 0 0,1 65,270 A 145,228 0 0,1 350,42 Z"
-            fill="url(#egg-bg)" stroke="#93c5fd" stroke-width="2"/>
+      <!-- Dark background -->
+      <rect width="700" height="620" fill="#0f172a" rx="12"/>
 
-      <!-- Labels: narrow end top, wide end bottom -->
-      <text x="350" y="22" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#1e40af" font-weight="700">North Pole (narrow end)</text>
-      <text x="350" y="520" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#64748b">Antarctic Ice Wall / Beyond-Ice Territory (Byrd 1954)</text>
-      <text x="350" y="533" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8" font-style="italic">Wide end — SH outer zone r = 14,105&ndash;28,210 km</text>
+      <!-- Beyond-ice hatch zone (slightly larger egg behind main egg) -->
+      <path d="M 350,22 C 430,22 510,135 510,320 C 510,505 425,580 350,580 C 275,580 190,505 190,320 C 190,135 270,22 350,22"
+            fill="url(#hatch)" stroke="#374151" stroke-width="1" stroke-dasharray="5,4" opacity="0.6"/>
 
-      <!-- NP dot -->
-      <circle cx="350" cy="58" r="6" fill="#2563eb"/>
-      <text x="362" y="62" font-family="sans-serif" font-size="9" fill="#2563eb" font-weight="600">N Pole</text>
+      <!-- Main egg disc — bezier, narrow at top (NP), wide at bottom (ice wall) -->
+      <path d="M 350,45 C 420,45 490,150 490,320 C 490,490 415,560 350,560 C 285,560 210,490 210,320 C 210,150 280,45 350,45"
+            fill="url(#egg-inner)" stroke="#3b82f6" stroke-width="2.5"/>
 
-      <!-- Arctic ring (tiny, near NP) -->
-      <ellipse cx="350" cy="130" rx="72" ry="25" fill="none" stroke="#7dd3fc" stroke-width="1" stroke-dasharray="4,3" opacity="0.7"/>
+      <!-- Beyond-ice label -->
+      <text x="605" y="415" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#4b5563" font-style="italic">Beyond-Ice</text>
+      <text x="605" y="427" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#4b5563" font-style="italic">Territory</text>
+      <text x="605" y="438" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#374151" font-style="italic">(Byrd 1954)</text>
 
-      <!-- === NH CONTINENTS (inner zone y=100-270) === -->
-      <!-- N. America (upper left) -->
-      <path d="M 215,175 L 200,195 L 195,220 L 210,235 L 230,225 L 240,205 L 235,180 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="215" y="250" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">N.Am.</text>
-      <!-- Europe (upper center-right) -->
-      <path d="M 360,120 L 350,138 L 362,148 L 380,143 L 388,128 L 375,115 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="368" y="110" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">Eur.</text>
-      <!-- Asia (upper right, larger) -->
-      <path d="M 445,148 L 430,170 L 440,200 L 470,205 L 490,185 L 488,158 L 465,145 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="460" y="142" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">Asia</text>
+      <!-- NP dot — right at narrow tip -->
+      <circle cx="350" cy="60" r="7" fill="#4fc3f7"/>
+      <text x="350" y="38" text-anchor="middle" font-family="sans-serif" font-size="9" fill="#93c5fd" font-weight="700">North Pole (narrow end)</text>
 
-      <!-- Equatorial ring (dashed, at y≈270, transitioning NH→SH) -->
-      <ellipse cx="350" cy="270" rx="215" ry="48" fill="none" stroke="#2563eb" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.6"/>
-      <text x="572" y="274" font-family="sans-serif" font-size="8.5" fill="#2563eb" opacity="0.8">equatorial ring</text>
-      <text x="572" y="285" font-family="sans-serif" font-size="8" fill="#2563eb" opacity="0.7">r = 14,105 km</text>
+      <!-- Distance ring: r≈10,000 km (sun circuit zone) — faint label only, very faint ring -->
+      <ellipse cx="350" cy="215" rx="118" ry="38" fill="none" stroke="#1d4ed8" stroke-width="0.8" stroke-dasharray="3,5" opacity="0.4"/>
+      <text x="475" y="218" font-family="sans-serif" font-size="7.5" fill="#3b82f6" opacity="0.6" font-style="italic">sun circuit zone</text>
 
-      <!-- === SH CONTINENTS (outer zone y=310-490) === -->
-      <!-- S. America (lower left) -->
-      <path d="M 195,350 L 180,375 L 185,410 L 205,420 L 225,405 L 228,375 L 212,350 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="205" y="433" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">S.Am.</text>
-      <!-- Africa (center, straddles equatorial ring) -->
-      <path d="M 335,295 L 320,330 L 328,375 L 350,388 L 372,370 L 378,330 L 362,295 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="349" y="404" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">Africa</text>
-      <!-- Australia (lower right) -->
-      <path d="M 468,360 L 452,382 L 460,412 L 490,420 L 510,402 L 508,372 L 485,358 Z" fill="#d4c4a0" opacity="0.65" stroke="#b09060" stroke-width="0.8"/>
-      <text x="482" y="435" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#78350f">Aus.</text>
+      <!-- === NH CONTINENTS (inner/narrow zone, y=80-305) === -->
+      <!-- N.America upper-left -->
+      <path d="M 230,215 L 215,238 L 212,268 L 228,282 L 250,272 L 258,248 L 248,218 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="234" y="297" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">N.Am.</text>
+      <!-- Europe upper-center-right -->
+      <path d="M 365,155 L 355,175 L 368,188 L 388,183 L 395,165 L 380,150 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="375" y="146" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Eur.</text>
+      <!-- Asia upper-right (extends near egg edge) -->
+      <path d="M 440,185 L 425,212 L 435,248 L 462,256 L 482,235 L 480,202 L 458,182 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="455" y="175" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Asia</text>
+
+      <!-- Coord boundary zone label (very subtle — not a ring) -->
+      <text x="350" y="308" text-anchor="middle" font-family="sans-serif" font-size="7" fill="#1d4ed8" opacity="0.5" font-style="italic">— coord. boundary (r=14,105 km, model artifact) —</text>
+
+      <!-- === SH CONTINENTS (outer/wide zone, y=330-545) === -->
+      <!-- Africa center, straddles coord boundary -->
+      <path d="M 340,320 L 325,362 L 332,410 L 355,425 L 378,408 L 384,362 L 368,320 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="355" y="440" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Africa</text>
+      <!-- S.America lower-left -->
+      <path d="M 228,375 L 213,402 L 218,442 L 238,454 L 258,438 L 262,400 L 244,375 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="237" y="467" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">S.Am.</text>
+      <!-- Australia lower-right -->
+      <path d="M 450,410 L 436,435 L 444,468 L 470,476 L 487,458 L 485,428 L 465,408 Z" fill="#92400e" opacity="0.7" stroke="#78350f" stroke-width="0.8"/>
+      <text x="462" y="490" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#d4a76a">Aus.</text>
+
+      <!-- Ice wall label -->
+      <text x="350" y="577" text-anchor="middle" font-family="sans-serif" font-size="8.5" fill="#64748b">Antarctic Ice Wall</text>
+      <text x="350" y="589" text-anchor="middle" font-family="sans-serif" font-size="7.5" fill="#475569" font-style="italic">SH outer zone — r = 14,105 to ~28,210 km</text>
 
       <!-- === CURRENT ARROWS === -->
-      <!-- NH Atlantic: NE (between N.Am and Europe) -->
-      <line x1="243" y1="205" x2="295" y2="178" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowNE)"/>
-      <line x1="255" y1="218" x2="305" y2="192" stroke="#2563eb" stroke-width="1.8" marker-end="url(#arrowNE)" opacity="0.6"/>
-      <rect x="138" y="195" width="118" height="30" rx="4" fill="white" fill-opacity="0.88"/>
-      <text x="143" y="207" font-family="sans-serif" font-size="9" font-weight="700" fill="#2563eb">NH ATLANTIC</text>
-      <text x="143" y="219" font-family="sans-serif" font-size="8" fill="#1e293b">&Delta;S=+0.022 NE &bull; 9 routes</text>
+      <!-- NH Atlantic: NE between N.Am and Europe, y≈250 -->
+      <line x1="263" y1="256" x2="318" y2="228" stroke="#60a5fa" stroke-width="2.5" marker-end="url(#arrowNE)"/>
+      <line x1="272" y1="270" x2="325" y2="244" stroke="#60a5fa" stroke-width="1.6" marker-end="url(#arrowNE)" opacity="0.5"/>
+      <rect x="30" y="232" width="128" height="32" rx="4" fill="#0f172a" fill-opacity="0.9" stroke="#1e40af" stroke-width="0.8"/>
+      <text x="36" y="245" font-family="sans-serif" font-size="9" font-weight="700" fill="#60a5fa">NH ATLANTIC</text>
+      <text x="36" y="258" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.022 NE &bull; 9 routes</text>
 
-      <!-- NH Pacific: E (right of Asia) -->
-      <line x1="488" y1="172" x2="535" y2="172" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowE)"/>
-      <line x1="485" y1="188" x2="530" y2="188" stroke="#16a34a" stroke-width="1.8" marker-end="url(#arrowE)" opacity="0.6"/>
-      <rect x="540" y="163" width="120" height="30" rx="4" fill="white" fill-opacity="0.88"/>
-      <text x="545" y="175" font-family="sans-serif" font-size="9" font-weight="700" fill="#16a34a">NH PACIFIC</text>
-      <text x="545" y="186" font-family="sans-serif" font-size="8" fill="#1e293b">&Delta;S=+0.014 E &bull; 7 routes</text>
+      <!-- NH Pacific: E right of Asia, y≈220 -->
+      <line x1="486" y1="222" x2="540" y2="222" stroke="#4ade80" stroke-width="2.5" marker-end="url(#arrowE)"/>
+      <line x1="484" y1="238" x2="537" y2="238" stroke="#4ade80" stroke-width="1.6" marker-end="url(#arrowE)" opacity="0.5"/>
+      <rect x="542" y="212" width="120" height="32" rx="4" fill="#0f172a" fill-opacity="0.9" stroke="#166534" stroke-width="0.8"/>
+      <text x="548" y="225" font-family="sans-serif" font-size="9" font-weight="700" fill="#4ade80">NH PACIFIC</text>
+      <text x="548" y="237" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 E &bull; 7 routes</text>
 
-      <!-- W Atlantic cross-equatorial: S -->
-      <line x1="178" y1="260" x2="182" y2="300" stroke="#7c3aed" stroke-width="2.5" marker-end="url(#arrowS)"/>
-      <rect x="75" y="268" width="95" height="28" rx="4" fill="white" fill-opacity="0.88"/>
-      <text x="80" y="280" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#7c3aed">W ATLANTIC</text>
-      <text x="80" y="291" font-family="sans-serif" font-size="8" fill="#1e293b">&Delta;S=+0.014 S</text>
+      <!-- W Atlantic cross-equatorial: S, left side y≈370 -->
+      <line x1="210" y1="355" x2="213" y2="398" stroke="#a78bfa" stroke-width="2.5" marker-end="url(#arrowS)"/>
+      <rect x="30" y="362" width="108" height="32" rx="4" fill="#0f172a" fill-opacity="0.9" stroke="#5b21b6" stroke-width="0.8"/>
+      <text x="36" y="375" font-family="sans-serif" font-size="9" font-weight="700" fill="#a78bfa">W ATLANTIC</text>
+      <text x="36" y="387" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.014 S</text>
 
-      <!-- SH Australian: E (strongest signal) -->
-      <line x1="508" y1="390" x2="558" y2="390" stroke="#2563eb" stroke-width="3" marker-end="url(#arrowE2)"/>
-      <line x1="505" y1="406" x2="552" y2="406" stroke="#2563eb" stroke-width="2" marker-end="url(#arrowE2)" opacity="0.6"/>
-      <rect x="560" y="380" width="130" height="32" rx="4" fill="white" fill-opacity="0.88"/>
-      <text x="565" y="393" font-family="sans-serif" font-size="9" font-weight="700" fill="#2563eb">SH AUSTRALIAN</text>
-      <text x="565" y="405" font-family="sans-serif" font-size="8" fill="#1e293b">&Delta;S=+0.028 E &bull; strongest</text>
+      <!-- SH Australian: E, lower-right y≈445 -->
+      <line x1="488" y1="443" x2="542" y2="443" stroke="#22d3ee" stroke-width="3" marker-end="url(#arrowE2)"/>
+      <line x1="486" y1="458" x2="538" y2="458" stroke="#22d3ee" stroke-width="1.8" marker-end="url(#arrowE2)" opacity="0.5"/>
+      <rect x="544" y="434" width="140" height="32" rx="4" fill="#0f172a" fill-opacity="0.9" stroke="#0e7490" stroke-width="0.8"/>
+      <text x="550" y="447" font-family="sans-serif" font-size="9" font-weight="700" fill="#22d3ee">SH AUSTRALIAN</text>
+      <text x="550" y="459" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.028 E &bull; strongest</text>
 
-      <!-- SH Atlantic: E (eastward — revised from W) -->
-      <line x1="243" y1="370" x2="295" y2="370" stroke="#0ea5e9" stroke-width="2" marker-end="url(#arrowE2)"/>
-      <rect x="140" y="378" width="100" height="28" rx="4" fill="white" fill-opacity="0.88"/>
-      <text x="145" y="390" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#0ea5e9">S ATLANTIC</text>
-      <text x="145" y="401" font-family="sans-serif" font-size="8" fill="#1e293b">&Delta;S=+0.012 E</text>
+      <!-- S Atlantic: E, center-bottom y≈430 -->
+      <line x1="270" y1="435" x2="322" y2="435" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrowE2)"/>
+      <rect x="30" y="424" width="112" height="32" rx="4" fill="#0f172a" fill-opacity="0.9" stroke="#0e7490" stroke-width="0.8"/>
+      <text x="36" y="437" font-family="sans-serif" font-size="9" font-weight="700" fill="#22d3ee">S ATLANTIC</text>
+      <text x="36" y="449" font-family="sans-serif" font-size="7.5" fill="#94a3b8">&Delta;S=+0.012 E</text>
 
       <!-- Legend -->
-      <rect x="20" y="430" width="290" height="100" rx="6" fill="white" fill-opacity="0.92" stroke="#e2e8f0" stroke-width="1"/>
-      <text x="30" y="447" font-family="sans-serif" font-size="9" font-weight="700" fill="#1e293b">LEGEND &mdash; Single Global Eastward Rotation</text>
-      <line x1="30" y1="461" x2="58" y2="448" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowNE)"/>
-      <text x="65" y="462" font-family="sans-serif" font-size="8" fill="#1e293b">NH Atlantic &Delta;S &gt; 0.015 (strong)</text>
-      <line x1="30" y1="478" x2="58" y2="478" stroke="#16a34a" stroke-width="2.5" marker-end="url(#arrowE)"/>
-      <text x="65" y="482" font-family="sans-serif" font-size="8" fill="#1e293b">NH Pacific &Delta;S 0.010&ndash;0.015 (moderate)</text>
-      <line x1="30" y1="495" x2="58" y2="495" stroke="#2563eb" stroke-width="2.5" marker-end="url(#arrowE2)"/>
-      <text x="65" y="499" font-family="sans-serif" font-size="8" fill="#1e293b">SH Australian &Delta;S=+0.028 (strongest)</text>
-      <text x="30" y="518" font-family="sans-serif" font-size="7.5" fill="#94a3b8" font-style="italic">35+ routes tested &bull; PRED-CURR-008: single eastward rotation</text>
+      <rect x="170" y="598" width="360" height="18" rx="4" fill="#0f172a" fill-opacity="0"/>
+      <text x="350" y="609" text-anchor="middle" font-family="sans-serif" font-size="8.5" font-weight="700" fill="#60a5fa">Single Global Eastward Rotation &mdash; PRED-CURR-008 &mdash; 35+ routes</text>
     </svg>
   </div>
+
+  <p style="font-size:0.78rem;color:var(--text-tertiary);text-align:center;margin-top:0.5rem;">
+    NH positions derived from Polaris angle (Category 1). SH positions estimated pending Category 1 ground triangulation (OPEN-016).
+  </p>
 
   <div style="background:rgba(37,99,235,0.04);border:1px solid rgba(37,99,235,0.15);border-radius:var(--radius-sm);padding:1rem;margin-top:1rem;font-size:0.85rem;">
     <strong>PRED-CURR-001 (Testable Now):</strong> Book any round-trip transatlantic flight between 30&deg;N and 55&deg;N.
     Eastbound (USA &rarr; Europe) will be faster. Not because of jet stream &mdash; that only partially explains the asymmetry.
     The dome predicts a persistent aetheric current that adds to prevailing winds.
-    This prediction has held across every one of 7 independent transatlantic routes tested.
+    This prediction has held across every one of 9 independent transatlantic routes tested.
   </div>
 </div>
 
