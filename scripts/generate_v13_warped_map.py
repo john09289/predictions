@@ -14,7 +14,6 @@ import matplotlib.patches as mpatches
 import matplotlib.pyplot as plt
 import numpy as np
 from matplotlib.path import Path as MplPath
-from scipy.interpolate import CubicSpline
 from scipy.spatial import Delaunay
 from shapely.geometry import LineString, MultiLineString, MultiPolygon, Polygon
 
@@ -94,19 +93,19 @@ LABEL_POINTS = [
 ]
 
 
-def smooth_closed_curve(control_points: np.ndarray, samples: int = 720) -> np.ndarray:
-    # The user correctly called out that the earlier boundary read like a hexagon.
-    # We keep the same control vertices, but draw and sample them as a periodic
-    # spline so the ice wall reads like a continuous ovoid instead of a faceted
-    # polygon.
-    base = np.asarray(control_points, dtype=float)
-    deltas = np.diff(base, axis=0)
-    distances = np.sqrt((deltas**2).sum(axis=1))
-    t = np.concatenate([[0.0], np.cumsum(distances)])
-    x_spline = CubicSpline(t, base[:, 0], bc_type="periodic")
-    y_spline = CubicSpline(t, base[:, 1], bc_type="periodic")
-    sample_t = np.linspace(0.0, t[-1], samples, endpoint=False)
-    curve = np.column_stack([x_spline(sample_t), y_spline(sample_t)])
+def smooth_closed_curve(control_points: np.ndarray, iterations: int = 5) -> np.ndarray:
+    # The cubic spline version introduced fake "waves" by overshooting between
+    # sparse control points. Chaikin corner-cutting stays inside the intended
+    # envelope and gives a smooth closed curve without inventing new lobes.
+    curve = np.asarray(control_points[:-1], dtype=float)
+    for _ in range(iterations):
+        refined = []
+        for idx in range(len(curve)):
+            p0 = curve[idx]
+            p1 = curve[(idx + 1) % len(curve)]
+            refined.append(0.75 * p0 + 0.25 * p1)
+            refined.append(0.25 * p0 + 0.75 * p1)
+        curve = np.asarray(refined, dtype=float)
     return np.vstack([curve, curve[0]])
 
 
