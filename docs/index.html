@@ -14,13 +14,26 @@
   .hero .tagline { font-size:1.1rem; color:var(--text-secondary); max-width:600px; margin:0 auto 2rem; line-height:1.6; }
 
   .scorecard { display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap; margin:1.5rem 0; }
-  .score-block { text-align:center; padding:1.2rem 2rem; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-md); box-shadow:var(--shadow-card); min-width:100px; }
+  .score-block { text-align:center; padding:1.2rem 2rem; background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-md); box-shadow:var(--shadow-card); flex: 1 1 100px; min-width:120px; }
   .score-number { font-size:2.8rem; font-weight:700; font-family:var(--font-heading); line-height:1; }
   .score-label { font-size:0.75rem; text-transform:uppercase; letter-spacing:0.08em; color:var(--text-tertiary); margin-top:4px; }
   .score-blue { color:var(--accent-blue); }
   .score-green { color:var(--accent-green); }
   .score-gold { color:var(--accent-gold); }
   .score-red { color:var(--accent-red); }
+
+  @media (max-width: 600px) {
+    .scorecard { 
+      display: grid; 
+      grid-template-columns: 1fr 1fr; 
+      gap: 12px; 
+    }
+    .score-block { 
+      padding: 1rem; 
+      min-width: 0;
+    }
+    .score-number { font-size: 2.2rem; }
+  }
 
   .lambda-section { background:linear-gradient(135deg,rgba(37,99,235,0.04),rgba(14,165,233,0.03)); border:1px solid var(--border-blue); border-radius:var(--radius-lg); padding:2rem; margin:2rem 0; }
   .lambda-big { font-size:3rem; font-weight:700; font-family:var(--font-mono); color:var(--accent-blue); text-align:center; letter-spacing:-1px; margin:0.5rem 0; }
