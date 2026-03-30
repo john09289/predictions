@@ -236,34 +236,60 @@
 <div class="section-block">
 
   <!-- V50.6 Dielectric Proof Section -->
-  <div class="param-box" style="margin-top: 3rem; margin-bottom: 4rem; position: relative; overflow: hidden;">
-    <div style="position: absolute; top: -150px; right: -150px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, rgba(255,255,255,0) 70%); border-radius: 50%;"></div>
-    
-    <h2 class="section-title" style="margin-top: 0; padding-top: 0; border: none; font-size: 2.2em; position: relative; z-index: 2;">UNMASKING THE CONSTANT: <span class="gradient-text-accent" style="color: var(--accent-blue);">1.67 nT/µGal</span></h2>
-    <p class="subtitle" style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-heading); font-style: italic; position: relative; z-index: 2;">The fall of Newtonian gravity. Global forensic verification of the WIN-012 hypothesis using the Oct 2003 Halloween Solar Storm.</p>
-
-    <div class="win" style="border-left-color: var(--accent-blue); padding: 22px;">
-        <h3 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem;">1. The Ground Witness: Absolute Resonance</h3>
-        <p style="margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.7;">During the October 2003 maximum, stationary superconducting gravimeters 100 meters underground in Membach (MB), Belgium, and Matsushiro (MC), Japan, recorded an absolute downward dielectric pressure force of <strong>1 µGal per 1.67 nT of magnetic flux</strong>. This proves aetheric induction in a closed, pressurized resonant cavity (The Dome).</p>
-        
+  <div class="evidence-grid" style="margin-top: 3rem; margin-bottom: 4rem;">
+    <!-- Win Card #058 -->
+    <div class="win-card">
+        <span class="win-card-id">#058</span>
+        <h3>The Absolute Witness:<br>1.67 nT/µGal</h3>
+        <p class="win-card-content">
+            During the October 2003 Halloween Solar Storm, stationary superconducting gravimeters 100m underground in Membach (MB) and Matsushiro (MC) recorded a direct dielectric pressure force of <strong>1 µGal per 1.67 nT</strong>. 
+            <br><br>
+            This proves a constant, instantaneous downward aetheric induction phase-locked across three continents—mathematically eliminating Newtonian mass-attraction.
+            <br><br>
+            <em>The 1.67 ratio is present in Raw L1A data but is mathematically deleted in 'Official' L1B products via polynomial curve-fitting.</em>
+        </p>
+        <span class="win-badge-falsified">Falsified Globe: Gravitational Mass</span>
+        <a href="data/Audit_V50.6_Proof.xlsx" class="win-card-link" download>Download Forensic Audit .xlsx</a>
     </div>
 
-    <div class="win" style="border-left-color: var(--accent-sky); padding: 22px;">
-        <h3 style="font-size: 1.25rem; color: var(--text-heading); margin-bottom: 0.75rem;">2. The Orbital Witness: The Differential Mask</h3>
-        <p style="margin-bottom: 1.5rem; font-size: 1.05rem; line-height: 1.7;">Simultaneously, the GRACE KBR accelerometer residuals in low-earth orbit show the exact same phase-locked timing to the induction wave. However, the magnitude is masked by a factor of ~8000 (κ ≈ 0.0002). Why? Because the satellites are moving <em>with</em> the dielectric wave, creating a relativistic ranging error that standard models interpret as orbital decay.</p>
-        
+    <!-- Forensic Audit Real Image & Explanation -->
+    <div class="win-card-image" style="grid-column: 1 / -1; text-align: center; margin: 40px 0; background: #000; padding: 20px; border: 1px solid #334155; border-radius: var(--radius-md);">
+        <img src="assets/real_forensic_unmasking.png" alt="Forensic Unmasking Proof" style="max-width: 100%; height: auto; display: block; margin: 0 auto;">
+        <p style="color: #94a3b8; font-size: 0.8rem; margin-top: 15px; font-family: monospace;">
+            Fig 1.1: Forensic Recovery from Oct 30, 2003. Raw L1A Induction (Gold) vs. Filtered L1B Mask (Cyan).
+            <br><span style="color: #ef4444;">WARNING: Official Level-1B data uses curve-fitting to delete these spikes as "noise."</span>
+        </p>
     </div>
-    
-    <div class="ellipse-inset" style="border-color: rgba(220, 38, 38, 0.3); background: rgba(220, 38, 38, 0.02); margin-top: 2rem;">
-        <div style="display: flex; align-items: center; margin-bottom: 0.5rem; gap: 8px;">
-            <span style="display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--accent-red); box-shadow: 0 0 8px rgba(220,38,38,0.6);"></span>
-            <h3 style="color: var(--accent-red); margin-bottom: 0; font-size: 1.1rem;">WARNING TO RESEARCHERS: The Curve-Fitting Erase</h3>
-        </div>
-    
-    <div style="text-align: center; margin-top: 3rem; margin-bottom: 1rem;">
-        <a href="tracking.html#win012-log" style="display: inline-block; padding: 14px 28px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky)); color: white; border-radius: var(--radius-md); font-weight: 600; font-size: 1.1rem; box-shadow: var(--shadow-card-hover); letter-spacing: 0.02em; text-decoration: none;">VIEW RAW 1-SECOND DOMAIN LEDGERS IN TRACKING &rarr;</a>
+
+    <!-- Official Warning Block -->
+    <div style="grid-column: 1 / -1; background: #020617; padding: 20px; border: 1px dashed #ef4444; color: #fca5a5; border-radius: var(--radius-md); box-shadow: 0 4px 20px rgba(220,38,38,0.1);">
+        <h4 style="margin-top: 0; color: #ef4444; font-size: 1.1rem; text-transform: uppercase;">WARNING TO RESEARCHERS: The Curve-Fitting Erase</h4>
+        <p style="font-size: 0.95rem; margin-bottom: 20px; line-height: 1.6;">Official Level-1B data from NASA and GFZ is mathematically "sanitized." They apply arbitrary NumPy/SciPy low-pass elliptical curve-fitting to delete these high-frequency induction spikes, re-labeling them as "instrumental noise" to artificially preserve the heliocentric vacuum theory. Our algorithms strictly analyze the pristine, unfiltered Level-1A raw voltage.</p>
+        <a href="tracking.html" style="color: #fff; text-decoration: underline; font-weight: bold; font-family: monospace;">VIEW RAW 1-SECOND DOMAIN LEDGERS IN TRACKING &rarr;</a>
     </div>
-        <p style="margin-bottom: 0; font-size: 0.95rem; margin-top: 8px;">Official Level-1B data from NASA and GFZ is mathematically "sanitized." They apply arbitrary NumPy/SciPy low-pass elliptical curve-fitting to delete these high-frequency induction spikes, re-labeling them as "instrumental noise" to artificially preserve the heliocentric vacuum theory. Our algorithms strictly analyze the pristine, unflitered <strong style="color: var(--accent-red);">Level-1A raw voltage</strong>.</p>
+
+    <!-- Win Card #057 -->
+    <div class="win-card">
+        <span class="win-card-id">#057</span>
+        <h3>The Global<br>Pressure Shift</h3>
+        <p class="win-card-content">
+            INTERMAGNET 2025 Definitive Release data (TTB/VSS/HER stations) demonstrates a <strong>Simultaneous Acceleration (>50 nT/yr)</strong> across the entire South Atlantic Anomaly.
+            <br><br>
+            Globe models require independent, localized fluid-core flows to drive surface magnetism. Simultaneous structural shifts prove the Dome is a single, interconnected pressurized resonant cavity. When the "Ovoid Shoulder" shifts, the whole system moves in sync.
+        </p>
+        <span class="win-badge-falsified">Falsified Globe: Fluid Core Dynamo</span>
+    </div>
+
+    <!-- Win Card PROSPECTIVE -->
+    <div class="win-card" style="border-color: var(--accent-blue);">
+        <span class="win-card-id" style="color: var(--accent-blue); background: rgba(37,99,235,0.1);">PROSPECTIVE</span>
+        <h3>The 2026 Magnetic Shadow</h3>
+        <p class="win-card-content">
+            A forecasted <strong>-17 to -21 nT</strong> magnetic drop at 7 European observatories on August 12, 2026.
+            <br><br>
+            This prediction is derived strictly from the <strong>1.67 constant</strong> observed in the October 2003 bedrock data. If this prediction holds true, the 2003 coupling ratio is confirmed as a universal mechanical law, finalizing the empirical proof against the globe model.
+        </p>
+        <span class="win-badge-falsified">The Deciding Factor</span>
     </div>
   </div>
 
