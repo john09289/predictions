@@ -1,23 +1,23 @@
 {
-  "updated": "2026-03-30 12:51 UTC",
+  "updated": "2026-03-30 18:44 UTC",
   "date": "2026-03-30",
   "kp": {
     "kp_max_24h": 3.33,
-    "kp_current": 3.0,
+    "kp_current": 2.0,
     "storm_class": "G0 (quiet)",
     "is_storm": false,
     "recent_values": [
-      2.67,
-      3.33,
       1.0,
       2.0,
       2.67,
       2.67,
       3.33,
-      3.0
+      3.0,
+      3.0,
+      2.0
     ],
     "source": "NOAA SWPC",
-    "fetched": "2026-03-30 12:51 UTC"
+    "fetched": "2026-03-30 18:44 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -28,14 +28,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-03-30 12:51 UTC"
+    "fetched": "2026-03-30 18:44 UTC"
   },
   "aao": {
     "latest": 0.489,
     "weekly_mean": -0.387,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-03-30 12:51 UTC"
+    "fetched": "2026-03-30 18:44 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -49,15 +49,15 @@
       }
     ],
     "alert_count_48h": 2,
-    "fetched": "2026-03-30 12:51 UTC"
+    "fetched": "2026-03-30 18:44 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.101,
+    "amplitude_index": 0.072,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-03-30 12:51 UTC",
+    "fetched": "2026-03-30 18:44 UTC",
     "pixel_count": 67728
   }
 }
