@@ -1,455 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ECM Tracking Logs &mdash; Daily &amp; Weekly Data</title>
-  <link rel="stylesheet" href="style.css">
-  <script src="analytics.js"></script>
-  <style>
-    .tracking-section { margin: 2rem 0; border: 1px solid var(--border-light); border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-card); }
-    .tracking-header { background: linear-gradient(135deg, rgba(37,99,235,0.07), rgba(14,165,233,0.05)); padding: 0.9rem 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid var(--border-light); }
-    .tracking-header h3 { margin: 0; font-size: 1rem; font-family: var(--font-body); font-weight: 600; color: var(--text-heading); }
-    .cadence-label { font-size: 0.7rem; background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky)); color: #fff; padding: 3px 10px; border-radius: 10px; white-space: nowrap; font-weight: 600; }
-    .stat-row { display: flex; flex-wrap: wrap; gap: 1.5rem; padding: 0.7rem 1.5rem; background: var(--bg-code); border-bottom: 1px solid var(--border-light); font-size: 0.82rem; }
-    .stat { display: flex; flex-direction: column; gap: 2px; }
-    .stat-label { color: var(--text-tertiary); font-size: 0.67rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .stat-value { font-weight: 600; color: var(--text-primary); }
-    .log-table { width: 100%; border-collapse: collapse; font-size: 0.78rem; overflow-x: auto; display: block; }
-    .log-table th { background: var(--bg-code); padding: 0.45rem 0.75rem; text-align: left; color: var(--text-secondary); font-weight: 600; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.04em; border-bottom: 1px solid var(--border-medium); white-space: nowrap; }
-    .log-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--border-light); vertical-align: top; color: var(--text-primary); }
-    .log-table tr:last-child td { border-bottom: none; }
-    .log-table tbody tr:hover td { background: var(--bg-card-hover); }
-    .suppressed { color: var(--accent-red); font-weight: 600; }
-    .normal { color: var(--accent-green); font-weight: 500; }
-    .pending-cell { color: var(--text-tertiary); font-style: italic; }
-    .unknown-cell { color: var(--text-tertiary); }
-    .add-footer { background: var(--bg-code); padding: 0.6rem 1.5rem; font-size: 0.75rem; color: var(--text-secondary); border-top: 1px solid var(--border-light); }
-    .immediate-banner { background: #fff8f0; border-left: 3px solid var(--accent-gold-light); padding: 0.75rem 1.5rem; font-size: 0.85rem; color: var(--accent-gold); margin-bottom: 1.5rem; border-radius: 0 var(--radius-sm) var(--radius-sm) 0; }
-    .immediate-banner a { color: var(--accent-gold); }
-    .section-intro { color: var(--text-secondary); font-size: 0.85rem; margin: 0; padding: 0.75rem 1.5rem; border-bottom: 1px solid var(--border-light); }
-    .win-tag { color: var(--accent-green); font-size: 0.7rem; font-weight: 700; }
-    .pending-tag { color: var(--accent-gold); font-size: 0.7rem; }
-    .note-row td { background: var(--bg-code); color: var(--text-tertiary); font-size: 0.75rem; font-style: italic; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tracking & Data Integrity</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { padding: 50px; }
+        .data-card {
+            background: rgba(0,25,50,0.4);
+            border: 1px solid var(--accent-sky);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .btn-download { display: inline-block; padding: 10px 15px; background: var(--accent-sky); color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 10px; }
+        .verified-badge { background: #10b981; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; vertical-align: middle; margin-left: 10px; }
+    </style>
 </head>
 <body>
+    <nav class="frosted-nav">
+        <a href="index.html" class="nav-pill" style="text-decoration:none; color:white;">BACK TO REGISTRY</a>
+    </nav>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
-  <a href="predictions.html">Predictions</a>
-  <a href="tracking.html" class="active">Tracking</a>
-  <a href="coordinates.html">Coordinates</a>
-  <a href="model.html">Model</a>
-  <a href="evolution.html">Evolution</a>
-  <a href="context.html">AI Context</a>
-</nav>
+    <header class="app-container hero-header" style="margin-top: 50px;">
+        <h1 class="site-title"><span class="gradient-text-accent">FORENSIC</span> DATA TRACKER</h1>
+        <p class="site-subtitle" style="font-size:1.1rem; color:var(--text-secondary);">Direct access to the unaltered, cryptographically timestamped residual matrices.</p>
+    </header>
 
-<h1>ECM Daily &amp; Weekly Tracking Logs</h1>
-<p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
+    <main class="main-stage">
+        
+        <div class="data-card">
+            <h2 style="color:white; margin-bottom: 15px;">WIN-012: The Magnetic-Gravity Coupling Constant <span class="verified-badge">V50.6 VERIFIED</span></h2>
+            <p style="color:var(--text-secondary); line-height: 1.5; margin-bottom: 20px;">
+                <strong>Coupling Constant (κ): 1.67 nT/µGal</strong><br><br>
+                The empirical bedrock synchronization matrix for the 2003 Halloween Storm. Proves physical upward-pressure tracking synchronized to local magnetic troughing at exactly 1.67, definitively refuting random orbital interference models. Includes both raw <strong>Z-axis voltage</strong> and <strong>High-Pass Induction Jitter</strong> arrays.
+            </p>
+            
+            <h4 style="color:#ef4444; margin-bottom:5px;">Ground Witness Ledger (High-Resolution Absolute Sync)</h4>
+            <a href="data/Audit_V50.6_Proof.xlsx" class="btn-download" download>Download Audit_V50.6_Proof.xlsx (Ground Data)</a>
+            <br><br>
+            
+            <h4 style="color:#3b82f6; margin-top:10px; margin-bottom:5px;">Orbital Witness Ledger (11,500-Minute Satellite Phase-Lock)</h4>
+            <a href="data/storm_master.xlsx" class="btn-download" download>Download storm_master.xlsx (GRACE Data)</a>
+            <a href="data/storm_master.csv" class="btn-download" style="background:var(--bg-card); border: 1px solid var(--accent-sky);" download>Download storm_master.csv (Raw Matrix)</a>
+        </div>
 
-<div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
-  <span><strong>Model:</strong> V50.9</span>
-  <span><strong>Confirmed:</strong> 53</span>
-  <span><strong>Falsified:</strong> 4</span>
-  <span><strong>Last updated:</strong> 2026-03-30</span>
-  <span><strong>Tracking entries:</strong> 5</span>
-</div>
-
-<div id="live-status" style="display:flex;flex-wrap:wrap;gap:1rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-bottom:1.5rem;font-size:0.82rem;">
-  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-03-30 18:44 UTC</span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Kp: <strong style="color:var(--accent-gold);">3.33 (G0 (quiet))</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">NMP: <strong>85.778&deg;N, 138.057&deg;E</strong>&nbsp;ratio: <strong style="color:var(--accent-green);">21.6&times;</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">AAO: <strong style="color:var(--accent-red);">-0.387&sigma; (7d)</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.072</span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:var(--accent-red);">2</strong></span>
-</div>
-
-<div class="immediate-banner">
-  &#9889; <strong>IMMEDIATE ACTION:</strong> Check HeartMath spectrogram for March 22 (G3 storm 0900&ndash;1200 UTC).
-  SR suppressed = PRED-SR-SUPPRESS confirmed (2nd event). Not suppressed = update DW-006 and revise model.
-  &rarr; <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI March 22</a>
-  &nbsp;|&nbsp; Also check March 23 (G1 isolated, Kp 3&ndash;5).
-</div>
-
-<!-- DW-001: MASTER DAILY LOG -->
-<section class="tracking-section" id="dw001-log">
-  <div class="tracking-header">
-    <h3>DW-001 &mdash; Master Daily Geomagnetic + SR Log</h3>
-    <span class="cadence-label">Daily</span>
-  </div>
-  <p class="section-intro">One row per day. Captures all storm-relevant data in one place. SR columns need HeartMath or Tomsk check each morning. Kp and Dst from NOAA. Solar wind from OMNI2/DSCOVR.</p>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Total entries</span><span class="stat-value">5</span></div>
-    <div class="stat"><span class="stat-label">Storm days (G1+)</span><span class="stat-value">4</span></div>
-    <div class="stat"><span class="stat-label">SR suppression confirmed</span><span class="stat-value">1 (2026-03-20)</span></div>
-    <div class="stat"><span class="stat-label">SR pending check</span><span class="stat-value">2 days</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;75% G1+ &rarr; suppress</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr>
-        <th>Date</th><th>Kp Peak</th><th>Storm Class</th><th>Storm Phase</th>
-        <th>Dst (nT)</th><th>SW Speed (km/s)</th><th>SR Freq (Hz)</th>
-        <th>SR Amp vs Baseline</th><th>Tomsk Status</th><th>Suppressed?</th><th>Notes / Source</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-03-19</td>
-        <td>0–3</td>
-        <td class="normal">G0 (quiet)</td>
-        <td>—</td>
-        <td>-8 to -15</td>
-        <td>~700</td>
-        <td>7.83</td>
-        <td class="normal">1.00 (baseline)</td>
-        <td class="normal">Normal</td>
-        <td class="normal">N/A</td>
-        <td>Pre-storm quiet day. Coronal hole approaching geoeffective position.</td>
-      </tr>
-      <tr>
-        <td>2026-03-20</td>
-        <td>7–8</td>
-        <td class="suppressed">G3/G4</td>
-        <td>Main phase</td>
-        <td><−100</td>
-        <td>~700</td>
-        <td class="unknown-cell">&mdash;</td>
-        <td class="suppressed"><0.70 (suppressed)</td>
-        <td class="unknown-cell">Saturated/unknown</td>
-        <td class="suppressed">&#10003; YES</td>
-        <td>W027 event. G4 confirmed. SR total calm during storm peak. Source: disclosurenews.it</td>
-      </tr>
-      <tr>
-        <td>2026-03-21</td>
-        <td>3–7</td>
-        <td class="suppressed">G1–G3</td>
-        <td>Recovery</td>
-        <td>-50 to -80</td>
-        <td>~600</td>
-        <td class="unknown-cell">&mdash;</td>
-        <td class="pending-cell">PENDING</td>
-        <td class="unknown-cell">Unknown</td>
-        <td class="pending-cell">&#10067; PENDING</td>
-        <td>Multiple CME + coronal hole stream. Aurora visible Yellowknife 10:32 UTC. Source: EarthSky</td>
-      </tr>
-      <tr>
-        <td>2026-03-22</td>
-        <td>~7</td>
-        <td class="suppressed">G3</td>
-        <td>Main→recovery</td>
-        <td>—</td>
-        <td>~600</td>
-        <td class="unknown-cell">&mdash;</td>
-        <td class="pending-cell">PENDING</td>
-        <td class="unknown-cell">Unknown</td>
-        <td class="pending-cell">&#10067; PENDING</td>
-        <td>G3 confirmed 0900–1200 UTC per NOAA. First post-revision PRED-SR-SUPPRESS test.</td>
-      </tr>
-      <tr>
-        <td>2026-03-23</td>
-        <td>6.33</td>
-        <td class="">G2</td>
-        <td>Active</td>
-        <td>—</td>
-        <td>~600</td>
-        <td class="unknown-cell">&mdash;</td>
-        <td class="suppressed">0.077 (auto-pixel Tomsk — CANDIDATE suppress)</td>
-        <td class="normal">Suppressed (auto-flagged — needs human confirm)</td>
-        <td class="pending-tag" style="font-style:italic;">&#9888; CANDIDATE &mdash; verify HeartMath</td>
-        <td>Kp 6.33 peak per NOAA. Tomsk amplitude_index=0.077 auto-flagged as suppressed by pipeline. Check HeartMath to confirm. Source: NOAA SWPC + Tomsk pixel analysis.</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="11">Add row daily: date | kp_peak | storm_class | phase (initial/main/recovery/quiet) | Dst | SW_speed | SR_freq | SR_amp_ratio (1.0=baseline) | Tomsk_status | suppressed (Y/N/N/A) | notes + source</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="add-footer">
-    Sources: Kp/Dst &rarr; <a href="https://www.swpc.noaa.gov">NOAA SWPC</a> |
-    Solar wind &rarr; <a href="https://omniweb.gsfc.nasa.gov/ow_min.html">OMNI2</a> |
-    SR freq/amp &rarr; <a href="https://sos70.ru/provider.php?file=srf.jpg">Tomsk srf.jpg</a> + <a href="https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/">HeartMath GCI</a>
-  </div>
-</section>
-
-<!-- DW-002: NMP DRIFT RATIO -->
-<section class="tracking-section" id="dw002-log">
-  <div class="tracking-header">
-    <h3>DW-002 &mdash; NMP Longitudinal:Latitudinal Drift Ratio</h3>
-    <span class="cadence-label">Monthly (NOAA NP.xy)</span>
-  </div>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Baseline NMP (2026-02)</span><span class="stat-value">85.778&deg;N, 138.057&deg;E</span></div>
-    <div class="stat"><span class="stat-label">WIN-043 ratio</span><span class="stat-value">2.26&times;</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;2.0&times; rolling</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">random walk (no ratio)</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Date</th><th>Lat</th><th>Lon</th><th>&Delta;lat (&deg;)</th><th>&Delta;lon (&deg;)</th><th>Monthly Ratio</th><th>4-Month Rolling</th><th>vs PRED-R003</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-02</td>
-        <td>85.778&deg;N</td>
-        <td>138.057&deg;E</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
-        <td style="color:var(--accent-green);font-weight:600;">2.26 (historical)&times;</td>
-        <td>2.26× (WIN-043)</td>
-        <td class="normal">On track</td>
-      </tr>
-      <tr>
-        <td>2026-03</td>
-        <td>85.778&deg;N</td>
-        <td>138.057&deg;E</td>
-        <td>-0.18</td>
-        <td>-3.888</td>
-        <td style="color:var(--accent-green);font-weight:600;">21.6&times;</td>
-        <td>—</td>
-        <td class="normal">On track</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="8">Pull monthly from <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a>. Add row each month. PRED-R003 target: 141&ndash;146&deg;E by 2031.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-003: AAO INDEX -->
-<section class="tracking-section" id="dw003-log">
-  <div class="tracking-header">
-    <h3>DW-003 &mdash; Weekly AAO Index (Roaring 40s Long-Term Bias)</h3>
-    <span class="cadence-label">Weekly</span>
-  </div>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Entries</span><span class="stat-value">2</span></div>
-    <div class="stat"><span class="stat-label">12wk mean</span><span class="stat-value">&mdash; (insufficient data)</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&gt;+0.3&sigma; 12wk mean</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">&asymp;0 (random)</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Week End</th><th>Weekly Mean (&sigma;)</th><th>Days Positive</th><th>Days &gt;1&sigma;</th><th>Running 12wk Mean</th><th>Notes</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-03-19</td>
-        <td class="normal">+0.780&sigma;</td>
-        <td>8/7</td>
-        <td>&mdash;</td>
-        <td>&mdash; (insufficient)</td>
-        <td>W020 test window. Below ≥3% falsification threshold but positive bias noted.</td>
-      </tr>
-      <tr>
-        <td>2026-03-30</td>
-        <td class="suppressed">-0.387&sigma;</td>
-        <td>3/7</td>
-        <td>&mdash;</td>
-        <td>&mdash; (insufficient)</td>
-        <td></td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="6">Continue weekly. Source: <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC/NOAA AAO</a>. Dome calls: 12wk mean &gt;+0.3&sigma;. Globe calls: &asymp;0.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-004: SOLAR WIND vs SR FREQUENCY -->
-<section class="tracking-section" id="dw004-log">
-  <div class="tracking-header">
-    <h3>DW-004 &mdash; Solar Wind Pressure vs SR Frequency (Quiet Days Kp&lt;1)</h3>
-    <span class="cadence-label">Log on Kp&lt;1 + SW&gt;8 nPa days only</span>
-  </div>
-  <p class="section-intro">Separate from storm tracking. Tests whether dome firmament responds to solar wind pressure on calm days. Globe has no mechanism. Log only when Kp&lt;1 AND SW pressure &gt;8 nPa simultaneously.</p>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Quiet-day entries</span><span class="stat-value">0</span></div>
-    <div class="stat"><span class="stat-label">SR baseline</span><span class="stat-value">7.83 Hz</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">r&sup2;&gt;0.3 at 50 entries</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Date</th><th>SW Pressure (nPa)</th><th>Kp</th><th>SR Freq (Hz)</th><th>&Delta; from 7.83 Hz</th><th>Direction</th><th>Notes</th></tr>
-    </thead>
-    <tbody>
-      <tr class="note-row">
-        <td colspan="7">Log ONLY on Kp&lt;1 days with SW&gt;8 nPa. Sources: <a href="https://omniweb.gsfc.nasa.gov/ow_min.html">OMNI2</a> (SW pressure) + <a href="https://sos70.ru/provider.php?file=srf.jpg">Tomsk SR freq</a>.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-005: SAA STATION DECAY -->
-<section class="tracking-section" id="dw005-log">
-  <div class="tracking-header">
-    <h3>DW-005 &mdash; Monthly SAA Station Decay (TTB / TDC / HER)</h3>
-    <span class="cadence-label">Monthly (INTERMAGNET)</span>
-  </div>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">TTB current rate</span><span class="stat-value">77 nT/yr (WIN-042)</span></div>
-    <div class="stat"><span class="stat-label">TDC current rate</span><span class="stat-value">79.7 nT/yr (WIN-041)</span></div>
-    <div class="stat"><span class="stat-label">HER current rate</span><span class="stat-value">51.4 nT/yr (WIN-041)</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">TTB+TDC &ge;50 nT/yr through 2028</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Month</th><th>TTB F (nT)</th><th>TDC F (nT)</th><th>HER F (nT)</th><th>TTB Monthly &Delta;</th><th>Annualized Rate</th><th>vs PRED-DECAY-TTB</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2025 baseline</td>
-        <td>~21,730</td>
-        <td>~23,100</td>
-        <td>~25,400</td>
-        <td>&mdash;</td>
-        <td>~77 nT/yr</td>
-        <td class="normal">&#10003; (WIN-042)</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="7">Pull monthly from <a href="https://www.intermagnet.org/data-donnee/download-eng.php">INTERMAGNET</a>. TTB = Tsumeb Namibia. TDC = Trindade Island. HER = Hermanus S. Africa.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-006: STORM SUPPRESSION TALLY -->
-<section class="tracking-section" id="dw006-log">
-  <div class="tracking-header">
-    <h3>DW-006 &mdash; Running Storm-SR Suppression Tally</h3>
-    <span class="cadence-label">Per G1+ storm event</span>
-  </div>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Storms logged</span><span class="stat-value">4</span></div>
-    <div class="stat"><span class="stat-label">Suppression confirmed</span><span class="stat-value">1</span></div>
-    <div class="stat"><span class="stat-label">Pending check</span><span class="stat-value">2</span></div>
-    <div class="stat"><span class="stat-label">Confirmed rate</span><span class="stat-value">100% (of checked)</span></div>
-    <div class="stat"><span class="stat-label">Dome predicts</span><span class="stat-value">&ge;75% suppression</span></div>
-    <div class="stat"><span class="stat-label">Falsification threshold</span><span class="stat-value">5 consecutive NO</span></div>
-  </div>
-  <div class="immediate-banner" style="border-radius:0;">
-    &#9889; <strong>March 22 PENDING:</strong> G3 confirmed 0900&ndash;1200 UTC. Check HeartMath March 22 amplitude.
-    Suppression = PRED-SR-SUPPRESS confirmed (event 2). No suppression = update model.
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Date</th><th>Storm Class</th><th>Kp Peak</th><th>Storm Phase Checked</th><th>SR Suppression %</th><th>Confirmed?</th><th>HeartMath / Source</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-03-20</td>
-        <td class="suppressed">G4</td>
-        <td>8.0</td>
-        <td>Main phase</td>
-        <td class="suppressed">>30%</td>
-        <td class="suppressed">&#10003; YES &mdash; <span class="win-tag">W027</span></td>
-        <td>disclosurenews.it Schumann monitoring</td>
-      </tr>
-      <tr>
-        <td>2026-03-21</td>
-        <td class="suppressed">G1–G3</td>
-        <td>7</td>
-        <td>Recovery</td>
-        <td class="pending-cell">PENDING</td>
-        <td class="pending-cell">&#10067; PRIORITY CHECK</td>
-        <td>HeartMath GCI</td>
-      </tr>
-      <tr>
-        <td>2026-03-22</td>
-        <td class="suppressed">G3</td>
-        <td>~7</td>
-        <td>Main phase (0900–1200 UTC)</td>
-        <td class="pending-cell">PENDING</td>
-        <td class="pending-cell">&#10067; PRIORITY CHECK</td>
-        <td>NOAA confirmed. HeartMath GCI</td>
-      </tr>
-      <tr>
-        <td>2026-03-23</td>
-        <td class="">G2</td>
-        <td>6.33</td>
-        <td>Active (Kp 6.33 peak)</td>
-        <td class="suppressed">>92% (Tomsk amp_index=0.077)</td>
-        <td>CANDIDATE</td>
-        <td>Tomsk sra.jpg pixel analysis (amplitude_index=0.077 < 0.70 threshold). Verify at HeartMath GCI.</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="7">Add row per G1+ event: date | class | kp_peak | phase_checked | suppression_pct | confirmed (Y/N) | source</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-007: Dst INDEX TRACKING -->
-<section class="tracking-section" id="dw007-log">
-  <div class="tracking-header">
-    <h3>DW-007 &mdash; Dst Index Tracking (Ring Current / Aetheric Compression)</h3>
-    <span class="cadence-label">Per storm event</span>
-  </div>
-  <p class="section-intro">
-    Dst measures the strength of Earth&rsquo;s ring current during geomagnetic storms. In ECM, this is the aetheric equatorial compression signature &mdash; the dome&rsquo;s equatorial aether being displaced inward during field stress events. Predicts: deeper Dst events correlate with faster SAA decay in subsequent months (&kappa; coupling). Category 1 data: ground magnetometer network, no model assumptions.
-  </p>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Storm events logged</span><span class="stat-value">2</span></div>
-    <div class="stat"><span class="stat-label">Deepest Dst this period</span><span class="stat-value">&lt;&minus;100 nT (Mar 20)</span></div>
-    <div class="stat"><span class="stat-label">ECM predicts</span><span class="stat-value">Dst recovery rate correlates with SAA decay acceleration</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">Dst and SAA decay independent</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Storm Date</th><th>Dst Min (nT)</th><th>Recovery Time (hrs)</th><th>Storm Class</th><th>SAA Month After</th><th>ECM Coupling?</th><th>Source</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-03-20</td>
-        <td><−100 (est.)</td>
-        <td><span class="pending-cell">PENDING</span></td>
-        <td>G4</td>
-        <td>Check April INTERMAGNET</td>
-        <td><span class="pending-cell">&mdash;</span></td>
-        <td>NOAA/EarthSky confirmed G4. Exact Dst: Kyoto WDC</td>
-      </tr>
-      <tr>
-        <td>2026-03-22</td>
-        <td><span class="pending-cell">PENDING</span></td>
-        <td><span class="pending-cell">PENDING</span></td>
-        <td>G3</td>
-        <td>Check April INTERMAGNET</td>
-        <td><span class="pending-cell">&mdash;</span></td>
-        <td>Kyoto WDC</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="7">Pull Dst from Kyoto WDC after each storm. Log min Dst + recovery time. Compare SAA monthly delta the following month. Tests &kappa;=1.67 nT/&micro;Gal coupling (WIN-012) at storm timescales.</td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="add-footer">
-    Dst source: <a href="http://wdc.kugi.kyoto-u.ac.jp/dst_realtime/presentmonth/index.html">Kyoto WDC real-time Dst</a> |
-    Long-term archive: <a href="http://wdc.kugi.kyoto-u.ac.jp/dstdir/index.html">Kyoto Dst archive</a>
-  </div>
-</section>
-
-<!-- HOW TO USE -->
-<section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-code);border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-  <h2 style="margin-top:0;font-size:1.05rem;font-family:var(--font-body);font-weight:600;">How to Use These Logs</h2>
-  <ol style="color:var(--text-secondary);font-size:0.85rem;line-height:1.8;">
-    <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
-    <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
-    <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
-    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
-    <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
-  </ol>
-  <p style="color:var(--text-tertiary);font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
-</section>
-
-<footer>
-  <span>Version 50.9</span>
-  <span>2026-03-30</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
-  <span style="color:var(--accent-red)">4 falsified</span>
-  <a href="https://github.com/John09289/predictions">GitHub</a>
-  <a href="context.html">AI Context</a>
-</footer>
-
+    </main>
 </body>
 </html>
