@@ -5,45 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tracking & Data Integrity</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        body { padding: 50px; }
-        .data-card {
-            background: rgba(0,25,50,0.4);
-            border: 1px solid var(--accent-sky);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        .btn-download { display: inline-block; padding: 10px 15px; background: var(--accent-sky); color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 10px; }
-        .verified-badge { background: #10b981; color: white; padding: 3px 8px; border-radius: 4px; font-size: 0.8em; font-weight: bold; vertical-align: middle; margin-left: 10px; }
-    </style>
 </head>
 <body>
     <nav class="frosted-nav">
-        <a href="index.html" class="nav-pill" style="text-decoration:none; color:white;">BACK TO REGISTRY</a>
+        <a href="index.html" class="nav-pill active">BACK TO REGISTRY</a>
     </nav>
 
     <header class="app-container hero-header" style="margin-top: 50px;">
         <h1 class="site-title"><span class="gradient-text-accent">FORENSIC</span> DATA TRACKER</h1>
-        <p class="site-subtitle" style="font-size:1.1rem; color:var(--text-secondary);">Direct access to the unaltered, cryptographically timestamped residual matrices.</p>
+        <p class="site-subtitle" style="max-width:800px; margin: 1.5rem auto 2rem; font-size:1.1rem;">
+            Direct access to the unaltered, cryptographically timestamped residual matrices validating the V50.6 Dielectric Model.
+        </p>
     </header>
 
     <main class="main-stage">
         
-        <div class="data-card">
-            <h2 style="color:white; margin-bottom: 15px;">WIN-012: The Magnetic-Gravity Coupling Constant <span class="verified-badge">V50.6 VERIFIED</span></h2>
-            <p style="color:var(--text-secondary); line-height: 1.5; margin-bottom: 20px;">
-                <strong>Coupling Constant (κ): 1.67 nT/µGal</strong><br><br>
-                The empirical bedrock synchronization matrix for the 2003 Halloween Storm. Proves physical upward-pressure tracking synchronized to local magnetic troughing at exactly 1.67, definitively refuting random orbital interference models. Includes both raw <strong>Z-axis voltage</strong> and <strong>High-Pass Induction Jitter</strong> arrays.
+        <div class="param-box">
+            <h2 class="section-title" style="margin-top: 0; padding-top: 0;">WIN-012: The Magnetic-Gravity Coupling Constant <span class="badge confirmed" style="font-size: 0.6em; vertical-align: top; margin-top: 6px;">V50.6 VERIFIED</span></h2>
+            
+            <p style="font-size: 1.15em; color: var(--text-heading); margin-bottom: 24px;">
+                <strong>Coupling Constant (κ): 1.67 nT/µGal</strong>
             </p>
             
-            <h4 style="color:#ef4444; margin-bottom:5px;">Ground Witness Ledger (High-Resolution Absolute Sync)</h4>
-            <a href="data/Audit_V50.6_Proof.xlsx" class="btn-download" download>Download Audit_V50.6_Proof.xlsx (Ground Data)</a>
-            <br><br>
+            <p class="subtitle" style="margin-bottom: 32px; font-size: 1em;">
+                The empirical bedrock synchronization matrix for the 2003 Halloween Storm. Proves physical upward-pressure tracking synchronized to local magnetic troughing at exactly 1.67, definitively refuting random orbital interference models. Includes both raw Z-axis voltage and High-Pass Induction Jitter arrays.
+            </p>
             
-            <h4 style="color:#3b82f6; margin-top:10px; margin-bottom:5px;">Orbital Witness Ledger (11,500-Minute Satellite Phase-Lock)</h4>
-            <a href="data/storm_master.xlsx" class="btn-download" download>Download storm_master.xlsx (GRACE Data)</a>
-            <a href="data/storm_master.csv" class="btn-download" style="background:var(--bg-card); border: 1px solid var(--accent-sky);" download>Download storm_master.csv (Raw Matrix)</a>
+            <div class="ellipse-inset" style="margin-bottom: 20px;">
+                <h3 style="color: var(--accent-blue-dim); margin-bottom: 12px; font-size: 1.1em;">Ground Witness Ledger (High-Resolution Absolute Sync)</h3>
+                <p>The untampered 1-second resolution logs directly from Membach (MB) and Matsushiro (MC) superconducting gravimeters during the C-class pulse.</p>
+                <a href="data/Audit_V50.6_Proof.xlsx" class="btn-verify" style="display: inline-block; padding: 10px 18px; background: linear-gradient(135deg, var(--accent-blue), var(--accent-sky)); color: white; border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9em;" download>DOWNLOAD AUDIT_V50.6_PROOF.XLSX</a>
+            </div>
+            
+            <div class="ellipse-inset">
+                <h3 style="color: var(--accent-blue-dim); margin-bottom: 12px; font-size: 1.1em;">Orbital Witness Ledger (11,500-Minute Satellite Phase-Lock)</h3>
+                <p>The unsterilized GRACE KBR accelerometer residual data retaining the high-frequency positional anomalies deliberately overwritten in standard L1B releases.</p>
+                <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 12px;">
+                    <a href="data/storm_master.xlsx" class="btn-verify" style="padding: 10px 18px; border: 1px solid var(--accent-blue); color: var(--accent-blue); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9em;" download>DOWNLOAD GRACE_DATA.XLSX</a>
+                    <a href="data/storm_master.csv" class="btn-verify" style="padding: 10px 18px; background: var(--bg-code); border: 1px solid var(--border-light); color: var(--text-secondary); border-radius: var(--radius-sm); font-weight: 600; font-size: 0.9em;" download>DOWNLOAD RAW_MATRIX.CSV</a>
+                </div>
+            </div>
+
         </div>
 
     </main>
