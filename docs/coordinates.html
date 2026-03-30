@@ -152,6 +152,12 @@ Performance:
 <p class="note">Download raw scaffold artifacts: <a href="data/australia_ground_scaffold.json">JSON</a> &bull; <a href="data/australia_ground_scaffold.csv">CSV</a>. These files are meant to be machine-auditable so the next SH coordinate pass can build forward without rewriting the legacy V13 table by hand.</p>
 <p class="note"><strong>Current reading:</strong> The scaffold makes the Darwin instability explicit instead of hiding it inside the reflected-latitude table. That matches OPEN-015/OPEN-016: the outer-zone topology appears right, but specific SH coordinates are still being re-locked from ground truth.</p>
 
+<h3>Provisional Australia Coastline Warp</h3>
+<p class="note">This is the first coastline pass built on top of the scaffold rather than on top of the old homepage blobs. The source outline is a real Australia land polygon, but the placement is warped by the scaffold anchors above. It is a regional working asset for coastline reconstruction, not yet the final world map.</p>
+<div style="margin:1.25rem 0;text-align:center;">
+  <img src="assets/australia_scaffold_coastline.png?v=20260330a" alt="Australia coastline warped by provisional scaffold anchors" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
+</div>
+
 <!-- ===== V13 PERFORMANCE ===== -->
 <h2>V13 Performance Summary</h2>
 <table>
