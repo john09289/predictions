@@ -27,52 +27,17 @@ OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
 NP_X = 282.0
 NP_Y = 310.0
 
-# The homepage keeps the site's established "horizontal ovoid" silhouette.
-# This is a display frame, not a new derivation. The control points below are
-# used only to shape the final rendered map on the homepage.
-MAIN_BOUNDARY_CONTROL = np.array(
-    [
-        (170, 310),
-        (176, 228),
-        (214, 156),
-        (286, 126),
-        (372, 92),
-        (493, 108),
-        (556, 186),
-        (611, 255),
-        (610, 369),
-        (556, 440),
-        (496, 518),
-        (374, 544),
-        (290, 506),
-        (218, 474),
-        (178, 398),
-        (170, 310),
-    ],
-    dtype=float,
-)
+# The homepage keeps a horizontal-egg silhouette, but the previous control-point
+# version produced dents/concavity on the broad side. Define the wall with one
+# smooth convex egg curve instead of hand-tuned vertices.
+MAIN_BOUNDARY_CENTER_X = 412.0
+MAIN_BOUNDARY_CENTER_Y = 310.0
+MAIN_BOUNDARY_A = 196.0
+MAIN_BOUNDARY_B = 152.0
+MAIN_BOUNDARY_SKEW = 0.28
 
-BEYOND_BOUNDARY_CONTROL = np.array(
-    [
-        (154, 310),
-        (160, 220),
-        (202, 142),
-        (284, 108),
-        (380, 70),
-        (518, 90),
-        (590, 176),
-        (651, 252),
-        (650, 372),
-        (589, 452),
-        (519, 539),
-        (384, 567),
-        (286, 525),
-        (206, 490),
-        (160, 408),
-        (154, 310),
-    ],
-    dtype=float,
-)
+BEYOND_BOUNDARY_A = 216.0
+BEYOND_BOUNDARY_B = 170.0
 
 # The source map starts from a standard north-pole azimuthal-equidistant style
 # disc. We then warp that disc into the homepage ovoid with V13 city anchors.
@@ -93,24 +58,32 @@ LABEL_POINTS = [
 ]
 
 
-def smooth_closed_curve(control_points: np.ndarray, iterations: int = 5) -> np.ndarray:
-    # The cubic spline version introduced fake "waves" by overshooting between
-    # sparse control points. Chaikin corner-cutting stays inside the intended
-    # envelope and gives a smooth closed curve without inventing new lobes.
-    curve = np.asarray(control_points[:-1], dtype=float)
-    for _ in range(iterations):
-        refined = []
-        for idx in range(len(curve)):
-            p0 = curve[idx]
-            p1 = curve[(idx + 1) % len(curve)]
-            refined.append(0.75 * p0 + 0.25 * p1)
-            refined.append(0.25 * p0 + 0.75 * p1)
-        curve = np.asarray(refined, dtype=float)
+def build_horizontal_egg(center_x: float, center_y: float, a: float, b: float, skew: float, samples: int = 720) -> np.ndarray:
+    # Parametric egg:
+    # x uses a simple horizontal radius, while y widens on the broad side
+    # through the (1 + skew*cos(t)) factor. For 0 < skew < 1 this stays smooth
+    # and avoids the fake concavity introduced by earlier hand-shaped walls.
+    t = np.linspace(0.0, 2.0 * math.pi, samples, endpoint=False)
+    x = center_x + a * np.cos(t)
+    y = center_y + b * np.sin(t) * (1.0 + skew * np.cos(t))
+    curve = np.column_stack([x, y])
     return np.vstack([curve, curve[0]])
 
 
-MAIN_BOUNDARY = smooth_closed_curve(MAIN_BOUNDARY_CONTROL)
-BEYOND_BOUNDARY = smooth_closed_curve(BEYOND_BOUNDARY_CONTROL)
+MAIN_BOUNDARY = build_horizontal_egg(
+    MAIN_BOUNDARY_CENTER_X,
+    MAIN_BOUNDARY_CENTER_Y,
+    MAIN_BOUNDARY_A,
+    MAIN_BOUNDARY_B,
+    MAIN_BOUNDARY_SKEW,
+)
+BEYOND_BOUNDARY = build_horizontal_egg(
+    MAIN_BOUNDARY_CENTER_X,
+    MAIN_BOUNDARY_CENTER_Y,
+    BEYOND_BOUNDARY_A,
+    BEYOND_BOUNDARY_B,
+    MAIN_BOUNDARY_SKEW,
+)
 
 
 @dataclass(frozen=True)
