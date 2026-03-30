@@ -524,10 +524,16 @@ footer a {
     padding-right: 18px;
   }
   .scorecard {
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
-  nav {
-    gap: 4px 16px;
+  .score-box {
+    padding: 16px 12px;
+    min-width: 0;
+  }
+  .score-number {
+    font-size: 2.2em;
   }
   table {
     font-size: 0.8em;
