@@ -24,58 +24,39 @@
 <p class="subtitle">Two-zone disc topology &mdash; &theta;&nbsp;=&nbsp;&minus;lon<sub>E</sub> &mdash; equatorial reflection &mdash; cross-equatorial RMSE&nbsp;6.2%</p>
 
 <!-- ===== V13 COORDINATE SYSTEM ===== -->
-<h2>V13 Coordinate System (Current)</h2>
+<section id="v13-coordinates" style="background: #020617; padding: 60px 20px; border-bottom: 1px solid #1e293b;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h2 style="color: #FFD700; font-family: 'JetBrains Mono', monospace; border-left: 4px solid #FFD700; padding-left: 15px;">
+            V13 COORDINATE SYSTEM: TWO-ZONE TOPOLOGY
+        </h2>
+        <p style="color: #cbd5e1; margin-top: 20px;">
+            <b>Status:</b> Active | <b>RMSE:</b> 6.2% (Cross-Equatorial) | <b>Core Fix:</b> &theta; = &minus;lonE
+        </p>
 
-<div class="proof-box">
-<p><strong>Angular coordinate (corrected 2026-03-28):</strong> The EW angle in the dome frame is simply the negation of geographic east longitude. No UTC conversion required.</p>
-<pre>&theta; = &minus;lon<sub>E</sub>
+        <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; padding: 25px; border-radius: 8px; margin: 30px 0;">
+            <h4 style="color: #00FFFF; margin-top: 0;">1. Angular Identity (Fixed 2026-03-28)</h4>
+            <code style="display: block; background: #000; padding: 15px; color: #4ade80; border-radius: 4px; margin: 10px 0;">
+                &theta; = &minus;lonE
+            </code>
+            <p style="font-size: 0.9rem; color: #94a3b8;">
+                Resolves the 183&deg; Sydney Error. Physical basis: Solar noon UTC &asymp; 12 &minus; lonE/15h. 
+                <br><b>Sydney:</b> lon_E 151.2&deg; &rarr; &theta; = &minus;151.2&deg; (Old V12 formula gave +32.5&deg; &mdash; FAIL).
+            </p>
+        </div>
 
-Examples:
-  London     lon_E =   0.0&deg;  &rarr;  &theta; =    0.0&deg;
-  Tokyo      lon_E = 139.7&deg;  &rarr;  &theta; = &minus;139.7&deg;
-  New York   lon_E = &minus;74.0&deg;  &rarr;  &theta; = +74.0&deg;
-  Sydney     lon_E = 151.2&deg;  &rarr;  &theta; = &minus;151.2&deg;   (old formula gave +32.5&deg; &mdash; WRONG by 183&deg;)
-  Cape Town  lon_E =  18.4&deg;  &rarr;  &theta; =  &minus;18.4&deg;
-  Buenos Aires lon_E = &minus;58.4&deg;  &rarr;  &theta; = +58.4&deg;</pre>
-<p><strong>Physical basis:</strong> Solar noon UTC &asymp; 12 &minus; lon<sub>E</sub>/15h, so &theta; = (noon_UTC &minus; 12) &times; 15&deg; = &minus;lon<sub>E</sub>. The old formula was correct for NH cities but gave +32.5&deg; for Sydney (NH-equivalent position at lon=+32.5&deg;) instead of the true &theta;&nbsp;=&nbsp;&minus;151.2&deg;. This was a 183&deg; error that caused all cross-equatorial distances to fail.</p>
-</div>
-
-<div class="proof-box">
-<p><strong>Two-zone disc topology:</strong> NH and SH cities are on opposite sides of the equatorial ring at r&nbsp;=&nbsp;14,105&nbsp;km. SH disc radius is the equatorial reflection of the NH radius.</p>
-<pre>r_NH = solve:  r &times; tan(polaris_elevation) = H(r)   [inner zone, 0 to r_eq]
-r_SH = 2 &times; r_eq &minus; r_NH                            [outer zone, reflected through equatorial ring]
-
-r_eq = 14,105 km   (equatorial ring radius)
-H(r) = 8537 &times; exp(&minus;r / 8619) km
-
-Example (Sydney, lat 33.9&deg;S):
-  r_NH for lat 33.9&deg;N = 7,193 km
-  r_SH = 2 &times; 14,105 &minus; 7,193 = 21,017 km</pre>
-<p><strong>Physical basis:</strong> The equatorial ring is the mirror plane of the disc. NH cities cluster inward from it; SH cities are at equivalent angular distance outward. The firmament&rsquo;s ovoid shape (V13) makes the outer zone physically distinct from the inner zone &mdash; the two zones are separated by the equatorial ring, not just reflected.</p>
-</div>
-
-<div class="proof-box">
-<p><strong>Tesla distance formula (V13):</strong></p>
-<pre>NS  = r2 &minus; r1   (if same hemisphere), or r1 + (2&times;r_eq &minus; r2) via reflection
-EW  = r_avg &times; &Delta;&theta; &times; f_A(r_avg)   (aetheric EW compression)
-
-f_A(r) = 1 &minus; (1 &minus; b/a) &times; (1 &minus; exp(&minus;r/&lambda;<sub>g</sub>)) / (1 &minus; exp(&minus;a/&lambda;<sub>g</sub>))
-
-d    = sqrt(NS&sup2; + EW&sup2;) / n(r_avg)   (divide by aetheric refraction index)
-
-Parameters (locked 2026-03-28):
-  r_eq = 14,105 km   b = 19,172 km   b/a = 0.958   &lambda;<sub>g</sub> = 8,619 km
-  n(r) = 1 + 0.271 &times; (H<sub>0</sub>/H(r) &minus; 1)
-
-Performance:
-  NH same-hemisphere:       7.3% mean error
-  SH same-hemisphere:      10.2% mean error
-  Cross-equatorial (6 routes): 6.2% RMSE</pre>
-</div>
-
-<div class="warning-box" style="background:var(--bg-secondary);border-left:3px solid var(--accent-orange);padding:1rem;margin:1rem 0;">
-<p><strong>&#9888; METHODOLOGY NOTE:</strong> WGS84 globe distances are NOT the benchmark. WGS84 is a Category 2 measurement (derived from globe assumptions). The dome geometric distance is the baseline. Deviations between dome distance and Category 1 measurements (flight time &times; airspeed) are <em>aetheric slipstream signals</em>, not model errors.</p>
-</div>
+        <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; padding: 25px; border-radius: 8px;">
+            <h4 style="color: #FFD700; margin-top: 0;">2. Radial Reflection (r_eq = 14,105 km)</h4>
+            <p style="font-size: 0.95rem; color: #cbd5e1;">
+                NH and SH cities are mirrored across the equatorial ring. 
+            </p>
+            <div class="data-mono" style="background: #000; padding: 15px; border-radius: 4px;">
+                r_NH = solve(r &times; tan(&phi;) = H(r)) <br>
+                r_SH = 2 &times; 14,105 &minus; r_NH <br>
+                d = d_geo / n(r_avg)
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- ===== NORTHERN HEMISPHERE TABLE ===== -->
 <h2>Northern Hemisphere City Coordinates (V13)</h2>
@@ -127,86 +108,36 @@ Performance:
 </table>
 
 <!-- ===== REGIONAL SCAFFOLD REGISTRY ===== -->
-<h2>Regional Scaffold Rollout</h2>
-<p class="note"><strong>Why this exists:</strong> the final world map should come from accumulated regional scaffolds, not from a hand-drawn homepage blob. Each region below is tracked separately so we can keep the legacy V13 table visible while the non-circular rebuild grows beside it.</p>
-<table>
-  <tr><th>Region</th><th>Status</th><th>Current basis</th><th>Map layer</th></tr>
-  <tr><td>Australia</td><td><strong>Active</strong></td><td>Surface-distance road matrix + rail validation</td><td>Scaffold + coastline warp live below</td></tr>
-  <tr><td>New Zealand</td><td><strong>Active</strong></td><td>Official KiwiRail infrastructure lengths + official ferry route length</td><td>Scaffold + coastline warp live below</td></tr>
-  <tr><td>Southern Africa</td><td>Queued</td><td>Needs official rail/road corridor pack</td><td>Not published yet</td></tr>
-  <tr><td>South America</td><td>Queued</td><td>Needs non-circular rail/road/port corridor set</td><td>Not published yet</td></tr>
-  <tr><td>North America</td><td>Queued</td><td>Needs operator-grade corridor lengths</td><td>Not published yet</td></tr>
-  <tr><td>Europe</td><td>Queued</td><td>Needs rail/ferry corridor pack</td><td>Not published yet</td></tr>
-  <tr><td>East Asia</td><td>Queued</td><td>Needs official rail + ferry corridor pack</td><td>Not published yet</td></tr>
-</table>
+<section id="regional-scaffolds" style="background: #0f172a; padding: 60px 20px;">
+    <div style="max-width: 1000px; margin: 0 auto;">
+        <h3 style="color: white; font-family: 'JetBrains Mono', monospace;">REGIONAL SCAFFOLD ROLLOUT</h3>
+        <p style="color: #94a3b8; margin-bottom: 30px;">
+            Map layers built from Tier-1 Surface Distance (Road/Rail) rather than globe inheritance.
+        </p>
 
-<!-- ===== PROVISIONAL AUSTRALIA SCAFFOLD ===== -->
-<h2>Provisional Australia Surface-Distance Scaffold</h2>
-<div class="warning-box" style="background:var(--bg-secondary);border-left:3px solid var(--accent-blue);padding:1rem;margin:1rem 0;">
-<p style="margin:0;"><strong>Non-destructive rebuild layer:</strong> The legacy V13 SH table above remains published, but Australia is now being rebuilt from surface-distance constraints instead of silently inheriting reflected globe latitude. This scaffold is the first step in that rebuild. It does <em>not</em> overwrite the legacy table yet.</p>
-</div>
-<p class="note"><strong>Anti-circular rule:</strong> The solve itself does not use GPS/WGS84 coordinates. The current scaffold comes from the Australia road matrix in session working notes (12 direct measured road links + 9 estimated road cross-links for stabilization). Rail values remain validation checks, not orientation inputs.</p>
-<p class="note"><strong>Frame note:</strong> Sydney is fixed at the origin. Rotation and reflection are arbitrary at this stage, so page-up is <em>not</em> geographic north. Absolute SH &theta;/r remain OPEN-016 work.</p>
+        <div class="forensic-card" style="margin-bottom: 20px;">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="color: #FFD700; margin: 0;">Australia Scaffold (Tier-1)</h4>
+                <span class="data-mono" style="background: #4ade80; color: black; padding: 2px 8px; font-size: 0.7rem; font-weight: bold; border-radius: 4px;">ACTIVE</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 10px;">
+                Basis: 12 direct measured road links + 9 cross-links. Darwin instability (OPEN-015) confirmed.
+            </p>
+            <a href="data/australia_scaffold.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download CSV Artifact &rarr;</a>
+        </div>
 
-<div style="margin:1.25rem 0;text-align:center;">
-  <img src="assets/australia_ground_scaffold.png?v=20260330c" alt="Australia ground scaffold from surface-distance constraints" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-</div>
-
-<table>
-  <tr><th>City</th><th>x<sub>rel</sub> (km)</th><th>y<sub>rel</sub> (km)</th><th>Status</th></tr>
-  <tr><td>Sydney</td><td>0.0</td><td>0.0</td><td>Origin anchor</td></tr>
-  <tr><td>Melbourne</td><td>572.3</td><td>&minus;201.1</td><td>Direct road node</td></tr>
-  <tr><td>Brisbane</td><td>&minus;641.4</td><td>&minus;756.8</td><td>Direct road node</td></tr>
-  <tr><td>Adelaide</td><td>1,151.5</td><td>&minus;900.9</td><td>Direct road node</td></tr>
-  <tr><td>Perth</td><td>3,591.1</td><td>&minus;1,502.0</td><td>Rail/road anchor pair</td></tr>
-  <tr><td>Darwin</td><td>475.5</td><td>&minus;3,907.9</td><td>Transition-zone anomaly</td></tr>
-  <tr><td>Cairns</td><td>&minus;1,475.9</td><td>&minus;2,051.9</td><td>Supplemented by estimated cross-links</td></tr>
-</table>
-
-<p class="note">Download raw scaffold artifacts: <a href="data/australia_ground_scaffold.json">JSON</a> &bull; <a href="data/australia_ground_scaffold.csv">CSV</a>. These files are generated by the regional scaffold pipeline and are meant to be machine-auditable so the next SH coordinate pass can build forward without rewriting the legacy V13 table by hand.</p>
-<p class="note"><strong>Current reading:</strong> The scaffold makes the Darwin instability explicit instead of hiding it inside the reflected-latitude table. That matches OPEN-015/OPEN-016: the outer-zone topology appears right, but specific SH coordinates are still being re-locked from ground truth.</p>
-
-<h3>Provisional Australia Coastline Warp</h3>
-<p class="note">This is the first coastline pass built on top of the scaffold rather than on top of the old homepage blobs. The source outline is a real Australia land polygon, but the placement is warped by the scaffold anchors above. It is a regional working asset for coastline reconstruction, not yet the final world map.</p>
-<div style="margin:1.25rem 0;text-align:center;">
-  <img src="assets/australia_scaffold_coastline.png?v=20260330c" alt="Australia coastline warped by provisional scaffold anchors" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-</div>
-
-<!-- ===== PROVISIONAL NEW ZEALAND SCAFFOLD ===== -->
-<h2>Provisional New Zealand Rail-and-Ferry Scaffold</h2>
-<div class="warning-box" style="background:var(--bg-secondary);border-left:3px solid var(--accent-blue);padding:1rem;margin:1rem 0;">
-<p style="margin:0;"><strong>Second regional rebuild layer:</strong> New Zealand is the first landmass added after Australia under the new multi-region scaffold pipeline. This solve uses official corridor lengths instead of reflected-latitude inheritance, and it stays explicitly separate from the legacy V13 table above.</p>
-</div>
-<p class="note"><strong>Anti-circular rule:</strong> This solve uses official KiwiRail infrastructure lengths and the official Interislander route length. No GPS/WGS84 coordinates are used in the scaffold solve itself.</p>
-<p class="note"><strong>Frame note:</strong> Christchurch is fixed at the origin. Rotation and reflection are arbitrary at this stage, so page-up is <em>not</em> geographic north. This is a relative inter-island trunk solve, not a final SH &theta;/r lock.</p>
-<p class="note"><strong>Discrepancy note:</strong> Interislander official pages currently cite the crossing as both ~96 km and ~92 km. The core solve uses 96 km and carries 92 km as a validation discrepancy instead of silently averaging them.</p>
-
-<div style="margin:1.25rem 0;text-align:center;">
-  <img src="assets/new_zealand_ground_scaffold.png?v=20260330c" alt="New Zealand rail and ferry scaffold from official corridor lengths" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-</div>
-
-<table>
-  <tr><th>City</th><th>x<sub>rel</sub> (km)</th><th>y<sub>rel</sub> (km)</th><th>Status</th></tr>
-  <tr><td>Christchurch</td><td>0.0</td><td>0.0</td><td>Origin anchor</td></tr>
-  <tr><td>Rolleston</td><td>7.5</td><td>&minus;53.9</td><td>West-branch junction</td></tr>
-  <tr><td>Greymouth</td><td>56.2</td><td>&minus;406.2</td><td>West Coast terminal</td></tr>
-  <tr><td>Wellington</td><td>&minus;444.8</td><td>110.0</td><td>Inter-island hub</td></tr>
-  <tr><td>Picton</td><td>&minus;348.5</td><td>86.2</td><td>Ferry terminal</td></tr>
-  <tr><td>Auckland</td><td>&minus;1,132.2</td><td>280.1</td><td>North Island terminal</td></tr>
-  <tr><td>Dunedin</td><td>376.6</td><td>156.7</td><td>South coast node</td></tr>
-  <tr><td>Port Chalmers</td><td>385.4</td><td>156.5</td><td>Port branch node</td></tr>
-  <tr><td>Invercargill</td><td>597.7</td><td>248.0</td><td>South terminal</td></tr>
-  <tr><td>Bluff</td><td>624.8</td><td>259.2</td><td>Deep-south port</td></tr>
-</table>
-
-<p class="note">Download raw scaffold artifacts: <a href="data/new_zealand_ground_scaffold.json">JSON</a> &bull; <a href="data/new_zealand_ground_scaffold.csv">CSV</a>. These files are generated by the same regional scaffold pipeline as Australia so the rebuild stays consistent across landmasses.</p>
-<p class="note"><strong>Current reading:</strong> New Zealand now gives the rebuild a second clean regional layer with a west-branch and deep-south port spread. That matters because the final world map should hang off multiple regional scaffolds, not off one adjusted Australia solve.</p>
-
-<h3>Provisional New Zealand Coastline Warp</h3>
-<p class="note">This coastline pass uses the real New Zealand land outline and warps it by the rail-and-ferry scaffold anchors above. It is a regional working asset for coastline reconstruction, not yet the final world map.</p>
-<div style="margin:1.25rem 0;text-align:center;">
-  <img src="assets/new_zealand_scaffold_coastline.png?v=20260330c" alt="New Zealand coastline warped by the provisional scaffold anchors" style="max-width:100%;border-radius:10px;border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
-</div>
+        <div class="forensic-card">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h4 style="color: #FFD700; margin: 0;">New Zealand Scaffold (Tier-1)</h4>
+                <span class="data-mono" style="background: #4ade80; color: black; padding: 2px 8px; font-size: 0.7rem; font-weight: bold; border-radius: 4px;">ACTIVE</span>
+            </div>
+            <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 10px;">
+                Basis: Official KiwiRail infrastructure lengths + Interislander Ferry (96km).
+            </p>
+            <a href="data/nz_scaffold.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download CSV Artifact &rarr;</a>
+        </div>
+    </div>
+</section>
 
 <!-- ===== V13 PERFORMANCE ===== -->
 <h2>V13 Performance Summary</h2>

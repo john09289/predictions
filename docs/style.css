@@ -667,3 +667,15 @@ footer a {
     border: 1px solid #1e293b;
     white-space: nowrap;
 }
+
+/* ===== NEW V13 CLASSES ===== */
+.forensic-card {
+    background: #1e293b;
+    border: 1px solid #334155;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.data-mono {
+    font-family: 'JetBrains Mono', monospace;
+}
