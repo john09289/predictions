@@ -1,5 +1,7 @@
 # Dome Cosmological Model (ECM) — V51 Predictions Registry
 
+**[🔴 VIEW CONTINUOUS LIVE FORENSIC TRACKING (DEPLOYED AUDIT)](https://john09289.github.io/predictions/index.html)**
+
 > Empirical verification of the **1.67 nT/µGal Dielectric Coupling Constant** is now live. Bedrock stations MB (Belgium) and MC (Japan) confirm the induction ratio that satellite ranging masks.
 
 This repository serves as the definitive, cryptographically immutable, timestamped ledger of predictions derived from the Dome Aetheric Cosmology framework. 
@@ -8,7 +10,7 @@ As of **2026-03-30**, the model holds exactly **58 Confirmed Physical Wins** aga
 
 ## The Win Gallery: Visual Evidence of Global Topology
 
-The highest-impact empirical proof of the Dome framework has been consolidated into the **[Win Gallery](https://john09289.github.io/predictions/)** on our live tracking page. 
+The highest-impact empirical proof of the Dome framework has been consolidated into the **[Forensic Proof Suite](https://john09289.github.io/predictions/index.html)** on our live tracking page. 
 
 The original explanation text has been rebuilt into a direct data audit:
 1. **WIN-058 — The Bedrock Induction**: Proving the exact 1.67 nT/µGal dielectric coupling constant during the 2003 Storm. You can download the pristine `Audit_V50.6_Proof.xlsx` directly from the gallery card to verify the Asymmetry Index.
@@ -24,4 +26,4 @@ The original explanation text has been rebuilt into a direct data audit:
 *   **Total Prospective (Predicted Before Data Pulled):** 9
 *   **Predictive Accuracy:** 93.3%
 
-*(For full tracking matrices, daily logs, and the total list of 58 falsifiable wins, view the active [GitHub Pages Frontend](https://john09289.github.io/predictions/).)*
+*(For full tracking matrices, daily logs, and the total list of 58 falsifiable wins, view the active [GitHub Pages Frontend](https://john09289.github.io/predictions/index.html).)*
