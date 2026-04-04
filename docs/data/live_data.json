@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-04 06:45 UTC",
+  "updated": "2026-04-04 12:30 UTC",
   "date": "2026-04-04",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-04-04 06:45 UTC"
+    "fetched": "2026-04-04 12:30 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-04-04 06:45 UTC"
+    "fetched": "2026-04-04 12:30 UTC"
   },
   "aao": {
     "latest": 0.489,
     "weekly_mean": -0.387,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-04-04 06:45 UTC"
+    "fetched": "2026-04-04 12:30 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,16 +51,16 @@
         "summary": "Space Weather Message Code: ALTK05  Serial Number: 2004  Issue Time: 2026 Apr 03 1908 UTC    ALERT: Geomagnetic K-index of 5   Threshold Reached: 2026 Apr 03 1906 UTC  Synoptic Period: 1800-2100 UTC  "
       }
     ],
-    "alert_count_48h": 11,
-    "fetched": "2026-04-04 06:45 UTC"
+    "alert_count_48h": 10,
+    "fetched": "2026-04-04 12:30 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.088,
+    "amplitude_index": 0.099,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-04-04 06:45 UTC",
+    "fetched": "2026-04-04 12:30 UTC",
     "pixel_count": 67728
   }
 }
