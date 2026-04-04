@@ -436,17 +436,19 @@
     <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
     <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
     <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
-    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
+    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row. Check HER decay rate vs 40 nT/yr threshold (PRED-TOROID-001). Check TTB decay rate vs 40 nT/yr threshold (PRED-TOROID-001).</li>
+    <li><strong>Quarterly:</strong> Pull CHAOS-7 update &mdash; check SAA Lobe B position and deepening rate vs Lobe A (PRED-TOROID-001 supporting data). If WMM2026 releases: run two-pole &lambda; fit to check PRED-TOROID-002.</li>
     <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
   </ol>
   <p style="color:var(--text-tertiary);font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
 </section>
 
 <footer>
-  <span>Version 50.9</span>
+  <span>Version 51.0</span>
   <span>2026-04-04</span>
-  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
-  <span style="color:var(--accent-red)">4 falsified</span>
+  <span style="color:var(--accent-blue);font-weight:600">59 confirmed</span>
+  <span style="color:var(--accent-gold)">4 refined</span>
+
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
