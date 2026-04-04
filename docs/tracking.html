@@ -53,17 +53,17 @@
   <span><strong>Model:</strong> V51.0</span>
   <span><strong>Confirmed:</strong> 67</span>
   <span><strong>Falsified:</strong> 4</span>
-  <span><strong>Last updated:</strong> 2026-04-03</span>
+  <span><strong>Last updated:</strong> 2026-04-04</span>
   <span><strong>Tracking entries:</strong> 5</span>
 </div>
 
 <div id="live-status" style="display:flex;flex-wrap:wrap;gap:1rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-bottom:1.5rem;font-size:0.82rem;">
-  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-04-03 12:37 UTC</span>
+  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-04-04 18:25 UTC</span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Kp: <strong style="color:var(--accent-green);">0 (G0 (quiet))</strong></span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">NMP: <strong>85.778&deg;N, 138.057&deg;E</strong>&nbsp;ratio: <strong style="color:var(--accent-green);">21.6&times;</strong></span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">AAO: <strong style="color:var(--accent-red);">-0.387&sigma; (7d)</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.109</span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:var(--accent-red);">11</strong></span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.073</span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:var(--accent-red);">10</strong></span>
 </div>
 
 <div class="immediate-banner">
@@ -243,7 +243,7 @@
         <td>W020 test window. Below ≥3% falsification threshold but positive bias noted.</td>
       </tr>
       <tr>
-        <td>2026-04-03</td>
+        <td>2026-04-04</td>
         <td class="suppressed">-0.387&sigma;</td>
         <td>3/7</td>
         <td>&mdash;</td>
@@ -503,7 +503,8 @@
     <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
     <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
     <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
-    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
+    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row. Check HER decay rate vs 40 nT/yr threshold (PRED-TOROID-001). Check TTB decay rate vs 40 nT/yr threshold (PRED-TOROID-001).</li>
+    <li><strong>Quarterly:</strong> Pull CHAOS-7 update &mdash; check SAA Lobe B position and deepening rate vs Lobe A (PRED-TOROID-001 supporting data). If WMM2026 releases: run two-pole &lambda; fit to check PRED-TOROID-002.</li>
     <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
   </ol>
   <p style="color:var(--text-tertiary);font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
