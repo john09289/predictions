@@ -517,11 +517,7 @@
   <canvas id="domainAccuracyChart"></canvas>
 </div>
 
-<div class="chart-container">
-  <h3 style="margin-bottom:0.3rem;color:var(--accent-blue-dim);">Score Timeline</h3>
-  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0;">Overall convergence score across all runs. Each point = one monitor cycle.</p>
-  <canvas id="scoreHistoryChart"></canvas>
-</div>
+
 
 <!-- ===== HOW IT WORKS ===== -->
 <h2>How This Works</h2>
@@ -622,7 +618,7 @@
 </footer>
 
 <script>
-let chartDomain, chartTimeline;
+let chartDomain;
 
 async function loadData() {
   try {
@@ -759,66 +755,7 @@ async function loadData() {
     // Set chart height based on number of domains
     document.getElementById('domainAccuracyChart').parentElement.style.height = Math.max(320, scoredDomains.length * 32) + 'px';
 
-    // ═══════ CHART 2: Score Timeline ═══════
-    const last100 = history.slice(-100);
-    const timeLabels = last100.map(h => {
-      if (!h.timestamp) return '';
-      // Show date + hour for readability
-      const dt = h.timestamp.replace('T', ' ').slice(0, 16);
-      return dt;
-    });
-    const timeScores = last100.map(h => h.overall_score);
-    const timePassed = last100.map(h => h.passed);
-    const timeTotal = last100.map(h => h.total_scored);
 
-    const ctxTime = document.getElementById('scoreHistoryChart').getContext('2d');
-    if (chartTimeline) chartTimeline.destroy();
-    chartTimeline = new Chart(ctxTime, {
-      type: 'line',
-      data: {
-        labels: timeLabels,
-        datasets: [{
-          label: 'Overall Score (%)',
-          data: timeScores,
-          borderColor: '#2563eb',
-          backgroundColor: 'rgba(37, 99, 235, 0.08)',
-          fill: true,
-          tension: 0.3,
-          pointRadius: last100.length < 20 ? 4 : 1,
-          pointHoverRadius: 6,
-          borderWidth: 2,
-          pointBackgroundColor: '#2563eb'
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: true,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: function(ctx) { return ctx.parsed.y + '%'; },
-              afterLabel: function(ctx) {
-                const i = ctx.dataIndex;
-                return (timePassed[i] || '?') + '/' + (timeTotal[i] || '?') + ' domains passing';
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            min: 0, max: 100,
-            title: { display: true, text: 'Score %', font: { family: 'Inter', size: 11 }, color: '#94a3b8' },
-            grid: { color: 'rgba(148, 163, 184, 0.15)' },
-            ticks: { font: { family: 'Inter', size: 11 }, color: '#94a3b8' }
-          },
-          x: {
-            grid: { display: false },
-            ticks: { font: { family: 'Inter', size: 10 }, color: '#94a3b8', maxRotation: 45, maxTicksLimit: 12 }
-          }
-        }
-      }
-    });
 
     // Bitcoin hash
     try {
