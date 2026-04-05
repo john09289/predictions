@@ -451,7 +451,7 @@
       <li style="margin-bottom: 0.5rem;"><strong>Prospective predictions</strong> – Many wins (SAA separation, NMP deceleration, eclipse prediction) were registered before the confirming data existed. See the <a href="predictions.html">Predictions Registry</a>.</li>
       <li style="margin-bottom: 0.5rem;"><strong>Falsifiability</strong> – Each domain has a clear tolerance band. The data is pulled raw from NOAA, USGS, etc., meaning the model survives on empirical merit.</li>
       <li style="margin-bottom: 0.5rem;"><strong>Bitcoin‑timestamped history</strong> – Every <code>status_history.json</code> is anchored with OpenTimestamps. You can verify any entry with <code>ots verify status_history.json.ots</code>.</li>
-      <li><strong>AI‑verifiable JSON</strong> – Fetch <a href="data/status_history.json">status_history.json</a> to see all predictions, observations, and errors in machine‑readable format.</li>
+      <li><strong>AI‑verifiable JSON</strong> – Fetch <a href="https://raw.githubusercontent.com/john09289/predictions/main/docs/data/status_history.json">status_history.json</a> to see all predictions, observations, and errors in machine‑readable format.</li>
     </ul>
     <p style="margin-top: 1rem;">For a deeper dive, see the <a href="#per-domain-explanations">Per‑Domain Explanations</a> below.</p>
   </div>
@@ -628,7 +628,7 @@
 
 <!-- ===== RAW DATA LINK ===== -->
 <div style="text-align:center;margin:1.5rem 0;">
-  <a href="data/status_history.json" target="_blank" style="font-weight:600;">📄 Raw JSON Data →</a>
+  <a href="https://raw.githubusercontent.com/john09289/predictions/main/docs/data/status_history.json" target="_blank" style="font-weight:600;">📄 Raw JSON Data →</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://github.com/John09289/predictions/blob/main/monitor.py" target="_blank" style="font-weight:600;">🐍 View monitor.py Source →</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
@@ -664,8 +664,12 @@ let chartDomain, chartH0, chartPValue;
 
 async function loadData() {
   try {
-    const response = await fetch('data/status_history.json?' + Date.now());
-    if (!response.ok) throw new Error('No data yet');
+    let response = await fetch('data/status_history.json?' + Date.now());
+    if (!response.ok) {
+      // Fallback to raw GitHub URL if relative path fails
+      response = await fetch('https://raw.githubusercontent.com/john09289/predictions/main/docs/data/status_history.json?' + Date.now());
+      if (!response.ok) throw new Error('No data yet');
+    }
     const history = await response.json();
     if (!history.length) throw new Error('Empty history');
     const latest = history[history.length - 1];
