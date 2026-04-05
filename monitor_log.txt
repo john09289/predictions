@@ -4,9 +4,9 @@
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
   [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → <urlopen error timed out>
   [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → <urlopen error timed out>
-ECM Monitor — 2026-04-05T19:46:18Z
+ECM Monitor — 2026-04-05T20:17:24Z
 Score: 100.0% (28/28 scored, 39 total)
-Eclipse: 128 days | History: 37 entries
+Eclipse: 128 days | History: 38 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ✓ NMP Longitude: pred=139.3, obs=138.057
