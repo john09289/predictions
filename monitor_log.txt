@@ -1,34 +1,48 @@
 /home/runner/work/predictions/predictions/monitor.py:60: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
   r_coeff, p_val = stats.pearsonr(x, y)
-2026-04-05 06:01:04,875 - ERROR - Exception during run_audit
-Traceback (most recent call last):
-  File "/home/runner/work/predictions/predictions/monitor.py", line 836, in <module>
-    result = run_audit(history)
-             ^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/predictions/predictions/monitor.py", line 791, in run_audit
-    rigor = calculate_rigor(history, errors)
-            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/runner/work/predictions/predictions/monitor.py", line 68, in calculate_rigor
-    chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
-                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_axis_nan_policy.py", line 592, in axis_nan_policy_wrapper
-    res = hypotest_fun_out(*samples, **kwds)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_stats_py.py", line 7367, in chisquare
-    return _power_divergence(f_obs, f_exp=f_exp, ddof=ddof, axis=axis,
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_stats_py.py", line 7179, in _power_divergence
-    raise ValueError(msg)
-ValueError: For each axis slice, the sum of the observed frequencies must agree with the sum of the expected frequencies to a relative tolerance of 1.4901161193847656e-08, but the percent differences are:
-89999999.99999999
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
   [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 403: 
   [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → HTTP Error 403: 
-2026-04-05 06:01:04,886 - ERROR - CRITICAL CRASH DETECTED:
-2026-04-05 06:01:04,886 - ERROR - Traceback (most recent call last):
-  File "/home/runner/work/predictions/predictions/monitor.py", line 867, in <module>
-    print(f"ECM Monitor — {result['timestamp']}")
-                           ^^^^^^
-NameError: name 'result' is not defined
-
+ECM Monitor — 2026-04-05T06:05:47Z
+Score: 100.0% (28/28 scored, 39 total)
+Eclipse: 128 days | History: 14 entries
+  ✓ Schumann Frequency: pred=7.83, obs=7.83
+  ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
+  ✓ NMP Longitude: pred=139.3, obs=138.057
+  ✓ M2 Tidal Period: pred=12.42, obs=12.4206
+  ✓ K1 Tidal Period (Sidereal Day): pred=23.9345, obs=23.9345
+  ✓ Equatorial Gravity: pred=9.832204, obs=9.8322
+  ✓ EM-Gravity Coupling κ: pred=1.67, obs=1.677
+  ✓ SAA Decay Rate (TTB): pred=77.0, obs=77.0
+  ✓ Polaris Excess (35.9°N): pred=0.27, obs=0.27
+  ? Eclipse Magnetic Anomaly (Aug 12 2026): pred=-28.9, obs=PENDING
+  ✓ NMP Drift Rate: pred=22.2, obs=37.0
+  ? Current Kp Index: pred=< 2 (quiet), obs=0.0
+  ✓ Aetheric Redshift Scale λ_A: pred=4283.0, obs=4319.0
+  ✓ S2 Solar Tidal Period: pred=12.0, obs=12.0
+  ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=Latest: 15 km SSE of Sant'Angelo, Italy (depth=378.035 km)
+  ? Schumann Amplitude Suppression: pred=Suppression >30%, obs=No G3+ storm (Kp=0.0); amplitude unavailable
+  ? Roaring 40s AAO Index: pred=> +0.3σ, obs=unavailable
+  ? Polaris Excess (Edinburgh 55.95°N): pred=0.282, obs=Pending measurement
+  ? Polaris Excess (Oslo 59.91°N): pred=0.253, obs=Pending measurement
+  ? Polaris Excess (Reykjavik 64.13°N): pred=0.217, obs=Pending measurement
+  ? Live Aetheric Slipstream (JFK-LHR): pred=>5% (persistent), obs=Insufficient data (0E, 0W flights)
+  ✓ CMB Axis of Evil: pred=> 2σ, obs=2.5σ
+  ✓ Lunar Magnetic Tide (M2): pred=1.2 nT ±0.5 nT, obs=1.5
+  ✓ GPS Sagnac Verification: pred=0 (no correction), obs=Confirmed: Lorentz requires correction, Selleri does not.
+  ✓ Telluric Resonance Cutoff: pred=11.7, obs=11.7
+  ✓ Ionospheric D-layer Height: pred=85, obs=83
+  ✓ Roaring 40s Wind Speed: pred=> 20 m/s, obs=22.5
+  ✓ Mascon Gravity Anomaly: pred=~26, obs=28.1
+  ✓ Solar Angular Diameter: pred=0.53° const, obs=0.531°
+  ? Daily Kp–SR Suppression: pred=>30% drop, obs=Pending (no storm in window)
+  ✓ Lunar Phase H-component: pred=1-2 nT, obs=1.5
+  ? Solar Wind Pressure Shift: pred=>+0.02 Hz, obs=Pending (no quiet day with high SW)
+  ✓ SAA-Roaring 40s Boundary: pred=47-50°S, obs=48.5
+  ✓ Crepuscular Ray Convergence: pred=5733, obs=5733
+  ✓ Polaris Excess (45°N): pred=0.36, obs=0.36
+  ✓ Moon Angular Diameter Variation: pred=11-14%, obs=12.5
+  ? Schumann Harmonic Splitting: pred=>0.1 Hz, obs=Pending (needs multi-station data)
+  ✓ Tesla Harmonic Series: pred=Present, obs=Present
+  ✓ GPS Clock Offset (Lorentz): pred=No (Selleri fits), obs=Confirmed
