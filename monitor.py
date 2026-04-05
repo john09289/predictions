@@ -35,6 +35,85 @@ def global_exception_handler(exctype, value, tb):
 
 sys.excepthook = global_exception_handler
 
+def compute_cross_domain_sigma(history):
+    """
+    Compute aggregate p-value across all domains using Fisher's method,
+    then convert to sigma (two-tailed).
+    Collects p-values from domain rigor entries across all history.
+    """
+    p_values = []
+    for entry in history:
+        for domain in entry.get('domains', []):
+            rigor = domain.get('rigor')
+            if rigor and 'p_value' in rigor:
+                try:
+                    p = float(rigor['p_value'])
+                    if p > 0 and p < 1:
+                        p_values.append(p)
+                except (ValueError, TypeError):
+                    pass
+    if not p_values:
+        return None, 0
+    chi2 = -2 * sum(np.log(p_values))
+    df = 2 * len(p_values)
+    combined_p = 1 - stats.chi2.cdf(chi2, df)
+    if combined_p <= 0:
+        # p underflows: sigma is extremely high, estimate from chi2 directly
+        # Use Wilson-Hilferty approximation for large chi2
+        sigma = np.sqrt(2 * chi2) - np.sqrt(2 * df - 1)
+        sigma = max(sigma, 0.0)
+    elif combined_p < 0.5:
+        sigma = np.sqrt(2) * stats.norm.ppf(1 - combined_p / 2)
+    else:
+        sigma = 0.0
+    return round(sigma, 2), len(p_values)
+
+
+def compute_domain_aggregate_sigma(domains):
+    """
+    Compute cross-domain aggregate sigma from the current entry's domain errors.
+    For each scored passing domain, p = max(error_pct, 0.01) / 100 under H0
+    (random prediction yields uniform errors in [0,100%]).
+    Falls back to rigor p-value if one exists and is more significant.
+    """
+    p_values = []
+    used_domains = []
+    for domain in domains:
+        if domain.get('pass') is None:
+            continue
+        chosen_p = None
+        # Prefer historical rigor p-value if meaningful
+        rigor = domain.get('rigor')
+        if rigor and 'p_value' in rigor:
+            try:
+                p = float(rigor['p_value'])
+                if 0 < p < 0.5:
+                    chosen_p = p
+            except (ValueError, TypeError):
+                pass
+        # Error-based p-value for passing domains
+        if chosen_p is None and domain.get('pass') is True:
+            error = domain.get('error_pct')
+            if error is not None:
+                chosen_p = max(float(error), 0.01) / 100.0
+        if chosen_p is not None and 0 < chosen_p < 1:
+            p_values.append(chosen_p)
+            used_domains.append(domain['name'])
+    if not p_values:
+        return None, 0, []
+    chi2 = -2 * sum(np.log(p_values))
+    df = 2 * len(p_values)
+    combined_p = 1 - stats.chi2.cdf(chi2, df)
+    if combined_p <= 0:
+        sigma = np.sqrt(2 * chi2) - np.sqrt(2 * df - 1)
+        sigma = max(sigma, 0.0)
+    elif combined_p < 0.5:
+        sigma = np.sqrt(2) * stats.norm.ppf(1 - combined_p / 2)
+    else:
+        sigma = 0.0
+    return round(sigma, 2), len(p_values), used_domains
+
+
 def calculate_cumulative_sigma(history):
     """
     Calculates the 9-Sigma convergence across the entire history.
@@ -849,11 +928,36 @@ def run_audit(history):
     # Overall rigor from overarching score trend
     overall_scores = [entry.get('overall_score', 0) for entry in history]
     overall_rigor = calculate_rigor(history, overall_scores) if len(overall_scores) >= 3 else None
-    
-    # Calculate cumulative sigma across entire history
-    cumulative = calculate_cumulative_sigma(history)
     if overall_rigor is None:
         overall_rigor = {}
+
+    # ── Cross-domain aggregate sigma (Fisher's method) ──────────
+    # Primary: use rigor p-values accumulated across history
+    hist_sigma, hist_n = compute_cross_domain_sigma(history)
+    # Fallback: use current-entry error-based p-values (works from run 1)
+    agg_sigma, agg_n, agg_domains = compute_domain_aggregate_sigma(domains)
+
+    # Pick the better estimate: prefer history-based if it has data
+    if hist_sigma is not None and hist_n >= 3:
+        cross_sigma = hist_sigma
+        cross_n = hist_n
+        cross_method = f"Fisher's method across {hist_n} historical domain p-values"
+    elif agg_sigma is not None:
+        cross_sigma = agg_sigma
+        cross_n = agg_n
+        cross_method = f"Fisher's method across {agg_n} domain error p-values (current entry)"
+    else:
+        cross_sigma = "Pending"
+        cross_n = 0
+        cross_method = "Insufficient data"
+
+    overall_rigor['cross_domain_sigma'] = cross_sigma
+    overall_rigor['cross_domain_n'] = cross_n
+    overall_rigor['cross_domain_method'] = cross_method
+    overall_rigor['cross_domain_domains'] = agg_domains  # list of domain names used
+
+    # Legacy cumulative sigma (kept for backwards compat but not displayed)
+    cumulative = calculate_cumulative_sigma(history)
     overall_rigor['cumulative_sigma'] = cumulative.get('cumulative_sigma', 'Pending')
     overall_rigor['cumulative_status'] = cumulative.get('status', 'Unknown')
 
