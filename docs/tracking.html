@@ -37,7 +37,7 @@
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">67</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html" class="active">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -50,19 +50,19 @@
 <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
 <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
-  <span><strong>Model:</strong> V51.0</span>
-  <span><strong>Confirmed:</strong> 67</span>
+  <span><strong>Model:</strong> V50.9</span>
+  <span><strong>Confirmed:</strong> 53</span>
   <span><strong>Falsified:</strong> 4</span>
-  <span><strong>Last updated:</strong> 2026-04-04</span>
+  <span><strong>Last updated:</strong> 2026-04-05</span>
   <span><strong>Tracking entries:</strong> 5</span>
 </div>
 
 <div id="live-status" style="display:flex;flex-wrap:wrap;gap:1rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);margin-bottom:1.5rem;font-size:0.82rem;">
-  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-04-04 18:25 UTC</span>
+  <span style="color:var(--text-tertiary);align-self:center;">&#x1F504; Auto-updated 2026-04-05 01:18 UTC</span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Kp: <strong style="color:var(--accent-green);">0 (G0 (quiet))</strong></span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">NMP: <strong>85.778&deg;N, 138.057&deg;E</strong>&nbsp;ratio: <strong style="color:var(--accent-green);">21.6&times;</strong></span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">AAO: <strong style="color:var(--accent-red);">-0.387&sigma; (7d)</strong></span>
-  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.073</span>
+  <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Tomsk: <strong style="color:var(--accent-green);">Live</strong>&nbsp;Amp: 0.078</span>
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:var(--accent-red);">10</strong></span>
 </div>
 
@@ -243,7 +243,7 @@
         <td>W020 test window. Below ≥3% falsification threshold but positive bias noted.</td>
       </tr>
       <tr>
-        <td>2026-04-04</td>
+        <td>2026-04-05</td>
         <td class="suppressed">-0.387&sigma;</td>
         <td>3/7</td>
         <td>&mdash;</td>
@@ -429,73 +429,6 @@
   </div>
 </section>
 
-<!-- DW-008: HER/BRW WEEKLY THRESHOLD AUDIT -->
-<section class="tracking-section" id="dw008-log">
-  <div class="tracking-header">
-    <h3>DW-008 &mdash; Weekly HER/BRW Decay Threshold Audit</h3>
-    <span class="cadence-label">Weekly (INTERMAGNET)</span>
-  </div>
-  <p class="section-intro">Tracks the 3.08x magnetic decay asymmetry between HER (Hermanus, South Africa) and BRW (Barrow, Alaska). V51.0 predicts this ratio persists &ge;2.5x due to the Toroidal Return Path concentrating aetheric flux at the southern Plunge Point. WIN-063.</p>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Baseline ratio</span><span class="stat-value">3.08x (HER/BRW)</span></div>
-    <div class="stat"><span class="stat-label">HER rate</span><span class="stat-value">&minus;145 nT/yr (WMM2025)</span></div>
-    <div class="stat"><span class="stat-label">BRW rate</span><span class="stat-value">&minus;47 nT/yr (WMM2025)</span></div>
-    <div class="stat"><span class="stat-label">V51.0 predicts</span><span class="stat-value">&ge;2.5x sustained</span></div>
-    <div class="stat"><span class="stat-label">Globe predicts</span><span class="stat-value">&asymp;1.0x (symmetric decay)</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Week End</th><th>HER F (nT)</th><th>BRW F (nT)</th><th>HER &Delta; (nT)</th><th>BRW &Delta; (nT)</th><th>Weekly Ratio</th><th>Rolling 4wk Ratio</th><th>Notes</th></tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>2026-04-04</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
-        <td>&mdash;</td>
-        <td style="color:var(--accent-green);font-weight:600;">3.08x (baseline)</td>
-        <td>&mdash;</td>
-        <td>Baseline established from WMM2025/IGRF-13 annual rates. WIN-063 registered.</td>
-      </tr>
-      <tr class="note-row">
-        <td colspan="8">Pull weekly from <a href="https://www.intermagnet.org">INTERMAGNET</a>. HER = Hermanus South Africa. BRW = Barrow Alaska. Ratio = |HER &Delta;| / |BRW &Delta;|. Dome calls: &ge;2.5x sustained. Globe calls: &asymp;1.0x.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
-<!-- DW-009: AUGUST 12 ECLIPSE MAGNETIC SIGNAL -->
-<section class="tracking-section" id="dw009-log">
-  <div class="tracking-header">
-    <h3>DW-009 &mdash; August 12, 2026 Eclipse Magnetic Signal</h3>
-    <span class="cadence-label">Event (2026-08-12)</span>
-  </div>
-  <p class="section-intro">Registered prediction: Eclipse crossing Spain/Portugal will produce &minus;17 to &minus;21 nT Z-component anomaly at stations with &gt;80% coverage, conditioned on Kp&lt;2. Globe predicts 0.0 nT. This is the V51.0 live falsification test.</p>
-  <div class="stat-row">
-    <div class="stat"><span class="stat-label">Eclipse date</span><span class="stat-value">2026-08-12</span></div>
-    <div class="stat"><span class="stat-label">V51.0 prediction</span><span class="stat-value">&minus;17 to &minus;21 nT (Z)</span></div>
-    <div class="stat"><span class="stat-label">Globe prediction</span><span class="stat-value">0.0 nT exactly</span></div>
-    <div class="stat"><span class="stat-label">Condition</span><span class="stat-value">Kp &lt; 2 on eclipse day</span></div>
-    <div class="stat"><span class="stat-label">Status</span><span class="stat-value">PENDING &mdash; 130 days</span></div>
-  </div>
-  <table class="log-table">
-    <thead>
-      <tr><th>Station</th><th>Location</th><th>Coverage</th><th>V51.0 Predicted (nT)</th><th>Observed (nT)</th><th>Timing vs Totality</th><th>Result</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>EBR</td><td>Ebro, Spain</td><td>95%</td><td style="color:var(--accent-blue);font-weight:600">&minus;17 to &minus;21</td><td class="pending-cell">PENDING</td><td class="pending-cell">PENDING</td><td class="pending-cell">&mdash;</td></tr>
-      <tr><td>SPT</td><td>San Pablo, Spain</td><td>90%</td><td style="color:var(--accent-blue);font-weight:600">&minus;17 to &minus;21</td><td class="pending-cell">PENDING</td><td class="pending-cell">PENDING</td><td class="pending-cell">&mdash;</td></tr>
-      <tr><td>HAD</td><td>Hartland, England</td><td>80%</td><td style="color:var(--accent-blue);font-weight:600">&minus;13 to &minus;17</td><td class="pending-cell">PENDING</td><td class="pending-cell">PENDING</td><td class="pending-cell">&mdash;</td></tr>
-      <tr><td>CLF</td><td>Chambon-la-For&ecirc;t, France</td><td>85%</td><td style="color:var(--accent-blue);font-weight:600">&minus;15 to &minus;19</td><td class="pending-cell">PENDING</td><td class="pending-cell">PENDING</td><td class="pending-cell">&mdash;</td></tr>
-      <tr><td>NGK</td><td>Niemegk, Germany</td><td>72%</td><td style="color:var(--accent-blue);font-weight:600">&minus;11 to &minus;14</td><td class="pending-cell">PENDING</td><td class="pending-cell">PENDING</td><td class="pending-cell">&mdash;</td></tr>
-      <tr class="note-row">
-        <td colspan="7">Data available from <a href="https://www.intermagnet.org">INTERMAGNET</a> within 72h of eclipse. Check Z-component minimum timing vs totality. &kappa; correction applied: predictions &times;1.672.</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-
 <!-- HOW TO USE -->
 <section style="margin-top:2.5rem;padding:1.5rem;background:var(--bg-code);border-radius:var(--radius-md);border:1px solid var(--border-light);box-shadow:var(--shadow-card);">
   <h2 style="margin-top:0;font-size:1.05rem;font-family:var(--font-body);font-weight:600;">How to Use These Logs</h2>
@@ -503,18 +436,17 @@
     <li><strong>Daily (5 min):</strong> Check <a href="https://sos70.ru/provider.php?file=sra.jpg">Tomsk SR amplitude</a> + <a href="https://www.swpc.noaa.gov">NOAA Kp</a>. Add one row to DW-001. If Kp&lt;1 and SW&gt;8 nPa, also add to DW-004.</li>
     <li><strong>Per storm (immediate):</strong> Every G1+ event (Kp&ge;5) gets a DW-006 row within 24h. Check HeartMath. Log to DW-007 with Dst from Kyoto WDC.</li>
     <li><strong>Weekly:</strong> Pull <a href="https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_ao_index/aao/daily_aao.shtml">CPC AAO index</a> for the week. Add DW-003 row.</li>
-    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row. Check HER decay rate vs 40 nT/yr threshold (PRED-TOROID-001). Check TTB decay rate vs 40 nT/yr threshold (PRED-TOROID-001).</li>
-    <li><strong>Quarterly:</strong> Pull CHAOS-7 update &mdash; check SAA Lobe B position and deepening rate vs Lobe A (PRED-TOROID-001 supporting data). If WMM2026 releases: run two-pole &lambda; fit to check PRED-TOROID-002.</li>
+    <li><strong>Monthly:</strong> Pull <a href="https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy">NOAA NP.xy</a> &mdash; add DW-002 row. Pull <a href="https://www.intermagnet.org">INTERMAGNET</a> TTB/TDC/HER &mdash; add DW-005 row.</li>
     <li><strong>After each session with Claude:</strong> Paste new registry HTML into Claude Code and commit. Keeps timestamps honest.</li>
   </ol>
   <p style="color:var(--text-tertiary);font-size:0.78rem;margin-bottom:0;">All logs build the statistical case for or against ECM predictions. Every entry is a data point. Falsifications are as valuable as confirmations &mdash; they tell the model where it&rsquo;s wrong.</p>
 </section>
 
 <footer>
-  <span>Version 51.0 &mdash; Closed Toroidal Ovoid</span>
-  <span>2026-04-04</span>
-  <span style="color:var(--accent-blue);font-weight:600">67 confirmed</span>
-  <span style="color:var(--accent-gold)">4 refined</span>
+  <span>Version 50.9</span>
+  <span>2026-04-05</span>
+  <span style="color:var(--accent-blue);font-weight:600">53 confirmed</span>
+  <span style="color:var(--accent-red)">4 falsified</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
 </footer>
