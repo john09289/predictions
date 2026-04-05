@@ -13,6 +13,7 @@ import datetime
 import hashlib
 import statistics
 import os
+import time
 
 # ── ECM CONSTANTS (LOCKED) ──────────────────────────────────
 H0        = 8537.0
@@ -112,6 +113,44 @@ def fetch_usgs_deep_quake():
         except:
             pass
     return None
+
+def fetch_opensky_flights(origin_icao, dest_icao, hours_back=24):
+    """Query OpenSky API for arrivals at dest that departed from origin.
+    Returns list of flight durations in minutes."""
+    end = int(time.time())
+    start = end - hours_back * 3600
+    url = (f"https://opensky-network.org/api/flights/arrival"
+           f"?airport={dest_icao}&begin={start}&end={end}")
+    data = fetch_url(url, timeout=30)
+    if not data:
+        return []
+    try:
+        flights = json.loads(data)
+    except:
+        return []
+    times = []
+    for f in flights:
+        if f.get('estDepartureAirport') == origin_icao:
+            dep = f.get('firstSeen')
+            arr = f.get('lastSeen')
+            if dep and arr:
+                duration = (arr - dep) / 60.0  # minutes
+                if 300 < duration < 600:  # 5-10h typical transatlantic
+                    times.append(duration)
+    return times
+
+def fetch_slipstream_advantage():
+    """Compute eastbound vs westbound flight time advantage.
+    Returns (advantage_%, count_east, count_west, east_avg_min, west_avg_min).
+    Positive advantage = eastbound is faster."""
+    east_times = fetch_opensky_flights('KJFK', 'EGLL', hours_back=24)
+    west_times = fetch_opensky_flights('EGLL', 'KJFK', hours_back=24)
+    if len(east_times) < 3 or len(west_times) < 3:
+        return None, len(east_times), len(west_times), 0, 0
+    east_avg = sum(east_times) / len(east_times)
+    west_avg = sum(west_times) / len(west_times)
+    advantage = (west_avg - east_avg) / west_avg * 100
+    return advantage, len(east_times), len(west_times), east_avg, west_avg
 
 # ── ADAPTIVE TOLERANCE ───────────────────────────────────────
 def get_domain_error_history(history, domain_name):
@@ -440,16 +479,43 @@ def run_audit(history):
             "source": "Requires field measurement"
         })
 
-    # ── 21. Aetheric Slipstream ───────────────────────────────
-    domains.append({
-        "name": "Aetheric Slipstream (Transatlantic)",
-        "formula": "Eastbound faster by >5%",
-        "predicted": 12.0, "observed": 12.0,
-        "unit": "%", "error_pct": 0.0, "tolerance_pct": 50.0,
-        "pass": True,
-        "falsification": "Fails if eastbound advantage <5% after wind correction",
-        "source": "FlightAware aggregate (7 routes)"
-    })
+    # ── 21. Live Aetheric Slipstream (OpenSky) ─────────────────
+    adv, cnt_e, cnt_w, east_avg, west_avg = fetch_slipstream_advantage()
+    if adv is not None:
+        pred_adv = 12.0
+        err_adv = abs(adv - pred_adv) / pred_adv * 100
+        pass_adv = adv > 5.0
+        domains.append({
+            "name": "Live Aetheric Slipstream (JFK-LHR)",
+            "formula": "advantage = (west_avg - east_avg)/west_avg × 100%",
+            "predicted": ">5% (persistent)",
+            "observed": round(adv, 1),
+            "unit": "%",
+            "error_pct": round(err_adv, 1),
+            "tolerance_pct": 50.0,
+            "pass": pass_adv,
+            "eastbound_avg_min": round(east_avg, 1),
+            "westbound_avg_min": round(west_avg, 1),
+            "flights_east": cnt_e,
+            "flights_west": cnt_w,
+            "falsification": "Fails if eastbound advantage <5% for 3 consecutive days",
+            "source": f"OpenSky Network (24h: {cnt_e} E, {cnt_w} W flights)"
+        })
+    else:
+        domains.append({
+            "name": "Live Aetheric Slipstream (JFK-LHR)",
+            "formula": "advantage = (west_avg - east_avg)/west_avg × 100%",
+            "predicted": ">5% (persistent)",
+            "observed": f"Insufficient data ({cnt_e}E, {cnt_w}W flights)",
+            "unit": "%",
+            "error_pct": None,
+            "tolerance_pct": 50.0,
+            "pass": None,
+            "flights_east": cnt_e,
+            "flights_west": cnt_w,
+            "falsification": "Fails if eastbound advantage <5% for 3 consecutive days",
+            "source": "OpenSky Network (needs ≥3 flights each direction)"
+        })
 
     # ── 22. CMB Axis of Evil ──────────────────────────────────
     domains.append({

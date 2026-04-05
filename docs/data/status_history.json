@@ -1554,5 +1554,271 @@
         "source": "Planck 2018"
       }
     ]
+  },
+  {
+    "timestamp": "2026-04-05T04:27:19Z",
+    "version": "V51.0",
+    "wins_confirmed": 67,
+    "overall_score": 92.9,
+    "passed": 13,
+    "total_scored": 14,
+    "total_domains": 22,
+    "eclipse_days": 128,
+    "domains": [
+      {
+        "name": "Schumann Frequency",
+        "formula": "f = 7.83 Hz (stable cavity)",
+        "predicted": 7.83,
+        "observed": 7.83,
+        "unit": "Hz",
+        "error_pct": 0.0,
+        "tolerance_pct": 5.0,
+        "pass": true,
+        "source": "Tomsk SR / stable published"
+      },
+      {
+        "name": "Tesla Longitudinal Frequency",
+        "formula": "f = va/(2\u00d7r_disc), va=1.574c",
+        "predicted": 11.788,
+        "observed": 11.7869,
+        "unit": "Hz",
+        "error_pct": 0.009,
+        "tolerance_pct": 1.0,
+        "pass": true,
+        "source": "Tesla Colorado Springs Notes 1899"
+      },
+      {
+        "name": "NMP Longitude",
+        "formula": "Decelerating toward Siberia >130\u00b0E",
+        "predicted": 139.3,
+        "observed": 138.057,
+        "unit": "\u00b0E",
+        "error_pct": 0.89,
+        "tolerance_pct": 5.0,
+        "pass": true,
+        "source": "NOAA NP.xy year=2025.0"
+      },
+      {
+        "name": "M2 Tidal Period",
+        "formula": "M2 = lunar_circuit/2 = 24.84/2",
+        "predicted": 12.42,
+        "observed": 12.4206,
+        "unit": "hours",
+        "error_pct": 0.0048,
+        "tolerance_pct": 0.1,
+        "pass": true,
+        "source": "NOAA CO-OPS published harmonic"
+      },
+      {
+        "name": "K1 Tidal Period (Sidereal Day)",
+        "formula": "K1 = sidereal_day = 23.9345 h",
+        "predicted": 23.9345,
+        "observed": 23.9345,
+        "unit": "hours",
+        "error_pct": 0.0,
+        "tolerance_pct": 0.01,
+        "pass": true,
+        "source": "IERS published"
+      },
+      {
+        "name": "Equatorial Gravity",
+        "formula": "g(r) = 9.7803\u00d7(1+0.005307\u00d7exp(-r/8619))",
+        "predicted": 9.832204,
+        "observed": 9.8322,
+        "unit": "m/s\u00b2",
+        "error_pct": 0.0,
+        "tolerance_pct": 0.1,
+        "pass": true,
+        "source": "WGS84 standard"
+      },
+      {
+        "name": "EM-Gravity Coupling \u03ba",
+        "formula": "\u03ba = \u0394B/\u0394g = 1.67 nT/\u00b5Gal",
+        "predicted": 1.67,
+        "observed": 1.677,
+        "unit": "nT/\u00b5Gal",
+        "error_pct": 0.41,
+        "tolerance_pct": 5.0,
+        "pass": true,
+        "source": "BOU 2017 eclipse (WIN-012)"
+      },
+      {
+        "name": "SAA Decay Rate (TTB)",
+        "formula": "B(r_SAA) exponential decay > 28 nT/yr",
+        "predicted": 77.0,
+        "observed": 77.0,
+        "unit": "nT/yr",
+        "error_pct": 0.0,
+        "tolerance_pct": 20.0,
+        "pass": true,
+        "source": "INTERMAGNET TTB annual means (WIN-015)"
+      },
+      {
+        "name": "Polaris Excess (35.9\u00b0N)",
+        "formula": "Excess = H(r)/r geometry vs WGS84",
+        "predicted": 0.27,
+        "observed": 0.27,
+        "unit": "\u00b0",
+        "error_pct": 0.0,
+        "tolerance_pct": 50.0,
+        "pass": true,
+        "source": "Direct measurement Chapel Hill NC (WIN-001)"
+      },
+      {
+        "name": "Eclipse Magnetic Anomaly (Aug 12 2026)",
+        "formula": "\u0394B = -18.22 \u00d7 coverage \u00d7 FSF",
+        "predicted": -28.9,
+        "observed": "PENDING",
+        "unit": "nT",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": null,
+        "days_remaining": 128,
+        "globe_prediction": 0.0,
+        "falsification": "Fails if measured anomaly within \u00b13 nT of 0",
+        "source": "EBR/SPT INTERMAGNET Aug 12 2026"
+      },
+      {
+        "name": "NMP Drift Rate",
+        "formula": "rate = 55\u00d7exp(-0.08\u00d7(year-2015)) km/yr",
+        "predicted": 22.2,
+        "observed": 37.0,
+        "unit": "km/yr",
+        "error_pct": 39.9,
+        "tolerance_pct": 30.0,
+        "adaptive_tolerance": 30.0,
+        "pass": false,
+        "failure_reason": "Observed drift (37.0 km/yr) faster than predicted (22.2 km/yr). Deceleration constant (0.08) may need refinement to ~0.065. Error 39.9% > tolerance 30.0%.",
+        "falsification": "Fails if error >30% for 3 consecutive months",
+        "source": "NOAA NP.xy trend (dynamic)"
+      },
+      {
+        "name": "Current Kp Index",
+        "formula": "Kp < 2 required for eclipse signal",
+        "predicted": "< 2 (quiet)",
+        "observed": 2.0,
+        "unit": "",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": null,
+        "note": "Not scored \u2014 eclipse precondition only",
+        "source": "NOAA SWPC real-time"
+      },
+      {
+        "name": "Aetheric Redshift Scale \u03bb_A",
+        "formula": "z = D/\u03bb_A, \u03bb_A = c/H0 = 4283 Mpc",
+        "predicted": 4283.0,
+        "observed": 4319.0,
+        "unit": "Mpc",
+        "error_pct": 0.8,
+        "tolerance_pct": 10.0,
+        "pass": true,
+        "source": "Virgo cluster NED (WIN-047)"
+      },
+      {
+        "name": "S2 Solar Tidal Period",
+        "formula": "S2 = solar_circuit/2 = 24.00/2",
+        "predicted": 12.0,
+        "observed": 12.0,
+        "unit": "hours",
+        "error_pct": 0.0,
+        "tolerance_pct": 0.01,
+        "pass": true,
+        "source": "NOAA CO-OPS (WIN-046)"
+      },
+      {
+        "name": "P-wave Shadow Zone (104-140\u00b0)",
+        "formula": "No direct P arrivals at 104-140\u00b0",
+        "predicted": "Shadow exists",
+        "observed": "Latest: 15 km SSE of Sant'Angelo, Italy (depth=378.035 km)",
+        "unit": "",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": true,
+        "source": "USGS FDSN depth=378.035km"
+      },
+      {
+        "name": "Schumann Amplitude Suppression",
+        "formula": "Amplitude drop >30% within 6h of Kp\u22657",
+        "predicted": "Suppression >30%",
+        "observed": "No G3+ storm (Kp=2.0); amplitude unavailable",
+        "unit": "pT",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": null,
+        "falsification": "Fails if G3+ storm does NOT cause >30% drop within 6h",
+        "source": "HeartMath GCI / monitoring"
+      },
+      {
+        "name": "Roaring 40s AAO Index",
+        "formula": "AAO > +0.3\u03c3 when SAA decay >50 nT/yr",
+        "predicted": "> +0.3\u03c3",
+        "observed": "unavailable",
+        "unit": "\u03c3",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": null,
+        "falsification": "Fails if AAO < 0\u03c3 while SAA decay >50 nT/yr",
+        "source": "CPC/NOAA (unavailable)"
+      },
+      {
+        "name": "Polaris Excess (Edinburgh 55.95\u00b0N)",
+        "formula": "0.27\u00d7(lat/35.9)\u00d7exp(-(lat-35.9)\u00b2/1000)",
+        "predicted": 0.282,
+        "observed": "Pending measurement",
+        "unit": "\u00b0",
+        "error_pct": null,
+        "tolerance_pct": 50.0,
+        "pass": null,
+        "source": "Requires field measurement"
+      },
+      {
+        "name": "Polaris Excess (Oslo 59.91\u00b0N)",
+        "formula": "0.27\u00d7(lat/35.9)\u00d7exp(-(lat-35.9)\u00b2/1000)",
+        "predicted": 0.253,
+        "observed": "Pending measurement",
+        "unit": "\u00b0",
+        "error_pct": null,
+        "tolerance_pct": 50.0,
+        "pass": null,
+        "source": "Requires field measurement"
+      },
+      {
+        "name": "Polaris Excess (Reykjavik 64.13\u00b0N)",
+        "formula": "0.27\u00d7(lat/35.9)\u00d7exp(-(lat-35.9)\u00b2/1000)",
+        "predicted": 0.217,
+        "observed": "Pending measurement",
+        "unit": "\u00b0",
+        "error_pct": null,
+        "tolerance_pct": 50.0,
+        "pass": null,
+        "source": "Requires field measurement"
+      },
+      {
+        "name": "Live Aetheric Slipstream (JFK-LHR)",
+        "formula": "advantage = (west_avg - east_avg)/west_avg \u00d7 100%",
+        "predicted": ">5% (persistent)",
+        "observed": "Insufficient data (0E, 0W flights)",
+        "unit": "%",
+        "error_pct": null,
+        "tolerance_pct": 50.0,
+        "pass": null,
+        "flights_east": 0,
+        "flights_west": 0,
+        "falsification": "Fails if eastbound advantage <5% for 3 consecutive days",
+        "source": "OpenSky Network (needs \u22653 flights each direction)"
+      },
+      {
+        "name": "CMB Axis of Evil",
+        "formula": "Quadrupole/octupole align with ecliptic >2\u03c3",
+        "predicted": "> 2\u03c3",
+        "observed": "2.5\u03c3",
+        "unit": "\u03c3",
+        "error_pct": null,
+        "tolerance_pct": null,
+        "pass": true,
+        "source": "Planck 2018"
+      }
+    ]
   }
 ]
