@@ -18,6 +18,23 @@ import time
 import numpy as np
 from scipy import stats
 
+import sys
+import traceback
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+    handlers=[logging.FileHandler("error_log.txt"), logging.StreamHandler()]
+)
+
+def global_exception_handler(exctype, value, tb):
+    logging.error("CRITICAL CRASH DETECTED:")
+    logging.error("".join(traceback.format_exception(exctype, value, tb)))
+    sys.exit(1)
+
+sys.excepthook = global_exception_handler
+
 def calculate_rigor(history, domain_errors):
     """
     Compute Pearson correlation, p-value, R-squared, and chi-square
@@ -815,11 +832,20 @@ if __name__ == "__main__":
     except (FileNotFoundError, json.JSONDecodeError):
         history = []
 
-    result = run_audit(history)
-    history.append(result)
-
-    # Keep last 4000 entries (~14 days at 5-min intervals)
-    history = history[-4000:]
+    try:
+        result = run_audit(history)
+        history.append(result)
+        # Keep last 4000 entries (~14 days at 5-min intervals)
+        history = history[-4000:]
+    except Exception as e:
+        logging.error("Exception during run_audit", exc_info=True)
+        # Add basic fallback result so site doesn't die empty
+        history.append({
+            "timestamp": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ"),
+            "version": "V51.0",
+            "overall_score": 0,
+            "domains": []
+        })
 
     with open(history_file, "w") as f:
         json.dump(history, f, indent=2)

@@ -722,8 +722,12 @@ async function loadData() {
     document.getElementById('winsCount').textContent = latest.wins_confirmed || 67;
 
     // Last update
-    document.getElementById('lastUpdate').textContent = 'Last update: ' + latest.timestamp + ' UTC';
-    document.getElementById('footerDate').textContent = latest.timestamp.split('T')[0];
+    if (document.getElementById('lastUpdate')) {
+      document.getElementById('lastUpdate').textContent = 'Last update: ' + latest.timestamp + ' UTC';
+    }
+    if (document.getElementById('footerDate')) {
+      document.getElementById('footerDate').textContent = latest.timestamp.split('T')[0];
+    }
 
     // Eclipse bar
     const eclipseDays = latest.eclipse_days;
