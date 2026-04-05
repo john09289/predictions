@@ -35,6 +35,48 @@ def global_exception_handler(exctype, value, tb):
 
 sys.excepthook = global_exception_handler
 
+def calculate_cumulative_sigma(history):
+    """
+    Calculates the 9-Sigma convergence across the entire history.
+    Returns a dict with cumulative sigma and status.
+    """
+    if len(history) < 10:
+        return {
+            "cumulative_sigma": "Pending",
+            "data_points": len(history),
+            "threshold": 10,
+            "status": f"Pending (n={len(history)} < 10)"
+        }
+    
+    # Calculate mean error across domains from each run
+    # Use overall_score as proxy: higher score = lower error
+    scores = [entry.get('overall_score', 50) for entry in history if 'overall_score' in entry]
+    if not scores:
+        scores = [50] * len(history)
+    
+    # Convert scores to error (100 - score = error percentage)
+    errors = [max(0, 100 - s) / 100 for s in scores]
+    
+    # Sigma = (Baseline Globe Error - ECM Error) / Standard Deviation
+    # Globe baseline = random (0.5 error), ECM aims for <0.1
+    baseline_globe_error = 0.5
+    mean_error = np.mean(errors)
+    std_error = np.std(errors) + 1e-6
+    
+    # If ECM is better than random (lower error), sigma is positive
+    sigma = (baseline_globe_error - mean_error) / std_error
+    
+    # Cap at theoretical max ~9.27
+    sigma = min(sigma, 9.27)
+    
+    return {
+        "cumulative_sigma": round(sigma, 2) if sigma > 0 else 0.0,
+        "mean_error": round(mean_error, 4),
+        "std_error": round(std_error, 4),
+        "data_points": len(history),
+        "status": "Active"
+    }
+
 def calculate_rigor(history, domain_errors):
     """
     Compute Pearson correlation, p-value, R-squared, chi-square, slope, and stability index
@@ -807,6 +849,13 @@ def run_audit(history):
     # Overall rigor from overarching score trend
     overall_scores = [entry.get('overall_score', 0) for entry in history]
     overall_rigor = calculate_rigor(history, overall_scores) if len(overall_scores) >= 3 else None
+    
+    # Calculate cumulative sigma across entire history
+    cumulative = calculate_cumulative_sigma(history)
+    if overall_rigor is None:
+        overall_rigor = {}
+    overall_rigor['cumulative_sigma'] = cumulative.get('cumulative_sigma', 'Pending')
+    overall_rigor['cumulative_status'] = cumulative.get('status', 'Unknown')
 
     # ── SCORE (only boolean pass values) ──────────────────────
     scored = [d for d in domains if d.get('pass') is not None]

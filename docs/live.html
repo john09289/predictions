@@ -419,7 +419,7 @@
 
   <div class="const-item">
     <span class="const-symbol" id="sigma-value">9.2σ</span>
-    <span class="const-desc">Current Convergence</span>
+    <span class="const-desc">Cumulative σ</span>
   </div>
   <div class="const-item">
     <span class="const-symbol" id="stability-index">0.9995</span>
@@ -745,23 +745,33 @@ async function loadData() {
         document.getElementById('r-squared').textContent = latest.overall_rigor.r_squared.toFixed(4);
       }
       
-      // Sigma calculation from p-value
-      let pv = parseFloat(latest.overall_rigor.p_value);
-      if (!pv || pv === 0) pv = 1e-20;
-      // σ = √2 * erf⁻¹(1 - p) - using approximation
-      let sigma;
-      if (pv > 0 && pv < 1) {
-        const a = 0.147;
-        const ln1mx2 = Math.log(1 - Math.min(pv, 0.9999) * Math.min(pv, 0.9999));
-        const part1 = 2 / (Math.PI * a) + ln1mx2 / 2;
-        const part2 = ln1mx2 / a;
-        sigma = Math.sqrt(Math.sqrt(part1 * part1 - part2) - part1);
+      // Sigma: Use cumulative_sigma from JSON if available
+      if (latest.overall_rigor && latest.overall_rigor.cumulative_sigma !== undefined) {
+        const cumSigma = latest.overall_rigor.cumulative_sigma;
+        if (typeof cumSigma === 'number') {
+          document.getElementById('sigma-value').textContent = cumSigma.toFixed(1) + "σ";
+        } else {
+          // Still computing, show pending
+          document.getElementById('sigma-value').textContent = cumSigma + "σ";
+        }
       } else {
-        sigma = 12;
+        // Fallback: compute from p-value
+        let pv = parseFloat(latest.overall_rigor.p_value);
+        if (!pv || pv === 0) pv = 1e-20;
+        let sigma;
+        if (pv > 0 && pv < 1) {
+          const a = 0.147;
+          const ln1mx2 = Math.log(1 - Math.min(pv, 0.9999) * Math.min(pv, 0.9999));
+          const part1 = 2 / (Math.PI * a) + ln1mx2 / 2;
+          const part2 = ln1mx2 / a;
+          sigma = Math.sqrt(Math.sqrt(part1 * part1 - part2) - part1);
+        } else {
+          sigma = 12;
+        }
+        if (sigma > 12) sigma = 12.1;
+        if (sigma < 0) sigma = 0;
+        document.getElementById('sigma-value').textContent = sigma.toFixed(1) + "σ";
       }
-      if (sigma > 12) sigma = 12.1;
-      if (sigma < 0) sigma = 0;
-      document.getElementById('sigma-value').textContent = sigma.toFixed(1) + "σ";
     } else {
       document.getElementById('pearson-r').textContent = "0.9982";
       document.getElementById('p-val').textContent = "1.2e-20";
