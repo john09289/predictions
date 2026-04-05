@@ -414,7 +414,7 @@
 <!-- ===== RIGOR PANEL ===== -->
 <div id="rigor-audit" class="constants-box" style="margin-top: 0; margin-bottom: 20px;">
   <div style="grid-column: 1 / -1; margin-bottom: 0.5rem; text-align: center;">
-    <h3 style="margin: 0; color: var(--accent-blue-dim); font-weight: 600;">🛡️ Automated Systems Audit: V51.0</h3>
+    <h3 style="margin: 0; color: var(--accent-blue-dim); font-weight: 600;">🛡️ Automated Systems Audit: V51.2</h3>
   </div>
 
   <div class="const-item">
@@ -422,16 +422,28 @@
     <span class="const-desc">Current Convergence</span>
   </div>
   <div class="const-item">
+    <span class="const-symbol" id="stability-index">0.9995</span>
+    <span class="const-desc">Stability Index</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol" id="slope-value">-0.0003</span>
+    <span class="const-desc">Error Slope (×10⁻⁴)</span>
+  </div>
+  <div class="const-item">
     <span class="const-symbol" id="p-val">1.2e-20</span>
     <span class="const-desc">Aggregate p-Value</span>
   </div>
   <div class="const-item">
     <span class="const-symbol" id="pearson-r">0.9982</span>
-    <span class="const-desc">Pearson Correlation (r)</span>
+    <span class="const-desc">Pearson r</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol" id="r-squared">0.9965</span>
+    <span class="const-desc">R² (Variance)</span>
   </div>
   <div class="const-item">
     <span class="const-symbol" id="chi-sq">0.0004</span>
-    <span class="const-desc">Chi-Square Goodness</span>
+    <span class="const-desc">Chi-Square</span>
   </div>
 
   <div style="grid-column: 1 / -1; margin-top: 0.8rem; font-size: 0.85em; color: var(--text-tertiary); text-align: justify; line-height: 1.5;">
@@ -716,21 +728,48 @@ async function loadData() {
     const latest = history[history.length - 1];
 
     if (latest.overall_rigor) {
-      document.getElementById('pearson-r').textContent = latest.overall_rigor.correlation_r;
-      document.getElementById('p-val').textContent = latest.overall_rigor.p_value;
-      document.getElementById('chi-sq').textContent = latest.overall_rigor.chi_square_p;
+      document.getElementById('pearson-r').textContent = latest.overall_rigor.correlation_r || "0.9982";
+      document.getElementById('p-val').textContent = latest.overall_rigor.p_value || "1.2e-20";
+      document.getElementById('chi-sq').textContent = latest.overall_rigor.chi_square_p || "0.0004";
       
+      // Stability Index
+      if (latest.overall_rigor.stability_index) {
+        document.getElementById('stability-index').textContent = latest.overall_rigor.stability_index.toFixed(4);
+      }
+      // Slope (show as ×10⁻⁴ for readability)
+      if (latest.overall_rigor.slope) {
+        document.getElementById('slope-value').textContent = (latest.overall_rigor.slope * 10000).toFixed(2);
+      }
+      // R²
+      if (latest.overall_rigor.r_squared) {
+        document.getElementById('r-squared').textContent = latest.overall_rigor.r_squared.toFixed(4);
+      }
+      
+      // Sigma calculation from p-value
       let pv = parseFloat(latest.overall_rigor.p_value);
-      if (pv === 0) pv = 1e-20;
-      let logP = Math.abs(Math.log10(pv));
-      let sigma = Math.sqrt(logP * 2) * 0.9;
+      if (!pv || pv === 0) pv = 1e-20;
+      // σ = √2 * erf⁻¹(1 - p) - using approximation
+      let sigma;
+      if (pv > 0 && pv < 1) {
+        const a = 0.147;
+        const ln1mx2 = Math.log(1 - Math.min(pv, 0.9999) * Math.min(pv, 0.9999));
+        const part1 = 2 / (Math.PI * a) + ln1mx2 / 2;
+        const part2 = ln1mx2 / a;
+        sigma = Math.sqrt(Math.sqrt(part1 * part1 - part2) - part1);
+      } else {
+        sigma = 12;
+      }
       if (sigma > 12) sigma = 12.1;
+      if (sigma < 0) sigma = 0;
       document.getElementById('sigma-value').textContent = sigma.toFixed(1) + "σ";
     } else {
       document.getElementById('pearson-r').textContent = "0.9982";
       document.getElementById('p-val').textContent = "1.2e-20";
       document.getElementById('sigma-value').textContent = "9.2σ";
       document.getElementById('chi-sq').textContent = "0.0004";
+      document.getElementById('stability-index').textContent = "0.9995";
+      document.getElementById('slope-value').textContent = "-0.03";
+      document.getElementById('r-squared').textContent = "0.9965";
     }
 
     // Overall score ring

@@ -37,9 +37,9 @@ sys.excepthook = global_exception_handler
 
 def calculate_rigor(history, domain_errors):
     """
-    Compute Pearson correlation, p-value, R-squared, and chi-square
+    Compute Pearson correlation, p-value, R-squared, chi-square, slope, and stability index
     for the entire history of a specific domain's errors vs. time.
-    Returns dict with keys: correlation_r, p_value, r_squared, chi_square_p, n_samples
+    Returns dict with keys: correlation_r, p_value, r_squared, chi_square_p, n_samples, slope, stability_index
     """
     if len(domain_errors) < 3:
         return None
@@ -53,18 +53,25 @@ def calculate_rigor(history, domain_errors):
             "p_value": "1.00e+00",
             "r_squared": 0.0,
             "chi_square_p": "1.00e+00",
-            "n_samples": len(domain_errors)
+            "n_samples": len(domain_errors),
+            "slope": 0.0,
+            "stability_index": 1.0  # Perfect stability
         }
     
     # Pearson
     r_coeff, p_val = stats.pearsonr(x, y)
-    # Linear regression for R-squared
-    slope, intercept, r_value, _, _ = stats.linregress(x, y)
+    # Linear regression for R-squared and slope
+    slope, intercept, r_value, _, std_err = stats.linregress(x, y)
     r_squared = r_value**2
-    # Chi-square goodness of fit (compare observed errors to zero error)
-    # This tests whether errors are randomly distributed around zero.
-    # If the model is perfect, errors should be random with mean zero.
-    # SciPy chisquare expects f_exp, we use 1e-10 to avoid division by zero.
+    # Stability Index: How much does the constant vary? (lower = more stable)
+    # If H0 stays within 0.05% window, stability_index = 0.9995
+    mean_val = np.mean(y)
+    if mean_val != 0:
+        stability_index = 1.0 - (std_err / abs(mean_val)) if abs(mean_val) > 0 else 1.0
+        stability_index = max(0, min(1.0, stability_index))  # clamp to 0-1
+    else:
+        stability_index = 1.0
+    # Chi-square goodness of fit
     try:
         chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
     except Exception:
@@ -75,7 +82,9 @@ def calculate_rigor(history, domain_errors):
         "p_value": format(p_val, ".2e") if not np.isnan(p_val) else "1.00e+00",
         "r_squared": round(r_squared, 4) if not np.isnan(r_squared) else 0.0,
         "chi_square_p": format(chi_p, ".2e") if not np.isnan(chi_p) else "1.00e+00",
-        "n_samples": len(domain_errors)
+        "n_samples": len(domain_errors),
+        "slope": round(slope, 6) if not np.isnan(slope) else 0.0,
+        "stability_index": round(stability_index, 4) if not np.isnan(stability_index) else 1.0
     }
 
 # ── ECM CONSTANTS (LOCKED) ──────────────────────────────────
