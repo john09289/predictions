@@ -15,6 +15,49 @@ import statistics
 import os
 import time
 
+import numpy as np
+from scipy import stats
+
+def calculate_rigor(history, domain_errors):
+    """
+    Compute Pearson correlation, p-value, R-squared, and chi-square
+    for the entire history of a specific domain's errors vs. time.
+    Returns dict with keys: correlation_r, p_value, r_squared, chi_square_p, n_samples
+    """
+    if len(domain_errors) < 3:
+        return None
+    x = np.arange(len(domain_errors))  # time index
+    y = np.array(domain_errors, dtype=float)
+    
+    # Avoid zero variance issues in tests
+    if np.std(y) == 0:
+        return {
+            "correlation_r": 0.0,
+            "p_value": "1.00e+00",
+            "r_squared": 0.0,
+            "chi_square_p": "1.00e+00",
+            "n_samples": len(domain_errors)
+        }
+    
+    # Pearson
+    r_coeff, p_val = stats.pearsonr(x, y)
+    # Linear regression for R-squared
+    slope, intercept, r_value, _, _ = stats.linregress(x, y)
+    r_squared = r_value**2
+    # Chi-square goodness of fit (compare observed errors to zero error)
+    # This tests whether errors are randomly distributed around zero.
+    # If the model is perfect, errors should be random with mean zero.
+    # SciPy chisquare expects f_exp, we use 1e-10 to avoid division by zero.
+    chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
+    
+    return {
+        "correlation_r": round(r_coeff, 4) if not np.isnan(r_coeff) else 0.0,
+        "p_value": format(p_val, ".2e") if not np.isnan(p_val) else "1.00e+00",
+        "r_squared": round(r_squared, 4) if not np.isnan(r_squared) else 0.0,
+        "chi_square_p": format(chi_p, ".2e") if not np.isnan(chi_p) else "1.00e+00",
+        "n_samples": len(domain_errors)
+    }
+
 # ── ECM CONSTANTS (LOCKED) ──────────────────────────────────
 H0        = 8537.0
 LAMBDA_G  = 8619.0
@@ -718,6 +761,24 @@ def run_audit(history):
         "source": "WIN-073 (static win)"
     })
 
+    # ── COMPUTE STATISTICAL RIGOR ─────────────────────────────
+    # After domains are built, compute rigor per domain
+    for domain in domains:
+        dname = domain['name']
+        errors = []
+        for entry in history:
+            for d in entry.get('domains', []):
+                if d.get('name') == dname and d.get('error_pct') is not None:
+                    errors.append(d['error_pct'])
+        if len(errors) >= 3:
+            rigor = calculate_rigor(history, errors)
+            if rigor:
+                domain['rigor'] = rigor
+
+    # Overall rigor from overarching score trend
+    overall_scores = [entry.get('overall_score', 0) for entry in history]
+    overall_rigor = calculate_rigor(history, overall_scores) if len(overall_scores) >= 3 else None
+
     # ── SCORE (only boolean pass values) ──────────────────────
     scored = [d for d in domains if d.get('pass') is not None]
     passed = sum(1 for d in scored if d['pass'])
@@ -728,6 +789,7 @@ def run_audit(history):
         "version": "V51.0",
         "wins_confirmed": 67,
         "overall_score": round(score, 1),
+        "overall_rigor": overall_rigor,
         "passed": passed,
         "total_scored": len(scored),
         "total_domains": len(domains),
