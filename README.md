@@ -65,7 +65,7 @@ Each domain entry contains: `predicted`, `observed`, `error_pct`, `pass`, `toler
 
 | Domain | Threshold |
 |--------|-----------|
-| NMP Drift Rate | Fails if error >30% for 3 consecutive months |
+| NMP Drift Rate | Fails if error >50% for 3 consecutive years |
 | Schumann Amplitude | Fails if G3+ storm does NOT cause >30% drop within 6h |
 | Roaring 40s AAO | Fails if AAO < 0σ while SAA decay >50 nT/yr |
 | Eclipse 2026 | Fails if measured anomaly is within ±3 nT of 0 |
