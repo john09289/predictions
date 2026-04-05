@@ -962,21 +962,19 @@ async function loadData() {
       }
     });
 
-    // Sigma Convergence Chart
+    // Sigma Convergence Chart — uses cross_domain_sigma (Fisher's method)
     const s_times = [], s_vals = [];
     history.forEach(h => {
-      if (h.overall_rigor && h.overall_rigor.p_value) {
-        s_times.push(h.timestamp ? h.timestamp.substring(0,16) : '');
-        const pv = parseFloat(h.overall_rigor.p_value);
-        // σ = √2 * erf⁻¹(1 - p) simplified: σ = √(2) * norm.ppf(1 - p/2)
-        let sigma = pv > 0 && pv < 1 ? Math.sqrt(2) * erfInv(1 - pv) : 0;
-        if (sigma > 12) sigma = 12.1; // cap
-        if (sigma < 0) sigma = 0;
-        s_vals.push(sigma);
+      const cs = h.overall_rigor && h.overall_rigor.cross_domain_sigma;
+      if (typeof cs === 'number' && cs > 0) {
+        s_times.push(h.timestamp ? h.timestamp.substring(0, 16).replace('T', ' ') : '');
+        s_vals.push(cs);
       }
     });
 
     if (s_vals.length > 0) {
+      const maxSigma = Math.max(...s_vals);
+      const yMax = Math.ceil(Math.max(maxSigma * 1.15, 12));
       const ctxS = document.getElementById('sigmaChart').getContext('2d');
       if (chartSigma) chartSigma.destroy();
       chartSigma = new Chart(ctxS, {
@@ -984,40 +982,50 @@ async function loadData() {
         data: {
           labels: s_times,
           datasets: [{
-            label: 'Sigma (σ)',
+            label: 'Fisher Cross-Domain σ',
             data: s_vals,
             borderColor: '#10b981',
-            backgroundColor: 'rgba(16, 185, 129, 0.1)',
+            backgroundColor: 'rgba(16, 185, 129, 0.08)',
             borderWidth: 2,
             tension: 0.2,
             fill: true,
-            pointRadius: s_vals.length < 20 ? 3 : 0
+            pointRadius: s_vals.length < 30 ? 3 : 0
           }]
         },
-        options: { 
-          responsive: true, 
-          plugins: { 
-            legend: { display: false }, 
-            tooltip: { mode: 'index' },
+        options: {
+          responsive: true,
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              mode: 'index',
+              callbacks: {
+                label: ctx => 'σ = ' + ctx.parsed.y.toFixed(2)
+              }
+            },
             annotation: {
               annotations: {
-                threshold: {
-                  type: 'line',
-                  yMin: 5,
-                  yMax: 5,
-                  borderColor: '#dc2626',
-                  borderWidth: 2,
-                  borderDash: [5, 5],
-                  label: { display: true, content: 'Physical Law (5σ)', position: 'end' }
+                discovery: {
+                  type: 'line', yMin: 9, yMax: 9,
+                  borderColor: '#10b981', borderWidth: 1, borderDash: [4, 4],
+                  label: { display: true, content: 'Discovery (9σ)', position: 'end',
+                    color: '#10b981', font: { size: 10 } }
+                },
+                physLaw: {
+                  type: 'line', yMin: 5, yMax: 5,
+                  borderColor: '#f59e0b', borderWidth: 1, borderDash: [4, 4],
+                  label: { display: true, content: 'Significant (5σ)', position: 'end',
+                    color: '#f59e0b', font: { size: 10 } }
                 }
               }
             }
           },
-          scales: { 
-            y: { 
-              title: {display: true, text: 'Sigma (σ)'},
+          scales: {
+            x: { ticks: { maxRotation: 45, font: { size: 10 }, color: '#64748b' } },
+            y: {
+              title: { display: true, text: 'Cross-Domain Fisher σ' },
               min: 0,
-              max: 12
+              max: yMax,
+              ticks: { color: '#64748b' }
             }
           }
         }

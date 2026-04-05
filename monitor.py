@@ -997,6 +997,22 @@ if __name__ == "__main__":
     except (FileNotFoundError, json.JSONDecodeError):
         history = []
 
+    # Backfill cross_domain_sigma into old entries that pre-date this feature
+    for entry in history:
+        if entry.get('overall_rigor', {}).get('cross_domain_sigma') is None:
+            if 'overall_rigor' not in entry:
+                entry['overall_rigor'] = {}
+            domains = entry.get('domains', [])
+            if domains:
+                bf_sigma, bf_n, bf_names = compute_domain_aggregate_sigma(domains)
+                if bf_sigma is not None:
+                    entry['overall_rigor']['cross_domain_sigma'] = bf_sigma
+                    entry['overall_rigor']['cross_domain_n'] = bf_n
+                    entry['overall_rigor']['cross_domain_method'] = (
+                        f"Fisher's method across {bf_n} domain error p-values (backfilled)"
+                    )
+                    entry['overall_rigor']['cross_domain_domains'] = bf_names
+
     try:
         result = run_audit(history)
         history.append(result)
