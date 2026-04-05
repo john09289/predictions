@@ -713,7 +713,16 @@
 </footer>
 
 <script>
-let chartDomain, chartH0, chartPValue;
+let chartDomain, chartH0, chartPValue, chartSigma;
+
+function erfInv(x) {
+  const a = 0.147;
+  const ln1mx2 = Math.log(1 - x * x);
+  const part1 = 2 / (Math.PI * a) + ln1mx2 / 2;
+  const part2 = ln1mx2 / a;
+  const sign = x < 0 ? -1 : 1;
+  return sign * Math.sqrt(Math.sqrt(part1 * part1 - part2) - part1);
+}
 
 async function loadData() {
   try {
@@ -956,7 +965,7 @@ async function loadData() {
         s_times.push(h.timestamp ? h.timestamp.substring(0,16) : '');
         const pv = parseFloat(h.overall_rigor.p_value);
         // σ = √2 * erf⁻¹(1 - p) simplified: σ = √(2) * norm.ppf(1 - p/2)
-        let sigma = pv > 0 && pv < 1 ? Math.sqrt(2) * this.erfInv(1 - pv) : 0;
+        let sigma = pv > 0 && pv < 1 ? Math.sqrt(2) * erfInv(1 - pv) : 0;
         if (sigma > 12) sigma = 12.1; // cap
         if (sigma < 0) sigma = 0;
         s_vals.push(sigma);
@@ -1011,16 +1020,6 @@ async function loadData() {
       });
     }
 
-    // Helper: Inverse error function approximation
-    erfInv = function(x) {
-      const a = 0.147; 
-      const ln1mx2 = Math.log(1 - x * x);
-      const part1 = 2 / (Math.PI * a) + ln1mx2 / 2;
-      const part2 = ln1mx2 / a;
-      const sign = x < 0 ? -1 : 1;
-      return sign * Math.sqrt(Math.sqrt(part1 * part1 - part2) - part1);
-    };
-
     // Bitcoin hash
     try {
       const hashResp = await fetch('data/latest_hash.txt?' + Date.now());
@@ -1033,15 +1032,20 @@ async function loadData() {
     }
 
   } catch(e) {
-    document.getElementById('lastUpdate').innerHTML = '<span style="color:var(--accent-gold)">⏳ Awaiting first monitor run. Pipeline runs every 5 minutes.</span>';
-    document.getElementById('domainTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text-tertiary);">No data yet — the GitHub Actions monitor has not completed its first run. Check back in 5 minutes.</td></tr>';
+    console.error('loadData error:', e);
+    if (document.getElementById('lastUpdate')) {
+      document.getElementById('lastUpdate').innerHTML = '<span style="color:var(--accent-gold)">⏳ Loading data... retrying in 5 minutes. (' + e.message + ')</span>';
+    }
+    if (document.getElementById('domainTableBody') && document.getElementById('domainTableBody').innerHTML === '') {
+      document.getElementById('domainTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text-tertiary);">Loading data — pipeline runs every 5 minutes. Check back shortly.</td></tr>';
+    }
 
     // Still show eclipse countdown
     var eclipse = new Date('2026-08-12');
     var now = new Date();
     var diff = Math.round((eclipse - now) / (1000 * 60 * 60 * 24));
-    if (diff > 0) {
-      document.getElementById('eclipseBar').innerHTML = '🌒 <strong>' + diff + ' days</strong> until Aug 12, 2026 eclipse — the decisive test.';
+    if (diff > 0 && document.getElementById('eclipseBar')) {
+      document.getElementById('eclipseBar').innerHTML = '<strong>' + diff + ' days</strong> until Aug 12, 2026 eclipse — the decisive test.';
     }
   }
 }
@@ -1054,7 +1058,7 @@ function escapeHtml(text) {
 }
 
 loadData();
-setInterval(loadData, 60000);
+setInterval(loadData, 300000); // every 5 minutes
 </script>
 </body>
 </html>
