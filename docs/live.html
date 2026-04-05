@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Predictive Power — ECM V51.0 15-Domain Convergence Dashboard</title>
+<meta name="description" content="ECM V51.0 Live Predictive Power dashboard. 15 independent domains tested against real-time data from NOAA, USGS, and INTERMAGNET. Updated every 5 minutes via GitHub Actions.">
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+  /* ===== LIVE PAGE SPECIFIC STYLES ===== */
+  .live-hero {
+    text-align: center;
+    padding: 2.5rem 0 1.5rem;
+  }
+  .live-hero h1 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+  }
+  .live-hero .tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    max-width: 640px;
+    margin: 0 auto 1.5rem;
+    line-height: 1.6;
+  }
+
+  /* Pulse dot */
+  .pulse-dot {
+    display: inline-block;
+    width: 10px; height: 10px;
+    background: var(--accent-green);
+    border-radius: 50%;
+    margin-right: 6px;
+    vertical-align: middle;
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5); }
+    50% { box-shadow: 0 0 0 8px rgba(22, 163, 74, 0); }
+  }
+
+  /* Overall score ring */
+  .score-ring-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin: 1.5rem 0 2rem;
+    flex-wrap: wrap;
+  }
+  .score-ring {
+    position: relative;
+    width: 160px; height: 160px;
+  }
+  .score-ring svg {
+    transform: rotate(-90deg);
+  }
+  .score-ring-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .score-ring-number {
+    font-family: var(--font-heading);
+    font-size: 2.6rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    line-height: 1;
+  }
+  .score-ring-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  .mini-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+  .mini-stat {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 1.2rem;
+    box-shadow: var(--shadow-card);
+    min-width: 160px;
+    text-align: center;
+  }
+  .mini-stat-number {
+    font-family: var(--font-heading);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+  .mini-stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-tertiary);
+    margin-top: 2px;
+  }
+
+  /* Eclipse countdown bar */
+  .eclipse-bar {
+    background: linear-gradient(135deg, rgba(220,38,38,0.06), rgba(245,158,11,0.04));
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    margin: 1.5rem 0;
+    font-size: 0.92rem;
+    color: var(--text-secondary);
+  }
+  .eclipse-bar strong {
+    color: var(--accent-red);
+  }
+
+  /* Domain table */
+  .domain-table-wrap {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+  .domain-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: 0.84rem;
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+  }
+  .domain-table th {
+    background: linear-gradient(135deg, #eff6ff, #f0f5ff);
+    color: var(--accent-blue-dim);
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.76em;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border-medium);
+    white-space: nowrap;
+  }
+  .domain-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--border-light);
+    vertical-align: middle;
+    color: var(--text-secondary);
+  }
+  .domain-table tr:last-child td { border-bottom: none; }
+  .domain-table tr:hover td { background: #f8faff; }
+  .domain-table tr.row-pass td:first-child {
+    border-left: 3px solid var(--accent-green);
+  }
+  .domain-table tr.row-fail td:first-child {
+    border-left: 3px solid var(--accent-red);
+  }
+  .domain-table tr.row-pending td:first-child {
+    border-left: 3px solid var(--accent-gold);
+  }
+
+  .status-pass { color: var(--accent-green); font-weight: 700; }
+  .status-fail { color: var(--accent-red); font-weight: 700; }
+  .status-pending { color: var(--accent-gold); font-weight: 700; }
+
+  .formula-cell {
+    font-family: var(--font-mono);
+    font-size: 0.82em;
+    color: var(--accent-blue-dim);
+  }
+
+  /* Chart container */
+  .chart-container {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 2rem 0;
+    box-shadow: var(--shadow-card);
+  }
+  .chart-container canvas {
+    max-height: 320px;
+  }
+
+  /* Constants box  */
+  .constants-box {
+    background: linear-gradient(135deg, rgba(37,99,235,0.04), rgba(14,165,233,0.03));
+    border: 1px solid var(--border-blue);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1.5rem;
+    margin: 1.5rem 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 0.8rem;
+    font-size: 0.84rem;
+  }
+  .const-item {
+    display: flex;
+    flex-direction: column;
+  }
+  .const-symbol {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    color: var(--accent-blue);
+    font-size: 0.9em;
+  }
+  .const-desc {
+    color: var(--text-tertiary);
+    font-size: 0.78em;
+  }
+
+  /* Timestamp bar */
+  .last-update {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-tertiary);
+    margin: 0.5rem 0;
+  }
+
+  /* Bitcoin hash */
+  .btc-hash {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    color: var(--text-tertiary);
+    word-break: break-all;
+    background: var(--bg-code);
+    padding: 6px 10px;
+    border-radius: var(--radius-sm);
+    text-align: center;
+    margin: 1rem 0;
+  }
+
+  /* Loading state */
+  .loading-spinner {
+    display: inline-block;
+    width: 24px; height: 24px;
+    border: 3px solid var(--border-light);
+    border-top-color: var(--accent-blue);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* How It Works */
+  .how-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .how-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .how-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card-hover);
+  }
+  .how-icon {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+  .how-title {
+    font-weight: 600;
+    font-size: 0.92rem;
+    margin-bottom: 0.3rem;
+  }
+  .how-detail {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  @media (max-width: 600px) {
+    .score-ring-container { flex-direction: column; }
+    .mini-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .domain-table { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="wins.html">Wins <span class="nav-badge">67</span></a>
+  <a href="predictions.html">Predictions</a>
+  <a href="tracking.html">Tracking</a>
+  <a href="coordinates.html">Coordinates</a>
+  <a href="model.html">Model</a>
+  <a href="evolution.html">Evolution</a>
+  <a href="context.html">AI Context</a>
+  <a href="live.html" class="active">Live Power <span class="nav-badge" style="background:linear-gradient(135deg,var(--accent-green),#10b981)">LIVE</span></a>
+</nav>
+
+<!-- ===== HERO ===== -->
+<div class="live-hero">
+  <h1><span class="pulse-dot"></span>Live Predictive Power</h1>
+  <p class="tagline">
+    15 independent domains tested against real-time public data. Updated every 5 minutes via GitHub Actions.
+    No cherry-picking. No hardcoded conclusions. Every formula locked <em>before</em> data is pulled.
+  </p>
+</div>
+
+<!-- ===== OVERALL SCORE ===== -->
+<div class="score-ring-container" id="scoreSection">
+  <div class="score-ring">
+    <svg width="160" height="160" viewBox="0 0 160 160">
+      <circle cx="80" cy="80" r="68" fill="none" stroke="#e2e8f0" stroke-width="12"/>
+      <circle cx="80" cy="80" r="68" fill="none" stroke="var(--accent-blue)" stroke-width="12"
+        stroke-dasharray="427" stroke-dashoffset="427" stroke-linecap="round" id="scoreArc"/>
+    </svg>
+    <div class="score-ring-text">
+      <div class="score-ring-number" id="scoreValue">—</div>
+      <div class="score-ring-label">Overall Score</div>
+    </div>
+  </div>
+  <div class="mini-stats">
+    <div class="mini-stat">
+      <div class="mini-stat-number" style="color:var(--accent-green)" id="passedCount">—</div>
+      <div class="mini-stat-label">Domains Passing</div>
+    </div>
+    <div class="mini-stat">
+      <div class="mini-stat-number" style="color:var(--accent-gold)" id="pendingCount">—</div>
+      <div class="mini-stat-label">Pending</div>
+    </div>
+    <div class="mini-stat">
+      <div class="mini-stat-number" style="color:var(--accent-blue)" id="winsCount">—</div>
+      <div class="mini-stat-label">Confirmed Wins</div>
+    </div>
+  </div>
+</div>
+
+<div class="last-update" id="lastUpdate"><span class="loading-spinner"></span>Loading live data...</div>
+
+<!-- ===== ECLIPSE COUNTDOWN ===== -->
+<div class="eclipse-bar" id="eclipseBar">
+  🌒 Eclipse countdown loading...
+</div>
+
+<!-- ===== LOCKED CONSTANTS ===== -->
+<div class="constants-box">
+  <div class="const-item">
+    <span class="const-symbol">H₀ = 8,537 km</span>
+    <span class="const-desc">Firmament height at pole</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol">λ<sub>g</sub> = 8,619 km</span>
+    <span class="const-desc">Aetheric scale length</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol">v<sub>a</sub> = 1.574c</span>
+    <span class="const-desc">Tesla longitudinal wave speed</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol">κ = 1.67 nT/µGal</span>
+    <span class="const-desc">EM-gravity coupling</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol">Lunar = 24.84 h</span>
+    <span class="const-desc">Lunar circuit period</span>
+  </div>
+  <div class="const-item">
+    <span class="const-symbol">Solar = 24.00 h</span>
+    <span class="const-desc">Solar circuit period</span>
+  </div>
+</div>
+
+<!-- ===== 15-DOMAIN TABLE ===== -->
+<h2>15-Domain Convergence Table</h2>
+<div class="domain-table-wrap">
+  <table class="domain-table" id="domainTable">
+    <thead>
+      <tr>
+        <th>Domain</th>
+        <th>Formula</th>
+        <th>Predicted</th>
+        <th>Observed</th>
+        <th>Unit</th>
+        <th>Error</th>
+        <th>Status</th>
+        <th>Source</th>
+      </tr>
+    </thead>
+    <tbody id="domainTableBody">
+      <tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text-tertiary);"><span class="loading-spinner"></span>Fetching latest monitor data...</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ===== SCORE HISTORY CHART ===== -->
+<div class="chart-container">
+  <h3 style="margin-bottom:1rem;color:var(--accent-blue-dim);">Score History (Last 100 Runs)</h3>
+  <canvas id="scoreHistoryChart"></canvas>
+</div>
+
+<!-- ===== HOW IT WORKS ===== -->
+<h2>How This Works</h2>
+<div class="how-grid">
+  <div class="how-card">
+    <div class="how-icon">🔒</div>
+    <div class="how-title">Constants Locked</div>
+    <div class="how-detail">All ECM constants (H₀, λ<sub>g</sub>, κ, v<sub>a</sub>) were locked before any live data is pulled. No post-hoc fitting.</div>
+  </div>
+  <div class="how-card">
+    <div class="how-icon">🤖</div>
+    <div class="how-title">Automated Pipeline</div>
+    <div class="how-detail">GitHub Actions runs <code>monitor.py</code> every 5 minutes, fetching from NOAA, USGS, and INTERMAGNET APIs.</div>
+  </div>
+  <div class="how-card">
+    <div class="how-icon">📊</div>
+    <div class="how-title">15 Domains</div>
+    <div class="how-detail">Schumann, Tesla frequency, NMP, M2 tides, gravity, SAA decay, Polaris, eclipses, Kp, redshift, and more.</div>
+  </div>
+  <div class="how-card">
+    <div class="how-icon">⛓️</div>
+    <div class="how-title">Bitcoin Timestamped</div>
+    <div class="how-detail">SHA-256 hash of every status file committed to git. OpenTimestamps proves existence before measurement.</div>
+  </div>
+  <div class="how-card">
+    <div class="how-icon">🔍</div>
+    <div class="how-title">AI-Verifiable</div>
+    <div class="how-detail">Any AI can fetch <code>status_history.json</code> and independently audit every domain. No trust required.</div>
+  </div>
+  <div class="how-card">
+    <div class="how-icon">⚖️</div>
+    <div class="how-title">Falsifiable</div>
+    <div class="how-detail">Each domain has explicit tolerance bands. If a prediction falls outside tolerance, it fails — no exceptions.</div>
+  </div>
+</div>
+
+<!-- ===== BTC HASH ===== -->
+<div class="btc-hash" id="btcHash">SHA-256: loading...</div>
+
+<!-- ===== RAW DATA LINK ===== -->
+<div style="text-align:center;margin:1.5rem 0;">
+  <a href="data/status_history.json" target="_blank" style="font-weight:600;">📄 Raw JSON Data →</a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="https://github.com/John09289/predictions/blob/main/monitor.py" target="_blank" style="font-weight:600;">🐍 View monitor.py Source →</a>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer-timestamps">
+  <span class="timestamp-entry">Version 51.0 — Closed Toroidal Ovoid</span>
+  <span class="timestamp-entry" id="footerDate">—</span>
+  <span class="timestamp-entry" style="color:var(--accent-green);font-weight:600">Live Monitor Active</span>
+  <a class="timestamp-entry" href="https://github.com/John09289/predictions">GitHub</a>
+  <a class="timestamp-entry" href="context.html">AI Context</a>
+</footer>
+
+<script>
+let chart;
+
+async function loadData() {
+  try {
+    const response = await fetch('data/status_history.json?' + Date.now());
+    if (!response.ok) throw new Error('No data yet');
+    const history = await response.json();
+    if (!history.length) throw new Error('Empty history');
+    const latest = history[history.length - 1];
+
+    // Overall score ring
+    const score = latest.overall_score || 0;
+    const circumference = 2 * Math.PI * 68;
+    const offset = circumference - (score / 100) * circumference;
+    document.getElementById('scoreArc').style.strokeDashoffset = offset;
+    document.getElementById('scoreArc').style.transition = 'stroke-dashoffset 1.2s ease';
+    document.getElementById('scoreValue').textContent = score + '%';
+
+    // Mini stats
+    document.getElementById('passedCount').textContent = latest.passed + '/' + latest.total_scored;
+    const pendingDomains = latest.domains.filter(d => d.pass === null).length;
+    document.getElementById('pendingCount').textContent = pendingDomains;
+    document.getElementById('winsCount').textContent = latest.wins_confirmed || 67;
+
+    // Last update
+    document.getElementById('lastUpdate').textContent = 'Last update: ' + latest.timestamp + ' UTC';
+    document.getElementById('footerDate').textContent = latest.timestamp.split('T')[0];
+
+    // Eclipse bar
+    const eclipseDays = latest.eclipse_days;
+    if (eclipseDays !== undefined && eclipseDays > 0) {
+      const eclipsePred = latest.domains.find(d => d.name && d.name.includes('Eclipse'));
+      const predVal = eclipsePred ? Math.abs(eclipsePred.predicted) : 18;
+      document.getElementById('eclipseBar').innerHTML =
+        '🌒 <strong>' + eclipseDays + ' days</strong> until Aug 12, 2026 eclipse — ECM predicts <strong>-' + predVal + ' nT</strong>, globe predicts <strong>0 nT</strong>. Requires Kp < 2.';
+    } else if (eclipseDays !== undefined && eclipseDays <= 0) {
+      document.getElementById('eclipseBar').innerHTML = '🌒 Eclipse has occurred! Check INTERMAGNET for results.';
+    }
+
+    // Domain table
+    let tbody = '';
+    for (const d of latest.domains) {
+      let statusClass = 'row-pending';
+      let statusIcon = '<span class="status-pending">⏳</span>';
+      if (d.pass === true) { statusClass = 'row-pass'; statusIcon = '<span class="status-pass">✅</span>'; }
+      else if (d.pass === false) { statusClass = 'row-fail'; statusIcon = '<span class="status-fail">❌</span>'; }
+
+      const errorStr = (d.error_pct !== null && d.error_pct !== undefined) ? d.error_pct + '%' : '—';
+      const obsStr = (d.observed !== null && d.observed !== undefined) ? d.observed : 'N/A';
+
+      tbody += '<tr class="' + statusClass + '">' +
+        '<td><strong>' + escapeHtml(d.name) + '</strong></td>' +
+        '<td class="formula-cell">' + escapeHtml(d.formula) + '</td>' +
+        '<td>' + d.predicted + '</td>' +
+        '<td>' + obsStr + '</td>' +
+        '<td>' + escapeHtml(d.unit) + '</td>' +
+        '<td>' + errorStr + '</td>' +
+        '<td>' + statusIcon + '</td>' +
+        '<td style="font-size:0.78em;color:var(--text-tertiary)">' + escapeHtml(d.source || '') + '</td>' +
+        '</tr>';
+    }
+    document.getElementById('domainTableBody').innerHTML = tbody;
+
+    // Chart
+    const last100 = history.slice(-100);
+    const labels = last100.map(h => h.timestamp ? h.timestamp.slice(5, 16) : '');
+    const scores = last100.map(h => h.overall_score);
+    const ctx = document.getElementById('scoreHistoryChart').getContext('2d');
+    if (chart) chart.destroy();
+    chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: labels,
+        datasets: [{
+          label: 'Overall Score (%)',
+          data: scores,
+          borderColor: '#2563eb',
+          backgroundColor: 'rgba(37, 99, 235, 0.08)',
+          fill: true,
+          tension: 0.3,
+          pointRadius: 1,
+          pointHoverRadius: 4,
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: false }
+        },
+        scales: {
+          y: {
+            min: 0, max: 100,
+            grid: { color: 'rgba(148, 163, 184, 0.15)' },
+            ticks: { font: { family: 'Inter', size: 11 }, color: '#94a3b8' }
+          },
+          x: {
+            grid: { display: false },
+            ticks: { font: { family: 'Inter', size: 10 }, color: '#94a3b8', maxTicksLimit: 12 }
+          }
+        }
+      }
+    });
+
+    // Bitcoin hash
+    try {
+      const hashResp = await fetch('data/latest_hash.txt?' + Date.now());
+      if (hashResp.ok) {
+        const hash = await hashResp.text();
+        document.getElementById('btcHash').textContent = 'SHA-256: ' + hash.trim();
+      }
+    } catch(e) {
+      document.getElementById('btcHash').textContent = 'SHA-256: awaiting first run';
+    }
+
+  } catch(e) {
+    document.getElementById('lastUpdate').innerHTML = '<span style="color:var(--accent-gold)">⏳ Awaiting first monitor run. Pipeline runs every 5 minutes.</span>';
+    document.getElementById('domainTableBody').innerHTML = '<tr><td colspan="8" style="text-align:center;padding:2rem;color:var(--text-tertiary);">No data yet — the GitHub Actions monitor has not completed its first run. Check back in 5 minutes.</td></tr>';
+
+    // Still show eclipse countdown
+    var eclipse = new Date('2026-08-12');
+    var now = new Date();
+    var diff = Math.round((eclipse - now) / (1000 * 60 * 60 * 24));
+    if (diff > 0) {
+      document.getElementById('eclipseBar').innerHTML = '🌒 <strong>' + diff + ' days</strong> until Aug 12, 2026 eclipse — the decisive test.';
+    }
+  }
+}
+
+function escapeHtml(text) {
+  if (typeof text !== 'string') return String(text);
+  var div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+loadData();
+setInterval(loadData, 60000);
+</script>
+</body>
+</html>
