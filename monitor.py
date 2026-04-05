@@ -801,6 +801,7 @@ def run_audit(history):
 if __name__ == "__main__":
     os.makedirs("docs/data", exist_ok=True)
     history_file = "docs/data/status_history.json"
+    root_history_file = "status_history.json"
 
     # Load existing history — never overwrite
     history = []
@@ -822,13 +823,19 @@ if __name__ == "__main__":
 
     with open(history_file, "w") as f:
         json.dump(history, f, indent=2)
+    # Write a copy to the root to satisfy absolute AI URL requirements
+    with open(root_history_file, "w") as f:
+        json.dump(history, f, indent=2)
 
     # SHA-256 for Bitcoin timestamping
     with open(history_file, "rb") as f:
         file_hash = hashlib.sha256(f.read()).hexdigest()
 
     hash_file = "docs/data/latest_hash.txt"
+    root_hash_file = "latest_hash.txt"
     with open(hash_file, "w") as f:
+        f.write(file_hash)
+    with open(root_hash_file, "w") as f:
         f.write(file_hash)
 
     print(f"ECM Monitor — {result['timestamp']}")
