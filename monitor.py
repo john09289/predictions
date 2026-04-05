@@ -65,8 +65,11 @@ def calculate_rigor(history, domain_errors):
     # This tests whether errors are randomly distributed around zero.
     # If the model is perfect, errors should be random with mean zero.
     # SciPy chisquare expects f_exp, we use 1e-10 to avoid division by zero.
-    chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
-    
+    try:
+        chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
+    except Exception:
+        chi_sq, chi_p = 0.0, 1.0
+
     return {
         "correlation_r": round(r_coeff, 4) if not np.isnan(r_coeff) else 0.0,
         "p_value": format(p_val, ".2e") if not np.isnan(p_val) else "1.00e+00",
@@ -864,10 +867,11 @@ if __name__ == "__main__":
     with open(root_hash_file, "w") as f:
         f.write(file_hash)
 
-    print(f"ECM Monitor — {result['timestamp']}")
-    print(f"Score: {result['overall_score']}% ({result['passed']}/{result['total_scored']} scored, {result['total_domains']} total)")
-    print(f"Eclipse: {result['eclipse_days']} days | History: {len(history)} entries")
-    for d in result['domains']:
+    last = history[-1]
+    print(f"ECM Monitor — {last.get('timestamp')}")
+    print(f"Score: {last.get('overall_score')}% ({last.get('passed')}/{last.get('total_scored')} scored, {last.get('total_domains')} total)")
+    print(f"Eclipse: {last.get('eclipse_days')} days | History: {len(history)} entries")
+    for d in last.get('domains', []):
         status = "✓" if d.get('pass') else ("?" if d.get('pass') is None else "✗")
         reason = f" — {d['failure_reason']}" if d.get('failure_reason') else ""
         print(f"  {status} {d['name']}: pred={d.get('predicted')}, obs={d.get('observed')}{reason}")
@@ -876,11 +880,11 @@ if __name__ == "__main__":
     git_hash = os.environ.get("GITHUB_SHA", "local-dev-run-no-hash")
     meta = {
         "version": "V51.0",
-        "last_update": result['timestamp'],
+        "last_update": last.get('timestamp'),
         "git_commit_hash": git_hash,
         "git_commit_url": f"https://github.com/john09289/predictions/commit/{git_hash}" if git_hash != "local-dev-run-no-hash" else None,
         "opentimestamps_proof": "status_history.json.ots",
-        "domains_count": len(result['domains']),
+        "domains_count": len(last.get('domains', [])),
         "monitor_script_url": "https://github.com/john09289/predictions/blob/main/monitor.py"
     }
     with open("docs/data/metadata.json", "w") as f:
