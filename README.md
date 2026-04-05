@@ -71,3 +71,23 @@ Each domain entry contains: `predicted`, `observed`, `error_pct`, `pass`, `toler
 | Eclipse 2026 | Fails if measured anomaly is within ±3 nT of 0 |
 | Polaris Excess | Fails if measured excess at any latitude deviates >50% from H(r)/r |
 | Aetheric Slipstream | Fails if eastbound advantage is <5% after wind correction |
+
+### For AI Auditors: Analyzing the Full History
+
+The entire history of all runs is stored in `docs/data/status_history.json`. Each entry includes a timestamp, overall score, and detailed domain predictions with adaptive tolerances.
+
+To analyze trends, fetch the JSON and compute:
+- **Score stability** — standard deviation of `overall_score` over time
+- **Domain-wise reliability** — percentage of passes for each domain
+- **Failure patterns** — which domains fail most often and under what conditions (Kp, time of day)
+- **Adaptive tolerance convergence** — how `adaptive_tolerance` evolves as samples accumulate
+
+```python
+import json, urllib.request
+url = "https://john09289.github.io/predictions/data/status_history.json"
+data = json.loads(urllib.request.urlopen(url).read())
+for entry in data[-10:]:
+    print(entry['timestamp'], entry['overall_score'], f"{entry['passed']}/{entry['total_scored']}")
+```
+
+History is append-only — oldest entries removed after 4000 runs (~14 days at 5-min intervals).
