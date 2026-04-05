@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Predictive Power — ECM V51.0 15-Domain Convergence Dashboard</title>
-<meta name="description" content="ECM V51.0 Live Predictive Power dashboard. 15 independent domains tested against real-time data from NOAA, USGS, and INTERMAGNET. Updated every 5 minutes via GitHub Actions.">
+<title>Live Predictive Power — ECM V51.0 20-Domain Convergence Dashboard</title>
+<meta name="description" content="ECM V51.0 Live Predictive Power dashboard. 20 independent domains tested against real-time data from NOAA, USGS, INTERMAGNET, HeartMath GCI, and CPC. Updated every 5 minutes via GitHub Actions. Bitcoin-timestamped.">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -285,6 +285,36 @@
     line-height: 1.5;
   }
 
+  /* Falsification thresholds */
+  .falsification-box {
+    background: linear-gradient(135deg, rgba(220,38,38,0.04), rgba(245,158,11,0.03));
+    border: 1px solid rgba(220,38,38,0.2);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    margin: 2rem 0;
+  }
+  .falsification-box h3 {
+    color: var(--accent-red);
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+  }
+  .falsification-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .falsification-list li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid rgba(220,38,38,0.1);
+    font-size: 0.88rem;
+    color: var(--text-secondary);
+    display: flex;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .falsification-list li:last-child { border-bottom: none; }
+  .fals-icon { font-size: 1rem; flex-shrink: 0; }
+
   @media (max-width: 600px) {
     .score-ring-container { flex-direction: column; }
     .mini-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; }
@@ -309,8 +339,9 @@
 <div class="live-hero">
   <h1><span class="pulse-dot"></span>Live Predictive Power</h1>
   <p class="tagline">
-    15 independent domains tested against real-time public data. Updated every 5 minutes via GitHub Actions.
+    20 independent domains tested against real-time public data. Updated every 5 minutes via GitHub Actions.
     No cherry-picking. No hardcoded conclusions. Every formula locked <em>before</em> data is pulled.
+    Bitcoin-timestamped via OpenTimestamps.
   </p>
 </div>
 
@@ -378,8 +409,8 @@
   </div>
 </div>
 
-<!-- ===== 15-DOMAIN TABLE ===== -->
-<h2>15-Domain Convergence Table</h2>
+<!-- ===== 20-DOMAIN TABLE ===== -->
+<h2>20-Domain Convergence Table</h2>
 <div class="domain-table-wrap">
   <table class="domain-table" id="domainTable">
     <thead>
@@ -421,8 +452,8 @@
   </div>
   <div class="how-card">
     <div class="how-icon">📊</div>
-    <div class="how-title">15 Domains</div>
-    <div class="how-detail">Schumann, Tesla frequency, NMP, M2 tides, gravity, SAA decay, Polaris, eclipses, Kp, redshift, and more.</div>
+    <div class="how-title">20 Domains</div>
+    <div class="how-detail">Schumann, Tesla frequency, NMP, M2 tides, gravity, SAA decay, Polaris multi-lat, eclipses, Kp, redshift, AAO, aetheric slipstream, CMB, and more.</div>
   </div>
   <div class="how-card">
     <div class="how-icon">⛓️</div>
@@ -441,6 +472,19 @@
   </div>
 </div>
 
+<!-- ===== FALSIFICATION THRESHOLDS ===== -->
+<div class="falsification-box">
+  <h3>⚖️ Falsification Thresholds</h3>
+  <ul class="falsification-list">
+    <li><span class="fals-icon">🧭</span><span><strong>NMP Drift Rate</strong> — Fails if error >30% for 3 consecutive months.</span></li>
+    <li><span class="fals-icon">📡</span><span><strong>Schumann Amplitude Suppression</strong> — Fails if a G3+ storm (Kp≥7) does NOT cause >30% amplitude drop within 6 hours.</span></li>
+    <li><span class="fals-icon">🌀</span><span><strong>Roaring 40s AAO</strong> — Fails if AAO < 0σ while SAA decay >50 nT/yr.</span></li>
+    <li><span class="fals-icon">🌒</span><span><strong>Eclipse 2026</strong> — Fails if measured anomaly is within ±3 nT of 0 (globe prediction).</span></li>
+    <li><span class="fals-icon">⭐</span><span><strong>Polaris Excess</strong> — Fails if measured excess at any latitude deviates >50% from H(r)/r prediction.</span></li>
+    <li><span class="fals-icon">✈️</span><span><strong>Aetheric Slipstream</strong> — Fails if eastbound advantage is <5% after wind correction across 7 routes.</span></li>
+  </ul>
+</div>
+
 <!-- ===== BTC HASH ===== -->
 <div class="btc-hash" id="btcHash">SHA-256: loading...</div>
 
@@ -449,7 +493,10 @@
   <a href="data/status_history.json" target="_blank" style="font-weight:600;">📄 Raw JSON Data →</a>
   &nbsp;&nbsp;|&nbsp;&nbsp;
   <a href="https://github.com/John09289/predictions/blob/main/monitor.py" target="_blank" style="font-weight:600;">🐍 View monitor.py Source →</a>
+  &nbsp;&nbsp;|&nbsp;&nbsp;
+  <a href="data/status_history.json.ots" target="_blank" style="font-weight:600;">🔗 Verify OpenTimestamps Proof →</a>
 </div>
+<p style="text-align:center;font-size:0.78rem;color:var(--text-tertiary);margin-top:0;">To verify: <code>pip install opentimestamps-client && ots verify status_history.json.ots</code></p>
 
 <!-- ===== FOOTER ===== -->
 <footer class="footer-timestamps">

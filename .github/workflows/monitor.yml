@@ -10,16 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install opentimestamps-client
+
       - name: Run monitor
         run: python monitor.py
+
+      - name: Timestamp with OpenTimestamps
+        run: |
+          ots stamp docs/data/status_history.json || true
+          mv docs/data/status_history.json.ots docs/data/ 2>/dev/null || true
+
       - name: Commit and push
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add docs/data/status_history.json docs/data/latest_hash.txt
+          git add docs/data/status_history.json docs/data/latest_hash.txt docs/data/*.ots 2>/dev/null || true
           git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update ECM status $(date -u +'%Y-%m-%d %H:%M:%S')"
           git push
