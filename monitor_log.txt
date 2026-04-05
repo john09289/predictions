@@ -1,0 +1,34 @@
+/home/runner/work/predictions/predictions/monitor.py:60: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  r_coeff, p_val = stats.pearsonr(x, y)
+2026-04-05 06:01:04,875 - ERROR - Exception during run_audit
+Traceback (most recent call last):
+  File "/home/runner/work/predictions/predictions/monitor.py", line 836, in <module>
+    result = run_audit(history)
+             ^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/predictions/predictions/monitor.py", line 791, in run_audit
+    rigor = calculate_rigor(history, errors)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/runner/work/predictions/predictions/monitor.py", line 68, in calculate_rigor
+    chi_sq, chi_p = stats.chisquare(y + 1e-10, f_exp=np.full_like(y, 1e-10))
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_axis_nan_policy.py", line 592, in axis_nan_policy_wrapper
+    res = hypotest_fun_out(*samples, **kwds)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_stats_py.py", line 7367, in chisquare
+    return _power_divergence(f_obs, f_exp=f_exp, ddof=ddof, axis=axis,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/hostedtoolcache/Python/3.11.15/x64/lib/python3.11/site-packages/scipy/stats/_stats_py.py", line 7179, in _power_divergence
+    raise ValueError(msg)
+ValueError: For each axis slice, the sum of the observed frequencies must agree with the sum of the expected frequencies to a relative tolerance of 1.4901161193847656e-08, but the percent differences are:
+89999999.99999999
+  [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
+  [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 403: 
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → HTTP Error 403: 
+2026-04-05 06:01:04,886 - ERROR - CRITICAL CRASH DETECTED:
+2026-04-05 06:01:04,886 - ERROR - Traceback (most recent call last):
+  File "/home/runner/work/predictions/predictions/monitor.py", line 867, in <module>
+    print(f"ECM Monitor — {result['timestamp']}")
+                           ^^^^^^
+NameError: name 'result' is not defined
+
