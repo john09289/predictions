@@ -431,9 +431,16 @@
   </table>
 </div>
 
-<!-- ===== SCORE HISTORY CHART ===== -->
+<!-- ===== CHARTS ===== -->
 <div class="chart-container">
-  <h3 style="margin-bottom:1rem;color:var(--accent-blue-dim);">Score History (Last 100 Runs)</h3>
+  <h3 style="margin-bottom:0.3rem;color:var(--accent-blue-dim);">Per-Domain Accuracy</h3>
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0;">Error % for each scored domain. Lower = more accurate. Green ≤ tolerance, red = fail.</p>
+  <canvas id="domainAccuracyChart"></canvas>
+</div>
+
+<div class="chart-container">
+  <h3 style="margin-bottom:0.3rem;color:var(--accent-blue-dim);">Score Timeline</h3>
+  <p style="font-size:0.78rem;color:var(--text-tertiary);margin-top:0;">Overall convergence score across all runs. Each point = one monitor cycle.</p>
   <canvas id="scoreHistoryChart"></canvas>
 </div>
 
@@ -508,7 +515,7 @@
 </footer>
 
 <script>
-let chart;
+let chartDomain, chartTimeline;
 
 async function loadData() {
   try {
@@ -571,43 +578,136 @@ async function loadData() {
     }
     document.getElementById('domainTableBody').innerHTML = tbody;
 
-    // Chart
+    // ═══════ CHART 1: Per-Domain Accuracy Bars ═══════
+    const scoredDomains = latest.domains.filter(d =>
+      d.error_pct !== null && d.error_pct !== undefined && typeof d.error_pct === 'number'
+    );
+    const domainNames = scoredDomains.map(d => {
+      // Shorten long names for the chart
+      let n = d.name;
+      if (n.length > 28) n = n.substring(0, 26) + '…';
+      return n;
+    });
+    const domainErrors = scoredDomains.map(d => d.error_pct);
+    const domainColors = scoredDomains.map(d => {
+      if (d.pass === true) return 'rgba(22, 163, 74, 0.75)';
+      if (d.pass === false) return 'rgba(220, 38, 38, 0.75)';
+      return 'rgba(245, 158, 11, 0.6)';
+    });
+    const domainBorders = scoredDomains.map(d => {
+      if (d.pass === true) return '#16a34a';
+      if (d.pass === false) return '#dc2626';
+      return '#f59e0b';
+    });
+
+    const ctxDomain = document.getElementById('domainAccuracyChart').getContext('2d');
+    if (chartDomain) chartDomain.destroy();
+    chartDomain = new Chart(ctxDomain, {
+      type: 'bar',
+      data: {
+        labels: domainNames,
+        datasets: [{
+          label: 'Error %',
+          data: domainErrors,
+          backgroundColor: domainColors,
+          borderColor: domainBorders,
+          borderWidth: 1,
+          borderRadius: 3
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) {
+                const d = scoredDomains[ctx.dataIndex];
+                const tol = d.tolerance_pct ? (' (tolerance: ' + d.tolerance_pct + '%)') : '';
+                return 'Error: ' + ctx.parsed.x + '%' + tol;
+              },
+              afterLabel: function(ctx) {
+                const d = scoredDomains[ctx.dataIndex];
+                return 'pred=' + d.predicted + ', obs=' + d.observed + ' ' + (d.unit || '');
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            title: { display: true, text: 'Error %', font: { family: 'Inter', size: 11 }, color: '#94a3b8' },
+            grid: { color: 'rgba(148, 163, 184, 0.15)' },
+            ticks: { font: { family: 'Inter', size: 10 }, color: '#94a3b8' }
+          },
+          y: {
+            grid: { display: false },
+            ticks: { font: { family: 'Inter', size: 11 }, color: '#64748b' }
+          }
+        }
+      }
+    });
+    // Set chart height based on number of domains
+    document.getElementById('domainAccuracyChart').parentElement.style.height = Math.max(320, scoredDomains.length * 32) + 'px';
+
+    // ═══════ CHART 2: Score Timeline ═══════
     const last100 = history.slice(-100);
-    const labels = last100.map(h => h.timestamp ? h.timestamp.slice(5, 16) : '');
-    const scores = last100.map(h => h.overall_score);
-    const ctx = document.getElementById('scoreHistoryChart').getContext('2d');
-    if (chart) chart.destroy();
-    chart = new Chart(ctx, {
+    const timeLabels = last100.map(h => {
+      if (!h.timestamp) return '';
+      // Show date + hour for readability
+      const dt = h.timestamp.replace('T', ' ').slice(0, 16);
+      return dt;
+    });
+    const timeScores = last100.map(h => h.overall_score);
+    const timePassed = last100.map(h => h.passed);
+    const timeTotal = last100.map(h => h.total_scored);
+
+    const ctxTime = document.getElementById('scoreHistoryChart').getContext('2d');
+    if (chartTimeline) chartTimeline.destroy();
+    chartTimeline = new Chart(ctxTime, {
       type: 'line',
       data: {
-        labels: labels,
+        labels: timeLabels,
         datasets: [{
           label: 'Overall Score (%)',
-          data: scores,
+          data: timeScores,
           borderColor: '#2563eb',
           backgroundColor: 'rgba(37, 99, 235, 0.08)',
           fill: true,
           tension: 0.3,
-          pointRadius: 1,
-          pointHoverRadius: 4,
-          borderWidth: 2
+          pointRadius: last100.length < 20 ? 4 : 1,
+          pointHoverRadius: 6,
+          borderWidth: 2,
+          pointBackgroundColor: '#2563eb'
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: true,
         plugins: {
-          legend: { display: false }
+          legend: { display: false },
+          tooltip: {
+            callbacks: {
+              label: function(ctx) { return ctx.parsed.y + '%'; },
+              afterLabel: function(ctx) {
+                const i = ctx.dataIndex;
+                return (timePassed[i] || '?') + '/' + (timeTotal[i] || '?') + ' domains passing';
+              }
+            }
+          }
         },
         scales: {
           y: {
             min: 0, max: 100,
+            title: { display: true, text: 'Score %', font: { family: 'Inter', size: 11 }, color: '#94a3b8' },
             grid: { color: 'rgba(148, 163, 184, 0.15)' },
             ticks: { font: { family: 'Inter', size: 11 }, color: '#94a3b8' }
           },
           x: {
             grid: { display: false },
-            ticks: { font: { family: 'Inter', size: 10 }, color: '#94a3b8', maxTicksLimit: 12 }
+            ticks: { font: { family: 'Inter', size: 10 }, color: '#94a3b8', maxRotation: 45, maxTicksLimit: 12 }
           }
         }
       }
