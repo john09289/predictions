@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Live Predictive Power — ECM V51.0 20-Domain Convergence Dashboard</title>
-<meta name="description" content="ECM V51.0 Live Predictive Power dashboard. 20 independent domains tested against real-time data from NOAA, USGS, INTERMAGNET, HeartMath GCI, and CPC. Updated every 5 minutes via GitHub Actions. Bitcoin-timestamped.">
+<title>Live Predictive Power — ECM V51.1 20-Domain Convergence Dashboard</title>
+<meta name="description" content="ECM V51.1 Live Predictive Power dashboard. 20 independent domains tested against real-time data from NOAA, USGS, INTERMAGNET, HeartMath GCI, and CPC. Updated every 5 minutes via GitHub Actions. Bitcoin-timestamped.">
 <link rel="stylesheet" href="style.css">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
@@ -325,7 +325,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">67</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">69</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -699,11 +699,11 @@
 </div>
 <!-- ===== FOOTER ===== -->
 <footer class="footer-timestamps">
-  <span class="timestamp-entry">Version 51.0 — Closed Toroidal Ovoid</span>
-  <span class="timestamp-entry">2026-04-05</span>
-  <span class="timestamp-entry" style="color:var(--accent-blue);font-weight:600">67 confirmed</span>
+  <span class="timestamp-entry">Version 51.1 — Australia Validation Update</span>
+  <span class="timestamp-entry">2026-04-08</span>
+  <span class="timestamp-entry" style="color:var(--accent-blue);font-weight:600">69 confirmed</span>
   <span class="timestamp-entry" style="color:var(--accent-gold)">4 refined</span>
-  <span class="timestamp-entry" style="color:var(--text-tertiary);font-style:italic;">V51.0 — 10-Domain Convergence Locked</span>
+  <span class="timestamp-entry" style="color:var(--text-tertiary);font-style:italic;">V51.1 — Australia Validation Update</span>
   <a class="timestamp-entry" href="https://github.com/John09289/predictions">GitHub</a>
   <a class="timestamp-entry" href="https://raw.githubusercontent.com/john09289/predictions/main/docs/data/status_history.json">Raw JSON</a>
   <a class="timestamp-entry" href="context.html">AI Context</a>
@@ -807,7 +807,7 @@ async function loadData() {
     document.getElementById('passedCount').textContent = latest.passed + '/' + latest.total_scored;
     const pendingDomains = latest.domains.filter(d => d.pass === null).length;
     document.getElementById('pendingCount').textContent = pendingDomains;
-    document.getElementById('winsCount').textContent = latest.wins_confirmed || 67;
+    document.getElementById('winsCount').textContent = latest.wins_confirmed || 69;
 
     // Last update
     if (document.getElementById('lastUpdate')) {

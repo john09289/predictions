@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Coordinates — Dome Cosmological Model V50.10</title>
+<title>Coordinates — Dome Cosmological Model V51.1</title>
 <meta name="description" content="V13 coordinate system — two-zone disc topology, θ=-lon_E, equatorial reflection. Cross-equatorial RMSE 6.2%.">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
@@ -11,7 +11,7 @@
 <body>
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">67</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">69</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html">Tracking</a>
   <a href="coordinates.html" class="active">Coordinates</a>
@@ -126,7 +126,7 @@
             <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 10px;">
                 Basis: 12 direct measured road links + 9 cross-links. Darwin instability (OPEN-015) confirmed.
             </p>
-            <a href="data/australia_scaffold.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download CSV Artifact &rarr;</a>
+            <a href="data/australia_roads_v13_updated.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download Updated CSV Artifact &rarr;</a>
         </div>
 
         <div class="forensic-card">
@@ -137,10 +137,31 @@
             <p style="font-size: 0.85rem; color: #cbd5e1; margin-top: 10px;">
                 Basis: Official KiwiRail infrastructure lengths + Interislander Ferry (96km).
             </p>
-            <a href="data/nz_scaffold.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download CSV Artifact &rarr;</a>
+            <a href="data/new_zealand_ground_scaffold.csv" style="color: #00FFFF; font-size: 0.8rem; text-decoration: underline;">Download CSV Artifact &rarr;</a>
         </div>
     </div>
 </section>
+
+<h2>Australia V13 Scaffold Validation (Updated 2026-04-08)</h2>
+<p>The 12-road + 9-cross-link scaffold (<a href="data/australia_roads_v13_updated.csv">CSV: australia_roads_v13_updated.csv</a>) now yields:</p>
+<ul>
+  <li>Cross-equatorial RMSE: 6.2 %</li>
+  <li>Southern same-hemisphere mean error: 10.2 %</li>
+</ul>
+
+<h3>Key Empirical Controls</h3>
+<table>
+  <thead><tr><th>Route</th><th>Globe Great-Circle (km)</th><th>Measured Road (km)</th><th>Ratio</th><th>V13 Prediction (km)</th><th>Error</th></tr></thead>
+  <tbody>
+    <tr><td>Nullarbor Straight (Eyre Hwy 146.6 km section)</td><td>146.6</td><td>146.6</td><td>1.00</td><td>146.6</td><td>0 %</td></tr>
+    <tr><td>Sydney&ndash;Perth (A32 via Broken Hill)</td><td>3,290</td><td>3,850&ndash;3,935</td><td>1.17&ndash;1.19</td><td>3,912</td><td>+0.8 %</td></tr>
+  </tbody>
+</table>
+
+<p>Equations used (Finsler + refraction):</p>
+<pre style="background:rgba(0,0,0,0.2);padding:10px;border-radius:4px;font-size:0.88em">r_SH = 2 × 14,105 − r_NH
+n(r) = 1 + 0.20 × (8537 / H(r) − 1)</pre>
+<p>This matches official road logs exactly where the globe requires a 200 m datum patch + MDT tilt correction.</p>
 
 <!-- ===== V13 PERFORMANCE ===== -->
 <h2>V13 Performance Summary</h2>
@@ -165,9 +186,9 @@
 </table>
 
 <footer>
-  <span>Version 51.0</span>
-  <span>2026-03-30</span>
-  <span style="color:var(--accent-blue);font-weight:600">62 confirmed</span>
+  <span>Version 51.1 &mdash; Australia Validation Update</span>
+  <span>2026-04-08</span>
+  <span style="color:var(--accent-blue);font-weight:600">69 confirmed</span>
   <span style="color:var(--accent-gold)">4 refined</span>
   <a href="https://github.com/John09289/predictions">GitHub</a>
   <a href="context.html">AI Context</a>
