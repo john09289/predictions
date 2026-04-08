@@ -3,6 +3,23 @@
     "purpose": "Complete AI onboarding endpoint for Dome Cosmological Model V50.7. Contains all formulas, parameters, confirmed wins, active predictions, falsifications, live data, and runnable Python code. Fetch this file to fully resume dome work without context loss.",
     "current_version": "50.7",
     "last_updated": "2026-03-21",
+    "canonical_note": "This root API snapshot is historical. For the published current V51.1 surface, start with https://john09289.github.io/predictions/ai_manifest.json and the linked current pages.",
+    "published_ai_manifest": "https://john09289.github.io/predictions/ai_manifest.json",
+    "published_current_pages": {
+      "home": "https://john09289.github.io/predictions/",
+      "wins": "https://john09289.github.io/predictions/wins.html",
+      "predictions": "https://john09289.github.io/predictions/predictions.html",
+      "model": "https://john09289.github.io/predictions/model.html",
+      "coordinates": "https://john09289.github.io/predictions/coordinates.html",
+      "killshot": "https://john09289.github.io/predictions/killshot.html",
+      "audit": "https://john09289.github.io/predictions/audit.html",
+      "live": "https://john09289.github.io/predictions/live.html"
+    },
+    "published_data_assets": {
+      "status_history": "https://john09289.github.io/predictions/data/status_history.json",
+      "prediction_hashes": "https://john09289.github.io/predictions/data/prediction_hashes.json",
+      "australia_scaffold_update": "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+    },
     "fetch_sequence": [
       "/api/current/scorecard.json",
       "/api/current/predictions.json",

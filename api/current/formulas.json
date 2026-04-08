@@ -1323,5 +1323,65 @@
     "source_file": "v37_pipeline.py",
     "status": "current",
     "raw_body": "\"\"\"\n    Shoot a ray from z0 at a given elevation angle.\n    Returns the path (x, z) up to max_dist_km.\n    \"\"\"\n    s_step = 0.5  # km step size along ray path\n    ds = s_step\n    \n    x, z = 0.0, z0_km\n    theta = math.radians(initial_elevation_deg)\n    \n    path_x = [x]\n    path_z = [z]\n    \n    # initial ray direction unit vector\n    vx = math.cos(theta)\n    vz = math.sin(theta)\n    \n    s = 0\n    while s < max_dist_km:\n        n = n_index(z)\n        dn = dn_dz(z)\n        \n        # Ray equation bending: change in direction vector\n        # dvz/ds = (1/n) * (dn/dz - vz * (vz*dn_dz + vx*0))  approx: dvz/ds = (1/n)*dn/dz * (1 - vz^2)\n        # More simply, curvature vector is normal to ray\n        curvature = dn / n * math.cos(math.atan2(vz, vx))\n        \n        # Change angle\n        theta += curvature * ds\n        \n        vx = math.cos(theta)\n        vz = math.sin(theta)\n        \n        x += vx * ds\n        z += vz * ds\n        s += ds\n        \n        path_x.append(x)\n        path_z.append(z)\n        \n        if z < 0: # Hit the ground\n            break"
+  },
+  {
+    "id": "FORM-134",
+    "name": "V51.1 Firmament Height Curve",
+    "category": "core_geometry",
+    "formula": "H(r) = 8537 * exp(-r / 8619)",
+    "derivation": "Locked V12/V51.1 firmament height function reused across geomagnetics, solar elevation, coordinates, and toroidal extensions.",
+    "source_file": "docs/model.html",
+    "status": "current_v51_1",
+    "raw_body": "def H(r_km):\n    import math\n    return 8537.0 * math.exp(-r_km / 8619.0)"
+  },
+  {
+    "id": "FORM-135",
+    "name": "V51.1 Aetheric Refraction Index",
+    "category": "core_geometry",
+    "formula": "n(r) = 1 + 0.20 * (8537 / H(r) - 1)",
+    "derivation": "V13 refraction correction used for southern-zone and scaffold work.",
+    "source_file": "docs/model.html",
+    "status": "current_v51_1",
+    "raw_body": "def n_index(r_km):\n    import math\n    h = 8537.0 * math.exp(-r_km / 8619.0)\n    return 1.0 + 0.20 * (8537.0 / h - 1.0)"
+  },
+  {
+    "id": "FORM-136",
+    "name": "V13 Southern Reflection",
+    "category": "coordinates",
+    "formula": "r_SH = 2 * 14105 - r_NH",
+    "derivation": "Two-zone mirrored reflection across the equatorial ring used in the Australia validation work.",
+    "source_file": "docs/coordinates.html",
+    "status": "current_v51_1",
+    "raw_body": "def r_south(r_nh_km):\n    return 2.0 * 14105.0 - r_nh_km"
+  },
+  {
+    "id": "FORM-137",
+    "name": "Eclipse kappa Coupling",
+    "category": "gravity_coupling",
+    "formula": "Delta g (microGal) = Delta B (nT) / 1.672",
+    "derivation": "Tier 3 eclipse coupling rule used in the August 12, 2026 falsification protocol.",
+    "source_file": "docs/predictions.html",
+    "status": "current_v51_1",
+    "raw_body": "def delta_g_from_delta_b(delta_b_nt):\n    return delta_b_nt / 1.672"
+  },
+  {
+    "id": "FORM-138",
+    "name": "FSF Station Scaling",
+    "category": "eclipse_geometry",
+    "formula": "FSF(lat) = 0.19550 / sin(lat)^0.1640 * 32.974^(lat / 90)",
+    "derivation": "Latitude-based field-strength scaling used across the eclipse station ranking.",
+    "source_file": "docs/predictions.html",
+    "status": "current_v51_1",
+    "raw_body": "def fsf(lat_deg):\n    import math\n    lat = max(0.1, abs(lat_deg))\n    return 0.19550 / (math.sin(math.radians(lat)) ** 0.1640) * (32.974 ** (lat / 90.0))"
+  },
+  {
+    "id": "FORM-139",
+    "name": "V13 Ovoid East-West Arc",
+    "category": "coordinates",
+    "formula": "EW_arc = 4 * a * E(e^2) * (Delta lon / 360) * (r_avg / a)",
+    "derivation": "Elliptic-integral EW arc replacing circular EW arc in the V13 ovoid framework.",
+    "source_file": "docs/model.html",
+    "status": "current_v51_1",
+    "raw_body": "from scipy.special import ellipe\n\ndef ew_arc(a_km, e, delta_lon_deg, r_avg_km):\n    return 4.0 * a_km * ellipe(e ** 2) * (delta_lon_deg / 360.0) * (r_avg_km / a_km)"
   }
 ]

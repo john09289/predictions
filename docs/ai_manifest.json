@@ -1,0 +1,234 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "title": "ECM / Dome Model AI Site Manifest",
+  "purpose": "Canonical machine-readable entry point for AI agents starting from the homepage. Use this file to orient, traverse the strongest evidence, inspect formulas, and pull raw artifacts without scraping the entire site first.",
+  "entry_points": {
+    "home": "https://john09289.github.io/predictions/",
+    "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
+    "context": "https://john09289.github.io/predictions/context.html",
+    "wins": "https://john09289.github.io/predictions/wins.html",
+    "predictions": "https://john09289.github.io/predictions/predictions.html",
+    "model": "https://john09289.github.io/predictions/model.html",
+    "coordinates": "https://john09289.github.io/predictions/coordinates.html",
+    "killshot": "https://john09289.github.io/predictions/killshot.html",
+    "audit": "https://john09289.github.io/predictions/audit.html",
+    "live": "https://john09289.github.io/predictions/live.html"
+  },
+  "counts": {
+    "confirmed": 69,
+    "prospective_confirmed": 10,
+    "refined": 4,
+    "registry_accuracy_pct": 94.5
+  },
+  "canonical_current_state": {
+    "geometry": "Closed Toroidal Ovoid, V51.1 presentation layer with V13 coordinate topology and Australia validation update integrated",
+    "single_scale_length": "lambda_g = 8619 km",
+    "firmament_height_formula": "H(r) = 8537 * exp(-r / 8619) km",
+    "southern_reflection_formula": "r_SH = 2 * 14105 - r_NH",
+    "eclipse_coupling_formula": "Delta g (microGal) = Delta B (nT) / 1.672"
+  },
+  "recommended_read_order": [
+    {
+      "step": 1,
+      "url": "https://john09289.github.io/predictions/ai_manifest.json",
+      "purpose": "Load the current version, read order, strongest evidence, raw data links, and formulas."
+    },
+    {
+      "step": 2,
+      "url": "https://john09289.github.io/predictions/wins.html",
+      "purpose": "Inspect the confirmed claims registry, including WIN-068 and WIN-069."
+    },
+    {
+      "step": 3,
+      "url": "https://john09289.github.io/predictions/coordinates.html",
+      "purpose": "Inspect the V13 topology and Australia scaffold validation."
+    },
+    {
+      "step": 4,
+      "url": "https://john09289.github.io/predictions/model.html",
+      "purpose": "Inspect formulas, geometric assumptions, toroidal interpretation, and southern-zone validation."
+    },
+    {
+      "step": 5,
+      "url": "https://john09289.github.io/predictions/killshot.html",
+      "purpose": "Inspect the binary falsification framing and southern metric expansion argument."
+    },
+    {
+      "step": 6,
+      "url": "https://john09289.github.io/predictions/predictions.html",
+      "purpose": "Inspect prospective predictions, the Tier 3 eclipse protocol, and open refinements."
+    },
+    {
+      "step": 7,
+      "url": "https://john09289.github.io/predictions/audit.html",
+      "purpose": "Walk the guided steelman/audit structure."
+    },
+    {
+      "step": 8,
+      "url": "https://john09289.github.io/predictions/live.html",
+      "purpose": "Inspect the continuously updated dashboard and raw time-series references."
+    }
+  ],
+  "steelman_ladder": [
+    {
+      "id": "STEELMAN-01",
+      "title": "Australia road scaffold validation",
+      "anchor": "https://john09289.github.io/predictions/wins.html#win-069",
+      "summary": "Official AGD66/GDA94 datum admissions, the Nullarbor 1.00 control, and the Sydney-Perth excess are brought together under the V13 two-zone topology.",
+      "why_it_matters": "This is the strongest current southern-geometry argument because it combines official geodetic admissions with direct transport controls and a low-error scaffold fit."
+    },
+    {
+      "id": "STEELMAN-02",
+      "title": "Eclipse magnetic ensemble",
+      "anchor": "https://john09289.github.io/predictions/wins.html#win-068",
+      "summary": "Peer-reviewed 39-eclipse / 207-event ensemble shows a systematic magnetic response centered on eclipse geometry.",
+      "why_it_matters": "It establishes that an eclipse-linked magnetic phenomenon exists at scale before the more discriminating Tier 3 gravity test."
+    },
+    {
+      "id": "STEELMAN-03",
+      "title": "Tesla longitudinal period vs disc diameter",
+      "anchor": "https://john09289.github.io/predictions/wins.html",
+      "summary": "Tesla's 0.08484 s round-trip period maps cleanly onto the ECM diameter with 1.574c longitudinal speed, while the globe diameter yields the wrong wave regime.",
+      "why_it_matters": "It is one of the clearest side-by-side direct-derivation comparisons in the registry."
+    },
+    {
+      "id": "STEELMAN-04",
+      "title": "Single-constant unification",
+      "anchor": "https://john09289.github.io/predictions/model.html",
+      "summary": "lambda_g = 8619 km is reused across geomagnetics, Schumann, solar elevation, coordinates, and toroidal extensions.",
+      "why_it_matters": "The site's strongest internal structural claim is that one locked scale length reappears across independent domains."
+    }
+  ],
+  "honest_caveats": [
+    {
+      "topic": "WIN-058",
+      "status": "Pending independent verification",
+      "detail": "The 1.67 nT/microGal bedrock coupling is currently carried as pending independent raw L1A verification or Tier 3 eclipse confirmation.",
+      "url": "https://john09289.github.io/predictions/wins.html"
+    },
+    {
+      "topic": "WIN-013 and WIN-014",
+      "status": "Non-discriminating SG nulls",
+      "detail": "These nulls are now explicitly logged as consistent with both the globe model and ECM pipeline attenuation; they are not decisive confirmations.",
+      "url": "https://john09289.github.io/predictions/wins.html"
+    },
+    {
+      "topic": "PRED-SOLAR-009",
+      "status": "Open refinement",
+      "detail": "The observed annual solar angular-diameter direction currently favors the globe direction and remains honestly logged as unresolved in ECM's favor.",
+      "url": "https://john09289.github.io/predictions/predictions.html#pred-solar-009"
+    }
+  ],
+  "machine_readable_assets": [
+    {
+      "name": "Live status history",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/data/status_history.json"
+    },
+    {
+      "name": "Prediction hashes",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/data/prediction_hashes.json"
+    },
+    {
+      "name": "Australia V13 scaffold update",
+      "format": "csv",
+      "url": "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+    },
+    {
+      "name": "Legacy Australia scaffold",
+      "format": "csv",
+      "url": "https://john09289.github.io/predictions/data/australia_ground_scaffold.csv"
+    },
+    {
+      "name": "Weekly prediction manifest",
+      "format": "json",
+      "url": "https://raw.githubusercontent.com/john09289/predictions/main/predictions_manifest.json"
+    }
+  ],
+  "formulas": [
+    {
+      "id": "FORM-V51-001",
+      "name": "Firmament height",
+      "expression": "H(r) = 8537 * exp(-r / 8619)",
+      "inputs": {
+        "r_km": "radius from Axis Mundi in km"
+      },
+      "output": "firmament height in km",
+      "python": "def H(r_km):\n    import math\n    return 8537.0 * math.exp(-r_km / 8619.0)"
+    },
+    {
+      "id": "FORM-V51-002",
+      "name": "Aetheric refraction index",
+      "expression": "n(r) = 1 + 0.20 * (8537 / H(r) - 1)",
+      "inputs": {
+        "r_km": "radius from Axis Mundi in km"
+      },
+      "output": "dimensionless refraction index",
+      "python": "def n_index(r_km):\n    import math\n    h = 8537.0 * math.exp(-r_km / 8619.0)\n    return 1.0 + 0.20 * (8537.0 / h - 1.0)"
+    },
+    {
+      "id": "FORM-V51-003",
+      "name": "Southern reflection",
+      "expression": "r_SH = 2 * 14105 - r_NH",
+      "inputs": {
+        "r_nh_km": "northern-equivalent radius"
+      },
+      "output": "southern reflected radius in km",
+      "python": "def r_south(r_nh_km):\n    return 2.0 * 14105.0 - r_nh_km"
+    },
+    {
+      "id": "FORM-V51-004",
+      "name": "Eclipse kappa coupling",
+      "expression": "Delta g (microGal) = Delta B (nT) / 1.672",
+      "inputs": {
+        "delta_b_nt": "magnetic anomaly in nT"
+      },
+      "output": "gravity anomaly in microGal",
+      "python": "def delta_g_from_delta_b(delta_b_nt):\n    return delta_b_nt / 1.672"
+    },
+    {
+      "id": "FORM-V51-005",
+      "name": "FSF station scaling",
+      "expression": "FSF(lat) = 0.19550 / sin(lat)^0.1640 * 32.974^(lat / 90)",
+      "inputs": {
+        "lat_deg": "absolute latitude in degrees"
+      },
+      "output": "field-strength factor",
+      "python": "def fsf(lat_deg):\n    import math\n    lat = max(0.1, abs(lat_deg))\n    return 0.19550 / (math.sin(math.radians(lat)) ** 0.1640) * (32.974 ** (lat / 90.0))"
+    },
+    {
+      "id": "FORM-V51-006",
+      "name": "V13 ovoid EW arc",
+      "expression": "EW_arc = 4 * a * E(e^2) * (Delta lon / 360) * (r_avg / a)",
+      "inputs": {
+        "a_km": "semi-major axis",
+        "e": "eccentricity",
+        "delta_lon_deg": "longitude difference",
+        "r_avg_km": "average radius"
+      },
+      "output": "east-west ovoid arc distance",
+      "python": "from scipy.special import ellipe\n\ndef ew_arc(a_km, e, delta_lon_deg, r_avg_km):\n    return 4.0 * a_km * ellipe(e ** 2) * (delta_lon_deg / 360.0) * (r_avg_km / a_km)"
+    }
+  ],
+  "navigation_hints": [
+    {
+      "question": "What is the strongest current southern-geometry steelman?",
+      "go_to": "https://john09289.github.io/predictions/coordinates.html"
+    },
+    {
+      "question": "Where are the current confirmed wins and caveats logged?",
+      "go_to": "https://john09289.github.io/predictions/wins.html"
+    },
+    {
+      "question": "Where is the decisive future falsification test described?",
+      "go_to": "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3"
+    },
+    {
+      "question": "Where are the binary falsifier arguments concentrated?",
+      "go_to": "https://john09289.github.io/predictions/killshot.html"
+    }
+  ],
+  "ai_prompt_seed": "Start with ai_manifest.json, then read wins, coordinates, model, killshot, predictions, audit, and live. Treat wins.html plus predictions.html as the canonical current state when any older archival counts differ."
+}
