@@ -4,9 +4,9 @@
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
   [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → <urlopen error timed out>
   [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → <urlopen error timed out>
-ECM Monitor — 2026-04-08T22:55:27Z
+ECM Monitor — 2026-04-08T23:49:02Z
 Score: 100.0% (28/28 scored, 39 total)
-Eclipse: 125 days | History: 99 entries
+Eclipse: 125 days | History: 100 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ✓ NMP Longitude: pred=139.3, obs=138.057
@@ -21,7 +21,7 @@ Eclipse: 125 days | History: 99 entries
   ? Current Kp Index: pred=< 2 (quiet), obs=1.0
   ✓ Aetheric Redshift Scale λ_A: pred=4283.0, obs=4319.0
   ✓ S2 Solar Tidal Period: pred=12.0, obs=12.0
-  ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=Latest: 15 km SSE of Sant'Angelo, Italy (depth=378.035 km)
+  ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=none found
   ? Schumann Amplitude Suppression: pred=Suppression >30%, obs=No G3+ storm (Kp=1.0); amplitude unavailable
   ? Roaring 40s AAO Index: pred=> +0.3σ, obs=unavailable
   ? Polaris Excess (Edinburgh 55.95°N): pred=0.282, obs=Pending measurement
