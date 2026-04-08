@@ -1,0 +1,7 @@
+requests>=2.31
+selenium>=4.20
+paramiko>=3.4
+numpy>=1.26
+pandas>=2.2
+scipy>=1.13
+matplotlib>=3.8

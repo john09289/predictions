@@ -1,0 +1,81 @@
+{
+  "notes": [
+    "Use only with your legitimate portal access.",
+    "Each download URL should already be the final authenticated file endpoint or a stable export endpoint you are allowed to use.",
+    "The downloader does not create accounts or bypass CAPTCHAs."
+  ],
+  "jobs": [
+    {
+      "portal": "igets_gfz_sftp",
+      "description": "GFZ IGETS superconducting gravimeter download job via official SFTP access.",
+      "login_url": "sftp://igetsftp.gfz.de",
+      "transport": "sftp",
+      "requires_manual_login": false,
+      "notes": [
+        "Use your legitimate IGETS/GFZ SFTP credentials.",
+        "Set L1A_SFTP_USERNAME and L1A_SFTP_PASSWORD, or pass --ssh-key for key-based auth."
+      ],
+      "downloads": [
+        {
+          "label": "serrahn_igrav033_2024_05_10_sftp",
+          "url": "sftp://igetsftp.gfz.de/REPLACE_WITH_REAL_REMOTE_PATH/serrahn_igrav033_2024_05_10.dat",
+          "output": "igets_gfz/serrahn_igrav033_2024_05_10.dat"
+        }
+      ]
+    },
+    {
+      "portal": "igets_gfz",
+      "description": "GFZ IGETS superconducting gravimeter download job for raw or highest-available time series files.",
+      "login_url": "https://igets.gfz-potsdam.de",
+      "transport": "http",
+      "requires_manual_login": true,
+      "notes": [
+        "Log in manually with your real IGETS account.",
+        "If the final file request only works inside a browser session, use --selenium so the script can reuse that session."
+      ],
+      "downloads": [
+        {
+          "label": "serrahn_igrav033_2024_05_10",
+          "url": "https://igets.gfz-potsdam.de/REPLACE_WITH_REAL_EXPORT_URL",
+          "output": "igets_gfz/serrahn_igrav033_2024_05_10.dat"
+        }
+      ]
+    },
+    {
+      "portal": "intermagnet",
+      "description": "INTERMAGNET authenticated or semi-authenticated 1-second geomagnetic data download job.",
+      "login_url": "https://intermagnet.org",
+      "transport": "http",
+      "requires_manual_login": true,
+      "notes": [
+        "Use a real observatory or member-approved access path.",
+        "Point each URL at the exact file or export endpoint you can lawfully access."
+      ],
+      "downloads": [
+        {
+          "label": "her_2024_05_10_sec",
+          "url": "https://intermagnet.org/REPLACE_WITH_REAL_FILE_URL",
+          "output": "intermagnet/her20240510vsec.sec"
+        }
+      ]
+    },
+    {
+      "portal": "supermag",
+      "description": "SuperMAG export job using your legitimate account or API-style user access.",
+      "login_url": "https://supermag.jhuapl.edu",
+      "transport": "http",
+      "requires_manual_login": true,
+      "notes": [
+        "If you have a user ID or token-like export parameter instead of a browser session, place that directly in the final URL.",
+        "For large exports, break requests into smaller windows to avoid portal timeouts."
+      ],
+      "downloads": [
+        {
+          "label": "gua_2024_05_10_1s",
+          "url": "https://supermag.jhuapl.edu/REPLACE_WITH_REAL_EXPORT_URL",
+          "output": "supermag/gua_2024_05_10_1s.csv"
+        }
+      ]
+    }
+  ]
+}
