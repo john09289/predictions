@@ -1,0 +1,80 @@
+# ECM / Dome Model Full LLM Guide
+
+Site root:
+https://john09289.github.io/predictions/
+
+Canonical discovery surfaces:
+- https://john09289.github.io/predictions/ai_manifest.json
+- https://john09289.github.io/predictions/api/index.json
+- https://john09289.github.io/predictions/llms.txt
+- https://john09289.github.io/predictions/context.html
+
+Canonical page order:
+1. https://john09289.github.io/predictions/ai_manifest.json
+2. https://john09289.github.io/predictions/wins.html
+3. https://john09289.github.io/predictions/coordinates.html
+4. https://john09289.github.io/predictions/model.html
+5. https://john09289.github.io/predictions/killshot.html
+6. https://john09289.github.io/predictions/predictions.html
+7. https://john09289.github.io/predictions/audit.html
+8. https://john09289.github.io/predictions/live.html
+
+Core formulas:
+- H(r) = 8537 * exp(-r / 8619)
+- n(r) = 1 + 0.20 * (8537 / H(r) - 1)
+- r_SH = 2 * 14105 - r_NH
+- Delta g (microGal) = Delta B (nT) / 1.672
+- FSF(lat) = 0.19550 / sin(lat)^0.1640 * 32.974^(lat / 90)
+- EW_arc = 4 * a * E(e^2) * (Delta lon / 360) * (r_avg / a)
+
+Current high-value claims:
+- win-069-australia-scaffold
+  Summary: Australia provides the strongest current southern-geometry steelman. The site combines official AGD66/GDA94/AHD datum admissions with direct transport controls. Nullarbor stays exact at ratio 1.00 while Sydney-Perth shows the predicted southern metric excess. The V13 scaffold fit is logged at 6.2 percent cross-equatorial RMSE.
+  Read: wins.html#win-069, coordinates.html#australia-v13-scaffold, model.html#southern-validation-australia, killshot.html#killshot-southern-metric-expansion
+
+- win-068-eclipse-ensemble
+  Summary: A peer-reviewed 39-eclipse, 207-event, 100-observatory ensemble shows a systematic magnetic response over a 180-minute eclipse window. This is not yet the final dome-only discriminator, but it anchors the phenomenon ahead of the Tier 3 gravity test.
+  Read: wins.html#win-068, predictions.html#pred-eclipse-tier3
+
+- win-058-bedrock-kappa
+  Summary: The claimed 1.67 nT per microGal coupling is currently carried as pending independent verification. The site now explicitly states that independent raw L1A reproduction or a successful August 12 2026 Tier 3 test is still required.
+  Read: wins.html#win-058-kappa, predictions.html#pred-eclipse-tier3
+
+- win-011-mohe-contact-phase
+  Summary: The Mohe 1997 eclipse gravity anomaly remains important because the timing peaks at contact phases, not totality. The site now preserves the Unnikrishnan critique and the thermal-tilt loophole instead of overclaiming.
+  Read: wins.html
+
+- win-056-solar-elevation
+  Summary: Solar elevation is presented as emerging from H(r) with zero free parameters. The same lambda_g scale is reused here and across the geometry pages.
+  Read: wins.html, model.html
+
+- win-062-tesla-wave-speed
+  Summary: Tesla's 0.08484 s period is mapped to the ECM diameter to derive 1.574c for the longitudinal mode. The registry contains two visible WIN-062 blocks; the API normalizes them to one claim key.
+  Read: wins.html#win-062, api/current/claim_index.json
+
+- pred-eclipse-tier3
+  Summary: The strongest future falsifier on the live site. The protocol requires a quiet-day SG contact-phase signal with kappa scaling. A clean null on a verified quiet day is explicitly counted as falsification.
+  Read: predictions.html#pred-eclipse-tier3
+
+- pred-solar-009
+  Summary: Open refinement. The site explicitly says the observed seasonal angular-diameter direction currently favors the globe.
+  Read: predictions.html#pred-solar-009
+
+Machine-readable registry:
+- https://john09289.github.io/predictions/api/current/overview.json
+- https://john09289.github.io/predictions/api/current/claim_index.json
+- https://john09289.github.io/predictions/api/current/evidence_graph.json
+- https://john09289.github.io/predictions/api/current/source_registry.json
+- https://john09289.github.io/predictions/api/current/formula_runtime.json
+- https://john09289.github.io/predictions/api/current/page_map.json
+
+Raw data assets:
+- https://john09289.github.io/predictions/data/status_history.json
+- https://john09289.github.io/predictions/data/prediction_hashes.json
+- https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv
+- https://john09289.github.io/predictions/data/live_data.json
+
+Interpretation rules:
+- Prefer the published docs and docs/api surfaces over the historical root api/master.json snapshot.
+- Preserve the site's own honest caveats. The strongest current steelman does not depend on deleting unresolved items.
+- Use claim_key rather than visible label when you need a stable identifier.

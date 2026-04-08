@@ -1,0 +1,149 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "pages": [
+    {
+      "page_id": "home",
+      "title": "Homepage",
+      "url": "https://john09289.github.io/predictions/",
+      "purpose": "High-level entry point with AI discovery links, steelman ladder, and runnable formula widgets.",
+      "best_for": [
+        "initial orientation",
+        "finding machine-readable entry points",
+        "running core formulas quickly"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/#ai-start-here",
+        "https://john09289.github.io/predictions/#steelman-evidence-ladder",
+        "https://john09289.github.io/predictions/#formula-lab"
+      ],
+      "claim_keys": [
+        "win-069-australia-scaffold",
+        "win-068-eclipse-ensemble",
+        "win-062-tesla-wave-speed",
+        "pred-eclipse-tier3"
+      ]
+    },
+    {
+      "page_id": "wins",
+      "title": "Confirmed Wins",
+      "url": "https://john09289.github.io/predictions/wins.html",
+      "purpose": "Canonical confirmed-claims registry and status labels.",
+      "best_for": [
+        "checking whether a claim is confirmed, pending, or refined",
+        "reading the site's own prose argumentation",
+        "finding caveats attached to historical wins"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/wins.html#win-058-kappa",
+        "https://john09289.github.io/predictions/wins.html#win-062",
+        "https://john09289.github.io/predictions/wins.html#win-068",
+        "https://john09289.github.io/predictions/wins.html#win-069"
+      ],
+      "claim_keys": [
+        "win-058-bedrock-kappa",
+        "win-062-tesla-wave-speed",
+        "win-068-eclipse-ensemble",
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "page_id": "predictions",
+      "title": "Predictions Registry",
+      "url": "https://john09289.github.io/predictions/predictions.html",
+      "purpose": "Prospective claims, monitoring protocols, and falsification tests.",
+      "best_for": [
+        "future tests",
+        "Tier 3 eclipse protocol",
+        "open refinements"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3",
+        "https://john09289.github.io/predictions/predictions.html#pred-solar-009"
+      ],
+      "claim_keys": [
+        "pred-eclipse-tier3",
+        "pred-solar-009"
+      ]
+    },
+    {
+      "page_id": "coordinates",
+      "title": "Coordinates",
+      "url": "https://john09289.github.io/predictions/coordinates.html",
+      "purpose": "Coordinate topology, scaffolds, and the Australia validation tables.",
+      "best_for": [
+        "southern geometry",
+        "transport controls",
+        "Australia scaffold details"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/coordinates.html#australia-v13-scaffold"
+      ],
+      "claim_keys": [
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "page_id": "model",
+      "title": "Model",
+      "url": "https://john09289.github.io/predictions/model.html",
+      "purpose": "Core geometry, parameters, formulas, and southern validation framing.",
+      "best_for": [
+        "formula reading",
+        "lambda_g unification",
+        "southern-zone interpretation"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/model.html#southern-validation-australia"
+      ],
+      "claim_keys": [
+        "win-056-solar-elevation",
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "page_id": "killshot",
+      "title": "Kill-Shot",
+      "url": "https://john09289.github.io/predictions/killshot.html",
+      "purpose": "Binary falsifier framing and strongest southern metric expansion argument.",
+      "best_for": [
+        "binary framing",
+        "multi-country southern geodesy parallel",
+        "condensed steelman"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/killshot.html#killshot-southern-metric-expansion"
+      ],
+      "claim_keys": [
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "page_id": "audit",
+      "title": "Audit",
+      "url": "https://john09289.github.io/predictions/audit.html",
+      "purpose": "Guided audit walkthrough for skeptical reading."
+    },
+    {
+      "page_id": "live",
+      "title": "Live Dashboard",
+      "url": "https://john09289.github.io/predictions/live.html",
+      "purpose": "Time-series and operational monitoring references.",
+      "best_for": [
+        "live registry state",
+        "raw time-series references",
+        "operational data checks"
+      ],
+      "data_assets": [
+        "https://john09289.github.io/predictions/data/live_data.json",
+        "https://john09289.github.io/predictions/data/status_history.json"
+      ]
+    },
+    {
+      "page_id": "context",
+      "title": "AI Context",
+      "url": "https://john09289.github.io/predictions/context.html",
+      "purpose": "Long-form context page with an explicit canonical override for V51.1."
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "purpose": "Canonical current overview for AI agents consuming the live site. This file normalizes the current state, strongest entry points, and the main integrity rules needed to read the registry correctly.",
+  "current_state": {
+    "confirmed_display": 69,
+    "refined_display": 4,
+    "prospective_display": 10,
+    "accuracy_display_pct": 94.5,
+    "geometry": "Closed Toroidal Ovoid with V13 coordinate topology and Australia validation integrated",
+    "single_scale_length_km": 8619,
+    "top_current_steelman": "Australia scaffold validation plus official datum admissions"
+  },
+  "canonical_priority": [
+    {
+      "rank": 1,
+      "surface": "AI manifest",
+      "url": "https://john09289.github.io/predictions/ai_manifest.json",
+      "reason": "Fast current-state map with read order, formulas, caveats, and raw asset links."
+    },
+    {
+      "rank": 2,
+      "surface": "Claim index",
+      "url": "https://john09289.github.io/predictions/api/current/claim_index.json",
+      "reason": "Stable machine identifiers for the strongest current claims."
+    },
+    {
+      "rank": 3,
+      "surface": "Wins registry",
+      "url": "https://john09289.github.io/predictions/wins.html",
+      "reason": "Canonical prose registry for confirmed items and status labeling."
+    },
+    {
+      "rank": 4,
+      "surface": "Coordinates",
+      "url": "https://john09289.github.io/predictions/coordinates.html",
+      "reason": "Best current southern-geometry steelman and Australia scaffold details."
+    },
+    {
+      "rank": 5,
+      "surface": "Predictions",
+      "url": "https://john09289.github.io/predictions/predictions.html",
+      "reason": "Prospective registry, Tier 3 falsifier, and open refinements."
+    }
+  ],
+  "strongest_steelman_path": [
+    "win-069-australia-scaffold",
+    "win-068-eclipse-ensemble",
+    "win-056-solar-elevation",
+    "win-062-tesla-wave-speed",
+    "pred-eclipse-tier3"
+  ],
+  "honest_caveats": [
+    {
+      "claim_key": "win-058-bedrock-kappa",
+      "status": "pending_independent_verification",
+      "detail": "The claimed 1.67 nT per microGal coupling is not treated as fully closed. Independent raw L1A reproduction or the August 12 2026 Tier 3 result is still required."
+    },
+    {
+      "claim_key": "win-013-sg-null",
+      "status": "non_discriminating",
+      "detail": "The 1999 and 2009 SG eclipse nulls are logged as consistent with both models rather than as decisive wins."
+    },
+    {
+      "claim_key": "pred-solar-009",
+      "status": "open_favors_globe",
+      "detail": "The observed seasonal direction of solar angular diameter still favors the globe direction and remains openly unresolved."
+    }
+  ],
+  "machine_endpoints": [
+    "https://john09289.github.io/predictions/api/current/claim_index.json",
+    "https://john09289.github.io/predictions/api/current/evidence_graph.json",
+    "https://john09289.github.io/predictions/api/current/source_registry.json",
+    "https://john09289.github.io/predictions/api/current/formula_runtime.json",
+    "https://john09289.github.io/predictions/api/current/page_map.json"
+  ],
+  "raw_assets": [
+    "https://john09289.github.io/predictions/data/status_history.json",
+    "https://john09289.github.io/predictions/data/prediction_hashes.json",
+    "https://john09289.github.io/predictions/data/live_data.json",
+    "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+  ],
+  "ambiguities": [
+    {
+      "visible_label": "WIN-058",
+      "issue": "The visible prose registry uses WIN-058 for two different claims.",
+      "use_instead": [
+        "win-058-bedrock-kappa",
+        "win-058-theta-rule"
+      ]
+    },
+    {
+      "visible_label": "WIN-062",
+      "issue": "The visible prose registry contains two presentations of the Tesla 1.574c claim.",
+      "use_instead": [
+        "win-062-tesla-wave-speed"
+      ]
+    }
+  ],
+  "agent_rules": [
+    "Preserve the site's own honest caveats; the current steelman is strongest when those caveats remain attached.",
+    "Prefer the docs and docs/api surfaces over the historical root api/master.json snapshot.",
+    "When you need a stable identifier, use claim_key rather than visible label."
+  ]
+}

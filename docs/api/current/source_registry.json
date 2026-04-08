@@ -1,0 +1,151 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "purpose": "Normalized source registry for the strongest current claims. These are the source families explicitly summarized or referenced on the live site.",
+  "sources": [
+    {
+      "source_id": "SRC-AUS-001",
+      "short_name": "Australian datum admissions",
+      "type": "official_geodesy",
+      "summary": "Official AGD66, GDA94, GDA2020, and AHD documentation summarized on the site. Core point: AGD66 is non-geocentric and Australia requires a continent-scale datum shift and vertical corrections in the official framework.",
+      "supports_claim_keys": [
+        "win-069-australia-scaffold"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/wins.html#win-069",
+        "https://john09289.github.io/predictions/coordinates.html#australia-v13-scaffold",
+        "https://john09289.github.io/predictions/killshot.html#killshot-southern-metric-expansion"
+      ],
+      "availability": "summarized_on_site"
+    },
+    {
+      "source_id": "SRC-AUS-002",
+      "short_name": "Australia road controls",
+      "type": "transport_control",
+      "summary": "Measured Australian transport controls used by the site, especially the Nullarbor straight and Sydney-Perth route comparison.",
+      "supports_claim_keys": [
+        "win-069-australia-scaffold"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/coordinates.html#australia-v13-scaffold",
+        "https://john09289.github.io/predictions/wins.html#win-069"
+      ],
+      "data_assets": [
+        "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+      ]
+    },
+    {
+      "source_id": "SRC-AUS-003",
+      "short_name": "Southern geodesy parallels",
+      "type": "comparative_geodesy",
+      "summary": "New Zealand and South Africa are used as parallel southern datum cases in the kill-shot framing.",
+      "supports_claim_keys": [
+        "win-069-australia-scaffold"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/killshot.html#killshot-southern-metric-expansion"
+      ]
+    },
+    {
+      "source_id": "SRC-ECL-001",
+      "short_name": "Kim and Chang 2018",
+      "type": "peer_reviewed_magnetic",
+      "summary": "Peer-reviewed multi-eclipse ensemble analysis summarized on the site as the main anchor for WIN-068.",
+      "supports_claim_keys": [
+        "win-068-eclipse-ensemble",
+        "pred-eclipse-tier3"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/wins.html#win-068",
+        "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3"
+      ],
+      "availability": "summarized_on_site"
+    },
+    {
+      "source_id": "SRC-ECL-002",
+      "short_name": "Wang et al. 2000 and Yang and Wang 2002",
+      "type": "peer_reviewed_gravity",
+      "summary": "Mohe 1997 eclipse gravity anomaly and follow-up discussion. Used as the historical anchor for the contact-phase timing argument.",
+      "supports_claim_keys": [
+        "win-011-mohe-contact-phase",
+        "pred-eclipse-tier3"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/wins.html",
+        "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3"
+      ],
+      "availability": "summarized_on_site"
+    },
+    {
+      "source_id": "SRC-ECL-003",
+      "short_name": "Unnikrishnan et al. 2001 critique",
+      "type": "peer_reviewed_counterargument",
+      "summary": "Critique of shielding-style eclipse gravity explanations. The live site now treats this as an honest mechanism constraint rather than deleting it.",
+      "supports_claim_keys": [
+        "win-011-mohe-contact-phase"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/wins.html"
+      ],
+      "availability": "summarized_on_site"
+    },
+    {
+      "source_id": "SRC-INTERMAGNET-001",
+      "short_name": "INTERMAGNET public observatories",
+      "type": "public_network_data",
+      "summary": "Public magnetic observatory network used for eclipse and geomagnetic claims on the site.",
+      "supports_claim_keys": [
+        "win-068-eclipse-ensemble",
+        "pred-eclipse-tier3"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/live.html",
+        "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3"
+      ]
+    },
+    {
+      "source_id": "SRC-IGETS-001",
+      "short_name": "IGETS superconducting gravimeters",
+      "type": "public_network_data",
+      "summary": "Public SG residual network referenced for the Tier 3 eclipse falsification protocol.",
+      "supports_claim_keys": [
+        "pred-eclipse-tier3",
+        "win-058-bedrock-kappa"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/predictions.html#pred-eclipse-tier3"
+      ]
+    },
+    {
+      "source_id": "SRC-TESLA-001",
+      "short_name": "Tesla Colorado Springs and Patent 787412",
+      "type": "historical_primary_source",
+      "summary": "Tesla period source used for the 1.574c longitudinal-wave claim.",
+      "supports_claim_keys": [
+        "win-062-tesla-wave-speed"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/wins.html#win-062"
+      ]
+    },
+    {
+      "source_id": "SRC-INTERNAL-001",
+      "short_name": "Live formula and registry surfaces",
+      "type": "internal_model_surface",
+      "summary": "The live formula pack, AI manifest, and registry pages themselves. Used for navigation, cross-linking, and stable machine-readable interpretation.",
+      "supports_claim_keys": [
+        "win-056-solar-elevation",
+        "win-058-bedrock-kappa",
+        "win-068-eclipse-ensemble",
+        "win-069-australia-scaffold",
+        "pred-eclipse-tier3",
+        "pred-solar-009"
+      ],
+      "pages": [
+        "https://john09289.github.io/predictions/ai_manifest.json",
+        "https://john09289.github.io/predictions/api/current/formula_runtime.json",
+        "https://john09289.github.io/predictions/api/current/claim_index.json"
+      ]
+    }
+  ]
+}

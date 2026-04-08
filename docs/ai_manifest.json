@@ -6,6 +6,9 @@
   "entry_points": {
     "home": "https://john09289.github.io/predictions/",
     "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
+    "api_index": "https://john09289.github.io/predictions/api/index.json",
+    "llms": "https://john09289.github.io/predictions/llms.txt",
+    "llms_full": "https://john09289.github.io/predictions/llms-full.txt",
     "context": "https://john09289.github.io/predictions/context.html",
     "wins": "https://john09289.github.io/predictions/wins.html",
     "predictions": "https://john09289.github.io/predictions/predictions.html",
@@ -122,6 +125,41 @@
   ],
   "machine_readable_assets": [
     {
+      "name": "Published AI API index",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/index.json"
+    },
+    {
+      "name": "Current overview",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/overview.json"
+    },
+    {
+      "name": "Claim index",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/claim_index.json"
+    },
+    {
+      "name": "Evidence graph",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/evidence_graph.json"
+    },
+    {
+      "name": "Source registry",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/source_registry.json"
+    },
+    {
+      "name": "Formula runtime pack",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/formula_runtime.json"
+    },
+    {
+      "name": "Page map",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/page_map.json"
+    },
+    {
       "name": "Live status history",
       "format": "json",
       "url": "https://john09289.github.io/predictions/data/status_history.json"
@@ -229,6 +267,11 @@
       "question": "Where are the binary falsifier arguments concentrated?",
       "go_to": "https://john09289.github.io/predictions/killshot.html"
     }
+  ],
+  "agent_rules": [
+    "Treat wins.html and predictions.html as canonical when older archival counts differ.",
+    "Use claim_key values from api/current/claim_index.json to disambiguate legacy duplicate visible labels like WIN-058 and WIN-062.",
+    "Preserve the honest caveats; the current steelman is strongest when the unresolved items remain attached."
   ],
   "ai_prompt_seed": "Start with ai_manifest.json, then read wins, coordinates, model, killshot, predictions, audit, and live. Treat wins.html plus predictions.html as the canonical current state when any older archival counts differ."
 }

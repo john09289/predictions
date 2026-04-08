@@ -1,0 +1,180 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "purpose": "Runnable formula pack for the live site. The homepage formula lab covers the browser-runnable subset; this file adds stable identifiers, code snippets, dependencies, and sample evaluations.",
+  "formulas": [
+    {
+      "id": "FORM-V51-001",
+      "name": "Firmament Height",
+      "expression": "H(r) = 8537 * exp(-r / 8619)",
+      "description": "Primary height curve used across geometry, solar elevation, and southern-zone extensions.",
+      "inputs": {
+        "r_km": "radius from Axis Mundi in km"
+      },
+      "output": "firmament height in km",
+      "browser_runnable": true,
+      "python": "def H(r_km):\n    import math\n    return 8537.0 * math.exp(-r_km / 8619.0)",
+      "javascript": "function H(rKm){ return 8537 * Math.exp(-rKm / 8619); }",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "r_km": 14105
+          },
+          "output": 1661.8125
+        },
+        {
+          "inputs": {
+            "r_km": 8619
+          },
+          "output": 3140.5868
+        }
+      ],
+      "used_by_claim_keys": [
+        "win-056-solar-elevation",
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "id": "FORM-V51-002",
+      "name": "Aetheric Refraction Index",
+      "expression": "n(r) = 1 + 0.20 * (8537 / H(r) - 1)",
+      "description": "Refraction layer used in the V13 scaffold and southern metric interpretation.",
+      "inputs": {
+        "r_km": "radius from Axis Mundi in km"
+      },
+      "output": "dimensionless refraction index",
+      "dependencies": [
+        "FORM-V51-001"
+      ],
+      "browser_runnable": true,
+      "python": "def n_index(r_km):\n    import math\n    h = 8537.0 * math.exp(-r_km / 8619.0)\n    return 1.0 + 0.20 * (8537.0 / h - 1.0)",
+      "javascript": "function nIndex(rKm){ return 1 + 0.20 * (8537 / H(rKm) - 1); }",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "r_km": 14105
+          },
+          "output": 1.8274
+        },
+        {
+          "inputs": {
+            "r_km": 8619
+          },
+          "output": 1.3437
+        }
+      ],
+      "used_by_claim_keys": [
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "id": "FORM-V51-003",
+      "name": "Southern Reflection",
+      "expression": "r_SH = 2 * 14105 - r_NH",
+      "description": "Mirrored southern-zone reflection used in the V13 two-zone topology.",
+      "inputs": {
+        "r_nh_km": "northern-equivalent radius in km"
+      },
+      "output": "southern reflected radius in km",
+      "browser_runnable": true,
+      "python": "def r_south(r_nh_km):\n    return 2.0 * 14105.0 - r_nh_km",
+      "javascript": "function rSouth(rNhKm){ return 2 * 14105 - rNhKm; }",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "r_nh_km": 7815
+          },
+          "output": 20395
+        }
+      ],
+      "used_by_claim_keys": [
+        "win-069-australia-scaffold"
+      ]
+    },
+    {
+      "id": "FORM-V51-004",
+      "name": "Eclipse Kappa Coupling",
+      "expression": "Delta g (microGal) = Delta B (nT) / 1.672",
+      "description": "Magnetic-to-gravity coupling used in the Tier 3 eclipse protocol.",
+      "inputs": {
+        "delta_b_nt": "magnetic anomaly in nT"
+      },
+      "output": "gravity anomaly in microGal",
+      "browser_runnable": true,
+      "python": "def delta_g_from_delta_b(delta_b_nt):\n    return delta_b_nt / 1.672",
+      "javascript": "function deltaG(deltaBNt){ return deltaBNt / 1.672; }",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "delta_b_nt": -18
+          },
+          "output": -10.7656
+        }
+      ],
+      "used_by_claim_keys": [
+        "win-058-bedrock-kappa",
+        "pred-eclipse-tier3"
+      ]
+    },
+    {
+      "id": "FORM-V51-005",
+      "name": "FSF Station Scaling",
+      "expression": "FSF(lat) = 0.19550 / sin(lat)^0.1640 * 32.974^(lat / 90)",
+      "description": "Field Strength Factor used for eclipse station scaling.",
+      "inputs": {
+        "lat_deg": "absolute latitude in degrees"
+      },
+      "output": "field-strength factor",
+      "browser_runnable": true,
+      "python": "def fsf(lat_deg):\n    import math\n    lat = max(0.1, abs(lat_deg))\n    return 0.19550 / (math.sin(math.radians(lat)) ** 0.1640) * (32.974 ** (lat / 90.0))",
+      "javascript": "function fsf(latDeg){ var lat=Math.max(0.1, Math.abs(latDeg)); var rad=lat*Math.PI/180; return 0.19550 / Math.pow(Math.sin(rad), 0.1640) * Math.pow(32.974, lat / 90); }",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "lat_deg": 40
+          },
+          "output": 0.994
+        },
+        {
+          "inputs": {
+            "lat_deg": 50
+          },
+          "output": 1.4242
+        }
+      ],
+      "used_by_claim_keys": [
+        "pred-eclipse-tier3"
+      ]
+    },
+    {
+      "id": "FORM-V51-006",
+      "name": "V13 Ovoid East-West Arc",
+      "expression": "EW_arc = 4 * a * E(e^2) * (Delta lon / 360) * (r_avg / a)",
+      "description": "Elliptic-integral east-west arc used in the V13 ovoid geometry.",
+      "inputs": {
+        "a_km": "semi-major axis in km",
+        "e": "eccentricity",
+        "delta_lon_deg": "longitude difference in degrees",
+        "r_avg_km": "average radius in km"
+      },
+      "output": "east-west arc distance in km",
+      "browser_runnable": false,
+      "python": "from scipy.special import ellipe\n\ndef ew_arc(a_km, e, delta_lon_deg, r_avg_km):\n    return 4.0 * a_km * ellipe(e ** 2) * (delta_lon_deg / 360.0) * (r_avg_km / a_km)",
+      "implementation_note": "Requires an elliptic integral function such as scipy.special.ellipe or mpmath.ellipe.",
+      "sample_evaluations": [
+        {
+          "inputs": {
+            "a_km": 20015,
+            "e": 0.66,
+            "delta_lon_deg": 45,
+            "r_avg_km": 14105
+          },
+          "output": 9749.2788
+        }
+      ],
+      "used_by_claim_keys": [
+        "win-069-australia-scaffold"
+      ]
+    }
+  ]
+}

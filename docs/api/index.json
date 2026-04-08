@@ -1,0 +1,53 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "purpose": "Published AI discovery root for the live GitHub Pages site. Prefer this over the historical root api/master.json snapshot when you are crawling the public site.",
+  "site_root": "https://john09289.github.io/predictions/",
+  "entry_points": {
+    "home": "https://john09289.github.io/predictions/",
+    "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
+    "api_index": "https://john09289.github.io/predictions/api/index.json",
+    "context": "https://john09289.github.io/predictions/context.html",
+    "llms": "https://john09289.github.io/predictions/llms.txt",
+    "llms_full": "https://john09289.github.io/predictions/llms-full.txt"
+  },
+  "recommended_fetch_sequence": [
+    "https://john09289.github.io/predictions/ai_manifest.json",
+    "https://john09289.github.io/predictions/api/current/overview.json",
+    "https://john09289.github.io/predictions/api/current/claim_index.json",
+    "https://john09289.github.io/predictions/api/current/evidence_graph.json",
+    "https://john09289.github.io/predictions/api/current/source_registry.json",
+    "https://john09289.github.io/predictions/api/current/formula_runtime.json",
+    "https://john09289.github.io/predictions/api/current/page_map.json",
+    "https://john09289.github.io/predictions/wins.html",
+    "https://john09289.github.io/predictions/coordinates.html",
+    "https://john09289.github.io/predictions/model.html",
+    "https://john09289.github.io/predictions/killshot.html",
+    "https://john09289.github.io/predictions/predictions.html",
+    "https://john09289.github.io/predictions/audit.html",
+    "https://john09289.github.io/predictions/live.html"
+  ],
+  "normalized_surfaces": {
+    "overview": "https://john09289.github.io/predictions/api/current/overview.json",
+    "claim_index": "https://john09289.github.io/predictions/api/current/claim_index.json",
+    "evidence_graph": "https://john09289.github.io/predictions/api/current/evidence_graph.json",
+    "source_registry": "https://john09289.github.io/predictions/api/current/source_registry.json",
+    "formula_runtime": "https://john09289.github.io/predictions/api/current/formula_runtime.json",
+    "page_map": "https://john09289.github.io/predictions/api/current/page_map.json"
+  },
+  "raw_assets": {
+    "status_history": "https://john09289.github.io/predictions/data/status_history.json",
+    "prediction_hashes": "https://john09289.github.io/predictions/data/prediction_hashes.json",
+    "live_data": "https://john09289.github.io/predictions/data/live_data.json",
+    "australia_roads_v13_updated": "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+  },
+  "discovery_files": {
+    "robots": "https://john09289.github.io/predictions/robots.txt",
+    "sitemap": "https://john09289.github.io/predictions/sitemap.xml"
+  },
+  "notes": [
+    "Treat wins.html and predictions.html as canonical when any older archival counts differ.",
+    "Use claim_key fields from claim_index.json when matching registry entries.",
+    "Visible labels WIN-058 and WIN-062 have legacy ambiguity in the prose registry; the normalized API surfaces disambiguate them."
+  ]
+}

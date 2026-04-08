@@ -6,6 +6,10 @@
 <title>Ovoid Cavity Cosmological Model V51.1 — 69 Confirmed Predictions</title>
 <meta name="description" content="V51.1 Closed Toroidal Ovoid Cosmological Model derived from scripture and raw data. 69 confirmed predictions, 94.5% registry accuracy. Every prediction timestamped and independently verifiable. Australia validation update integrated 2026-04-08.">
 <link rel="alternate" type="application/json" href="ai_manifest.json" title="AI Site Manifest">
+<link rel="alternate" type="application/json" href="api/index.json" title="AI API Index">
+<link rel="alternate" type="text/plain" href="llms.txt" title="LLMs Crawl Guide">
+<link rel="alternate" type="text/plain" href="llms-full.txt" title="LLMs Full Guide">
+<link rel="sitemap" type="application/xml" href="sitemap.xml">
 <link rel="stylesheet" href="style.css">
 <script src="analytics.js"></script>
 <style>
@@ -154,13 +158,16 @@
 
 <hr style="margin:2rem 0;border:none;border-top:1px solid var(--border-light);">
 
-<div class="ai-entry">
+<div class="ai-entry" id="ai-start-here">
   <div class="ai-kicker">AI Start Here</div>
   <h2>One-Link AI Onboarding</h2>
-  <p class="ai-intro">If an AI agent is given only the homepage, this page should be enough to orient, traverse the strongest evidence, inspect the formulas, and pull machine-readable artifacts without guesswork. The canonical machine-readable map is <a href="ai_manifest.json">ai_manifest.json</a>; the links below are the fastest read order.</p>
+  <p class="ai-intro">If an AI agent is given only the homepage, this page should be enough to orient, traverse the strongest evidence, inspect the formulas, and pull machine-readable artifacts without guesswork. The canonical machine-readable map is <a href="ai_manifest.json">ai_manifest.json</a>; the normalized published API is <a href="api/index.json">api/index.json</a>; the crawler-friendly text guide is <a href="llms.txt">llms.txt</a>.</p>
 
   <div class="ai-links">
     <a class="ai-chip" href="ai_manifest.json">AI Manifest JSON</a>
+    <a class="ai-chip" href="api/index.json">AI API Index</a>
+    <a class="ai-chip" href="llms.txt">LLMs.txt</a>
+    <a class="ai-chip" href="llms-full.txt">LLMs Full</a>
     <a class="ai-chip" href="context.html">AI Context</a>
     <a class="ai-chip" href="wins.html">Wins Registry</a>
     <a class="ai-chip" href="predictions.html">Predictions Registry</a>
@@ -169,6 +176,10 @@
     <a class="ai-chip" href="killshot.html">Kill-Shot Tests</a>
     <a class="ai-chip" href="audit.html">Audit Walkthrough</a>
     <a class="ai-chip" href="live.html">Live Dashboard</a>
+    <a class="ai-chip" href="api/current/claim_index.json">Claim Index</a>
+    <a class="ai-chip" href="api/current/evidence_graph.json">Evidence Graph</a>
+    <a class="ai-chip" href="api/current/source_registry.json">Source Registry</a>
+    <a class="ai-chip" href="api/current/formula_runtime.json">Formula Runtime</a>
     <a class="ai-chip" href="data/status_history.json">Raw Status JSON</a>
   </div>
 
@@ -183,15 +194,19 @@
     </div>
     <div class="ai-card">
       <h3>3. Machine-Readable Surfaces</h3>
-      <p>Use <a href="data/status_history.json">data/status_history.json</a>, <a href="data/prediction_hashes.json">data/prediction_hashes.json</a>, <a href="data/australia_roads_v13_updated.csv">data/australia_roads_v13_updated.csv</a>, and <a href="ai_manifest.json">ai_manifest.json</a> to inspect the live registry without scraping prose first.</p>
+      <p>Use <a href="api/current/overview.json">overview.json</a>, <a href="api/current/claim_index.json">claim_index.json</a>, <a href="api/current/evidence_graph.json">evidence_graph.json</a>, <a href="api/current/source_registry.json">source_registry.json</a>, and <a href="api/current/formula_runtime.json">formula_runtime.json</a> before scraping long prose.</p>
     </div>
     <div class="ai-card">
       <h3>4. Honest Current Caveats</h3>
       <p>WIN-058 is pending independent verification, WIN-013/014 are now framed as non-discriminating SG nulls, and PRED-SOLAR-009 remains an openly logged refinement that currently favors the globe direction.</p>
     </div>
+    <div class="ai-card">
+      <h3>5. Stable Claim Keys</h3>
+      <p>The prose registry still contains legacy duplicate visible labels like WIN-058 and WIN-062. Use the `claim_key` fields in <a href="api/current/claim_index.json">claim_index.json</a> so an AI can track the right claim without ambiguity.</p>
+    </div>
   </div>
 
-  <h3 style="margin-top:1.35rem;">Steelman Evidence Ladder</h3>
+  <h3 id="steelman-evidence-ladder" style="margin-top:1.35rem;">Steelman Evidence Ladder</h3>
   <div class="steelman-grid">
     <div class="steelman-card">
       <span class="steelman-id">STEELMAN-01</span>
@@ -215,7 +230,7 @@
     </div>
   </div>
 
-  <div class="formula-lab">
+  <div class="formula-lab" id="formula-lab">
     <h3>Runnable Core Formulas</h3>
     <p class="ai-intro">These are the equations the rest of the site repeatedly cites. Change the inputs below or copy the Python pack directly. The calculations run locally in the browser and the same expressions are mirrored in the machine-readable manifest.</p>
     <div class="formula-grid">
@@ -832,8 +847,16 @@ def fsf(lat_deg):
     "refined": 4
   },
   "machine_manifest": "ai_manifest.json",
+  "api_index": "api/index.json",
+  "discovery_files": [
+    "llms.txt",
+    "llms-full.txt",
+    "sitemap.xml"
+  ],
   "read_order": [
     "ai_manifest.json",
+    "api/current/overview.json",
+    "api/current/claim_index.json",
     "wins.html",
     "coordinates.html",
     "model.html",
@@ -850,6 +873,9 @@ def fsf(lat_deg):
     "model.html"
   ],
   "machine_data": [
+    "api/current/evidence_graph.json",
+    "api/current/source_registry.json",
+    "api/current/formula_runtime.json",
     "data/status_history.json",
     "data/prediction_hashes.json",
     "data/australia_roads_v13_updated.csv"
@@ -858,7 +884,8 @@ def fsf(lat_deg):
     "WIN-058 pending independent verification",
     "WIN-013 and WIN-014 are non-discriminating SG nulls",
     "PRED-SOLAR-009 remains an open refinement"
-  ]
+  ],
+  "claim_identity_rule": "Use claim_key values from api/current/claim_index.json when matching legacy duplicate visible labels like WIN-058 and WIN-062."
 }
 </script>
 </body>

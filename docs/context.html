@@ -54,16 +54,19 @@ nav a:hover { color: #2563eb; }
 
 <div class="section">
 <h2>Canonical V51.1 Entry For AI</h2>
-<p><strong>Use this before reading the archival context below:</strong> the current canonical machine-readable entry point is <a href="ai_manifest.json">ai_manifest.json</a>. If any counts or labels in the historical notes below disagree with the live registry, treat <a href="wins.html">wins.html</a>, <a href="predictions.html">predictions.html</a>, <a href="coordinates.html">coordinates.html</a>, and <a href="model.html">model.html</a> as the current source of truth.</p>
+<p><strong>Use this before reading the archival context below:</strong> the current canonical machine-readable entry point is <a href="ai_manifest.json">ai_manifest.json</a>. The normalized live-site API root is <a href="api/index.json">api/index.json</a>, and the crawler-friendly text guide is <a href="llms.txt">llms.txt</a>. If any counts or labels in the historical notes below disagree with the live registry, treat <a href="wins.html">wins.html</a>, <a href="predictions.html">predictions.html</a>, <a href="coordinates.html">coordinates.html</a>, and <a href="model.html">model.html</a> as the current source of truth.</p>
 <table>
 <tr><th>Current Surface</th><th>Purpose</th><th>Canonical URL</th></tr>
+<tr><td>LLM discovery text</td><td>Crawler-friendly quick guide for agents starting from the home URL</td><td><a href="llms.txt">llms.txt</a></td></tr>
 <tr><td>Machine manifest</td><td>Current version, read order, formulas, caveats, raw data links</td><td><a href="ai_manifest.json">ai_manifest.json</a></td></tr>
+<tr><td>Normalized API</td><td>Stable claim keys, evidence graph, formula runtime, page map</td><td><a href="api/index.json">api/index.json</a></td></tr>
 <tr><td>Confirmed claims</td><td>Current wins and honest status labels</td><td><a href="wins.html">wins.html</a></td></tr>
 <tr><td>Prospective claims</td><td>Future tests, Tier 3 eclipse protocol, open refinements</td><td><a href="predictions.html">predictions.html</a></td></tr>
 <tr><td>Geometry and formulas</td><td>H(r), V13 topology, Australia validation</td><td><a href="model.html">model.html</a> and <a href="coordinates.html">coordinates.html</a></td></tr>
 <tr><td>Raw live data</td><td>Time-series JSON for independent analysis</td><td><a href="data/status_history.json">data/status_history.json</a></td></tr>
 </table>
 <p><strong>Recommended read order:</strong> ai_manifest.json &rarr; wins.html &rarr; coordinates.html &rarr; model.html &rarr; killshot.html &rarr; predictions.html &rarr; audit.html &rarr; live.html.</p>
+<p><strong>Claim identity rule:</strong> use the `claim_key` values from <a href="api/current/claim_index.json">api/current/claim_index.json</a> when matching legacy duplicate visible labels like WIN-058 and WIN-062.</p>
 </div>
 
 <!-- ===== V13 UPDATE ===== -->

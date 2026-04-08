@@ -1,0 +1,328 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-08",
+  "purpose": "Lightweight evidence graph connecting claims, formulas, sources, data assets, and pages so AI agents can traverse the live site without guessing relationships.",
+  "nodes": [
+    {
+      "node_id": "claim:win-069-australia-scaffold",
+      "type": "claim",
+      "label": "WIN-069 Australia scaffold"
+    },
+    {
+      "node_id": "claim:win-068-eclipse-ensemble",
+      "type": "claim",
+      "label": "WIN-068 eclipse ensemble"
+    },
+    {
+      "node_id": "claim:win-058-bedrock-kappa",
+      "type": "claim",
+      "label": "WIN-058 bedrock kappa"
+    },
+    {
+      "node_id": "claim:win-011-mohe-contact-phase",
+      "type": "claim",
+      "label": "WIN-011 Mohe contact-phase anomaly"
+    },
+    {
+      "node_id": "claim:win-056-solar-elevation",
+      "type": "claim",
+      "label": "WIN-056 solar elevation"
+    },
+    {
+      "node_id": "claim:win-062-tesla-wave-speed",
+      "type": "claim",
+      "label": "WIN-062 Tesla 1.574c"
+    },
+    {
+      "node_id": "claim:pred-eclipse-tier3",
+      "type": "claim",
+      "label": "PRED-ECLIPSE-TIER3"
+    },
+    {
+      "node_id": "claim:pred-solar-009",
+      "type": "claim",
+      "label": "PRED-SOLAR-009"
+    },
+    {
+      "node_id": "formula:FORM-V51-001",
+      "type": "formula",
+      "label": "H(r)"
+    },
+    {
+      "node_id": "formula:FORM-V51-002",
+      "type": "formula",
+      "label": "n(r)"
+    },
+    {
+      "node_id": "formula:FORM-V51-003",
+      "type": "formula",
+      "label": "r_SH"
+    },
+    {
+      "node_id": "formula:FORM-V51-004",
+      "type": "formula",
+      "label": "Delta g = Delta B / 1.672"
+    },
+    {
+      "node_id": "formula:FORM-V51-005",
+      "type": "formula",
+      "label": "FSF(lat)"
+    },
+    {
+      "node_id": "formula:FORM-V51-006",
+      "type": "formula",
+      "label": "EW arc elliptic integral"
+    },
+    {
+      "node_id": "source:SRC-AUS-001",
+      "type": "source",
+      "label": "Australian datum admissions"
+    },
+    {
+      "node_id": "source:SRC-AUS-002",
+      "type": "source",
+      "label": "Australia road controls"
+    },
+    {
+      "node_id": "source:SRC-ECL-001",
+      "type": "source",
+      "label": "Kim and Chang 2018"
+    },
+    {
+      "node_id": "source:SRC-ECL-002",
+      "type": "source",
+      "label": "Wang et al. 2000 and Yang and Wang 2002"
+    },
+    {
+      "node_id": "source:SRC-ECL-003",
+      "type": "source",
+      "label": "Unnikrishnan et al. 2001"
+    },
+    {
+      "node_id": "source:SRC-TESLA-001",
+      "type": "source",
+      "label": "Tesla primary source"
+    },
+    {
+      "node_id": "dataset:DS-AUS-ROADS-V13",
+      "type": "dataset",
+      "label": "Australia roads V13 update",
+      "url": "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
+    },
+    {
+      "node_id": "dataset:DS-STATUS-HISTORY",
+      "type": "dataset",
+      "label": "Status history",
+      "url": "https://john09289.github.io/predictions/data/status_history.json"
+    },
+    {
+      "node_id": "dataset:DS-PREDICTION-HASHES",
+      "type": "dataset",
+      "label": "Prediction hashes",
+      "url": "https://john09289.github.io/predictions/data/prediction_hashes.json"
+    },
+    {
+      "node_id": "page:home",
+      "type": "page",
+      "label": "Homepage",
+      "url": "https://john09289.github.io/predictions/"
+    },
+    {
+      "node_id": "page:wins",
+      "type": "page",
+      "label": "Wins",
+      "url": "https://john09289.github.io/predictions/wins.html"
+    },
+    {
+      "node_id": "page:predictions",
+      "type": "page",
+      "label": "Predictions",
+      "url": "https://john09289.github.io/predictions/predictions.html"
+    },
+    {
+      "node_id": "page:coordinates",
+      "type": "page",
+      "label": "Coordinates",
+      "url": "https://john09289.github.io/predictions/coordinates.html"
+    },
+    {
+      "node_id": "page:model",
+      "type": "page",
+      "label": "Model",
+      "url": "https://john09289.github.io/predictions/model.html"
+    },
+    {
+      "node_id": "page:killshot",
+      "type": "page",
+      "label": "Kill-Shot",
+      "url": "https://john09289.github.io/predictions/killshot.html"
+    }
+  ],
+  "edges": [
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "formula:FORM-V51-001",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "formula:FORM-V51-002",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "formula:FORM-V51-003",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "formula:FORM-V51-006",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "source:SRC-AUS-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "source:SRC-AUS-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "dataset:DS-AUS-ROADS-V13",
+      "relation": "computed_from"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "page:wins",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "page:coordinates",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "page:model",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-069-australia-scaffold",
+      "to": "page:killshot",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-068-eclipse-ensemble",
+      "to": "source:SRC-ECL-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim:win-068-eclipse-ensemble",
+      "to": "page:wins",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-068-eclipse-ensemble",
+      "to": "claim:pred-eclipse-tier3",
+      "relation": "historical_anchor_for"
+    },
+    {
+      "from": "claim:win-011-mohe-contact-phase",
+      "to": "source:SRC-ECL-002",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim:win-011-mohe-contact-phase",
+      "to": "source:SRC-ECL-003",
+      "relation": "constrained_by"
+    },
+    {
+      "from": "claim:win-011-mohe-contact-phase",
+      "to": "claim:pred-eclipse-tier3",
+      "relation": "historical_anchor_for"
+    },
+    {
+      "from": "claim:win-058-bedrock-kappa",
+      "to": "formula:FORM-V51-004",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-058-bedrock-kappa",
+      "to": "claim:pred-eclipse-tier3",
+      "relation": "tested_by"
+    },
+    {
+      "from": "claim:pred-eclipse-tier3",
+      "to": "formula:FORM-V51-004",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:pred-eclipse-tier3",
+      "to": "formula:FORM-V51-005",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:pred-eclipse-tier3",
+      "to": "page:predictions",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-056-solar-elevation",
+      "to": "formula:FORM-V51-001",
+      "relation": "depends_on"
+    },
+    {
+      "from": "claim:win-056-solar-elevation",
+      "to": "page:model",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:win-062-tesla-wave-speed",
+      "to": "source:SRC-TESLA-001",
+      "relation": "supported_by"
+    },
+    {
+      "from": "claim:win-062-tesla-wave-speed",
+      "to": "page:wins",
+      "relation": "summarized_on"
+    },
+    {
+      "from": "claim:pred-solar-009",
+      "to": "claim:win-056-solar-elevation",
+      "relation": "open_caveat_for"
+    },
+    {
+      "from": "page:home",
+      "to": "page:wins",
+      "relation": "navigates_to"
+    },
+    {
+      "from": "page:home",
+      "to": "page:coordinates",
+      "relation": "navigates_to"
+    },
+    {
+      "from": "page:home",
+      "to": "page:model",
+      "relation": "navigates_to"
+    },
+    {
+      "from": "page:home",
+      "to": "page:predictions",
+      "relation": "navigates_to"
+    },
+    {
+      "from": "page:home",
+      "to": "dataset:DS-STATUS-HISTORY",
+      "relation": "links_to"
+    },
+    {
+      "from": "page:home",
+      "to": "dataset:DS-PREDICTION-HASHES",
+      "relation": "links_to"
+    }
+  ]
+}
