@@ -2,11 +2,11 @@
   r_coeff, p_val = stats.pearsonr(x, y)
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
-  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → <urlopen error timed out>
-  [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → <urlopen error timed out>
-ECM Monitor — 2026-04-11T14:04:45Z
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 403: 
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → HTTP Error 403: 
+ECM Monitor — 2026-04-11T14:54:29Z
 Score: 100.0% (28/28 scored, 39 total)
-Eclipse: 122 days | History: 151 entries
+Eclipse: 122 days | History: 152 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ✓ NMP Longitude: pred=139.3, obs=138.057
