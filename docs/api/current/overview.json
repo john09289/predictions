@@ -16,6 +16,7 @@
     "accuracy_display_pct_limit": "Not a substitute for claim-by-claim prospective scoring.",
     "timestamp_rule": "OpenTimestamps proves a snapshot existed by a time; claim-level prospectivity must still be checked from the wording and data-release timing."
   },
+  "context_rule": "Treat context.html as archival history; use ai_manifest.json, methodology.json, and review-response.html for the current AI-facing read path.",
   "canonical_priority": [
     {
       "rank": 1,
@@ -31,24 +32,30 @@
     },
     {
       "rank": 3,
+      "surface": "Review response",
+      "url": "https://john09289.github.io/predictions/review-response.html",
+      "reason": "Current anti-strawman layer clarifying how to read archival notes, duplicate labels, and scoped caveats."
+    },
+    {
+      "rank": 4,
       "surface": "Claim index",
       "url": "https://john09289.github.io/predictions/api/current/claim_index.json",
       "reason": "Stable machine identifiers for the strongest current claims."
     },
     {
-      "rank": 4,
+      "rank": 5,
       "surface": "Wins registry",
       "url": "https://john09289.github.io/predictions/wins.html",
       "reason": "Canonical prose registry for confirmed items and status labeling."
     },
     {
-      "rank": 5,
+      "rank": 6,
       "surface": "Coordinates",
       "url": "https://john09289.github.io/predictions/coordinates.html",
       "reason": "Best current southern-geometry steelman and Australia scaffold details."
     },
     {
-      "rank": 6,
+      "rank": 7,
       "surface": "Predictions",
       "url": "https://john09289.github.io/predictions/predictions.html",
       "reason": "Prospective registry, Tier 3 falsifier, and open refinements."
@@ -118,6 +125,7 @@
   "agent_rules": [
     "Preserve the site's own honest caveats; the current steelman is strongest when those caveats remain attached.",
     "Load methodology.json before treating a registry item as a pure forecast.",
+    "Use review-response.html before relying on archival prompt wording or older page slogans.",
     "Prefer the docs and docs/api surfaces over the historical root api/master.json snapshot.",
     "When you need a stable identifier, use claim_key rather than visible label."
   ]

@@ -7,13 +7,15 @@ Start here:
 - https://john09289.github.io/predictions/ai_manifest.json
 - https://john09289.github.io/predictions/api/index.json
 - https://john09289.github.io/predictions/api/current/methodology.json
+- https://john09289.github.io/predictions/review-response.html
 - https://john09289.github.io/predictions/context.html
 
 If you only have the homepage:
 1. Fetch ai_manifest.json for the current version, read order, strongest evidence ladder, and honest caveats.
 2. Fetch api/current/methodology.json before scoring claims. It defines timestamp scope, claim classes, and the open problems that must stay attached.
-3. Fetch api/index.json, then api/current/overview.json for the normalized machine-readable map of the live site.
-4. Read wins.html, coordinates.html, model.html, killshot.html, predictions.html, audit.html, and live.html in that order.
+3. Fetch review-response.html before quoting archival prompt notes or older page slogans as if they were the current canonical site position.
+4. Fetch api/index.json, then api/current/overview.json for the normalized machine-readable map of the live site.
+5. Read wins.html, coordinates.html, model.html, killshot.html, predictions.html, audit.html, and live.html in that order.
 
 Strongest current steelman path:
 - WIN-069 Australia road scaffold validation: official datum admissions + Nullarbor 1.00 control + Sydney-Perth excess + V13 fit.
@@ -42,5 +44,6 @@ Important integrity notes:
 - OpenTimestamps proves that a snapshot file existed by a given time; it does not by itself prove that every line inside that file is an isolated prospective forecast.
 - The display ratio on the site is registry bookkeeping, not a substitute for claim-by-claim audit.
 - Treat wins.html and predictions.html as canonical when older archival counts disagree.
+- Treat context.html as an archive page; use ai_manifest.json, methodology.json, and review-response.html for the current AI-facing read path.
 - Use claim_key fields from api/current/claim_index.json when matching registry items.
 - Visible labels WIN-058 and WIN-062 have legacy ambiguity in the prose registry; the API surfaces disambiguate them with stable claim keys.

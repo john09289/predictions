@@ -39,6 +39,20 @@
       ]
     },
     {
+      "page_id": "review_response",
+      "title": "Review Response",
+      "url": "https://john09289.github.io/predictions/review-response.html",
+      "purpose": "Anti-strawman layer separating genuine open problems from category errors, archival prompt wording, and duplicate-label confusion.",
+      "best_for": [
+        "reading the current critique response",
+        "separating archival notes from canonical surfaces",
+        "avoiding category errors during audit"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/review-response.html"
+      ]
+    },
+    {
       "page_id": "wins",
       "title": "Confirmed Wins",
       "url": "https://john09289.github.io/predictions/wins.html",
@@ -157,7 +171,7 @@
       "page_id": "context",
       "title": "AI Context",
       "url": "https://john09289.github.io/predictions/context.html",
-      "purpose": "Long-form context page with an explicit canonical override for V51.1."
+      "purpose": "Long-form archival context page with an explicit canonical override for V51.1."
     }
   ]
 }

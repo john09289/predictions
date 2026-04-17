@@ -8,6 +8,7 @@
     "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
     "api_index": "https://john09289.github.io/predictions/api/index.json",
     "methodology": "https://john09289.github.io/predictions/api/current/methodology.json",
+    "review_response": "https://john09289.github.io/predictions/review-response.html",
     "context": "https://john09289.github.io/predictions/context.html",
     "llms": "https://john09289.github.io/predictions/llms.txt",
     "llms_full": "https://john09289.github.io/predictions/llms-full.txt"
@@ -15,6 +16,7 @@
   "recommended_fetch_sequence": [
     "https://john09289.github.io/predictions/ai_manifest.json",
     "https://john09289.github.io/predictions/api/current/methodology.json",
+    "https://john09289.github.io/predictions/review-response.html",
     "https://john09289.github.io/predictions/api/current/overview.json",
     "https://john09289.github.io/predictions/api/current/claim_index.json",
     "https://john09289.github.io/predictions/api/current/evidence_graph.json",
@@ -51,6 +53,7 @@
   "notes": [
     "Treat wins.html and predictions.html as canonical when any older archival counts differ.",
     "Load methodology.json before treating a registry item as prospective, retrospective, supportive, or pending.",
+    "Treat context.html as archival history and use review-response.html for the current anti-strawman layer.",
     "Use claim_key fields from claim_index.json when matching registry entries.",
     "Visible labels WIN-058 and WIN-062 have legacy ambiguity in the prose registry; the normalized API surfaces disambiguate them."
   ]
