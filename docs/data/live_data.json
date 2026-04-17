@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-16 18:56 UTC",
-  "date": "2026-04-16",
+  "updated": "2026-04-17 01:22 UTC",
+  "date": "2026-04-17",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-04-16 18:56 UTC"
+    "fetched": "2026-04-17 01:22 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-04-16 18:56 UTC"
+    "fetched": "2026-04-17 01:22 UTC"
   },
   "aao": {
     "latest": 0.492,
     "weekly_mean": -0.368,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-04-16 18:56 UTC"
+    "fetched": "2026-04-17 01:22 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-04-16 22:09:52.840",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1108  Issue Time: 2026 Apr 16 2209 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Apr 17:  G2 (Moder"
+      },
       {
         "time": "2026-04-15 21:43:18.473",
         "summary": "Space Weather Message Code: WATA30  Serial Number: 271  Issue Time: 2026 Apr 15 2143 UTC    WATCH: Geomagnetic Storm Category G2 Predicted    Highest Storm Level Predicted by Day:  Apr 16:  None (Belo"
@@ -43,16 +47,16 @@
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1107  Issue Time: 2026 Apr 08 0229 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Apr 09:  None (Bel"
       }
     ],
-    "alert_count_48h": 3,
-    "fetched": "2026-04-16 18:56 UTC"
+    "alert_count_48h": 4,
+    "fetched": "2026-04-17 01:22 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.075,
+    "amplitude_index": 0.079,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-04-16 18:56 UTC",
+    "fetched": "2026-04-17 01:22 UTC",
     "pixel_count": 67728
   }
 }
