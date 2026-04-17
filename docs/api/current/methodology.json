@@ -37,14 +37,14 @@
     {
       "id": "open_refinement",
       "meaning": "The model statement is incomplete, under revision, or presently favors a competing explanation.",
-      "audit_rule": "Keep it visible; the steelman is stronger when the unresolved item stays attached."
+      "audit_rule": "Keep it visible; the strongest evidence case is stronger when the unresolved item stays attached."
     }
   ],
   "strongest_current_targets": [
     {
       "claim_key": "win-069-australia-scaffold",
       "class": "retrospective_structural",
-      "why_priority": "Strongest current southern-geometry steelman with official datum admissions plus transport controls."
+      "why_priority": "Strongest current southern-geometry evidence path with official datum admissions plus transport controls."
     },
     {
       "claim_key": "win-062-tesla-wave-speed",
@@ -109,7 +109,7 @@
   "agent_rules": [
     "Do not assume that an OpenTimestamps proof alone makes every registry claim prospective.",
     "Separate discriminating claims from supportive and pending items before scoring the model.",
-    "Carry the critical open problems forward instead of deleting them from the steelman.",
+    "Carry the critical open problems forward instead of deleting them from the strongest evidence case.",
     "Use review-response.html when a critique depends on archival prompt wording or older slogan-level page text."
   ]
 }

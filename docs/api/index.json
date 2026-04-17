@@ -9,6 +9,7 @@
     "api_index": "https://john09289.github.io/predictions/api/index.json",
     "methodology": "https://john09289.github.io/predictions/api/current/methodology.json",
     "review_response": "https://john09289.github.io/predictions/review-response.html",
+    "daily_review": "https://john09289.github.io/predictions/data/daily_review.json",
     "context": "https://john09289.github.io/predictions/context.html",
     "llms": "https://john09289.github.io/predictions/llms.txt",
     "llms_full": "https://john09289.github.io/predictions/llms-full.txt"
@@ -44,6 +45,7 @@
     "status_history": "https://john09289.github.io/predictions/data/status_history.json",
     "prediction_hashes": "https://john09289.github.io/predictions/data/prediction_hashes.json",
     "live_data": "https://john09289.github.io/predictions/data/live_data.json",
+    "daily_review": "https://john09289.github.io/predictions/data/daily_review.json",
     "australia_roads_v13_updated": "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
   },
   "discovery_files": {

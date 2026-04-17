@@ -315,6 +315,46 @@
   .falsification-list li:last-child { border-bottom: none; }
   .fals-icon { font-size: 1rem; flex-shrink: 0; }
 
+  .review-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin: 1.2rem 0 1.8rem;
+  }
+  .review-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.1rem;
+    box-shadow: var(--shadow-card);
+  }
+  .review-kicker {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-tertiary);
+    margin-bottom: 0.35rem;
+  }
+  .review-main {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent-blue);
+    line-height: 1.2;
+  }
+  .review-sub {
+    margin-top: 0.35rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+  .review-list {
+    margin: 0.4rem 0 0;
+    padding-left: 1rem;
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.55;
+  }
+
   @media (max-width: 600px) {
     .score-ring-container { flex-direction: column; }
     .mini-stats { flex-direction: row; flex-wrap: wrap; justify-content: center; }
@@ -377,6 +417,34 @@
 </div>
 
 <div class="last-update" id="lastUpdate"><span class="loading-spinner"></span>Loading live data...</div>
+
+<section style="margin: 1.25rem 0 1.8rem;">
+  <div class="review-grid">
+    <div class="review-card">
+      <div class="review-kicker">Daily Review</div>
+      <div class="review-main" id="dailyReviewGenerated">Loading...</div>
+      <div class="review-sub" id="dailyReviewSummary">Building the latest registry review and accuracy snapshot...</div>
+    </div>
+    <div class="review-card">
+      <div class="review-kicker">Accuracy Review</div>
+      <div class="review-main" id="dailyAccuracyMain">—</div>
+      <div class="review-sub" id="dailyAccuracySub">Waiting for the latest ratio and monitor trend.</div>
+    </div>
+    <div class="review-card">
+      <div class="review-kicker">Next Actions</div>
+      <ul class="review-list" id="dailyActions">
+        <li>Waiting for the next daily review run.</li>
+      </ul>
+    </div>
+    <div class="review-card">
+      <div class="review-kicker">Prediction Focus</div>
+      <ul class="review-list" id="dailyFocus">
+        <li>Waiting for the next daily review run.</li>
+      </ul>
+      <div class="review-sub" id="dailyReviewEngine">Engine: pending</div>
+    </div>
+  </div>
+</section>
 
 <!-- ===== ECLIPSE COUNTDOWN ===== -->
 <div class="eclipse-bar" id="eclipseBar">
@@ -1042,6 +1110,42 @@ async function loadData() {
       }
     } catch(e) {
       document.getElementById('btcHash').textContent = 'SHA-256: awaiting first run';
+    }
+
+    try {
+      let reviewResp = await fetch('data/daily_review.json?' + Date.now());
+      if (!reviewResp.ok) {
+        reviewResp = await fetch('https://raw.githubusercontent.com/john09289/predictions/main/docs/data/daily_review.json?' + Date.now());
+      }
+      if (reviewResp.ok) {
+        const review = await reviewResp.json();
+        const aiBrief = review.ai_brief || {};
+        const actions = Array.isArray(aiBrief.next_actions) ? aiBrief.next_actions : [];
+        const focus = Array.isArray(aiBrief.prediction_focus) ? aiBrief.prediction_focus : [];
+        const generated = review.generated_human || review.generated_at || 'Unavailable';
+        const registryRatio = review.accuracy_review && review.accuracy_review.registry_ratio_pct !== undefined
+          ? review.accuracy_review.registry_ratio_pct + '% registry ratio'
+          : 'Registry ratio unavailable';
+        const monitorScore = review.accuracy_review && review.accuracy_review.monitor_score_pct !== undefined
+          ? review.accuracy_review.monitor_score_pct + '% live monitor score'
+          : 'Live monitor score unavailable';
+        const avgScore = review.accuracy_review && review.accuracy_review.avg_monitor_score_7d !== undefined && review.accuracy_review.avg_monitor_score_7d !== null
+          ? review.accuracy_review.avg_monitor_score_7d + '% 7-day average'
+          : '7-day average unavailable';
+
+        document.getElementById('dailyReviewGenerated').textContent = generated;
+        document.getElementById('dailyReviewSummary').textContent = aiBrief.summary || 'No daily summary available yet.';
+        document.getElementById('dailyAccuracyMain').textContent = registryRatio;
+        document.getElementById('dailyAccuracySub').textContent = monitorScore + ' · ' + avgScore;
+        document.getElementById('dailyReviewEngine').textContent =
+          'Engine: ' + (aiBrief.provider || 'local') + ' / ' + (aiBrief.model || 'deterministic-summary');
+        document.getElementById('dailyActions').innerHTML =
+          (actions.length ? actions : ['No actions listed.']).slice(0, 3).map(item => '<li>' + escapeHtml(item) + '</li>').join('');
+        document.getElementById('dailyFocus').innerHTML =
+          (focus.length ? focus : ['No focus items listed.']).slice(0, 3).map(item => '<li>' + escapeHtml(item) + '</li>').join('');
+      }
+    } catch (reviewError) {
+      console.warn('daily review load failed', reviewError);
     }
 
   } catch(e) {

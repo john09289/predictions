@@ -97,11 +97,11 @@
   .ai-intro { color:var(--text-secondary); font-size:0.92rem; line-height:1.6; margin-bottom:1rem; }
   .ai-links { display:flex; flex-wrap:wrap; gap:0.55rem; margin:0.9rem 0 1.2rem; }
   .ai-chip { display:inline-flex; align-items:center; gap:0.35rem; background:rgba(255,255,255,0.75); border:1px solid rgba(37,99,235,0.15); border-radius:999px; padding:0.45rem 0.8rem; font-size:0.78rem; font-weight:600; color:var(--accent-blue); text-decoration:none; }
-  .ai-entry-grid, .steelman-grid, .formula-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
-  .ai-card, .steelman-card, .formula-card { background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:1rem; box-shadow:var(--shadow-card); }
-  .ai-card h3, .steelman-card h4, .formula-card h4 { margin:0 0 0.45rem; font-size:0.95rem; }
-  .ai-card p, .steelman-card p, .formula-card p { margin:0; font-size:0.82rem; color:var(--text-secondary); line-height:1.55; }
-  .steelman-card .steelman-id { display:block; font-size:0.72rem; font-weight:700; color:var(--accent-blue); margin-bottom:0.25rem; letter-spacing:0.05em; }
+  .ai-entry-grid, .evidence-grid, .formula-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+  .ai-card, .evidence-card, .formula-card { background:var(--bg-card); border:1px solid var(--border-light); border-radius:var(--radius-md); padding:1rem; box-shadow:var(--shadow-card); }
+  .ai-card h3, .evidence-card h4, .formula-card h4 { margin:0 0 0.45rem; font-size:0.95rem; }
+  .ai-card p, .evidence-card p, .formula-card p { margin:0; font-size:0.82rem; color:var(--text-secondary); line-height:1.55; }
+  .evidence-card .evidence-id { display:block; font-size:0.72rem; font-weight:700; color:var(--accent-blue); margin-bottom:0.25rem; letter-spacing:0.05em; }
   .formula-lab { margin-top:1.25rem; padding-top:1.25rem; border-top:1px solid rgba(37,99,235,0.15); }
   .formula-expression { font-family:var(--font-mono); font-size:0.84rem; color:var(--accent-blue); background:var(--bg-code); padding:0.55rem 0.7rem; border-radius:var(--radius-sm); margin:0.55rem 0; }
   .formula-card label { display:block; font-size:0.74rem; font-weight:600; color:var(--text-tertiary); margin-top:0.55rem; }
@@ -220,26 +220,26 @@
     </div>
   </div>
 
-  <h3 id="steelman-evidence-ladder" style="margin-top:1.35rem;">Steelman Evidence Ladder</h3>
+  <h3 id="strongest-evidence-ladder" style="margin-top:1.35rem;">Strongest Evidence Ladder</h3>
   <p class="ai-intro" style="margin-bottom:1rem;">These are the strongest current audit targets on the site. They are not all equally prospective, and they are not meant to erase the open problems documented in the methodology layer.</p>
-  <div class="steelman-grid">
-    <div class="steelman-card">
-      <span class="steelman-id">STEELMAN-01</span>
+  <div class="evidence-grid">
+    <div class="evidence-card">
+      <span class="evidence-id">EVIDENCE-01</span>
       <h4>Australia Scaffold Validation</h4>
       <p>Official AGD66/GDA94 datum admissions, the Nullarbor 1.00 control, and the Sydney–Perth excess are brought together in one place. V13 predicts the expansion zone directly with 6.2% scaffold RMSE. See <a href="wins.html#win-069">WIN-069</a> and <a href="coordinates.html">Coordinates</a>.</p>
     </div>
-    <div class="steelman-card">
-      <span class="steelman-id">STEELMAN-02</span>
+    <div class="evidence-card">
+      <span class="evidence-id">EVIDENCE-02</span>
       <h4>Eclipse Magnetic Ensemble</h4>
       <p>The peer-reviewed 39-eclipse / 207-event ensemble is the strongest broad magnetic anchor presently on file. It is not yet the decisive dome-only test, but it establishes the phenomenon before Tier 3 gravity coupling. See <a href="wins.html#win-068">WIN-068</a>.</p>
     </div>
-    <div class="steelman-card">
-      <span class="steelman-id">STEELMAN-03</span>
+    <div class="evidence-card">
+      <span class="evidence-id">EVIDENCE-03</span>
       <h4>Tesla Disc Diameter Lock</h4>
       <p>Tesla’s 0.08484 s round-trip period implies 1.574c under the ECM diameter and the wrong wave regime under the globe diameter. This is one of the cleanest direct-derivation comparisons on the site. See <a href="wins.html">WIN-062</a>.</p>
     </div>
-    <div class="steelman-card">
-      <span class="steelman-id">STEELMAN-04</span>
+    <div class="evidence-card">
+      <span class="evidence-id">EVIDENCE-04</span>
       <h4>Single-Constant Unification</h4>
       <p>&lambda;<sub>g</sub> = 8,619 km is used across geomagnetics, Schumann, solar elevation, coordinates, and toroidal extensions. The site’s strongest internal claim is that one locked scale length keeps reappearing across independent domains.</p>
     </div>

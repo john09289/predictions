@@ -20,7 +20,7 @@
       "page_id": "home",
       "title": "Homepage",
       "url": "https://john09289.github.io/predictions/",
-      "purpose": "High-level entry point with AI discovery links, audit hooks, steelman ladder, and runnable formula widgets.",
+      "purpose": "High-level entry point with AI discovery links, audit hooks, strongest-evidence ladder, and runnable formula widgets.",
       "best_for": [
         "initial orientation",
         "finding machine-readable entry points",
@@ -28,7 +28,7 @@
       ],
       "section_anchors": [
         "https://john09289.github.io/predictions/#ai-start-here",
-        "https://john09289.github.io/predictions/#steelman-evidence-ladder",
+        "https://john09289.github.io/predictions/#strongest-evidence-ladder",
         "https://john09289.github.io/predictions/#formula-lab"
       ],
       "claim_keys": [
@@ -137,7 +137,7 @@
       "best_for": [
         "binary framing",
         "multi-country southern geodesy parallel",
-        "condensed steelman"
+        "condensed strongest-evidence framing"
       ],
       "section_anchors": [
         "https://john09289.github.io/predictions/killshot.html#killshot-southern-metric-expansion"

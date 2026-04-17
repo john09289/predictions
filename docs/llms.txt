@@ -17,7 +17,7 @@ If you only have the homepage:
 4. Fetch api/index.json, then api/current/overview.json for the normalized machine-readable map of the live site.
 5. Read wins.html, coordinates.html, model.html, killshot.html, predictions.html, audit.html, and live.html in that order.
 
-Strongest current steelman path:
+Strongest current evidence path:
 - WIN-069 Australia road scaffold validation: official datum admissions + Nullarbor 1.00 control + Sydney-Perth excess + V13 fit.
 - WIN-068 eclipse magnetic ensemble: 39 eclipses, 207 events, 100 observatories.
 - WIN-056 solar elevation from H(r): zero-free-parameter fit from the same lambda_g scale.

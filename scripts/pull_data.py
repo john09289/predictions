@@ -176,4 +176,15 @@ if result.returncode != 0:
     print(f"  build_tracking.py error:\n{result.stderr}")
     raise SystemExit(1)
 
+print("Building daily review artifact...")
+result = subprocess.run(
+    [sys.executable, os.path.join(SCRIPTS_DIR, "build_daily_review.py")],
+    capture_output=True, text=True, cwd=REPO_ROOT,
+)
+if result.stdout:
+    print(f"  {result.stdout.strip()}")
+if result.returncode != 0:
+    print(f"  build_daily_review.py error:\n{result.stderr}")
+    raise SystemExit(1)
+
 print("Pipeline v2 complete.")

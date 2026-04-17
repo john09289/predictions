@@ -36,6 +36,15 @@ nmp_log    = load("nmp_log.json", [])
 aao_log    = load("aao_log.json", [])
 dw006_log  = load("dw006_log.json", [])
 dst_log    = load("dst_log.json", [])
+daily_review = load("daily_review.json", {})
+ai_manifest = {}
+manifest_path = os.path.join(REPO_ROOT, "docs", "ai_manifest.json")
+if os.path.exists(manifest_path):
+    try:
+        with open(manifest_path) as f:
+            ai_manifest = json.load(f)
+    except Exception as e:
+        print(f"  Warning: could not load ai_manifest.json: {e}")
 
 kp_data   = live.get("kp", {})
 nmp_data  = live.get("nmp", {})
@@ -43,6 +52,21 @@ aao_data  = live.get("aao", {})
 alerts    = live.get("alerts", {})
 sr_data   = live.get("schumann", {})
 updated   = live.get("updated", "—")
+registry_counts = ai_manifest.get("counts", {})
+registry_confirmed = registry_counts.get("confirmed", 69)
+registry_refined = registry_counts.get("refined", 4)
+registry_ratio = registry_counts.get("registry_accuracy_pct", 94.5)
+review_generated = daily_review.get("generated_human", updated)
+review_brief = daily_review.get("ai_brief", {})
+review_summary = review_brief.get("summary", "")
+review_actions = review_brief.get("next_actions", [])
+review_focus = review_brief.get("prediction_focus", [])
+review_provider = review_brief.get("provider", "local")
+review_model = review_brief.get("model", "deterministic-summary")
+accuracy_review = daily_review.get("accuracy_review", {})
+monitor_score = accuracy_review.get("monitor_score_pct", "—")
+avg_monitor_score = accuracy_review.get("avg_monitor_score_7d", "—")
+passed_over_scored = accuracy_review.get("passed_over_scored", "—")
 
 
 # ── COLOR HELPERS ──
@@ -288,6 +312,45 @@ status_bar = f"""<div id="live-status" style="display:flex;flex-wrap:wrap;gap:1r
   <span style="background:var(--bg-primary);padding:3px 10px;border-radius:4px;border:1px solid var(--border-light);">Alerts 48h: <strong style="color:{alert_col};">{alert_count}</strong></span>
 </div>"""
 
+daily_review_html = ""
+if daily_review:
+    actions_html = "".join(
+        f"<li>{action}</li>" for action in review_actions[:3]
+    ) or "<li>No actions queued.</li>"
+    focus_html = "".join(
+        f"<li>{item}</li>" for item in review_focus[:3]
+    ) or "<li>No prediction focus note yet.</li>"
+    daily_review_html = f"""
+<section class="tracking-section" id="daily-review">
+  <div class="tracking-header">
+    <h3>Daily Review &amp; Accuracy Snapshot</h3>
+    <span class="cadence-label">Auto-generated</span>
+  </div>
+  <p class="section-intro">Fresh site summary generated from the canonical registry counts plus the latest live monitor snapshot. If <code>GROQ_API_KEY</code> is configured in GitHub Actions, the narrative summary is AI-written from the structured data; otherwise a deterministic local summary is used.</p>
+  <div class="stat-row">
+    <div class="stat"><span class="stat-label">Review generated</span><span class="stat-value">{review_generated}</span></div>
+    <div class="stat"><span class="stat-label">Registry ratio</span><span class="stat-value">{registry_ratio}%</span></div>
+    <div class="stat"><span class="stat-label">Monitor score</span><span class="stat-value">{monitor_score}%</span></div>
+    <div class="stat"><span class="stat-label">7d avg monitor score</span><span class="stat-value">{avg_monitor_score}%</span></div>
+    <div class="stat"><span class="stat-label">Passed / scored</span><span class="stat-value">{passed_over_scored}</span></div>
+    <div class="stat"><span class="stat-label">Review engine</span><span class="stat-value">{review_provider}: {review_model}</span></div>
+  </div>
+  <div style="padding:1rem 1.5rem;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem;">
+    <div style="background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:0.9rem 1rem;">
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);margin-bottom:0.35rem;">Summary</div>
+      <div style="font-size:0.84rem;color:var(--text-primary);line-height:1.55;">{review_summary or 'Awaiting first review summary.'}</div>
+    </div>
+    <div style="background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:0.9rem 1rem;">
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);margin-bottom:0.35rem;">Next Actions</div>
+      <ul style="margin:0;padding-left:1.1rem;font-size:0.82rem;color:var(--text-primary);line-height:1.55;">{actions_html}</ul>
+    </div>
+    <div style="background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);padding:0.9rem 1rem;">
+      <div style="font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;color:var(--text-tertiary);margin-bottom:0.35rem;">Prediction Focus</div>
+      <ul style="margin:0;padding-left:1.1rem;font-size:0.82rem;color:var(--text-primary);line-height:1.55;">{focus_html}</ul>
+    </div>
+  </div>
+</section>"""
+
 storm_active = kp_data.get("is_storm", False)
 storm_banner = ""
 if storm_active:
@@ -352,7 +415,7 @@ html = f"""<!DOCTYPE html>
 
 <nav>
   <a href="index.html">Home</a>
-  <a href="wins.html">Wins <span class="nav-badge">53</span></a>
+  <a href="wins.html">Wins <span class="nav-badge">{registry_confirmed}</span></a>
   <a href="predictions.html">Predictions</a>
   <a href="tracking.html" class="active">Tracking</a>
   <a href="coordinates.html">Coordinates</a>
@@ -365,15 +428,16 @@ html = f"""<!DOCTYPE html>
 <p style="color:var(--text-secondary);margin-bottom:1.5rem;">Continuous data collection for real-time model testing. Each entry is a data point &mdash; patterns emerge within weeks. All predictions pre-registered in <a href="predictions.html">predictions.html</a>. Tracking started 2026-03-23.</p>
 
 <div style="display:flex;gap:2rem;flex-wrap:wrap;margin-bottom:1.5rem;font-size:0.85rem;padding:0.75rem 1rem;background:var(--bg-code);border:1px solid var(--border-light);border-radius:var(--radius-sm);">
-  <span><strong>Model:</strong> V50.9</span>
-  <span><strong>Confirmed:</strong> 53</span>
-  <span><strong>Falsified:</strong> 4</span>
+  <span><strong>Model:</strong> V51.1</span>
+  <span><strong>Confirmed:</strong> {registry_confirmed}</span>
+  <span><strong>Refined:</strong> {registry_refined}</span>
   <span><strong>Last updated:</strong> {TODAY}</span>
   <span><strong>Tracking entries:</strong> {total_entries}</span>
 </div>
 
 {status_bar}
 {storm_banner}
+{daily_review_html}
 <div class="immediate-banner">
   &#9889; <strong>IMMEDIATE ACTION:</strong> Check HeartMath spectrogram for March 22 (G3 storm 0900&ndash;1200 UTC).
   SR suppressed = PRED-SR-SUPPRESS confirmed (2nd event). Not suppressed = update DW-006 and revise model.

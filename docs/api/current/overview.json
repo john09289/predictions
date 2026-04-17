@@ -9,7 +9,7 @@
     "accuracy_display_pct": 94.5,
     "geometry": "Closed Toroidal Ovoid with V13 coordinate topology and Australia validation integrated",
     "single_scale_length_km": 8619,
-    "top_current_steelman": "Australia scaffold validation plus official datum admissions"
+    "top_current_evidence_path": "Australia scaffold validation plus official datum admissions"
   },
   "registry_semantics": {
     "accuracy_display_pct_meaning": "Display-level registry ratio shown on the public site.",
@@ -52,7 +52,7 @@
       "rank": 6,
       "surface": "Coordinates",
       "url": "https://john09289.github.io/predictions/coordinates.html",
-      "reason": "Best current southern-geometry steelman and Australia scaffold details."
+      "reason": "Best current southern-geometry evidence path and Australia scaffold details."
     },
     {
       "rank": 7,
@@ -61,7 +61,7 @@
       "reason": "Prospective registry, Tier 3 falsifier, and open refinements."
     }
   ],
-  "strongest_steelman_path": [
+  "strongest_evidence_path": [
     "win-069-australia-scaffold",
     "win-068-eclipse-ensemble",
     "win-056-solar-elevation",
@@ -101,6 +101,7 @@
   ],
   "raw_assets": [
     "https://john09289.github.io/predictions/data/status_history.json",
+    "https://john09289.github.io/predictions/data/daily_review.json",
     "https://john09289.github.io/predictions/data/prediction_hashes.json",
     "https://john09289.github.io/predictions/data/live_data.json",
     "https://john09289.github.io/predictions/data/australia_roads_v13_updated.csv"
@@ -123,7 +124,7 @@
     }
   ],
   "agent_rules": [
-    "Preserve the site's own honest caveats; the current steelman is strongest when those caveats remain attached.",
+    "Preserve the site's own honest caveats; the current evidence case is strongest when those caveats remain attached.",
     "Load methodology.json before treating a registry item as a pure forecast.",
     "Use review-response.html before relying on archival prompt wording or older page slogans.",
     "Prefer the docs and docs/api surfaces over the historical root api/master.json snapshot.",

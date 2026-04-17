@@ -1,0 +1,145 @@
+{
+  "generated_at": "2026-04-17T12:01:12Z",
+  "generated_human": "2026-04-17 12:01 UTC",
+  "registry": {
+    "confirmed": 69,
+    "prospective": 10,
+    "refined": 4,
+    "registry_ratio_pct": 94.5
+  },
+  "live_monitor": {
+    "timestamp": "2026-04-17T11:35:33Z",
+    "wins_confirmed_monitor": 67,
+    "overall_score": 100.0,
+    "passed": 28,
+    "total_scored": 28,
+    "pending_domains": 11,
+    "eclipse_days": 116
+  },
+  "trend": {
+    "samples_7d": 7,
+    "avg_score_7d": 100.0,
+    "latest_score": 100.0,
+    "delta_score_7d": 0.0
+  },
+  "domain_review": {
+    "top_passing": [
+      {
+        "name": "Crepuscular Ray Convergence",
+        "predicted": "5733",
+        "observed": "5733",
+        "unit": "km",
+        "error_pct": 0.0,
+        "status": "pass",
+        "source": "Citizen Science (WIN-026 static win)"
+      },
+      {
+        "name": "Equatorial Gravity",
+        "predicted": 9.832204,
+        "observed": 9.8322,
+        "unit": "m/s\u00b2",
+        "error_pct": 0.0,
+        "status": "pass",
+        "source": "WGS84 standard"
+      },
+      {
+        "name": "GPS Clock Offset (Lorentz)",
+        "predicted": "No (Selleri fits)",
+        "observed": "Confirmed",
+        "unit": "",
+        "error_pct": 0.0,
+        "status": "pass",
+        "source": "WIN-073 (static win)"
+      },
+      {
+        "name": "GPS Sagnac Verification",
+        "predicted": "0 (no correction)",
+        "observed": "Confirmed: Lorentz requires correction, Selleri does not.",
+        "unit": "",
+        "error_pct": 0.0,
+        "status": "pass",
+        "source": "Gift 2025 (WIN-073)"
+      },
+      {
+        "name": "K1 Tidal Period (Sidereal Day)",
+        "predicted": 23.9345,
+        "observed": 23.9345,
+        "unit": "hours",
+        "error_pct": 0.0,
+        "status": "pass",
+        "source": "IERS published"
+      }
+    ],
+    "pending_watchlist": [
+      {
+        "name": "Eclipse Magnetic Anomaly (Aug 12 2026)",
+        "predicted": -28.9,
+        "observed": "PENDING",
+        "unit": "nT",
+        "error_pct": null,
+        "status": "pending",
+        "source": "EBR/SPT INTERMAGNET Aug 12 2026"
+      },
+      {
+        "name": "Current Kp Index",
+        "predicted": "< 2 (quiet)",
+        "observed": 1.0,
+        "unit": "",
+        "error_pct": null,
+        "status": "pending",
+        "source": "NOAA SWPC real-time"
+      },
+      {
+        "name": "Schumann Amplitude Suppression",
+        "predicted": "Suppression >30%",
+        "observed": "No G3+ storm (Kp=1.0); amplitude unavailable",
+        "unit": "pT",
+        "error_pct": null,
+        "status": "pending",
+        "source": "HeartMath GCI / monitoring"
+      },
+      {
+        "name": "Roaring 40s AAO Index",
+        "predicted": "> +0.3\u03c3",
+        "observed": "unavailable",
+        "unit": "\u03c3",
+        "error_pct": null,
+        "status": "pending",
+        "source": "CPC/NOAA (unavailable)"
+      },
+      {
+        "name": "Polaris Excess (Edinburgh 55.95\u00b0N)",
+        "predicted": 0.282,
+        "observed": "Pending measurement",
+        "unit": "\u00b0",
+        "error_pct": null,
+        "status": "pending",
+        "source": "Requires field measurement"
+      }
+    ],
+    "top_failing": []
+  },
+  "accuracy_review": {
+    "registry_ratio_pct": 94.5,
+    "monitor_score_pct": 100.0,
+    "avg_monitor_score_7d": 100.0,
+    "passed_over_scored": "28/28"
+  },
+  "ai_brief": {
+    "provider": "local",
+    "model": "deterministic-summary",
+    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 116 days remain until the August 12, 2026 eclipse test.",
+    "next_actions": [
+      "Check pending domains first: Eclipse Magnetic Anomaly (Aug 12 2026), Current Kp Index, Schumann Amplitude Suppression.",
+      "Keep WIN-058 marked pending until independent raw L1A or Tier 3 closure arrives."
+    ],
+    "prediction_focus": [
+      "Strongest current live alignment: Crepuscular Ray Convergence.",
+      "Primary forward discriminator remains the Tier 3 eclipse protocol."
+    ],
+    "caveats": [
+      "Display ratio is bookkeeping, not a substitute for claim-by-claim audit.",
+      "Supportive and pending items should not be collapsed into pure prospective wins."
+    ]
+  }
+}
