@@ -1,12 +1,13 @@
 {
   "version": "V51.1",
-  "last_updated": "2026-04-08",
+  "last_updated": "2026-04-17",
   "title": "ECM / Dome Model AI Site Manifest",
   "purpose": "Canonical machine-readable entry point for AI agents starting from the homepage. Use this file to orient, traverse the strongest evidence, inspect formulas, and pull raw artifacts without scraping the entire site first.",
   "entry_points": {
     "home": "https://john09289.github.io/predictions/",
     "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
     "api_index": "https://john09289.github.io/predictions/api/index.json",
+    "methodology": "https://john09289.github.io/predictions/api/current/methodology.json",
     "llms": "https://john09289.github.io/predictions/llms.txt",
     "llms_full": "https://john09289.github.io/predictions/llms-full.txt",
     "context": "https://john09289.github.io/predictions/context.html",
@@ -24,6 +25,12 @@
     "refined": 4,
     "registry_accuracy_pct": 94.5
   },
+  "registry_semantics": {
+    "confirmed_meaning": "Current display count carried by the public registry.",
+    "prospective_confirmed_meaning": "Current display count of items the registry carries as prospective.",
+    "registry_accuracy_pct_meaning": "Display-level bookkeeping ratio used on the public site.",
+    "important_limit": "Do not treat the display ratio as a substitute for claim-by-claim prospective audit."
+  },
   "canonical_current_state": {
     "geometry": "Closed Toroidal Ovoid, V51.1 presentation layer with V13 coordinate topology and Australia validation update integrated",
     "single_scale_length": "lambda_g = 8619 km",
@@ -39,36 +46,41 @@
     },
     {
       "step": 2,
+      "url": "https://john09289.github.io/predictions/api/current/methodology.json",
+      "purpose": "Load timestamp scope, claim taxonomy, strongest current discriminators, and open problems before scoring claims."
+    },
+    {
+      "step": 3,
       "url": "https://john09289.github.io/predictions/wins.html",
       "purpose": "Inspect the confirmed claims registry, including WIN-068 and WIN-069."
     },
     {
-      "step": 3,
+      "step": 4,
       "url": "https://john09289.github.io/predictions/coordinates.html",
       "purpose": "Inspect the V13 topology and Australia scaffold validation."
     },
     {
-      "step": 4,
+      "step": 5,
       "url": "https://john09289.github.io/predictions/model.html",
       "purpose": "Inspect formulas, geometric assumptions, toroidal interpretation, and southern-zone validation."
     },
     {
-      "step": 5,
+      "step": 6,
       "url": "https://john09289.github.io/predictions/killshot.html",
       "purpose": "Inspect the binary falsification framing and southern metric expansion argument."
     },
     {
-      "step": 6,
+      "step": 7,
       "url": "https://john09289.github.io/predictions/predictions.html",
       "purpose": "Inspect prospective predictions, the Tier 3 eclipse protocol, and open refinements."
     },
     {
-      "step": 7,
+      "step": 8,
       "url": "https://john09289.github.io/predictions/audit.html",
-      "purpose": "Walk the guided steelman/audit structure."
+      "purpose": "Walk the public methodology page after reading the registries."
     },
     {
-      "step": 8,
+      "step": 9,
       "url": "https://john09289.github.io/predictions/live.html",
       "purpose": "Inspect the continuously updated dashboard and raw time-series references."
     }
@@ -123,7 +135,29 @@
       "url": "https://john09289.github.io/predictions/predictions.html#pred-solar-009"
     }
   ],
+  "critical_open_problems": [
+    {
+      "topic": "eclipse optics",
+      "status": "open refinement",
+      "detail": "A full 3D ray-trace of eclipse optics under the published refraction field is not yet on the site."
+    },
+    {
+      "topic": "global coordinate scope",
+      "status": "open refinement",
+      "detail": "Australia is the strongest current southern anchor; northern-only error metrics should not be generalized globally."
+    },
+    {
+      "topic": "Schumann / Tesla full cavity mode",
+      "status": "open refinement",
+      "detail": "The unification is supportive, but the full cavity-mode derivation is not yet closed on the site."
+    }
+  ],
   "machine_readable_assets": [
+    {
+      "name": "Methodology",
+      "format": "json",
+      "url": "https://john09289.github.io/predictions/api/current/methodology.json"
+    },
     {
       "name": "Published AI API index",
       "format": "json",
@@ -270,8 +304,9 @@
   ],
   "agent_rules": [
     "Treat wins.html and predictions.html as canonical when older archival counts differ.",
+    "Load methodology.json before treating a displayed registry count as a scientific score.",
     "Use claim_key values from api/current/claim_index.json to disambiguate legacy duplicate visible labels like WIN-058 and WIN-062.",
     "Preserve the honest caveats; the current steelman is strongest when the unresolved items remain attached."
   ],
-  "ai_prompt_seed": "Start with ai_manifest.json, then read wins, coordinates, model, killshot, predictions, audit, and live. Treat wins.html plus predictions.html as the canonical current state when any older archival counts differ."
+  "ai_prompt_seed": "Start with ai_manifest.json, then load methodology.json, then read wins, coordinates, model, killshot, predictions, audit, and live. Treat wins.html plus predictions.html as the canonical current state when any older archival counts differ, and do not treat the display ratio as a substitute for claim-level audit."
 }

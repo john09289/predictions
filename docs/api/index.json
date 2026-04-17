@@ -1,18 +1,20 @@
 {
   "version": "V51.1",
-  "last_updated": "2026-04-08",
-  "purpose": "Published AI discovery root for the live GitHub Pages site. Prefer this over the historical root api/master.json snapshot when you are crawling the public site.",
+  "last_updated": "2026-04-17",
+  "purpose": "Published AI discovery root for the live GitHub Pages site. Prefer this over the historical root api/master.json snapshot when you are crawling the public site, and load methodology before scoring claims.",
   "site_root": "https://john09289.github.io/predictions/",
   "entry_points": {
     "home": "https://john09289.github.io/predictions/",
     "manifest": "https://john09289.github.io/predictions/ai_manifest.json",
     "api_index": "https://john09289.github.io/predictions/api/index.json",
+    "methodology": "https://john09289.github.io/predictions/api/current/methodology.json",
     "context": "https://john09289.github.io/predictions/context.html",
     "llms": "https://john09289.github.io/predictions/llms.txt",
     "llms_full": "https://john09289.github.io/predictions/llms-full.txt"
   },
   "recommended_fetch_sequence": [
     "https://john09289.github.io/predictions/ai_manifest.json",
+    "https://john09289.github.io/predictions/api/current/methodology.json",
     "https://john09289.github.io/predictions/api/current/overview.json",
     "https://john09289.github.io/predictions/api/current/claim_index.json",
     "https://john09289.github.io/predictions/api/current/evidence_graph.json",
@@ -29,6 +31,7 @@
   ],
   "normalized_surfaces": {
     "overview": "https://john09289.github.io/predictions/api/current/overview.json",
+    "methodology": "https://john09289.github.io/predictions/api/current/methodology.json",
     "claim_index": "https://john09289.github.io/predictions/api/current/claim_index.json",
     "evidence_graph": "https://john09289.github.io/predictions/api/current/evidence_graph.json",
     "source_registry": "https://john09289.github.io/predictions/api/current/source_registry.json",
@@ -47,6 +50,7 @@
   },
   "notes": [
     "Treat wins.html and predictions.html as canonical when any older archival counts differ.",
+    "Load methodology.json before treating a registry item as prospective, retrospective, supportive, or pending.",
     "Use claim_key fields from claim_index.json when matching registry entries.",
     "Visible labels WIN-058 and WIN-062 have legacy ambiguity in the prose registry; the normalized API surfaces disambiguate them."
   ]

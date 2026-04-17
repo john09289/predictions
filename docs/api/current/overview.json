@@ -1,7 +1,7 @@
 {
   "version": "V51.1",
-  "last_updated": "2026-04-08",
-  "purpose": "Canonical current overview for AI agents consuming the live site. This file normalizes the current state, strongest entry points, and the main integrity rules needed to read the registry correctly.",
+  "last_updated": "2026-04-17",
+  "purpose": "Canonical current overview for AI agents consuming the live site. This file normalizes the current state, strongest entry points, and the main integrity rules needed to read the registry correctly without overstating the methodology.",
   "current_state": {
     "confirmed_display": 69,
     "refined_display": 4,
@@ -10,6 +10,11 @@
     "geometry": "Closed Toroidal Ovoid with V13 coordinate topology and Australia validation integrated",
     "single_scale_length_km": 8619,
     "top_current_steelman": "Australia scaffold validation plus official datum admissions"
+  },
+  "registry_semantics": {
+    "accuracy_display_pct_meaning": "Display-level registry ratio shown on the public site.",
+    "accuracy_display_pct_limit": "Not a substitute for claim-by-claim prospective scoring.",
+    "timestamp_rule": "OpenTimestamps proves a snapshot existed by a time; claim-level prospectivity must still be checked from the wording and data-release timing."
   },
   "canonical_priority": [
     {
@@ -20,24 +25,30 @@
     },
     {
       "rank": 2,
+      "surface": "Methodology",
+      "url": "https://john09289.github.io/predictions/api/current/methodology.json",
+      "reason": "Claim taxonomy, timestamp scope, and the open problems an honest audit must preserve."
+    },
+    {
+      "rank": 3,
       "surface": "Claim index",
       "url": "https://john09289.github.io/predictions/api/current/claim_index.json",
       "reason": "Stable machine identifiers for the strongest current claims."
     },
     {
-      "rank": 3,
+      "rank": 4,
       "surface": "Wins registry",
       "url": "https://john09289.github.io/predictions/wins.html",
       "reason": "Canonical prose registry for confirmed items and status labeling."
     },
     {
-      "rank": 4,
+      "rank": 5,
       "surface": "Coordinates",
       "url": "https://john09289.github.io/predictions/coordinates.html",
       "reason": "Best current southern-geometry steelman and Australia scaffold details."
     },
     {
-      "rank": 5,
+      "rank": 6,
       "surface": "Predictions",
       "url": "https://john09289.github.io/predictions/predictions.html",
       "reason": "Prospective registry, Tier 3 falsifier, and open refinements."
@@ -67,7 +78,14 @@
       "detail": "The observed seasonal direction of solar angular diameter still favors the globe direction and remains openly unresolved."
     }
   ],
+  "critical_open_problems": [
+    "A full eclipse ray-trace under the published refraction field is not yet on the site.",
+    "The κ coupling claim still needs independent raw-data closure or a successful Tier 3 result.",
+    "Schumann/Tesla cavity-mode unification remains supportive rather than fully closed.",
+    "Australia is the current strongest southern anchor; northern-only error metrics should not be cited globally."
+  ],
   "machine_endpoints": [
+    "https://john09289.github.io/predictions/api/current/methodology.json",
     "https://john09289.github.io/predictions/api/current/claim_index.json",
     "https://john09289.github.io/predictions/api/current/evidence_graph.json",
     "https://john09289.github.io/predictions/api/current/source_registry.json",
@@ -99,6 +117,7 @@
   ],
   "agent_rules": [
     "Preserve the site's own honest caveats; the current steelman is strongest when those caveats remain attached.",
+    "Load methodology.json before treating a registry item as a pure forecast.",
     "Prefer the docs and docs/api surfaces over the historical root api/master.json snapshot.",
     "When you need a stable identifier, use claim_key rather than visible label."
   ]

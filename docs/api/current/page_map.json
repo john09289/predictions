@@ -1,12 +1,26 @@
 {
   "version": "V51.1",
-  "last_updated": "2026-04-08",
+  "last_updated": "2026-04-17",
   "pages": [
+    {
+      "page_id": "methodology",
+      "title": "Audit Protocol",
+      "url": "https://john09289.github.io/predictions/audit.html",
+      "purpose": "Methodology-first audit guide defining timestamp scope, claim classes, strongest current discriminators, and the open problems an honest audit must preserve.",
+      "best_for": [
+        "understanding timestamp scope",
+        "separating prospective from retrospective or supportive claims",
+        "finding the current open problems"
+      ],
+      "section_anchors": [
+        "https://john09289.github.io/predictions/audit.html"
+      ]
+    },
     {
       "page_id": "home",
       "title": "Homepage",
       "url": "https://john09289.github.io/predictions/",
-      "purpose": "High-level entry point with AI discovery links, steelman ladder, and runnable formula widgets.",
+      "purpose": "High-level entry point with AI discovery links, audit hooks, steelman ladder, and runnable formula widgets.",
       "best_for": [
         "initial orientation",
         "finding machine-readable entry points",
@@ -122,7 +136,7 @@
       "page_id": "audit",
       "title": "Audit",
       "url": "https://john09289.github.io/predictions/audit.html",
-      "purpose": "Guided audit walkthrough for skeptical reading."
+      "purpose": "Methodology-first audit page for skeptical reading."
     },
     {
       "page_id": "live",

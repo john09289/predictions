@@ -1,0 +1,107 @@
+{
+  "version": "V51.1",
+  "last_updated": "2026-04-17",
+  "purpose": "Machine-readable methodology and claim taxonomy for auditing the live Ovoid Cavity site without overstating what the registry proves.",
+  "human_page": "https://john09289.github.io/predictions/audit.html",
+  "timestamp_scope": {
+    "what_ots_proves": "OpenTimestamps proves that a hashed file snapshot existed by a given time.",
+    "what_ots_does_not_prove": "It does not by itself prove that every claim inside that file was an isolated pre-release forecast.",
+    "claim_level_rule": "For claim-level prospectivity, verify that the numerical threshold or directional wording predates the confirming data pull or public release."
+  },
+  "registry_scope": {
+    "display_counts_meaning": "The displayed counts are bookkeeping for the current registry state.",
+    "display_counts_do_not_mean": "They are not a substitute for claim-by-claim prospective audit.",
+    "live_dashboard_rule": "live.html is a monitoring surface, not the same thing as the pre-registration ledger."
+  },
+  "claim_classes": [
+    {
+      "id": "prospective_confirmed",
+      "meaning": "A threshold or directional claim was registered before the confirming data was pulled or released.",
+      "audit_rule": "Verify the pre-data wording, then verify the cited outcome independently."
+    },
+    {
+      "id": "retrospective_structural",
+      "meaning": "An after-the-fact structural argument built from existing public data.",
+      "audit_rule": "Judge the derivation quality and do not score it as a pure forecast."
+    },
+    {
+      "id": "supportive_nonunique",
+      "meaning": "Consistent with the model but also plausibly explained by standard physics.",
+      "audit_rule": "Treat as supportive only, not decisive."
+    },
+    {
+      "id": "pending_contested",
+      "meaning": "A result depends on unresolved instrumentation, raw-data access, or a remaining loophole.",
+      "audit_rule": "Carry the caveat forward and do not cite it as closed."
+    },
+    {
+      "id": "open_refinement",
+      "meaning": "The model statement is incomplete, under revision, or presently favors a competing explanation.",
+      "audit_rule": "Keep it visible; the steelman is stronger when the unresolved item stays attached."
+    }
+  ],
+  "strongest_current_targets": [
+    {
+      "claim_key": "win-069-australia-scaffold",
+      "class": "retrospective_structural",
+      "why_priority": "Strongest current southern-geometry steelman with official datum admissions plus transport controls."
+    },
+    {
+      "claim_key": "win-062-tesla-wave-speed",
+      "class": "retrospective_structural",
+      "why_priority": "Clear direct comparison between ECM diameter mapping and globe diameter mapping using a primary source."
+    },
+    {
+      "claim_key": "pred-eclipse-tier3",
+      "class": "prospective_confirmed",
+      "why_priority": "Strongest future falsifier on the site."
+    },
+    {
+      "claim_key": "win-068-eclipse-ensemble",
+      "class": "supportive_nonunique",
+      "why_priority": "Strong ensemble anchor for the existence of an eclipse-linked signal, but not uniquely dome-only."
+    }
+  ],
+  "critical_open_problems": [
+    {
+      "topic": "win-058-bedrock-kappa",
+      "status": "pending_contested",
+      "detail": "Independent raw-data reproduction or Tier 3 confirmation is still required."
+    },
+    {
+      "topic": "win-013-sg-null",
+      "status": "supportive_nonunique",
+      "detail": "1999 and 2009 SG nulls are explicitly non-discriminating."
+    },
+    {
+      "topic": "eclipse_optics_raytrace",
+      "status": "open_refinement",
+      "detail": "A full 3D ray-trace of eclipse optics under the published refraction field is not yet on the site."
+    },
+    {
+      "topic": "schumann_tesla_full_mode_derivation",
+      "status": "open_refinement",
+      "detail": "The supportive unification exists, but the full cavity-mode derivation is not yet closed."
+    },
+    {
+      "topic": "global_coordinate_lock",
+      "status": "open_refinement",
+      "detail": "Australia is the current strongest southern anchor; northern-only metrics should not be cited globally."
+    }
+  ],
+  "audit_sequence": [
+    "https://john09289.github.io/predictions/ai_manifest.json",
+    "https://john09289.github.io/predictions/api/current/methodology.json",
+    "https://john09289.github.io/predictions/api/current/claim_index.json",
+    "https://john09289.github.io/predictions/wins.html",
+    "https://john09289.github.io/predictions/predictions.html",
+    "https://john09289.github.io/predictions/coordinates.html",
+    "https://john09289.github.io/predictions/model.html",
+    "https://john09289.github.io/predictions/live.html"
+  ],
+  "agent_rules": [
+    "Do not assume that an OpenTimestamps proof alone makes every registry claim prospective.",
+    "Separate discriminating claims from supportive and pending items before scoring the model.",
+    "Carry the critical open problems forward instead of deleting them from the steelman."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "last_updated": "2026-03-29",
-  "description": "SHA256 hashes for ECM predictions. Git commit timestamp is proof of prior art.",
+  "description": "SHA256 hashes for ECM predictions. Git commit timestamps prove when the registry entries existed.",
   "predictions": {
     "PRED-CURR-001": {
       "hash": "fcfb97e5f2bf7a6eb4081704f179e47394032bf056d5cbc20125c8472156540e",
