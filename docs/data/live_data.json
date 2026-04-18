@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-18 01:16 UTC",
+  "updated": "2026-04-18 06:55 UTC",
   "date": "2026-04-18",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-04-18 01:16 UTC"
+    "fetched": "2026-04-18 06:55 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,25 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-04-18 01:16 UTC"
+    "fetched": "2026-04-18 06:55 UTC"
   },
   "aao": {
     "latest": 0.492,
     "weekly_mean": -0.368,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-04-18 01:16 UTC"
+    "fetched": "2026-04-18 06:55 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-04-18 05:28:34.430",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2007  Issue Time: 2026 Apr 18 0528 UTC    ALERT: Geomagnetic K-index of 5   Threshold Reached: 2026 Apr 18 0525 UTC  Synoptic Period: 0300-0600 UTC  "
+      },
+      {
+        "time": "2026-04-18 03:17:54.987",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2224  Issue Time: 2026 Apr 18 0317 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Apr 18 0317 UTC  Valid To: 2026 Apr 18 1800 UT"
+      },
       {
         "time": "2026-04-16 22:09:52.840",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1108  Issue Time: 2026 Apr 16 2209 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Apr 17:  G2 (Moder"
@@ -41,22 +49,18 @@
       {
         "time": "2026-04-10 14:26:04.470",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2223  Issue Time: 2026 Apr 10 1426 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Apr 10 1425 UTC  Valid To: 2026 Apr 11 0900 UT"
-      },
-      {
-        "time": "2026-04-08 02:29:35.123",
-        "summary": "Space Weather Message Code: WATA20  Serial Number: 1107  Issue Time: 2026 Apr 08 0229 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Apr 09:  None (Bel"
       }
     ],
-    "alert_count_48h": 4,
-    "fetched": "2026-04-18 01:16 UTC"
+    "alert_count_48h": 5,
+    "fetched": "2026-04-18 06:55 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.081,
+    "amplitude_index": 0.098,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-04-18 01:16 UTC",
+    "fetched": "2026-04-18 06:55 UTC",
     "pixel_count": 67728
   }
 }
