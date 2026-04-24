@@ -1,5 +1,5 @@
 {
-  "updated": "2026-04-24 07:46 UTC",
+  "updated": "2026-04-24 12:56 UTC",
   "date": "2026-04-24",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-04-24 07:46 UTC"
+    "fetched": "2026-04-24 12:56 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,36 +19,27 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-04-24 07:46 UTC"
+    "fetched": "2026-04-24 12:56 UTC"
   },
   "aao": {
     "latest": 0.492,
     "weekly_mean": -0.368,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-04-24 07:46 UTC"
+    "fetched": "2026-04-24 12:56 UTC"
   },
   "alerts": {
-    "recent_storm_alerts": [
-      {
-        "time": "2026-04-21 01:53:51.080",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2012  Issue Time: 2026 Apr 21 0153 UTC    ALERT: Geomagnetic K-index of 5   Threshold Reached: 2026 Apr 21 0148 UTC  Synoptic Period: 0000-0300 UTC  "
-      },
-      {
-        "time": "2026-04-21 01:10:21.733",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2228  Issue Time: 2026 Apr 21 0110 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Apr 21 0110 UTC  Valid To: 2026 Apr 21 0600 UT"
-      }
-    ],
-    "alert_count_48h": 2,
-    "fetched": "2026-04-24 07:46 UTC"
+    "recent_storm_alerts": [],
+    "alert_count_48h": 0,
+    "fetched": "2026-04-24 12:56 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.094,
+    "amplitude_index": 0.098,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-04-24 07:46 UTC",
+    "fetched": "2026-04-24 12:56 UTC",
     "pixel_count": 67728
   }
 }
