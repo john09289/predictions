@@ -1,6 +1,6 @@
 {
-  "updated": "2026-04-24 18:35 UTC",
-  "date": "2026-04-24",
+  "updated": "2026-04-25 01:18 UTC",
+  "date": "2026-04-25",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-04-24 18:35 UTC"
+    "fetched": "2026-04-25 01:18 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,27 +19,32 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-04-24 18:35 UTC"
+    "fetched": "2026-04-25 01:18 UTC"
   },
   "aao": {
     "latest": 0.492,
     "weekly_mean": -0.368,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-04-24 18:35 UTC"
+    "fetched": "2026-04-25 01:18 UTC"
   },
   "alerts": {
-    "recent_storm_alerts": [],
-    "alert_count_48h": 0,
-    "fetched": "2026-04-24 18:35 UTC"
+    "recent_storm_alerts": [
+      {
+        "time": "2026-04-24 23:50:43.280",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1109  Issue Time: 2026 Apr 24 2350 UTC    WATCH: Geomagnetic Storm Category G1 Predicted    Highest Storm Level Predicted by Day:  Apr 25:  G1 (Minor"
+      }
+    ],
+    "alert_count_48h": 1,
+    "fetched": "2026-04-25 01:18 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.075,
+    "amplitude_index": 0.079,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-04-24 18:35 UTC",
+    "fetched": "2026-04-25 01:18 UTC",
     "pixel_count": 67728
   }
 }
