@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-04-26T07:04:57Z",
-  "generated_human": "2026-04-26 07:04 UTC",
+  "generated_at": "2026-04-27T07:42:24Z",
+  "generated_human": "2026-04-27 07:42 UTC",
   "registry": {
     "confirmed": 69,
     "prospective": 10,
@@ -8,13 +8,13 @@
     "registry_ratio_pct": 94.5
   },
   "live_monitor": {
-    "timestamp": "2026-04-26T05:19:04Z",
+    "timestamp": "2026-04-27T06:17:43Z",
     "wins_confirmed_monitor": 67,
     "overall_score": 100.0,
-    "passed": 27,
-    "total_scored": 27,
-    "pending_domains": 12,
-    "eclipse_days": 107
+    "passed": 28,
+    "total_scored": 28,
+    "pending_domains": 11,
+    "eclipse_days": 106
   },
   "trend": {
     "samples_7d": 7,
@@ -72,15 +72,6 @@
     ],
     "pending_watchlist": [
       {
-        "name": "NMP Longitude",
-        "predicted": 139.3,
-        "observed": null,
-        "unit": "\u00b0E",
-        "error_pct": null,
-        "status": "pending",
-        "source": "NOAA NP.xy (unavailable)"
-      },
-      {
         "name": "Eclipse Magnetic Anomaly (Aug 12 2026)",
         "predicted": -28.9,
         "observed": "PENDING",
@@ -92,7 +83,7 @@
       {
         "name": "Current Kp Index",
         "predicted": "< 2 (quiet)",
-        "observed": 3.0,
+        "observed": 0.0,
         "unit": "",
         "error_pct": null,
         "status": "pending",
@@ -101,7 +92,7 @@
       {
         "name": "Schumann Amplitude Suppression",
         "predicted": "Suppression >30%",
-        "observed": "No G3+ storm (Kp=3.0); amplitude unavailable",
+        "observed": "No G3+ storm (Kp=0.0); amplitude unavailable",
         "unit": "pT",
         "error_pct": null,
         "status": "pending",
@@ -115,6 +106,15 @@
         "error_pct": null,
         "status": "pending",
         "source": "CPC/NOAA (unavailable)"
+      },
+      {
+        "name": "Polaris Excess (Edinburgh 55.95\u00b0N)",
+        "predicted": 0.282,
+        "observed": "Pending measurement",
+        "unit": "\u00b0",
+        "error_pct": null,
+        "status": "pending",
+        "source": "Requires field measurement"
       }
     ],
     "top_failing": []
@@ -123,14 +123,14 @@
     "registry_ratio_pct": 94.5,
     "monitor_score_pct": 100.0,
     "avg_monitor_score_7d": 100.0,
-    "passed_over_scored": "27/27"
+    "passed_over_scored": "28/28"
   },
   "ai_brief": {
     "provider": "local",
     "model": "deterministic-summary",
-    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 27 of 27 scored domains passing. The 7-day score trend is flat by 0.0 points. 107 days remain until the August 12, 2026 eclipse test.",
+    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 106 days remain until the August 12, 2026 eclipse test.",
     "next_actions": [
-      "Check pending domains first: NMP Longitude, Eclipse Magnetic Anomaly (Aug 12 2026), Current Kp Index.",
+      "Check pending domains first: Eclipse Magnetic Anomaly (Aug 12 2026), Current Kp Index, Schumann Amplitude Suppression.",
       "Keep WIN-058 marked pending until independent raw L1A or Tier 3 closure arrives."
     ],
     "prediction_focus": [
