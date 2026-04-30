@@ -1,15 +1,15 @@
 /home/runner/work/predictions/predictions/monitor.py:183: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
   r_coeff, p_val = stats.pearsonr(x, y)
+  [fetch] https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy… → The read operation timed out
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
-  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 403: 
-  [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → HTTP Error 403: 
-ECM Monitor — 2026-04-29T23:39:53Z
-Score: 100.0% (28/28 scored, 39 total)
-Eclipse: 104 days | History: 483 entries
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 404: 
+ECM Monitor — 2026-04-30T01:24:44Z
+Score: 100.0% (27/27 scored, 39 total)
+Eclipse: 103 days | History: 484 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
-  ✓ NMP Longitude: pred=139.3, obs=138.057
+  ? NMP Longitude: pred=139.3, obs=None
   ✓ M2 Tidal Period: pred=12.42, obs=12.4206
   ✓ K1 Tidal Period (Sidereal Day): pred=23.9345, obs=23.9345
   ✓ Equatorial Gravity: pred=9.832204, obs=9.8322
@@ -17,12 +17,12 @@ Eclipse: 104 days | History: 483 entries
   ✓ SAA Decay Rate (TTB): pred=77.0, obs=77.0
   ✓ Polaris Excess (35.9°N): pred=0.27, obs=0.27
   ? Eclipse Magnetic Anomaly (Aug 12 2026): pred=-28.9, obs=PENDING
-  ✓ NMP Drift Rate: pred=22.2, obs=37.0
-  ? Current Kp Index: pred=< 2 (quiet), obs=1.0
+  ✓ NMP Drift Rate: pred=22.2, obs=35.0
+  ? Current Kp Index: pred=< 2 (quiet), obs=2.0
   ✓ Aetheric Redshift Scale λ_A: pred=4283.0, obs=4319.0
   ✓ S2 Solar Tidal Period: pred=12.0, obs=12.0
   ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=none found
-  ? Schumann Amplitude Suppression: pred=Suppression >30%, obs=No G3+ storm (Kp=1.0); amplitude unavailable
+  ? Schumann Amplitude Suppression: pred=Suppression >30%, obs=No G3+ storm (Kp=2.0); amplitude unavailable
   ? Roaring 40s AAO Index: pred=> +0.3σ, obs=unavailable
   ? Polaris Excess (Edinburgh 55.95°N): pred=0.282, obs=Pending measurement
   ? Polaris Excess (Oslo 59.91°N): pred=0.253, obs=Pending measurement
