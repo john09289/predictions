@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-03T07:26:50Z",
-  "generated_human": "2026-05-03 07:26 UTC",
+  "generated_at": "2026-05-04T08:03:52Z",
+  "generated_human": "2026-05-04 08:03 UTC",
   "registry": {
     "confirmed": 69,
     "prospective": 10,
@@ -8,13 +8,13 @@
     "registry_ratio_pct": 94.5
   },
   "live_monitor": {
-    "timestamp": "2026-05-03T06:37:17Z",
+    "timestamp": "2026-05-04T06:50:01Z",
     "wins_confirmed_monitor": 67,
     "overall_score": 100.0,
     "passed": 28,
     "total_scored": 28,
     "pending_domains": 11,
-    "eclipse_days": 100
+    "eclipse_days": 99
   },
   "trend": {
     "samples_7d": 7,
@@ -83,7 +83,7 @@
       {
         "name": "Current Kp Index",
         "predicted": "< 2 (quiet)",
-        "observed": 0.0,
+        "observed": 1.0,
         "unit": "",
         "error_pct": null,
         "status": "pending",
@@ -92,7 +92,7 @@
       {
         "name": "Schumann Amplitude Suppression",
         "predicted": "Suppression >30%",
-        "observed": "No G3+ storm (Kp=0.0); amplitude unavailable",
+        "observed": "No G3+ storm (Kp=1.0); amplitude unavailable",
         "unit": "pT",
         "error_pct": null,
         "status": "pending",
@@ -128,7 +128,7 @@
   "ai_brief": {
     "provider": "local",
     "model": "deterministic-summary",
-    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 100 days remain until the August 12, 2026 eclipse test.",
+    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 99 days remain until the August 12, 2026 eclipse test.",
     "next_actions": [
       "Check pending domains first: Eclipse Magnetic Anomaly (Aug 12 2026), Current Kp Index, Schumann Amplitude Suppression.",
       "Keep WIN-058 marked pending until independent raw L1A or Tier 3 closure arrives."
