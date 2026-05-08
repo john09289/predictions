@@ -3,9 +3,9 @@
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
   [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 404: 
-ECM Monitor — 2026-05-08T01:26:39Z
+ECM Monitor — 2026-05-08T04:42:06Z
 Score: 100.0% (28/28 scored, 39 total)
-Eclipse: 95 days | History: 601 entries
+Eclipse: 95 days | History: 602 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ✓ NMP Longitude: pred=139.3, obs=138.057
