@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-05-13T08:12:17Z",
-  "generated_human": "2026-05-13 08:12 UTC",
+  "generated_at": "2026-05-14T08:04:15Z",
+  "generated_human": "2026-05-14 08:04 UTC",
   "registry": {
     "confirmed": 69,
     "prospective": 10,
@@ -8,13 +8,13 @@
     "registry_ratio_pct": 94.5
   },
   "live_monitor": {
-    "timestamp": "2026-05-13T05:08:54Z",
+    "timestamp": "2026-05-14T06:49:01Z",
     "wins_confirmed_monitor": 67,
     "overall_score": 100.0,
     "passed": 28,
     "total_scored": 28,
     "pending_domains": 11,
-    "eclipse_days": 90
+    "eclipse_days": 89
   },
   "trend": {
     "samples_7d": 7,
@@ -128,7 +128,7 @@
   "ai_brief": {
     "provider": "local",
     "model": "deterministic-summary",
-    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 90 days remain until the August 12, 2026 eclipse test.",
+    "summary": "Registry stands at 69 confirmed, 4 refined, and 10 prospective items. Latest monitor snapshot is 100.0% with 28 of 28 scored domains passing. The 7-day score trend is flat by 0.0 points. 89 days remain until the August 12, 2026 eclipse test.",
     "next_actions": [
       "Check pending domains first: Eclipse Magnetic Anomaly (Aug 12 2026), Current Kp Index, Schumann Amplitude Suppression.",
       "Keep WIN-058 marked pending until independent raw L1A or Tier 3 closure arrives."
