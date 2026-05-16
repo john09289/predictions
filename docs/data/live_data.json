@@ -1,6 +1,6 @@
 {
-  "updated": "2026-05-15 19:14 UTC",
-  "date": "2026-05-15",
+  "updated": "2026-05-16 01:52 UTC",
+  "date": "2026-05-16",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-05-15 19:14 UTC"
+    "fetched": "2026-05-16 01:52 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,29 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-05-15 19:14 UTC"
+    "fetched": "2026-05-16 01:52 UTC"
   },
   "aao": {
     "latest": -0.125,
     "weekly_mean": -0.285,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-05-15 19:14 UTC"
+    "fetched": "2026-05-16 01:52 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-05-15 23:56:11.853",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2235  Issue Time: 2026 May 15 2356 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2234 Valid From: 2026-05-15"
+      },
+      {
+        "time": "2026-05-15 22:15:47.990",
+        "summary": "Space Weather Message Code: ALTK06  Serial Number: 717  Issue Time: 2026 May 15 2215 UTC    ALERT: Geomagnetic K-index of 6  Threshold Reached: 2026 May 15 2215 UTC Synoptic Period: 2100-2400 Active W"
+      },
+      {
+        "time": "2026-05-15 22:02:47.750",
+        "summary": "Space Weather Message Code: WARK06  Serial Number: 660  Issue Time: 2026 May 15 2202 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 May 15 2201 UTC Valid To: 2026 May 16 0300 UTC "
+      },
       {
         "time": "2026-05-15 16:07:15.047",
         "summary": "Space Weather Message Code: ALTK05  Serial Number: 2019  Issue Time: 2026 May 15 1607 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 May 15 1606 UTC Synoptic Period: 1500-1800 Active "
@@ -37,30 +49,18 @@
       {
         "time": "2026-05-15 14:50:31.510",
         "summary": "Space Weather Message Code: WARK06  Serial Number: 659  Issue Time: 2026 May 15 1450 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 May 15 1449 UTC Valid To: 2026 May 15 2100 UTC "
-      },
-      {
-        "time": "2026-05-15 13:27:42.887",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2018  Issue Time: 2026 May 15 1327 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 May 15 1326 UTC Synoptic Period: 1200-1500 Active "
-      },
-      {
-        "time": "2026-05-15 13:12:45.673",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2234  Issue Time: 2026 May 15 1307 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 May 15 1305 UTC Valid To: 2026 May 15 2359 UTC"
-      },
-      {
-        "time": "2026-05-14 08:53:02.820",
-        "summary": "Space Weather Message Code: WATA30  Serial Number: 273  Issue Time: 2026 May 14 0853 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: May 15:  G2 (Moderate)"
       }
     ],
-    "alert_count_48h": 7,
-    "fetched": "2026-05-15 19:14 UTC"
+    "alert_count_48h": 10,
+    "fetched": "2026-05-16 01:52 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.073,
+    "amplitude_index": 0.082,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-05-15 19:14 UTC",
+    "fetched": "2026-05-16 01:52 UTC",
     "pixel_count": 67728
   }
 }
