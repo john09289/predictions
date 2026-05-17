@@ -1,5 +1,5 @@
 {
-  "updated": "2026-05-17 08:07 UTC",
+  "updated": "2026-05-17 12:52 UTC",
   "date": "2026-05-17",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-05-17 08:07 UTC"
+    "fetched": "2026-05-17 12:52 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-05-17 08:07 UTC"
+    "fetched": "2026-05-17 12:52 UTC"
   },
   "aao": {
     "latest": -0.125,
     "weekly_mean": -0.285,
     "days_positive_7d": 3,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-05-17 08:07 UTC"
+    "fetched": "2026-05-17 12:52 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,16 +51,16 @@
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2236  Issue Time: 2026 May 16 0845 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2235 Valid From: 2026-05-15"
       }
     ],
-    "alert_count_48h": 12,
-    "fetched": "2026-05-17 08:07 UTC"
+    "alert_count_48h": 11,
+    "fetched": "2026-05-17 12:52 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.085,
+    "amplitude_index": 0.089,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-05-17 08:07 UTC",
+    "fetched": "2026-05-17 12:52 UTC",
     "pixel_count": 67728
   }
 }
