@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-05 09:26 UTC",
+  "updated": "2026-06-05 14:21 UTC",
   "date": "2026-06-05",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-06-05 09:26 UTC"
+    "fetched": "2026-06-05 14:21 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,32 +19,40 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-06-05 09:26 UTC"
+    "fetched": "2026-06-05 14:21 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-06-05 09:26 UTC"
+    "fetched": "2026-06-05 14:21 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-06-05 13:35:30.593",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2023  Issue Time: 2026 Jun 05 1335 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jun 05 1327 UTC Synoptic Period: 1200-1500 Active "
+      },
+      {
+        "time": "2026-06-05 12:30:35.403",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2238  Issue Time: 2026 Jun 05 1230 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Jun 05 1228 UTC Valid To: 2026 Jun 05 2100 UTC"
+      },
       {
         "time": "2026-06-03 14:52:28.343",
         "summary": "Space Weather Message Code: WATA50  Serial Number: 98  Issue Time: 2026 Jun 03 1452 UTC    WATCH: Geomagnetic Storm Category G3 Predicted  Highest Storm Level Predicted by Day: Jun 04:  G3 (Strong)   "
       }
     ],
-    "alert_count_48h": 1,
-    "fetched": "2026-06-05 09:26 UTC"
+    "alert_count_48h": 3,
+    "fetched": "2026-06-05 14:21 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.078,
+    "amplitude_index": 0.088,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-06-05 09:26 UTC",
+    "fetched": "2026-06-05 14:21 UTC",
     "pixel_count": 67728
   }
 }
