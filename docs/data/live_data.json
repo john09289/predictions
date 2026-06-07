@@ -1,6 +1,6 @@
 {
-  "updated": "2026-06-06 19:02 UTC",
-  "date": "2026-06-06",
+  "updated": "2026-06-07 02:27 UTC",
+  "date": "2026-06-07",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-06-06 19:02 UTC"
+    "fetched": "2026-06-07 02:27 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-06-06 19:02 UTC"
+    "fetched": "2026-06-07 02:27 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-06-06 19:02 UTC"
+    "fetched": "2026-06-07 02:27 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-06-06 22:11:17.180",
+        "summary": "Space Weather Message Code: WATA50  Serial Number: 99  Issue Time: 2026 Jun 06 2211 UTC    WATCH: Geomagnetic Storm Category G3 Predicted  Highest Storm Level Predicted by Day: Jun 07:  None (Below G1"
+      },
       {
         "time": "2026-06-06 04:35:01.393",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2240  Issue Time: 2026 Jun 06 0435 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2239 Valid From: 2026 Jun 0"
@@ -45,22 +49,18 @@
       {
         "time": "2026-06-05 18:52:32.167",
         "summary": "Space Weather Message Code: WATA30  Serial Number: 274  Issue Time: 2026 Jun 05 1852 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Jun 06:  G2 (Moderate)"
-      },
-      {
-        "time": "2026-06-05 17:21:33.163",
-        "summary": "Space Weather Message Code: WARK06  Serial Number: 662  Issue Time: 2026 Jun 05 1721 UTC    EXTENDED WARNING: Geomagnetic K-index of 6 expected Extension to Serial Number: 661 Valid From: 2026 Jun 05 "
       }
     ],
-    "alert_count_48h": 12,
-    "fetched": "2026-06-06 19:02 UTC"
+    "alert_count_48h": 13,
+    "fetched": "2026-06-07 02:27 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.071,
+    "amplitude_index": 0.085,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-06-06 19:02 UTC",
+    "fetched": "2026-06-07 02:27 UTC",
     "pixel_count": 67728
   }
 }
