@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-08 02:32 UTC",
+  "updated": "2026-06-08 10:14 UTC",
   "date": "2026-06-08",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-06-08 02:32 UTC"
+    "fetched": "2026-06-08 10:14 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-06-08 02:32 UTC"
+    "fetched": "2026-06-08 10:14 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-06-08 02:32 UTC"
+    "fetched": "2026-06-08 10:14 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,16 +51,16 @@
         "summary": "Space Weather Message Code: WATA30  Serial Number: 274  Issue Time: 2026 Jun 05 1852 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Jun 06:  G2 (Moderate)"
       }
     ],
-    "alert_count_48h": 13,
-    "fetched": "2026-06-08 02:32 UTC"
+    "alert_count_48h": 12,
+    "fetched": "2026-06-08 10:14 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.08,
+    "amplitude_index": 0.09,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-06-08 02:32 UTC",
+    "fetched": "2026-06-08 10:14 UTC",
     "pixel_count": 67728
   }
 }
