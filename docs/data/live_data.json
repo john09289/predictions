@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-13 13:21 UTC",
+  "updated": "2026-06-13 19:05 UTC",
   "date": "2026-06-13",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-06-13 13:21 UTC"
+    "fetched": "2026-06-13 19:05 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-06-13 13:21 UTC"
+    "fetched": "2026-06-13 19:05 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-06-13 13:21 UTC"
+    "fetched": "2026-06-13 19:05 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -45,22 +45,18 @@
       {
         "time": "2026-06-08 21:17:43.480",
         "summary": "Space Weather Message Code: WATA50  Serial Number: 100  Issue Time: 2026 Jun 08 2117 UTC    CANCELLED WATCH: Geomagnetic Storm Category G3 Predicted  Cancel Serial Number: 99 Original Issued Time: 202"
-      },
-      {
-        "time": "2026-06-06 22:11:17.180",
-        "summary": "Space Weather Message Code: WATA50  Serial Number: 99  Issue Time: 2026 Jun 06 2211 UTC    WATCH: Geomagnetic Storm Category G3 Predicted  Highest Storm Level Predicted by Day: Jun 07:  None (Below G1"
       }
     ],
-    "alert_count_48h": 5,
-    "fetched": "2026-06-13 13:21 UTC"
+    "alert_count_48h": 4,
+    "fetched": "2026-06-13 19:05 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.092,
+    "amplitude_index": 0.073,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-06-13 13:21 UTC",
+    "fetched": "2026-06-13 19:05 UTC",
     "pixel_count": 67728
   }
 }
