@@ -1,5 +1,5 @@
 {
-  "updated": "2026-06-30 13:51 UTC",
+  "updated": "2026-06-30 19:29 UTC",
   "date": "2026-06-30",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-06-30 13:51 UTC"
+    "fetched": "2026-06-30 19:29 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-06-30 13:51 UTC"
+    "fetched": "2026-06-30 19:29 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-06-30 13:51 UTC"
+    "fetched": "2026-06-30 19:29 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -45,22 +45,18 @@
       {
         "time": "2026-06-25 03:41:32.400",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2242  Issue Time: 2026 Jun 25 0341 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Jun 25 0337 UTC Valid To: 2026 Jun 25 0900 UTC"
-      },
-      {
-        "time": "2026-06-25 03:38:02.530",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2242  Issue Time: 2026 Jun 25 0338 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Jun 25 0337 UTC Valid To: 2026 Jun 26 0900 UTC"
       }
     ],
-    "alert_count_48h": 5,
-    "fetched": "2026-06-30 13:51 UTC"
+    "alert_count_48h": 4,
+    "fetched": "2026-06-30 19:29 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.105,
+    "amplitude_index": 0.075,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-06-30 13:51 UTC",
+    "fetched": "2026-06-30 19:29 UTC",
     "pixel_count": 67728
   }
 }
