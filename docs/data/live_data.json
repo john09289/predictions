@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-04 18:53 UTC",
-  "date": "2026-07-04",
+  "updated": "2026-07-05 01:53 UTC",
+  "date": "2026-07-05",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-07-04 18:53 UTC"
+    "fetched": "2026-07-05 01:53 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,48 +19,48 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-07-04 18:53 UTC"
+    "fetched": "2026-07-05 01:53 UTC"
   },
   "aao": {
     "latest": 0.544,
     "weekly_mean": -0.03,
     "days_positive_7d": 4,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-07-04 18:53 UTC"
+    "fetched": "2026-07-05 01:53 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
       {
+        "time": "2026-07-05 00:27:14.067",
+        "summary": "Space Weather Message Code: WARK07  Serial Number: 152  Issue Time: 2026 Jul 05 0027 UTC    CANCEL WARNING: Geomagnetic K-index of 7 or greater expected  Cancel Serial Number: 151 Original Issue Time:"
+      },
+      {
+        "time": "2026-07-05 00:05:42.410",
+        "summary": "Space Weather Message Code: WARK06  Serial Number: 666  Issue Time: 2026 Jul 05 0005 UTC    CANCEL WARNING: Geomagnetic K-index of 6 expected  Cancel Serial Number: 665 Original Issue Time: 2026 Jul 0"
+      },
+      {
+        "time": "2026-07-04 23:00:54.203",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2038  Issue Time: 2026 Jul 04 2300 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jul 04 2301 UTC Synoptic Period: 2100-2400 Active "
+      },
+      {
+        "time": "2026-07-04 20:22:27.850",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2037  Issue Time: 2026 Jul 04 2022 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jul 04 2018 UTC Synoptic Period: 1800-2100 Active "
+      },
+      {
         "time": "2026-07-04 17:00:15.597",
         "summary": "Space Weather Message Code: ALTK06  Serial Number: 723  Issue Time: 2026 Jul 04 1700 UTC    ALERT: Geomagnetic K-index of 6  Threshold Reached: 2026 Jul 04 1655 UTC Synoptic Period: 1500-1800 Active W"
-      },
-      {
-        "time": "2026-07-04 16:14:30.417",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2036  Issue Time: 2026 Jul 04 1614 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jul 04 1610 UTC Synoptic Period: 1500-1800 Active "
-      },
-      {
-        "time": "2026-07-04 14:12:48.350",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2248  Issue Time: 2026 Jul 04 1412 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2247 Valid From: 2026 Jul 0"
-      },
-      {
-        "time": "2026-07-04 13:58:21.523",
-        "summary": "Space Weather Message Code: ALTK06  Serial Number: 722  Issue Time: 2026 Jul 04 1358 UTC    ALERT: Geomagnetic K-index of 6  Threshold Reached: 2026 Jul 04 1358 UTC Synoptic Period: 1200-1500 Active W"
-      },
-      {
-        "time": "2026-07-04 13:57:38.983",
-        "summary": "Space Weather Message Code: WARK06  Serial Number: 665  Issue Time: 2026 Jul 04 1357 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 Jul 04 1356 UTC Valid To: 2026 Jul 05 2100 UTC "
       }
     ],
-    "alert_count_48h": 18,
-    "fetched": "2026-07-04 18:53 UTC"
+    "alert_count_48h": 15,
+    "fetched": "2026-07-05 01:53 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.073,
+    "amplitude_index": 0.079,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-07-04 18:53 UTC",
+    "fetched": "2026-07-05 01:53 UTC",
     "pixel_count": 67728
   }
 }
