@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-06 09:51 UTC",
+  "updated": "2026-07-06 14:53 UTC",
   "date": "2026-07-06",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-07-06 09:51 UTC"
+    "fetched": "2026-07-06 14:53 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-07-06 09:51 UTC"
+    "fetched": "2026-07-06 14:53 UTC"
   },
   "aao": {
     "latest": 2.506,
     "weekly_mean": 0.517,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-07-06 09:51 UTC"
+    "fetched": "2026-07-06 14:53 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,16 +51,16 @@
         "summary": "Space Weather Message Code: ALTK06  Serial Number: 723  Issue Time: 2026 Jul 04 1700 UTC    ALERT: Geomagnetic K-index of 6  Threshold Reached: 2026 Jul 04 1655 UTC Synoptic Period: 1500-1800 Active W"
       }
     ],
-    "alert_count_48h": 9,
-    "fetched": "2026-07-06 09:51 UTC"
+    "alert_count_48h": 8,
+    "fetched": "2026-07-06 14:53 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.096,
+    "amplitude_index": 0.101,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-07-06 09:51 UTC",
+    "fetched": "2026-07-06 14:53 UTC",
     "pixel_count": 67728
   }
 }
