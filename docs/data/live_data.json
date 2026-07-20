@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-19 18:46 UTC",
-  "date": "2026-07-19",
+  "updated": "2026-07-20 01:51 UTC",
+  "date": "2026-07-20",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-07-19 18:46 UTC"
+    "fetched": "2026-07-20 01:51 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-07-19 18:46 UTC"
+    "fetched": "2026-07-20 01:51 UTC"
   },
   "aao": {
     "latest": 2.506,
     "weekly_mean": 0.517,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-07-19 18:46 UTC"
+    "fetched": "2026-07-20 01:51 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-07-19 20:14:34.243",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1116  Issue Time: 2026 Jul 19 2014 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Jul 20:  None (Below "
+      },
       {
         "time": "2026-07-12 21:01:57.203",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2250  Issue Time: 2026 Jul 12 2101 UTC    CANCEL WARNING: Geomagnetic K-index of 5 expected  Cancel Serial Number: 2249 Original Issue Time: 2026 Jul"
@@ -41,22 +45,18 @@
       {
         "time": "2026-07-12 14:11:40.570",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2249  Issue Time: 2026 Jul 12 1411 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Jul 12 1410 UTC Valid To: 2026 Jul 13 2100 UTC"
-      },
-      {
-        "time": "2026-07-10 19:46:30.540",
-        "summary": "Space Weather Message Code: WATA20  Serial Number: 1115  Issue Time: 2026 Jul 10 1946 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Jul 11:  None (Below "
       }
     ],
     "alert_count_48h": 4,
-    "fetched": "2026-07-19 18:46 UTC"
+    "fetched": "2026-07-20 01:51 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.074,
+    "amplitude_index": 0.079,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-07-19 18:46 UTC",
+    "fetched": "2026-07-20 01:51 UTC",
     "pixel_count": 67728
   }
 }
