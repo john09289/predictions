@@ -1,5 +1,5 @@
 {
-  "updated": "2026-07-31 13:27 UTC",
+  "updated": "2026-07-31 19:04 UTC",
   "date": "2026-07-31",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-07-31 13:27 UTC"
+    "fetched": "2026-07-31 19:04 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-07-31 13:27 UTC"
+    "fetched": "2026-07-31 19:04 UTC"
   },
   "aao": {
     "latest": 2.506,
     "weekly_mean": 0.517,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-07-31 13:27 UTC"
+    "fetched": "2026-07-31 19:04 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -37,30 +37,18 @@
       {
         "time": "2026-07-23 23:47:40.457",
         "summary": "Space Weather Message Code: WARK05  Serial Number: 2252  Issue Time: 2026 Jul 23 2347 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2251 Valid From: 2026 Jul 2"
-      },
-      {
-        "time": "2026-07-23 20:15:26.450",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2041  Issue Time: 2026 Jul 23 2015 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jul 23 2007 UTC Synoptic Period: 1800-2100 Active "
-      },
-      {
-        "time": "2026-07-23 16:40:47.233",
-        "summary": "Space Weather Message Code: WARK06  Serial Number: 667  Issue Time: 2026 Jul 23 1640 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 Jul 23 1639 UTC Valid To: 2026 Jul 23 2359 UTC "
-      },
-      {
-        "time": "2026-07-23 16:21:57.240",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2040  Issue Time: 2026 Jul 23 1621 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Jul 23 1621 UTC Synoptic Period: 1500-1800 Active "
       }
     ],
-    "alert_count_48h": 5,
-    "fetched": "2026-07-31 13:27 UTC"
+    "alert_count_48h": 2,
+    "fetched": "2026-07-31 19:04 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.098,
+    "amplitude_index": 0.075,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-07-31 13:27 UTC",
+    "fetched": "2026-07-31 19:04 UTC",
     "pixel_count": 67728
   }
 }
