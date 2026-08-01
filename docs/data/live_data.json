@@ -1,6 +1,6 @@
 {
-  "updated": "2026-07-31 19:04 UTC",
-  "date": "2026-07-31",
+  "updated": "2026-08-01 01:44 UTC",
+  "date": "2026-08-01",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-07-31 19:04 UTC"
+    "fetched": "2026-08-01 01:44 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,36 +19,32 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-07-31 19:04 UTC"
+    "fetched": "2026-08-01 01:44 UTC"
   },
   "aao": {
     "latest": 2.506,
     "weekly_mean": 0.517,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-07-31 19:04 UTC"
+    "fetched": "2026-08-01 01:44 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
       {
         "time": "2026-07-31 11:05:14.830",
         "summary": "Space Weather Message Code: WATA30  Serial Number: 279  Issue Time: 2026 Jul 31 1105 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Jul 31:  None (Below G"
-      },
-      {
-        "time": "2026-07-23 23:47:40.457",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2252  Issue Time: 2026 Jul 23 2347 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2251 Valid From: 2026 Jul 2"
       }
     ],
-    "alert_count_48h": 2,
-    "fetched": "2026-07-31 19:04 UTC"
+    "alert_count_48h": 1,
+    "fetched": "2026-08-01 01:44 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.075,
+    "amplitude_index": 0.081,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-07-31 19:04 UTC",
+    "fetched": "2026-08-01 01:44 UTC",
     "pixel_count": 67728
   }
 }
