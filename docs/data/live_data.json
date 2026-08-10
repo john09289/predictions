@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-09 18:22 UTC",
-  "date": "2026-08-09",
+  "updated": "2026-08-10 00:50 UTC",
+  "date": "2026-08-10",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,20 +8,25 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-08-09 18:22 UTC"
+    "fetched": "2026-08-10 00:50 UTC"
   },
   "nmp": {
-    "lat": null,
-    "lon": null,
-    "ratio": null,
-    "fetched": "2026-08-09 18:22 UTC"
+    "lat": 85.778,
+    "lon": 138.057,
+    "year": 2025.0,
+    "delta_lat": -0.18,
+    "delta_lon": -3.888,
+    "ratio": 21.6,
+    "ratio_ok": true,
+    "source": "NOAA NGDC NP.xy",
+    "fetched": "2026-08-10 00:50 UTC"
   },
   "aao": {
     "latest": 0.394,
     "weekly_mean": 0.735,
     "days_positive_7d": 6,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-08-09 18:22 UTC"
+    "fetched": "2026-08-10 00:50 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -47,15 +52,15 @@
       }
     ],
     "alert_count_48h": 13,
-    "fetched": "2026-08-09 18:22 UTC"
+    "fetched": "2026-08-10 00:50 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.073,
+    "amplitude_index": 0.078,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-08-09 18:22 UTC",
+    "fetched": "2026-08-10 00:50 UTC",
     "pixel_count": 67728
   }
 }
