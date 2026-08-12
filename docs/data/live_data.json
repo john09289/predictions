@@ -1,6 +1,6 @@
 {
-  "updated": "2026-08-11 18:43 UTC",
-  "date": "2026-08-11",
+  "updated": "2026-08-12 00:56 UTC",
+  "date": "2026-08-12",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,23 +8,32 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-08-11 18:43 UTC"
+    "fetched": "2026-08-12 00:56 UTC"
   },
   "nmp": {
-    "lat": null,
-    "lon": null,
-    "ratio": null,
-    "fetched": "2026-08-11 18:43 UTC"
+    "lat": 85.778,
+    "lon": 138.057,
+    "year": 2025.0,
+    "delta_lat": -0.18,
+    "delta_lon": -3.888,
+    "ratio": 21.6,
+    "ratio_ok": true,
+    "source": "NOAA NGDC NP.xy",
+    "fetched": "2026-08-12 00:56 UTC"
   },
   "aao": {
     "latest": 0.394,
     "weekly_mean": 0.735,
     "days_positive_7d": 6,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-08-11 18:43 UTC"
+    "fetched": "2026-08-12 00:56 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-08-11 20:55:54.723",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1120  Issue Time: 2026 Aug 11 2055 UTC    CANCEL WATCH: Geomagnetic Storm Category G1 Predicted  Cancel Serial Number: 1119 Original Issue Time: 2026"
+      },
       {
         "time": "2026-08-09 13:38:09.543",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1119  Issue Time: 2026 Aug 09 1338 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Aug 10:  None (Below "
@@ -40,22 +49,18 @@
       {
         "time": "2026-08-08 20:35:27.267",
         "summary": "Space Weather Message Code: WARK06  Serial Number: 670  Issue Time: 2026 Aug 08 2035 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 Aug 08 2035 UTC Valid To: 2026 Aug 08 2359 UTC "
-      },
-      {
-        "time": "2026-08-08 20:30:53.493",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2044  Issue Time: 2026 Aug 08 2030 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Aug 08 2030 UTC Synoptic Period: 1800-2100 Active "
       }
     ],
-    "alert_count_48h": 11,
-    "fetched": "2026-08-11 18:43 UTC"
+    "alert_count_48h": 12,
+    "fetched": "2026-08-12 00:56 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.073,
+    "amplitude_index": 0.078,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-08-11 18:43 UTC",
+    "fetched": "2026-08-12 00:56 UTC",
     "pixel_count": 67728
   }
 }
