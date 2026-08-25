@@ -3,9 +3,9 @@
   [fetch] https://www.ngdc.noaa.gov/geomag/data/poles/NP.xy… → <urlopen error [Errno 101] Network is unreachable>
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
-ECM Monitor — 2026-08-25T05:01:40Z
+ECM Monitor — 2026-08-25T05:42:44Z
 Score: 100.0% (27/27 scored, 39 total)
-Eclipse: -14 days | History: 2226 entries
+Eclipse: -14 days | History: 2227 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ? NMP Longitude: pred=139.3, obs=None
