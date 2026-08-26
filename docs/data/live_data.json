@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-26 12:25 UTC",
+  "updated": "2026-08-26 19:28 UTC",
   "date": "2026-08-26",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-08-26 12:25 UTC"
+    "fetched": "2026-08-26 19:28 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,36 +19,36 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-08-26 12:25 UTC"
+    "fetched": "2026-08-26 19:28 UTC"
   },
   "aao": {
     "latest": 0.394,
     "weekly_mean": 0.735,
     "days_positive_7d": 6,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-08-26 12:25 UTC"
+    "fetched": "2026-08-26 19:28 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
       {
-        "time": "2026-08-25 18:38:26.480",
-        "summary": "Space Weather Message Code: WATA30  Serial Number: 280  Issue Time: 2026 Aug 25 1838 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Aug 26:  None (Below G"
+        "time": "2026-08-26 16:36:10.973",
+        "summary": "Space Weather Message Code: WATA30  Serial Number: 280  Issue Time: 2026 Aug 26 1636 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Aug 27:  G1 (Minor)   "
       },
       {
-        "time": "2026-08-19 05:45:36.950",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2047  Issue Time: 2026 Aug 19 0545 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Aug 19 0545 UTC Synoptic Period: 0300-0600 Active "
+        "time": "2026-08-25 18:38:26.480",
+        "summary": "Space Weather Message Code: WATA30  Serial Number: 280  Issue Time: 2026 Aug 25 1838 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Aug 26:  None (Below G"
       }
     ],
     "alert_count_48h": 2,
-    "fetched": "2026-08-26 12:25 UTC"
+    "fetched": "2026-08-26 19:28 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.097,
+    "amplitude_index": 0.073,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-08-26 12:25 UTC",
+    "fetched": "2026-08-26 19:28 UTC",
     "pixel_count": 67728
   }
 }
