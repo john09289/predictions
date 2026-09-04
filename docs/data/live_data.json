@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-04 10:05 UTC",
+  "updated": "2026-09-04 15:19 UTC",
   "date": "2026-09-04",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-09-04 10:05 UTC"
+    "fetched": "2026-09-04 15:19 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-09-04 10:05 UTC"
+    "fetched": "2026-09-04 15:19 UTC"
   },
   "aao": {
     "latest": 0.394,
     "weekly_mean": 0.735,
     "days_positive_7d": 6,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-09-04 10:05 UTC"
+    "fetched": "2026-09-04 15:19 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -37,22 +37,18 @@
       {
         "time": "2026-08-26 16:36:10.973",
         "summary": "Space Weather Message Code: WATA30  Serial Number: 280  Issue Time: 2026 Aug 26 1636 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Aug 27:  G1 (Minor)   "
-      },
-      {
-        "time": "2026-08-25 18:38:26.480",
-        "summary": "Space Weather Message Code: WATA30  Serial Number: 280  Issue Time: 2026 Aug 25 1838 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Aug 26:  None (Below G"
       }
     ],
-    "alert_count_48h": 3,
-    "fetched": "2026-09-04 10:05 UTC"
+    "alert_count_48h": 2,
+    "fetched": "2026-09-04 15:19 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.087,
+    "amplitude_index": 0.091,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-09-04 10:05 UTC",
+    "fetched": "2026-09-04 15:19 UTC",
     "pixel_count": 67728
   }
 }
