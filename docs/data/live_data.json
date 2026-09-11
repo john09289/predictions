@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-11 01:51 UTC",
+  "updated": "2026-09-11 10:07 UTC",
   "date": "2026-09-11",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-09-11 01:51 UTC"
+    "fetched": "2026-09-11 10:07 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-09-11 01:51 UTC"
+    "fetched": "2026-09-11 10:07 UTC"
   },
   "aao": {
     "latest": -0.624,
     "weekly_mean": 0.525,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-09-11 01:51 UTC"
+    "fetched": "2026-09-11 10:07 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,16 +51,16 @@
         "summary": "Space Weather Message Code: ALTK05  Serial Number: 2048  Issue Time: 2026 Sep 08 0734 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Sep 08 0730 UTC Synoptic Period: 0600-0900 Active "
       }
     ],
-    "alert_count_48h": 9,
-    "fetched": "2026-09-11 01:51 UTC"
+    "alert_count_48h": 8,
+    "fetched": "2026-09-11 10:07 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.079,
+    "amplitude_index": 0.088,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-09-11 01:51 UTC",
+    "fetched": "2026-09-11 10:07 UTC",
     "pixel_count": 67728
   }
 }
