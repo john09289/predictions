@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15 15:50 UTC",
+  "updated": "2026-09-15 20:34 UTC",
   "date": "2026-09-15",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-09-15 15:50 UTC"
+    "fetched": "2026-09-15 20:34 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,25 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-09-15 15:50 UTC"
+    "fetched": "2026-09-15 20:34 UTC"
   },
   "aao": {
     "latest": -0.624,
     "weekly_mean": 0.525,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-09-15 15:50 UTC"
+    "fetched": "2026-09-15 20:34 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-09-15 18:56:11.670",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2265  Issue Time: 2026 Sep 15 1856 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Sep 15 1855 UTC Valid To: 2026 Sep 16 0600 UTC"
+      },
+      {
+        "time": "2026-09-15 17:37:51.220",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1125  Issue Time: 2026 Sep 15 1737 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Sep 16:  G1 (Minor)  "
+      },
       {
         "time": "2026-09-14 15:47:26.890",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1124  Issue Time: 2026 Sep 14 1547 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Sep 15:  G1 (Minor)  "
@@ -41,18 +49,10 @@
       {
         "time": "2026-09-08 17:51:10.343",
         "summary": "Space Weather Message Code: ALTK05  Serial Number: 2049  Issue Time: 2026 Sep 08 1751 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Sep 08 1744 UTC Synoptic Period: 1500-1800 Active "
-      },
-      {
-        "time": "2026-09-08 17:27:15.710",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2264  Issue Time: 2026 Sep 08 1727 UTC    EXTENDED WARNING: Geomagnetic K-index of 5 expected Extension to Serial Number: 2263 Valid From: 2026 Sep 0"
-      },
-      {
-        "time": "2026-09-08 17:02:16.717",
-        "summary": "Space Weather Message Code: WATA30  Serial Number: 281  Issue Time: 2026 Sep 08 1702 UTC    WATCH: Geomagnetic Storm Category G2 Predicted  Highest Storm Level Predicted by Day: Sep 08:  G1 (Minor)   "
       }
     ],
     "alert_count_48h": 7,
-    "fetched": "2026-09-15 15:50 UTC"
+    "fetched": "2026-09-15 20:34 UTC"
   },
   "schumann": {
     "tomsk_live": true,
@@ -60,7 +60,7 @@
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-09-15 15:50 UTC",
+    "fetched": "2026-09-15 20:34 UTC",
     "pixel_count": 67728
   }
 }
