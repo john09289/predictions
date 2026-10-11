@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-10 20:48 UTC",
-  "date": "2026-10-10",
+  "updated": "2026-10-11 02:39 UTC",
+  "date": "2026-10-11",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-10-10 20:48 UTC"
+    "fetched": "2026-10-11 02:39 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-10-10 20:48 UTC"
+    "fetched": "2026-10-11 02:39 UTC"
   },
   "aao": {
     "latest": 0.263,
     "weekly_mean": 0.493,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-10-10 20:48 UTC"
+    "fetched": "2026-10-11 02:39 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-10-10 21:45:58.723",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2057  Issue Time: 2026 Oct 10 2145 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Oct 10 2145 UTC Synoptic Period: 2100-2400 Active "
+      },
       {
         "time": "2026-10-10 19:27:12.427",
         "summary": "Space Weather Message Code: ALTK07  Serial Number: 220  Issue Time: 2026 Oct 10 1927 UTC    ALERT: Geomagnetic K-index of 7  Threshold Reached: 2026 Oct 10 1926 UTC Synoptic Period: 1800-2100 Active W"
@@ -45,22 +49,18 @@
       {
         "time": "2026-10-10 17:58:50.070",
         "summary": "Space Weather Message Code: ALTK07  Serial Number: 219  Issue Time: 2026 Oct 10 1758 UTC    ALERT: Geomagnetic K-index of 7  Threshold Reached: 2026 Oct 10 1758 UTC Synoptic Period: 1500-1800 Active W"
-      },
-      {
-        "time": "2026-10-10 17:42:57.273",
-        "summary": "Space Weather Message Code: WARK07  Serial Number: 153  Issue Time: 2026 Oct 10 1742 UTC    WARNING: Geomagnetic K-index of 7 or greater expected  Valid From: 2026 Oct 10 1742 UTC Valid To: 2026 Oct 1"
       }
     ],
-    "alert_count_48h": 10,
-    "fetched": "2026-10-10 20:48 UTC"
+    "alert_count_48h": 11,
+    "fetched": "2026-10-11 02:39 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.076,
+    "amplitude_index": 0.082,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-10-10 20:48 UTC",
+    "fetched": "2026-10-11 02:39 UTC",
     "pixel_count": 67728
   }
 }
