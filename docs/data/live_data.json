@@ -1,6 +1,6 @@
 {
-  "updated": "2026-10-21 20:58 UTC",
-  "date": "2026-10-21",
+  "updated": "2026-10-22 02:15 UTC",
+  "date": "2026-10-22",
   "kp": {
     "kp_max_24h": 0,
     "kp_current": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-10-21 20:58 UTC"
+    "fetched": "2026-10-22 02:15 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,25 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-10-21 20:58 UTC"
+    "fetched": "2026-10-22 02:15 UTC"
   },
   "aao": {
     "latest": 0.263,
     "weekly_mean": 0.493,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-10-21 20:58 UTC"
+    "fetched": "2026-10-22 02:15 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-10-22 00:03:32.887",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2058  Issue Time: 2026 Oct 22 0003 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Oct 21 2359 UTC Synoptic Period: 2100-2400 Active "
+      },
+      {
+        "time": "2026-10-21 22:28:09.410",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2271  Issue Time: 2026 Oct 21 2228 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Oct 21 2227 UTC Valid To: 2026 Oct 22 0900 UTC"
+      },
       {
         "time": "2026-10-20 19:12:44.190",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1132  Issue Time: 2026 Oct 20 1912 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Oct 21:  G1 (Minor)  "
@@ -41,26 +49,18 @@
       {
         "time": "2026-10-17 20:14:23.100",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1130  Issue Time: 2026 Oct 17 2014 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Oct 18:  None (Below "
-      },
-      {
-        "time": "2026-10-11 19:11:07.000",
-        "summary": "Space Weather Message Code: WATA20  Serial Number: 1129  Issue Time: 2026 Oct 11 1911 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Oct 12:  None (Below "
-      },
-      {
-        "time": "2026-10-11 17:02:59.390",
-        "summary": "Space Weather Message Code: WATA30  Serial Number: 286  Issue Time: 2026 Oct 11 1702 UTC    CANCEL WATCH: Geomagnetic Storm Category G2 Predicted  Cancel Serial Number: 285 Original Issue Time: 2026 O"
       }
     ],
-    "alert_count_48h": 9,
-    "fetched": "2026-10-21 20:58 UTC"
+    "alert_count_48h": 8,
+    "fetched": "2026-10-22 02:15 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.075,
+    "amplitude_index": 0.079,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-10-21 20:58 UTC",
+    "fetched": "2026-10-22 02:15 UTC",
     "pixel_count": 67728
   }
 }
