@@ -2,9 +2,11 @@
   r_coeff, p_val = stats.pearsonr(x, y)
   [fetch] https://api.heartmath.org/gci/v1/spectrogram/latest… → <urlopen error [Errno -2] Name or service not known>
   [fetch] https://www.cpc.ncep.noaa.gov/products/precip/CWlink/daily_a… → HTTP Error 404: Not Found
-ECM Monitor — 2026-10-25T00:36:35Z
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=EGLL… → HTTP Error 403: 
+  [fetch] https://opensky-network.org/api/flights/arrival?airport=KJFK… → HTTP Error 403: 
+ECM Monitor — 2026-10-25T05:19:09Z
 Score: 100.0% (28/28 scored, 39 total)
-Eclipse: -75 days | History: 2622 entries
+Eclipse: -75 days | History: 2623 entries
   ✓ Schumann Frequency: pred=7.83, obs=7.83
   ✓ Tesla Longitudinal Frequency: pred=11.788, obs=11.7869
   ✓ NMP Longitude: pred=139.3, obs=138.057
@@ -19,7 +21,7 @@ Eclipse: -75 days | History: 2622 entries
   ? Current Kp Index: pred=< 2 (quiet), obs=0.0
   ✓ Aetheric Redshift Scale λ_A: pred=4283.0, obs=4319.0
   ✓ S2 Solar Tidal Period: pred=12.0, obs=12.0
-  ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=none found
+  ✓ P-wave Shadow Zone (104-140°): pred=Shadow exists, obs=Latest: Bonin Islands, Japan region (depth=492.376 km)
   ? Schumann Amplitude Suppression: pred=Suppression >30%, obs=No G3+ storm (Kp=0.0); amplitude unavailable
   ? Roaring 40s AAO Index: pred=> +0.3σ, obs=unavailable
   ? Polaris Excess (Edinburgh 55.95°N): pred=0.282, obs=Pending measurement
