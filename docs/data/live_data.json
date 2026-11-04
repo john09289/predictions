@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-04 13:25 UTC",
+  "updated": "2026-11-04 22:57 UTC",
   "date": "2026-11-04",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-11-04 13:25 UTC"
+    "fetched": "2026-11-04 22:57 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-11-04 13:25 UTC"
+    "fetched": "2026-11-04 22:57 UTC"
   },
   "aao": {
     "latest": 0.263,
     "weekly_mean": 0.493,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-11-04 13:25 UTC"
+    "fetched": "2026-11-04 22:57 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-11-04 19:04:07.743",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1135  Issue Time: 2026 Nov 04 1904 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 05:  None (Below "
+      },
       {
         "time": "2026-11-01 01:17:17.120",
         "summary": "Space Weather Message Code: ALTK05  Serial Number: 2060  Issue Time: 2026 Nov 01 0117 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Nov 01 0117 UTC Synoptic Period: 0000-0300 Active "
@@ -45,21 +49,17 @@
       {
         "time": "2026-10-31 19:08:30.750",
         "summary": "Space Weather Message Code: WARK06  Serial Number: 673  Issue Time: 2026 Oct 31 1908 UTC    WARNING: Geomagnetic K-index of 6 expected  Valid From: 2026 Oct 31 1908 UTC Valid To: 2026 Oct 31 2359 UTC "
-      },
-      {
-        "time": "2026-10-31 19:07:47.143",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2059  Issue Time: 2026 Oct 31 1907 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Oct 31 1907 UTC Synoptic Period: 1800-2100 Active "
       }
     ],
     "alert_count_48h": 9,
-    "fetched": "2026-11-04 13:25 UTC"
+    "fetched": "2026-11-04 22:57 UTC"
   },
   "schumann": {
     "tomsk_live": false,
     "amplitude_index": null,
     "suppression_flag": false,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7f866ec71e50>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
-    "fetched": "2026-11-04 13:25 UTC"
+    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7f38ae926f90>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
+    "fetched": "2026-11-04 22:57 UTC"
   }
 }
