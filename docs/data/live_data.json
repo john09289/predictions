@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-06 13:22 UTC",
+  "updated": "2026-11-06 22:28 UTC",
   "date": "2026-11-06",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-11-06 13:22 UTC"
+    "fetched": "2026-11-06 22:28 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-11-06 13:22 UTC"
+    "fetched": "2026-11-06 22:28 UTC"
   },
   "aao": {
     "latest": 0.362,
     "weekly_mean": 0.474,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-11-06 13:22 UTC"
+    "fetched": "2026-11-06 22:28 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -52,14 +52,14 @@
       }
     ],
     "alert_count_48h": 9,
-    "fetched": "2026-11-06 13:22 UTC"
+    "fetched": "2026-11-06 22:28 UTC"
   },
   "schumann": {
     "tomsk_live": false,
     "amplitude_index": null,
     "suppression_flag": false,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7f780d74aa50>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
-    "fetched": "2026-11-06 13:22 UTC"
+    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7f427ee96090>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
+    "fetched": "2026-11-06 22:28 UTC"
   }
 }
