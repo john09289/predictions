@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-07 12:00 UTC",
+  "updated": "2026-11-07 21:10 UTC",
   "date": "2026-11-07",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-11-07 12:00 UTC"
+    "fetched": "2026-11-07 21:10 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,25 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-11-07 12:00 UTC"
+    "fetched": "2026-11-07 21:10 UTC"
   },
   "aao": {
     "latest": 0.362,
     "weekly_mean": 0.474,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-11-07 12:00 UTC"
+    "fetched": "2026-11-07 21:10 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-11-07 19:45:37.330",
+        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2061  Issue Time: 2026 Nov 07 1945 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Nov 07 1945 UTC Synoptic Period: 1800-2100 Active "
+      },
+      {
+        "time": "2026-11-07 19:35:10.147",
+        "summary": "Space Weather Message Code: WARK05  Serial Number: 2275  Issue Time: 2026 Nov 07 1935 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Nov 07 1935 UTC Valid To: 2026 Nov 08 2100 UTC"
+      },
       {
         "time": "2026-11-07 06:26:14.357",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1137  Issue Time: 2026 Nov 07 0626 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 07:  G1 (Minor)  "
@@ -41,25 +49,17 @@
       {
         "time": "2026-11-04 19:04:07.743",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1135  Issue Time: 2026 Nov 04 1904 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 05:  None (Below "
-      },
-      {
-        "time": "2026-11-01 01:17:17.120",
-        "summary": "Space Weather Message Code: ALTK05  Serial Number: 2060  Issue Time: 2026 Nov 01 0117 UTC    ALERT: Geomagnetic K-index of 5  Threshold Reached: 2026 Nov 01 0117 UTC Synoptic Period: 0000-0300 Active "
-      },
-      {
-        "time": "2026-11-01 00:08:14.280",
-        "summary": "Space Weather Message Code: WARK05  Serial Number: 2274  Issue Time: 2026 Nov 01 0008 UTC    WARNING: Geomagnetic K-index of 5 expected  Valid From: 2026 Nov 01 0007 UTC Valid To: 2026 Nov 01 0900 UTC"
       }
     ],
-    "alert_count_48h": 9,
-    "fetched": "2026-11-07 12:00 UTC"
+    "alert_count_48h": 7,
+    "fetched": "2026-11-07 21:10 UTC"
   },
   "schumann": {
     "tomsk_live": false,
     "amplitude_index": null,
     "suppression_flag": false,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7f1a8578b110>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
-    "fetched": "2026-11-07 12:00 UTC"
+    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7faf38eeb390>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
+    "fetched": "2026-11-07 21:10 UTC"
   }
 }
