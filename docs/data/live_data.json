@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-12 04:42 UTC",
+  "updated": "2026-11-12 14:09 UTC",
   "date": "2026-11-12",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-11-12 04:42 UTC"
+    "fetched": "2026-11-12 14:09 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,14 +19,14 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-11-12 04:42 UTC"
+    "fetched": "2026-11-12 14:09 UTC"
   },
   "aao": {
     "latest": 0.362,
     "weekly_mean": 0.474,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-11-12 04:42 UTC"
+    "fetched": "2026-11-12 14:09 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
@@ -51,15 +51,15 @@
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1136  Issue Time: 2026 Nov 05 1745 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 06:  G1 (Minor)  "
       }
     ],
-    "alert_count_48h": 6,
-    "fetched": "2026-11-12 04:42 UTC"
+    "alert_count_48h": 5,
+    "fetched": "2026-11-12 14:09 UTC"
   },
   "schumann": {
     "tomsk_live": false,
     "amplitude_index": null,
     "suppression_flag": false,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
-    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by ConnectTimeoutError(<HTTPSConnection(host='sos70.ru', port=443) at 0x7efc224961d0>, 'Connection to sos70.ru timed out. (connect timeout=15)'))",
-    "fetched": "2026-11-12 04:42 UTC"
+    "status": "Error: HTTPSConnectionPool(host='sos70.ru', port=443): Max retries exceeded with url: /provider.php?file=sra.jpg (Caused by SSLError(SSLCertVerificationError(1, \"[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: Hostname mismatch, certificate is not valid for 'sos70.ru'. (_ssl.c:1018)\")))",
+    "fetched": "2026-11-12 14:09 UTC"
   }
 }
