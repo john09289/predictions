@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-25 01:41 UTC",
+  "updated": "2026-11-25 16:21 UTC",
   "date": "2026-11-25",
   "kp": {
     "kp_max_24h": 0,
@@ -8,7 +8,7 @@
     "is_storm": false,
     "recent_values": [],
     "source": "NOAA SWPC",
-    "fetched": "2026-11-25 01:41 UTC"
+    "fetched": "2026-11-25 16:21 UTC"
   },
   "nmp": {
     "lat": 85.778,
@@ -19,17 +19,21 @@
     "ratio": 21.6,
     "ratio_ok": true,
     "source": "NOAA NGDC NP.xy",
-    "fetched": "2026-11-25 01:41 UTC"
+    "fetched": "2026-11-25 16:21 UTC"
   },
   "aao": {
     "latest": 0.362,
     "weekly_mean": 0.474,
     "days_positive_7d": 5,
     "source": "CPC/NOAA (monthly.aao.index.b79.current.ascii)",
-    "fetched": "2026-11-25 01:41 UTC"
+    "fetched": "2026-11-25 16:21 UTC"
   },
   "alerts": {
     "recent_storm_alerts": [
+      {
+        "time": "2026-11-25 08:33:12.430",
+        "summary": "Space Weather Message Code: WATA20  Serial Number: 1140  Issue Time: 2026 Nov 25 0833 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 26:  G1 (Minor)  "
+      },
       {
         "time": "2026-11-24 14:19:26.753",
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1139  Issue Time: 2026 Nov 24 1419 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 25:  None (Below "
@@ -47,16 +51,16 @@
         "summary": "Space Weather Message Code: WATA20  Serial Number: 1138  Issue Time: 2026 Nov 15 1334 UTC    WATCH: Geomagnetic Storm Category G1 Predicted  Highest Storm Level Predicted by Day: Nov 16:  None (Below "
       }
     ],
-    "alert_count_48h": 4,
-    "fetched": "2026-11-25 01:41 UTC"
+    "alert_count_48h": 5,
+    "fetched": "2026-11-25 16:21 UTC"
   },
   "schumann": {
     "tomsk_live": true,
-    "amplitude_index": 0.079,
+    "amplitude_index": 0.1,
     "suppression_flag": true,
     "heartmath_backup": "https://www.heartmath.org/gci/gcms/live-data/spectrogram-calendar/",
     "status": "Suppressed (auto-flagged \u2014 needs human confirm)",
-    "fetched": "2026-11-25 01:41 UTC",
+    "fetched": "2026-11-25 16:21 UTC",
     "pixel_count": 67728
   }
 }
